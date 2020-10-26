@@ -6,7 +6,7 @@ Grafer er diskrete strukturer bestående af et antal punkter, også betegnet knu
 En graf er, som tidligere nævnt, en struktur med punkter og kanter. Den er givet ved definitionen:
 \begin{definition}
 [Graf] 
-En graf $G=(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt kanter, $E$. Hver kant forbinder én eller to punkter kaldet dets endepunkter.
+En graf $G=(V,E)$ består af $V$, en punktmængde, hvor $V\neq0$, og en kantmængde; $E \subseteq \{\{u;v\}|u,v \in V\}$.
 \end{definition}
 Det fremgår af definitionen, at en graf ikke kan have 0 punkter, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan altså godt være uendeligt mange knuder og kanter. I så fald kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
 Ydermere, ses det i definitionen, at hver kant forbinder én eller to punkter. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to punkter med max én kant.
@@ -33,8 +33,14 @@ I eksemplet ovenover ses det, at to kanter forbinder punktsættet ($v_{1},v_{2}$
 En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. For en orienteret graf gælder det, at dets kanter har en retning. Dette er ofte illustreret med pile. Den har dermed et startpunkt og et endepunkt. Disse grafer er defineret ved:
 \begin{definition}
 [Orienteret graf] 
-En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt punkter $(u,v)$ startende i punktet $u$ og sluttende i punktet $v$.
+En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt punkter $(u,v)$, hvor $u$ er tilstødende til $v$, og $v$ er tilstødende fra $u$. Punktet $u$ kaldes begyndelsespunktet, og punktet $v$ kaldes endepunktet.
 \end{definition}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{fig/img/orienteret_graf.png}
+\caption{En orienteret graf}
+\label{fig:orienteret}
+\end{figure}
 Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type vi bruger til optimeringen af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives i følgende afsnit.
 
 
