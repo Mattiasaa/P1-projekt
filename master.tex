@@ -54,74 +54,20 @@
 % Dokumentets 'main matter' (hovedindhold) er der, hvor det meste indhold skal
 % sættes ind. Sider og overskrifter er nummererede med arabiske tal.
 \mainmatter
-\chapter{Forord}
-Følgende projekt er udarbejdet af gruppe B350 bestående af fem stud.scient.oeconer på 1. semester. Projektet er skrevet i efteråret 2020 og beskæftiger sig med diskret matematik herunder optimering af et gaslager som basisproblem. Diskret matematik indgår i studiets læreplan og er derfor et relevant emne til projektskrivning. Projektet er skrevet i \LaTeX, og delt via GitAhead.
-%Vi vil som gruppe rette en stor tak til vores vejleder Janus Valberg-Madsen for godt samarbejde gennem projektforløbet samt gode råd og rettelser.
+
+\include{incl/main/forord}
+\include{incl/main/indledning}
+\include{incl/main/grafteori}
+\include{incl/main/analyse}
+\include{incl/main/vurdering}
+\include{incl/main/konklusion}
+%\include{incl/main/forord}
 
 
-\chapter{Indledning}
 
 
-\chapter{Grafteori}
-Følgende kapitel er skrevet med afsæt i [Rosen, kaitel 10].
-
-Grafer er diskrete strukturer bestående af et antal punkter, også betegnet knuder, samt et antal kanter, der forbinder disse knuder. Punkterne illustreres ofte som prikker, mens kanterne repræsenteres af streger eller pile, der forbinder disse prikker. Graferne varierer alt efter deres type og funktion, og de mange forskellige egenskaber betyder, at problemer i næsten enhver tænkelig disciplin kan løses ved hjælp af grafmodeller. Vi vil eksempelvis i dette projekt benytte grafteori og princippet om den korteste vej til at optimere et gaslager.
-\section{Graftyper}
-En graf er, som tidligere nævnt, en struktur med punkter og kanter. Den er givet ved definitionen:
-\begin{definition}
-[Graf] 
-En graf $G=(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt kanter, $E$. Hver kant forbinder én eller to punkter kaldet dets endepunkter.
-\end{definition}
-Det fremgår af definitionen, at en graf ikke kan have 0 punkter, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan altså godt være uendeligt mange knuder og kanter. I så fald kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
-Ydermere, ses det i definitionen, at hver kant forbinder én eller to punkter. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to punkter med max én kant.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{simpel_graf.png}
-\caption{En simpel graf}
-\label{fig:simpel}
-\end{figure}
-I kontrast til den simple graf finder vi multi-grafen. For denne type graf skal der være flere kanter, der forbinder det samme sæt punkter. Der må stadig ikke optræde løkker.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{multigraf.png} 
-\caption{En multigraf}
-\label{fig:multi}
-\end{figure}
-I eksemplet ovenover ses det, at to kanter forbinder punktsættet ($v_{1},v_{2}$). Hvis en graf, modsat de to allerede nævnte, kan indeholde både løkker og flere kanter, der forbinder de samme punkter, kaldes det en pseudo-graf. Vi ser i eksemplet herunder, at der er to kanter, der forbinder $v_{1}$ og $v_{2}$, og der er en løkke ved $v_{4}$.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{pseudograf.png}
-\caption{En pseudograf med et loop}
-\label{fig:pseudo}
-\end{figure}
-En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. For en orienteret graf gælder det, at dets kanter har en retning. Dette er ofte illustreret med pile. Den har dermed et startpunkt og et endepunkt. Disse grafer er defineret ved:
-\begin{definition}
-[Orienteret graf] 
-En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt punkter $(u,v)$ startende i punktet $u$ og sluttende i punktet $v$.
-\end{definition}
-Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type vi bruger til optimeringen af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives i følgende afsnit.
 
 
-\section{Vægtede grafer}
-Grafer med vægte tildelt deres kanter kan bruges til at løse problemer såsom at finde korteste vej mellem to byer i et transportnetværk. 
-
-\section{Sektion 3}
-
-\chapter{Analyse}
-\section{Sektion 1}
-
-\section{Sektion 2}
-
-\section{Sektion 3}
-
-\chapter{Vurdering af metoderne}
-\section{Sektion 1}
-
-\section{Sektion 2}
-
-\section{Sektion 3}
-
-\chapter{Konklusion}
 % Input-filer bør opdeles således, at hver fil svarer til et kapitel. Makroen
 % \include indsætter et sideskift og indholdet fra den givne stil.
 
