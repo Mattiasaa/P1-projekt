@@ -1,0 +1,12 @@
+\section{Delte grafer}
+I visse tilfælde kan en graf deles op, for at optimere algoritmen til løsningen af problemet i en given opgave. \\
+To måder at dele en graf op er $k$-delte grafer og delgrafer.
+
+\begin{defn} \label{defn:k-delt} %k-partite
+en $k$-delt graf består af $k$ disjunkte ikke-tomme delmængder, $V_1, V_2, \ldots, V_k$ hvor for 2 vilkårlige knuder, $u$ og $v$, kun er forbundet hvis de er i forskellige delmængder.
+\end{defn}
+\begin{defn}	 \label{defn:delgraf} %subgraph
+En delgraf af grafen $G= (V,E)$ er en graf $D = (W,F)$ skabt af delelementerne af kanterne og knuderne: $W \subseteq V og F \subseteq E$.
+\end{defn}
+
+Fordelen ved at dele en graf op i forskellige delgrafer er, at når man i $korteste-vej$, eller i bestemte tilfælde $længste-vej$, kan finde den optimale delstruktur hvis den optimale delgraf er fundet. Altså finder man den optimale vej igennem knuderne $\{a, c, g, n\}$, er den optimale vej også fundet til de i mellemliggende knuder også fundet, altså fra $a$ til f.eks. $g$.
