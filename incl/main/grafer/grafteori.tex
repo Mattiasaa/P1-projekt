@@ -44,6 +44,19 @@ En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0
 Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type vi bruger til optimeringen af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives i følgende afsnit.
 
 
+
+
+\section{Veje}
+Vi har indtil videre snakket om punkter, og hvordan de som punktsæt forbindes med kanter. I dette afsnit vil vi udvide det til at snakke om veje, som er sekvenser af disse kanter. Hvis der er tale om ikke-orienterede grafer, er veje defineret ved:
+\begin{definition}
+[Veje] 
+Lad $n$ være et ikke-negativt heltal og $G$ en ikke orienteret graf. En vej af længde $n$ fra $u$ til $v$ i $G$ er en sekvens af n kanter $e_{1},e_{2},...,e_{n}$ for $G$, for hvilket der eksisterer en sekvens $x_{0}=u,x_{1},x_{2},...,x_{n-1},x_{n}=v$ af punkter sådan at $e_{i}$ har, for $i=1,2,...,n$, endepunkterne $x_{i-1}$ og $x_{i}$ Når grafen er simpel, betegner vi denne  vej ved dets punktsekvens $x_{o},x_{1},...,x_{n}$ Vejen siges at passere igennem punkterne $x_{o},x_{1},...,x_{n-1}$ eller krydse kanterne $e_{1},e_{2},...,e_{n}$. En vej er simpel, hvis den ikke krydser den samme kant mere end én gang.
+\end{definition}
+Kigger vi derimod på veje med orienterede grafer, som er det vi beskæftiger os med i problemet, ser definitionen en smule anderledes ud:
+\begin{definition}
+[Veje] 
+Lad $n$ være et ikke-negativt heltal og $G$ en ikke orienteret graf. En vej af længde $n$ fra $u$ til $v$ i $G$ er en sekvens af kanter $e_{1},e_{2},...,e_{n}$ for $G$, sådan at $e_{1}$ er forbundet med $(x_{0},x_{1})$, $e_{2}$ er forbundet med $(x_{1},x_{2})$ og så videre frem til $e_{n}$, som er forbundet med $(x_{n-1},x_{n})$. Her er $x_{0}=u$ og $x_{n}=v$. Hvis alle punktsæt er forbundet med højst én kant per sæt, betegner vi denne  vej ved dets punktsekvens $x_{o},x_{1},...,x_{n}$. En vej er simpel, hvis den ikke krydser den samme kant mere end én gang.
+\end{definition}
+
 \input{incl/main/grafer/vægtede}
 
-\section{Sektion 3}
