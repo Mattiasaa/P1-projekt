@@ -1,3 +1,15 @@
 \section{Vægtede grafer}
 En vægtet graf er en graf hvori kanterne eller punkterne får tildelt en numerisk værdi. I dette projekt arbejdes der udelukkende med vægtede kanter, og vi vil derfor kun fokusere på dem i dette afsnit.
 En vægtet graf er defineret ved:
+\begin{defn}[Vægtede grafer]
+En vægtet graf $G=(V,E,\psi,\omega)$,består af punktmængden $V$, kantmængden $E$, incidensfunktionen $\psi: E \rightarrow \{\{u;v\}|u,v \in V\}$ og vægtfunktionen $\omega: E \rightarrow \R$
+\end{defn}
+For en vægtet graf har alle kanter $e\in E$ en numerisk vægt tildelt, givet ved funktionen $\omega (e)$. Da $e$ er en kant incident med ${u,v}$ kan man  ligeledes skrive $\omega (u,v)$.
+\\ Da vægtede grafer har en tildelt numerisk vægt på hver kant, kan man således beregne længden fra et punkt til et andet i grafen. Længden fra et punkt til et anden kan defineres således:
+\begin{defn}
+Lad $m\in \N$ og $G=(V,E,\psi,\omega)$ være en simpel graf. Lad en tilfældig vej $P$ gå gennem punkterne $x_0,x_1...x_m$, da kan længden beskrives således:
+	\begin{equation}
+	dist(P)=\sum_{i=1}^{m}\omega(\{x_{i-1},x_i\})
+	\end{equation}  
+\end{defn}
+
