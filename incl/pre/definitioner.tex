@@ -1,0 +1,49 @@
+
+%Sætninger, definitioner, mm. general stil
+\declaretheoremstyle[
+    % spaceabove=14pt, 
+    % spacebelow=6pt, 
+    headfont=\normalfont\bfseries, 
+    bodyfont = \normalfont,
+    postheadspace=2mm, 
+    headpunct={.}]{mystyle}
+    
+%Sætning    
+\declaretheorem[name={Sætning}, style=mystyle,numberwithin=chapter]{thm}
+\newenvironment{thmx}[1]
+    {\begin{leftbar}{black}{myGray}{3}\begin{thm}#1}{\end{thm}\end{leftbar}}
+    
+    
+%Definition
+\declaretheorem[name={Definition}, style=mystyle,sibling=thm]{defni}
+\newenvironment{defn}[1]
+    {\begin{leftbar}{black}{myGray}{3}\begin{defni}#1}{\end{defni}\end{leftbar}}
+    
+    
+%Eksempel
+\declaretheorem[name={Eksempel}, style=mystyle,sibling=thm]{exmp}
+\newenvironment{eks}[1]
+    {\begin{leftbar}{gray}{white}{3}\begin{exmp}#1}{\end{exmp}\end{leftbar}}
+%Lemma
+\declaretheorem[name={Lemma}, style=mystyle,sibling=thm]{lema}
+\newenvironment{lem}[1]
+    {\begin{leftbar}{black}{myGray}{3}\begin{lema}#1}{\end{lema}\end{leftbar}}
+%Proposition
+\declaretheorem[name={Proposition}, style=mystyle,sibling=thm]{prop}
+\newenvironment{pro}[1]
+    {\begin{leftbar}{black}{myGray}{3}\begin{prop}#1}{\end{prop}\end{leftbar}}
+%Korollar
+\declaretheorem[name={Korollar}, style=mystyle,sibling=thm]{koro}
+\newenvironment{kor}[1]
+    {\begin{leftbar}{black}{myGray}{3}\begin{koro}#1}{\end{koro}\end{leftbar}}
+
+%Bevis
+\declaretheoremstyle[
+    spaceabove=14pt, 
+    spacebelow=6pt, 
+    headfont=\normalfont\bfseries, 
+    bodyfont = \normalfont,
+    postheadspace=1mm, 
+    qed=$\blacksquare$, 
+    headpunct={.}]{bevisstyle}
+\declaretheorem[name={Bevis}, style=bevisstyle,numbered=no]{bev}
