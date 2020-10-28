@@ -1,16 +1,38 @@
 \subsection{Nabo-lister}
-En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister er tabeller der giver en oversigt over hvilke knuder der er forbundet med andre knuder. En Nabo-liste er bygget op således at knuden man vil beskrive er i venstre side af tabellen og nabo knuderne er listet i højre side af tabellen. 
+En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister er tabeller der giver en oversigt over hvilke knuder der er forbundet med andre knuder, dog vil man ikke kunne se hvis der er paralelle kanter. En Nabo-liste er bygget op således at knuden man vil beskrive er i venstre side af tabellen og nabo knuderne er listet i højre side af tabellen. \\
 
-\begin{exmp}
-	\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.5]{fig/img/Nabolisteeks1}
-	\caption{En simpel graf}
-	\end{figure}
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node[point] at (1,2) (A) [label=above:\(A\)] {};
+    \node[point] at (3,2) (B) [label=above:\(B\)] {};
+    \node[point] at (4,1) (C) [label=right:\(C\)] {};
+    \node[point] at (2,0) (D) [label=below:\(D\)] {};
+    \node[point] at (3,0) (E) [label=below:\(E\)] {};
+    \node[point] at (1,1) (F) [label=left:\(F\)] {};
+    \node[point] at (0,2) (G) [label=below:\(G\)] {};
+
+    \footnotesize
+    \draw (A) -- (G) node[edge] {};
+    \path (F) edge [bend left] (B);
+    \draw (A) -- (F) node[edge] {};
+    \draw (B) -- (F) node[edge] {};
+    \draw (B) -- (D) node[edge] {};
+    \draw (B) -- (E) node[edge] {};
+    \draw (B) -- (C) node[edge] {};
+    \draw (C) -- (E) node[edge] {};
+    \draw (E) -- (D) node[edge] {};
+    \draw (D) -- (F) node[edge] {};
+    \draw (F) -- (G) node[edge] {};
+  \end{tikzpicture}
+  \caption{Eksempel pÃ¥ graf fra \citep{dmat}.}
+  \label{fig:graf}
+\end{figure}
+
 \begin{center}
 	\begin{tabular}{ |p{4cm}||p{3cm}|}
 	 	\hline
- 		\multicolumn{2}{|c|}{Nabo-liste til figur 4.3} \\
+ 		\multicolumn{2}{|c|}{Nabo-liste til figur 4.5} \\
  		\hline
  		Knuder & Nabo-knuder\\
  		\hline
@@ -22,6 +44,7 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
 		F & A,B,D,G \\
 		G & A,F \\
  	\hline
+ 	\label{tab:Nabo-liste}
 	\end{tabular}
 \end{center}
-\end{exmp}
+Tabellen ovenfor viser nabo-listen over en ikke orienteret simpel graf \ref{fig:4.5}. Venstre side af tabellen viser knuderne fra A til G og højre side af tabellen viser hvilke nabo-knuder de har.Foreksempelvis kan man se at knuden B har nabo-knuderne C,D,E,F. 
