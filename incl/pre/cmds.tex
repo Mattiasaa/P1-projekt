@@ -16,14 +16,14 @@
 % Sætninger o.lign. ------------------------------------------------------------
 % http://www.ctex.org/documents/packages/math/amsthdoc.pdf
 \theoremstyle{plain}                 % Titel med fed, tekst med skråskrift
-\newtheorem{thm}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
-\newtheorem{lem}[thm]{Lemma}         % Lemmaer, nummereret ligesom sætninger
-\newtheorem{prop}[thm]{Proposition}  % Propositioner, nummereret ligesom sætninger
-\newtheorem*{cor}{Korollar}         % Korollarer, unnumbered
+\newtheorem{thmf}{Sætning}[chapter]   % Sætninger, nummereret efter kapitel
+\newtheorem{lemf}[thmf]{Lemma}         % Lemmaer, nummereret ligesom sætninger
+\newtheorem{propf}[thmf]{Proposition}  % Propositioner, nummereret ligesom sætninger
+\newtheorem*{corf}{Korollar}         % Korollarer, unnumbered
 
 \theoremstyle{definition}            % Title med fed, opretstående tekst
-\newtheorem{defn}[thm]{Definition}   % Definitioner, nummereret ligesom sætninger
-\newtheorem{exmp}[thm]{Eksempel}      % Eksempler, nummereret ligesom sætninger
+\newtheorem{defnf}[thmf]{Definition}   % Definitioner, nummereret ligesom sætninger
+\newtheorem{exmpf}[thmf]{Eksempel}      % Eksempler, nummereret ligesom sætninger
 
 % Figur-makroer ----------------------------------------------------------------
 
@@ -82,3 +82,112 @@
     \end{minipage}
   \end{figure}
 }
+
+% Styles til frames til sætninger, definitioner mm. ------------------------------------------------
+% Styles til frames vha. package mdframed
+
+\mdfdefinestyle{MyStylethm}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!50
+	}
+	
+\mdfdefinestyle{MyStyledefn}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!20
+	}
+	
+\mdfdefinestyle{MyStyleexmp}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!30
+	}
+
+\mdfdefinestyle{MyStylelem}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!10
+	}
+
+\mdfdefinestyle{MyStyleprop}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!50
+	}
+	
+	\mdfdefinestyle{MyStylecor}{
+	linecolor=black,
+	linewidth=2pt,
+	topline=false,
+	rightline=false,
+	bottomline=false,
+	backgroundcolor=gray!40
+	}
+
+% -------------------------------------------------------- 
+% Ændring af sætninger, definitioner mm. så disse automatisk sættes i frame efter ovenstående.
+
+\newenvironment{thm}{
+	\begin{mdframed}[style=MyStylethm]
+	\begin{thmf}
+	}
+	{\end{thmf}
+	\end{mdframed}
+	}
+	
+\newenvironment{defn}{
+	\begin{mdframed}[style=MyStyledefn]
+	\begin{defnf}
+	}
+	{\end{defnf}
+	\end{mdframed}
+	}
+	
+\newenvironment{exmp}{
+	\begin{mdframed}[style=MyStyleexmp]
+	\begin{exmpf}
+	}
+	{\end{exmpf}
+	\end{mdframed}
+	}
+
+\newenvironment{lem}{
+	\begin{mdframed}[style=MyStylelem]
+	\begin{lemf}
+	}
+	{\end{lemf}
+	\end{mdframed}
+	}
+		        
+\newenvironment{prop}{
+	\begin{mdframed}[style=MyStyleprop]
+	\begin{propf}
+	}
+	{\end{propf}
+	\end{mdframed}
+	}
+			  
+\newenvironment{cor}{
+	\begin{mdframed}[style=MyStylecor]
+	\begin{corf}
+	}
+	{\end{corf}
+	\end{mdframed}
+	}
+				        
