@@ -6,29 +6,21 @@ En graf $G=(V,E)$ består af $V$, en punktmængde, hvor $V\neq0$, og en kantmæn
 \end{definition}
 Det fremgår af definitionen, at en graf ikke kan have 0 punkter, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan altså godt være uendeligt mange knuder og kanter. I så fald kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
 Ydermere, ses det i definitionen, at hver kant forbinder én eller to punkter. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to punkter med max én kant.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{fig/img/simpel_graf.png}
-\caption{En simpel graf}
-\label{fig:simpel}
-\end{figure}
+
+\input{fig/tikz/simpelgraf}
+
 I kontrast til den simple graf finder vi multi-grafen. For denne type graf skal der være flere kanter, der forbinder det samme sæt punkter. Der må stadig ikke optræde løkker.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{fig/img/multigraf.png} 
-\caption{En multigraf}
-\label{fig:multi}
-\end{figure}
+
+\input{fig/tikz/multigraf}
+
 I eksemplet ovenover ses det, at to kanter forbinder punktsættet ($v_{1},v_{2}$). Hvis en graf, modsat de to allerede nævnte, kan indeholde både løkker og flere kanter, der forbinder de samme punkter, kaldes det en pseudo-graf. Vi ser i eksemplet herunder, at der er to kanter, der forbinder $v_{1}$ og $v_{2}$, og der er en løkke ved $v_{4}$.
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{fig/img/pseudograf.png}
-\caption{En pseudograf med et loop}
-\label{fig:pseudo}
-\end{figure}
-En anden grafopdeling man kan 
+
+\input{fig/tikz/pseudograf}
+
+
 \subsection{Orienterede grafer og ikke-orienterede grafer}
 En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. De grafer vi har kigget på indtil videre er ikke-orienterede grafer. For en orienteret graf gælder det, at dets kanter har en retning. Dette er ofte illustreret med pile. Den har dermed et startpunkt og et endepunkt. Disse grafer er defineret ved:
+
 \begin{definition}
 [Orienteret graf] 
 En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt punkter $(u,v)$, hvor $u$ er tilstødende til $v$, og $v$ er tilstødende fra $u$. Punktet $u$ kaldes begyndelsespunktet, og punktet $v$ kaldes endepunktet.
