@@ -1,34 +1,34 @@
 \subsection{Nabolister}
 En måde at repræsentere en graf på er ved at lave en naboliste. Nabolister er tabeller, der giver en oversigt over hvilke knuder, der er forbundet med andre knuder. Dog vil man ikke kunne se, hvis der er parallelle kanter. En naboliste er bygget op således, at knuden, man vil beskrive, er i venstre side af tabellen, og naboknuderne er skrevet i højre side. \\
 
-%\begin{figure}[h]
-%  \centering
-%  \begin{tikzpicture}
-%    \node[point] at (1,2) ($v_{2}$) [label=above:\(A\)] {};
-%    \node[point] at (3,2) ($v_{4}$) [label=above:\(B\)] {};
-%    \node[point] at (4,1) ($v_{7}$) [label=right:\(C\)] {};
-%    \node[point] at (2,0) ($v_{5}$) [label=below:\(D\)] {};
-%    \node[point] at (3,0) ($v_{6}$) [label=below:\(E\)] {};
-%    \node[point] at (1,1) ($v_{3}$) [label=left:\(F\)] {};
-%    \node[point] at (0,2) ($v_{1}$) [label=below:\(G\)] {};
-%
-%    \footnotesize
-%    \draw ($v_{2}$) -- ($v_{1}$);
-%    \path ($v_{3}$) edge [bend left] ($v_{4}$);
-%    \draw ($v_{2}$) -- ($v_{3}$);
-%    \path ($v_{3}$) edge [bend right] ($v_{4}$);
-%    \draw ($v_{4}$) -- ($v_{5}$);
-%    \draw ($v_{4}$) -- ($v_{6}$);
-%    \draw ($v_{4}$) -- ($v_{5}$);
-%    \draw ($v_{7}$) -- ($v_{6}$);
-%    \draw ($v_{7}$) to [out=315,in=45,looseness=50] ($v_{7}$);
-%    \draw ($v_{6}$) -- ($v_{5}$);
-%    \draw ($v_{5}$) -- ($v_{3}$);
-%    \draw ($v_{3}$) -- ($v_{1}$);
-%  \end{tikzpicture}
-%  \caption{Ikke-orienteret pseudograf.}
-%  \label{fig:ikke-orienteret-pseudo}
-%\end{figure}
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
+    \node[point] at (3,2) (v_4) [label=above:\(v_4\)] {};
+    \node[point] at (4,1) (v_7) [label=right:\(v_7\)] {};
+    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
+    \node[point] at (3,0) (v_6) [label=below:\(v_6\)] {};
+    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
+    \node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
+
+    \footnotesize
+    \draw (v_2) -- (v_1);
+    \path (v_3) edge [bend left] (v_4);
+    \draw (v_2) -- (v_3);
+    \path (v_3) edge [bend right] (v_4);
+    \draw (v_4) -- (v_5);
+    \draw (v_4) -- (v_6);
+    \draw (v_4) -- (v_5);
+    \draw (v_7) -- (v_6);
+    \draw (v_7) to [out=315,in=45,looseness=50] (v_7);
+    \draw (v_6) -- (v_5);
+    \draw (v_5) -- (v_3);
+    \draw (v_3) -- (v_1);
+  \end{tikzpicture}
+  \caption{Ikke-orienteret pseudograf.}
+  \label{fig:ikke-orienteret-pseudo}
+\end{figure}
 
 \begin{center}
 	\begin{tabular}{ |p{4cm}||p{3cm}|}
