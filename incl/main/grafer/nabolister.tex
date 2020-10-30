@@ -4,27 +4,27 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
 \begin{figure}[h]
   \centering
   \begin{tikzpicture}
-    \node[point] at (1,2) (A) [label=above:\(A\)] {};
-    \node[point] at (3,2) (B) [label=above:\(B\)] {};
-    \node[point] at (4,1) (C) [label=right:\(C\)] {};
-    \node[point] at (2,0) (D) [label=below:\(D\)] {};
-    \node[point] at (3,0) (E) [label=below:\(E\)] {};
-    \node[point] at (1,1) (F) [label=left:\(F\)] {};
-    \node[point] at (0,2) (G) [label=below:\(G\)] {};
+    \node[point] at (1,2) ($v_{2}$) [label=above:\(A\)] {};
+    \node[point] at (3,2) ($v_{4}$) [label=above:\(B\)] {};
+    \node[point] at (4,1) ($v_{7}$) [label=right:\(C\)] {};
+    \node[point] at (2,0) ($v_{5}$) [label=below:\(D\)] {};
+    \node[point] at (3,0) ($v_{6}$) [label=below:\(E\)] {};
+    \node[point] at (1,1) ($v_{3}$) [label=left:\(F\)] {};
+    \node[point] at (0,2) ($v_{1}$) [label=below:\(G\)] {};
 
     \footnotesize
-    \draw (A) -- (G);
-    \path (F) edge [bend left] (B);
-    \draw (A) -- (F);
-    \path (F) edge [bend right] (B);
-    \draw (B) -- (D);
-    \draw (B) -- (E);
-    \draw (B) -- (C);
-    \draw (C) -- (E);
-    \draw (C) to [out=315,in=45,looseness=50] (C);
-    \draw (E) -- (D);
-    \draw (D) -- (F);
-    \draw (F) -- (G);
+    \draw ($v_{2}$) -- ($v_{1}$);
+    \path ($v_{3}$) edge [bend left] ($v_{4}$);
+    \draw ($v_{2}$) -- ($v_{3}$);
+    \path ($v_{3}$) edge [bend right] ($v_{4}$);
+    \draw ($v_{4}$) -- ($v_{5}$);
+    \draw ($v_{4}$) -- ($v_{6}$);
+    \draw ($v_{4}$) -- ($v_{5}$);
+    \draw ($v_{7}$) -- ($v_{6}$);
+    \draw ($v_{7}$) to [out=315,in=45,looseness=50] ($v_{7}$);
+    \draw ($v_{6}$) -- ($v_{5}$);
+    \draw ($v_{5}$) -- ($v_{3}$);
+    \draw ($v_{3}$) -- ($v_{1}$);
   \end{tikzpicture}
   \caption{ikke orienteret psedograf\citep{dmat}.}
   \label{fig:4.5}
