@@ -1,5 +1,5 @@
-\subsection{Nabo-lister}
-En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister er tabeller der giver en oversigt over hvilke knuder der er forbundet med andre knuder, dog vil man ikke kunne se hvis der er paralelle kanter. En Nabo-liste er bygget op således at knuden man vil beskrive er i venstre side af tabellen og nabo knuderne er listet i højre side af tabellen. \\
+\subsection{Nabolister}
+En måde at repræsentere en graf på er ved at lave en naboliste. Nabolister er tabeller, der giver en oversigt over hvilke knuder, der er forbundet med andre knuder. Dog vil man ikke kunne se, hvis der er parallelle kanter. En naboliste er bygget op således, at knuden, man vil beskrive, er i venstre side af tabellen, og naboknuderne er skrevet i højre side. \\
 
 \begin{figure}[h]
   \centering
@@ -26,16 +26,16 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
     \draw ($v_{5}$) -- ($v_{3}$);
     \draw ($v_{3}$) -- ($v_{1}$);
   \end{tikzpicture}
-  \caption{ikke orienteret psedograf\citep{dmat}.}
-  \label{fig:4.5}
+  \caption{Ikke-orienteret pseudograf.}
+  \label{fig:ikke-orienteret-pseudo}
 \end{figure}
 
 \begin{center}
 	\begin{tabular}{ |p{4cm}||p{3cm}|}
 	 	\hline
- 		\multicolumn{2}{|c|}{Nabo-liste til figur 4.5} \\
+ 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:ikke-orienteret-pseudo}} \\
  		\hline
- 		Knuder & Nabo-knuder\\
+ 		Knuder & Naboknuder\\
  		\hline
  		A & F,G \\
 		B & C,D,E,F \\
@@ -45,12 +45,13 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
 		F & A,B,D,G \\
 		G & A,F \\
  	\hline
- 	\label{tab:Nabo-liste 4.5}
+ 	\label{tab:naboliste} 	
 	\end{tabular}
+	%\caption{Naboliste til figur \ref{fig:ikke-orienteret-pseudo}
 \end{center}
-\ref{tab:Nabo-liste 4.5} viser nabo-listen over en ikke orienteret pseudograf \ref{fig:4.5}. Venstre side af tabellen viser knuderne fra A til G og højre side af tabellen viser hvilke nabo-knuder de har. Foreksempelvis kan man se at knuden B har nabo-knuderne C,D,E,F, men man kan ikke se der er en ekstra kant mellem knude B og F, dog kan man se at knuden C har en kant med sig selv det vil sige den har en løkke.
+Ud fra tabellen ses, at knuden B har naboknuderne C, D, E og F, men man kan ikke se, at der er en ekstra kant mellem B og F. Dog kan man se, at C har en løkke, da den er nabo til sig selv.
 
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
   \begin{tikzpicture}
     \node[point] at (1,2) (A) [label=above:\(A\)] {};
@@ -76,27 +77,27 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
     \draw [->](D) -- (F);
     \draw [->](F) -- (G);
   \end{tikzpicture}
-  \caption{orienteret psedograf\citep{dmat}.}
-  \label{fig:4.6}
+  \caption{Orienteret pseudograf.}
+  \label{fig:orienteret-pseudo}
 \end{figure}
 
-\begin{center}
-	\begin{tabular}{ |p{4cm}||p{3cm}|}
-	 	\hline
- 		\multicolumn{2}{|c|}{Nabo-liste til figur 4.6} \\
- 		\hline
- 		Knuder & Nabo-knuder\\
- 		\hline
- 		A & G \\
-		B & D,F \\
-		C & B,E,C \\
-		D & E,F \\
-		E & B \\
-		F & A,B,G \\
-		G &  \\
- 	\hline
- 	\label{tab:Nabo-liste 4.6}
-	\end{tabular}
-\end{center}
+%\begin{center}
+%	\begin{tabular}{ |p{4cm}||p{3cm}|}
+%	 	\hline
+% 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:orienteret-pseudo} \\
+% 		\hline
+% 		Knuder & Naboknuder\\
+% 		\hline
+% 		A & G \\
+%		B & D,F \\
+%		C & B,E,C \\
+%		D & E,F \\
+%		E & B \\
+%		F & A,B,G \\
+%		G &  \\
+% 	\hline
+% 	\label{tab:naboliste1}
+%	\end{tabular}
+%\end{center}
 
-\ref{tab:Nabo-liste 4.6} viser knuder over nabo knuderne over den orienteret graf \ref{fig:4.6}. kigger man på knuderne B og F kan man se der er paralle kanter, da kanterne er orienteret i hver deres retning. Kigger man på knuderne A og G kan man ikke se der er paralle linjer mellem A og G, da begge kanter er orienteret fra A til G
+\ref{tab:naboliste1} viser en oversigt over den orienterede grafs (Figur \ref{fig:orienteret-pseudo}) naboknuder. Kigger man på B og F i tabellen, kan man se, at der er parallelle kanter, da kanterne er orienteret i hver deres retning. Kigger man på A og G, kan man ikke se, at der er parallelle kanter mellem A og G, da begge kanter er orienteret fra A til G.
