@@ -19,7 +19,7 @@ En måde at repræsentere en graf på er ved at lave en naboliste. Nabolister er
     \path (v_3) edge [bend right] (v_4);
     \draw (v_4) -- (v_5);
     \draw (v_4) -- (v_6);
-    \draw (v_4) -- (v_5);
+    \draw (v_4) -- (v_7);
     \draw (v_7) -- (v_6);
     \draw (v_7) to [out=315,in=45,looseness=50] (v_7);
     \draw (v_6) -- (v_5);
@@ -37,67 +37,64 @@ En måde at repræsentere en graf på er ved at lave en naboliste. Nabolister er
  		\hline
  		Knuder & Naboknuder\\
  		\hline
- 		A & F,G \\
-		B & C,D,E,F \\
-		C & B,E,C \\
-		D & B,E,F \\
-		E & B,C,D \\
-		F & A,B,D,G \\
-		G & A,F \\
+ 		$v_1$ & $v_2$, $v_3$ \\
+ 		$v_2$ & $v_1$, $v_3$ \\
+ 		$v_3$ & $v_1$, $v_2$, $v_4$, $v_5$ \\
+ 		$v_4$ & $v_3$, $v_5$, $v_1$, $v_7$ \\
+ 		$v_5$ & $v_3$, $v_4$, $v_6$ \\
+ 		$v_6$ & $v_4$, $v_5$, $v_7$ \\
+ 		$v_7$ & $v_4$, $v_6$, $v_7$ \\
  	\hline
- 	\label{tab:naboliste} 	
+ 	\label{tab:naboliste1} 	
 	\end{tabular}
-	%\caption{Naboliste til figur \ref{fig:ikke-orienteret-pseudo}
 \end{center}
-Ud fra tabellen ses, at knuden B har naboknuderne C, D, E og F, men man kan ikke se, at der er en ekstra kant mellem B og F. Dog kan man se, at C har en løkke, da den er nabo til sig selv.
+Ud fra tabellen \ref{tab:naboliste1} ses, at knuden $v_4$ har naboknuderne $v_3$,$v_5$,$v_1$ og $v_7$ men man kan ikke se, at der er en ekstra kant mellem $v_4$ og $v_3$. Dog kan man se, at $v_7$ har en løkke, da den er nabo til sig selv.
 
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
-    \node[point] at (1,2) (A) [label=above:\(A\)] {};
-    \node[point] at (3,2) (B) [label=above:\(B\)] {};
-    \node[point] at (4,1) (C) [label=right:\(C\)] {};
-    \node[point] at (2,0) (D) [label=below:\(D\)] {};
-    \node[point] at (3,0) (E) [label=below:\(E\)] {};
-    \node[point] at (1,1) (F) [label=left:\(F\)] {};
-    \node[point] at (0,2) (G) [label=below:\(G\)] {};
+    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
+    \node[point] at (3,2) (v_4) [label=above:\(v_4\)] {};
+    \node[point] at (4,1) (v_7) [label=right:\(v_7\)] {};
+    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
+    \node[point] at (3,0) (v_6) [label=below:\(v_6\)] {};
+    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
+    \node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
 
     \footnotesize
-    \path [->] (A) edge [bend left] (G);
-    \path [->] (A) edge [bend right] (G); 
-    \path [->] (F) edge [bend left] (B);
-    \draw [<-](A) -- (F);
-    \path [<-](F) edge [bend right] (B);
-    \draw [->](B) -- (D);
-    \draw [<-](B) -- (E);
-    \draw [<-](B) -- (C);
-    \draw [->](C) -- (E);
-    \draw [->](C) to [out=315,in=45,looseness=50] (C);
-    \draw [<-](E) -- (D);
-    \draw [->](D) -- (F);
-    \draw [->](F) -- (G);
+    \path [->](v_2) edge [bend left] (v_1);
+    \path [->](v_2) edge [bend right] (v_1); 
+    \path [->](v_3) edge [bend left] (v_4);
+    \draw [<-](v_2) -- (v_3);
+    \path [<-](v_3) edge [bend right] (v_4);
+    \draw [->](v_4) -- (v_5);
+    \draw [<-](v_4) -- (v_6);
+    \draw [<-](v_4) -- (v_7);
+    \draw [->](v_7) -- (v_6);
+    \draw [->](v_7) to [out=315,in=45,looseness=50] (v_7);
+    \draw [<-](v_6) -- (v_5);
+    \draw [->](v_5) -- (v_3);
+    \draw [->](v_3) -- (v_1);
   \end{tikzpicture}
   \caption{Orienteret pseudograf.}
-  \label{fig:orienteret-pseudo}
+  \label{fig:orienteretmulti}
 \end{figure}
-
-%\begin{center}
-%	\begin{tabular}{ |p{4cm}||p{3cm}|}
-%	 	\hline
-% 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:orienteret-pseudo} \\
-% 		\hline
-% 		Knuder & Naboknuder\\
-% 		\hline
-% 		A & G \\
-%		B & D,F \\
-%		C & B,E,C \\
-%		D & E,F \\
-%		E & B \\
-%		F & A,B,G \\
-%		G &  \\
-% 	\hline
-% 	\label{tab:naboliste1}
-%	\end{tabular}
-%\end{center}
-
-\ref{tab:naboliste1} viser en oversigt over den orienterede grafs (Figur \ref{fig:orienteret-pseudo}) naboknuder. Kigger man på B og F i tabellen, kan man se, at der er parallelle kanter, da kanterne er orienteret i hver deres retning. Kigger man på A og G, kan man ikke se, at der er parallelle kanter mellem A og G, da begge kanter er orienteret fra A til G.
+\begin{center}
+	\begin{tabular}{ |p{4cm}||p{3cm}|}
+	 	\hline
+ 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:orienteretmulti}} \\
+ 		\hline
+ 		Knuder & Naboknuder\\
+ 		\hline
+ 		$v_1$ & \\
+		$v_2$ & $v_1$ \\
+		$v_3$ & $v_1$, $v_2$, $v_4$ \\
+		$v_4$ & $v_3$, $v_5$, \\
+		$v_5$ & $v_3$, $v_6$ \\
+		$v_6$ & $v_4$ \\
+		$v_7$ & $v_4$, $v_6$, $v_7$ \\
+ 		\hline
+		\label{tab:naboliste2}
+	\end{tabular}
+\end{center}
+\ref{tab:naboliste2} viser en oversigt over den orienterede grafs (Figur \ref{fig:orienteretmulti}) naboknuder. Kigger man på $v_3$ og $v_4$ i tabellen, kan man se, at der er parallelle kanter, da kanterne er orienteret i hver deres retning. Kigger man på $v_1$ og $v_2$, kan man ikke se, at der er parallelle kanter mellem $v_1$ og $v_2$, da begge kanter er orienteret fra $v_2$ til $v_1$.

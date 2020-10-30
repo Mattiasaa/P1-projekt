@@ -25,12 +25,18 @@ En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede gra
 [Orienteret graf] 
 En orienteret graf $G=(V,E)$ består af $V$, et sæt knuder, hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt knuder $(u,v)$, hvor startknuden $u$ er tilstødende til endeknuden $v$. 
 \end{defn}
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.5]{fig/img/orienteret_graf.png}
-\caption{En orienteret graf}
-\label{fig:orienteret}
-\end{figure}
+
+\input{fig/tikz/orienteretgraf}
+
+%\ref{fig:orienteret}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[scale=0.5]{fig/img/orienteret_graf.png}
+%\caption{En orienteret graf}
+%\label{fig:orienteret}
+%\end{figure}
+
+
 Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere kanter, der forbinder det samme sæt knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. Hvis der derimod optræder flere kanter mellem et eller flere punktpar, kaldes det en orienteret multigraf. Den må også indeholde flere modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. 
 
 Egenskaberne for de forskellige grafer kan ses herunder:
