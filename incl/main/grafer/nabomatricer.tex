@@ -1,23 +1,49 @@
 \subsection{Nabomatricer}
 En anden mulighed for at repræsentere en graf er ved brug af nabomatricer. Nabomatricer er bedre, når grafen har mange kanter.\\
-En nabomatrice kan beskrives som en $N=m X m$ matrice, hvor $m$ er afhængig af knudemængden $V=\{v_0, v_1, \ldots, v_m\}$. Hvis man har en vilkårlig graf, $G=(V,E)$, vil der opstå en $m X m$ nul-$n$ matrice. Hvis der en vilkårlig knude, $v_i$, som har en kant med et andet vilkålig knude,$v_j$, vil den få notationen 1, hvis de derimod ikke har en kant vil den få notation 0. \\
+En nabomatrice kan beskrives som en $N=m X m$ matrice, hvor $m$ er afhængig af knudemængden $V=\{v_0, v_1, \ldots, v_m\}$. Hvis man har en simpel graf, $G=(V,E)$, vil matricen være en nul-1 matrice, da en simpel graf kan kun have en kant mellem to knuder. Når der er en kant mellem to  vilkårlig knuder, $(v_i,v_j)$,  vil den få notationen 1, hvis der derimod ikke er en kant vil får den notation 0. \\
 
 Det kan også skrives som \\
 
 \begin{equation}
 \begin{Bmatrix} 
-	 n \hspace{0.3cm}\textrm{hvis} \hspace{0.3cm}\{v_i,v_j\} \hspace{0.2cm} \textrm{er en kant i grafen} \hspace{0.2cm} G \\
+	 \hspace{0.3cm}\textrm{1 hvis} \hspace{0.3cm}\{v_i,v_j\} \hspace{0.2cm} \textrm{har en kant i grafen} \hspace{0.2cm} G \\
 	 \textrm{0 ellers} \\
 	\end{Bmatrix}
 \end{equation}
 
-Hvis man skulle lave en matrice til grafen \ref{fig:ionabo} vil den se således ud.
 
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+  	\node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
+    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
+    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
+    \node[point] at (2,2) (v_4) [label=above:\(v_4\)] {};
+    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
+    
+
+    \footnotesize
+    \draw (v_1) -- (v_2);
+    \draw (v_1) -- (v_3);
+    \draw (v_2) -- (v_3);
+    \draw (v_3) -- (v_4);
+    \draw (v_3) -- (v_5); 
+    \draw (v_4) -- (v_5);
+  \end{tikzpicture}
+  \label{fig:simpelgraf}
+\end{figure}
+
+Nabo natricen nedenfor bruger rækkefølgen $v_1$,$v_2$,$v_3$,$v_4$,$v_5$
 \begin{equation}
 	\begin{bmatrix}
-	& & a&b&c&d&g
-	&a&1&2&3
-	\end{bmatrix} 
+		0&1&1&0&0 \\
+		1&0&1&0&0 \\
+		1&1&0&1&1 \\
+		0&0&1&0&1 \\
+		0&0&1&1&0 \\
+	\end{bmatrix}
 \end{equation}
+
 	
 
