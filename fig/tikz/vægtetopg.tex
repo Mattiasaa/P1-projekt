@@ -11,14 +11,14 @@
      	\node[enclosed, label={below: $v_4$}] (v4) at (6,0) {};
      	\node[enclosed, label={right: $v_5$}] (v5) at (8,2) {};
 %Edges
-		\path [->] (v0) edge node[midway, sloped, above] {$e_1=4$} (v1);
-		\path [->] (v0) edge node[midway, sloped, above] {$e_2=5$} (v2);
-		\path [->] (v1) edge node[midway, above] {$e_3=3$} (v3);
-		\path [->] (v1) edge node[near end, sloped, below] {$e_4=6$} (v4);
-		\path [->] (v2) edge node[midway, below] {$e_5=3$} (v4);
-		\path [->] (v2) edge node[near end, sloped, above] {$e_6=1$} (v3);
-		\path [->] (v3) edge node[midway, sloped, above] {$e_7=2$} (v5);
-		\path [->] (v4) edge node[midway, sloped, below] {$e_8=1$} (v5);
+		\path [->, > = latex] (v0) edge node[midway, sloped, above] {$e_1=4$} (v1);
+		\path [->, > = latex] (v0) edge node[midway, sloped, above] {$e_2=5$} (v2);
+		\path [->, > = latex] (v1) edge node[midway, above] {$e_3=3$} (v3);
+		\path [->, > = latex] (v1) edge node[near end, sloped, below] {$e_4=6$} (v4);
+		\path [->, > = latex] (v2) edge node[midway, below] {$e_5=3$} (v4);
+		\path [->, > = latex] (v2) edge node[near end, sloped, above] {$e_6=1$} (v3);
+		\path [->, > = latex] (v3) edge node[midway, sloped, above] {$e_7=2$} (v5);
+		\path [->, > = latex] (v4) edge node[midway, sloped, below] {$e_8=1$} (v5);
 
 	\end{tikzpicture}
 	\caption{En simpel, orienteret og vægtet graf}
