@@ -1,43 +1,45 @@
 \section{Graftyper}
-En graf er, som tidligere nævnt, en struktur med punkter og kanter. Den er givet ved definitionen:
-\begin{definition}
+En graf er, som tidligere nævnt, en struktur med knuder og kanter. Den er givet ved definitionen:
+\begin{defn}
 [Graf] 
-En graf $G=(V,E)$ består af $V$, en punktmængde, hvor $V\neq0$, og en kantmængde; $E \subseteq \{\{u;v\}|u,v \in V\}$.
-\end{definition}
-Det fremgår af definitionen, at en graf ikke kan have 0 punkter, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan altså godt være uendeligt mange knuder og kanter. I så fald kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
-Ydermere, ses det i definitionen, at hver kant forbinder én eller to punkter. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to punkter med max én kant.
+En graf $G=(V,E)$ består af $V$, en mængde af knuder, hvor $V\neq0$, og en mængde af kanter; $E \subseteq \{\{u;v\}|u,v \in V\}$.
+\end{defn}
+Det fremgår af definitionen, at en graf ikke kan have nul knuder, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan dermed være uendeligt mange knuder. På samme måde gælder det for kanter, at der kan være mellem nul og uendeligt. Hvis mindst et af disse tilfælde gør sig gældende, kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
+Ydermere, ses det i definitionen, at hver kant forbinder én eller to knuder. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to knuder med højst én kant.
 
 \input{fig/tikz/simpelgraf}
 
-I kontrast til den simple graf finder vi multi-grafen. For denne type graf skal der være flere kanter, der forbinder det samme sæt punkter. Der må stadig ikke optræde løkker.
+I kontrast til den simple graf finder vi multigrafen. For denne type graf skal der være flere kanter, der forbinder det samme sæt knuder. Der må stadig ikke optræde løkker.
 
 \input{fig/tikz/multigraf}
 
-I eksemplet ovenover ses det, at to kanter forbinder punktsættet ($v_{1},v_{2}$). Hvis en graf, modsat de to allerede nævnte, kan indeholde både løkker og flere kanter, der forbinder de samme punkter, kaldes det en pseudo-graf. Vi ser i eksemplet herunder, at der er to kanter, der forbinder $v_{1}$ og $v_{2}$, og der er en løkke ved $v_{4}$.
+I eksemplet ovenfor ses det, at to kanter forbinder et sæt knuder ($v_{0},v_{1}$). Hvis en graf, modsat de to allerede nævnte, indeholder mindst én løkke, kaldes det en pseudograf. Dog er alle ikke-orienterede grafer pseudografer, da det kun kræves, at de kan indeholde løkker og/eller flere kanter, der forbinder samme knuder. Vi ser i eksemplet herunder, at der er to kanter, der forbinder $v_{0}$ og $v_{1}$, og der er en løkke ved $v_{3}$.
 
 \input{fig/tikz/pseudograf}
 
 
 \subsection{Orienterede grafer og ikke-orienterede grafer}
-En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. De grafer vi har kigget på indtil videre er ikke-orienterede grafer. For en orienteret graf gælder det, at dets kanter har en retning. Dette er ofte illustreret med pile. Den har dermed et startpunkt og et endepunkt. Disse grafer er defineret ved:
+En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
 
-\begin{definition}
+\begin{defn}
 [Orienteret graf] 
-En orienteret graf $(V,E)$ består af $V$, et sæt punkter(knuder), hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt punkter $(u,v)$, hvor $u$ er tilstødende til $v$, og $v$ er tilstødende fra $u$. Punktet $u$ kaldes begyndelsespunktet, og punktet $v$ kaldes endepunktet.
-\end{definition}
+En orienteret graf $G=(V,E)$ består af $V$, et sæt knuder, hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt knuder $(u,v)$, hvor startknuden $u$ er tilstødende til endeknuden $v$. 
+\end{defn}
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.5]{fig/img/orienteret_graf.png}
 \caption{En orienteret graf}
 \label{fig:orienteret}
 \end{figure}
-Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde loops og flere kanter der forbinder det samme punktsæt. Den må også indeholde to modsatrettede kanter mellem det samme punktpar. Dvs. en kant må gerne gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis en orienteret graf hverken indeholder loops eller flere kanter, der forbinder det samme punktpar, kaldes den en orienteret simpel graf. Hvis der derimod optræder flere kanter mellem et eller flere punktpar, kaldes det en multigraf.Vi kan se egenskaberne for de forskellige grafer herunder:
+Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere kanter, der forbinder det samme sæt knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. Hvis der derimod optræder flere kanter mellem et eller flere punktpar, kaldes det en orienteret multigraf. Den må også indeholde flere modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. 
+
+Egenskaberne for de forskellige grafer kan ses herunder:
 
 \begin{tabular}{ |p{4cm}||p{3cm}|p{3cm}|p{2cm}|  }
  \hline
  \multicolumn{4}{|c|}{Grafer} \\
  \hline
- Type & Kanter & Flere Kanter pr punktpar tilladt? & Løkker tilladt\\
+ Type & Kanter & Flere kanter per knudepar tilladt? & Løkker tilladt\\
  \hline
  Simpel graf   & Ikke-orienteret    & Nej &   Nej\\
  Multigraf &   Ikke-orienteret & Ja   & Nej\\
@@ -48,9 +50,9 @@ Der kan foruden disse to også være tale om mixede grafer, som er grafer med b�
  \hline
 \end{tabular}
 
-Fordi kanterne i grafer med orienterede kanter er ordnede par kan definitionen af punktets grader være antallet af kanter, der har dette punkt som begyndelsespunkt, eller antallet af kanter, der har dette punkt som endepunkt:
-\begin{definition}
+Fordi kanterne i grafer med orienterede kanter er ordnede par, kan definitionen af knudens grader være antallet af kanter, der har denne knude som begyndelsesknude, eller antallet af kanter, der har denne knude som endeknude:
+\begin{defn}
 [Graden af en orienteret graf] 
-I en graf med orienterede kanter er ind-graden, betegnet ved $deg^{-}(v)$, antallet af kanter med v som deres endepunkt. Ud-graden, betegnet ved $deg^{+}(v)$, er antallet af kanter med v som deres startpunkt.
-\end{definition}
-Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type vi bruger til optimeringen af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives senere i projektet.
+I en graf med orienterede kanter er ind-graden, betegnet ved $deg^{-}(v)$, antallet af kanter med $v$ som deres endeknude. Ud-graden, betegnet ved $deg^{+}(v)$, er antallet af kanter med $v$ som deres startknude.
+\end{defn}
+Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type, vi bruger til optimering af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives senere i projektet.
