@@ -13,20 +13,21 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
     \node[point] at (0,2) (G) [label=below:\(G\)] {};
 
     \footnotesize
-    \draw (A) -- (G) node[edge] {};
+    \draw (A) -- (G);
     \path (F) edge [bend left] (B);
-    \draw (A) -- (F) node[edge] {};
-    \draw (B) -- (F) node[edge] {};
-    \draw (B) -- (D) node[edge] {};
-    \draw (B) -- (E) node[edge] {};
-    \draw (B) -- (C) node[edge] {};
-    \draw (C) -- (E) node[edge] {};
-    \draw (E) -- (D) node[edge] {};
-    \draw (D) -- (F) node[edge] {};
-    \draw (F) -- (G) node[edge] {};
+    \draw (A) -- (F);
+    \path (F) edge [bend right] (B);
+    \draw (B) -- (D);
+    \draw (B) -- (E);
+    \draw (B) -- (C);
+    \draw (C) -- (E);
+    \draw (C) to [out=315,in=45,looseness=50] (C);
+    \draw (E) -- (D);
+    \draw (D) -- (F);
+    \draw (F) -- (G);
   \end{tikzpicture}
-  \caption{Eksempel pÃ¥ graf fra \citep{dmat}.}
-  \label{fig:graf}
+  \caption{ikke orienteret psedograf\citep{dmat}.}
+  \label{fig:4.5}
 \end{figure}
 
 \begin{center}
@@ -38,13 +39,64 @@ En måde at repræsentere en graf på er ved at lave en Nabo-liste.Nabo-lister e
  		\hline
  		A & F,G \\
 		B & C,D,E,F \\
-		C & B,E \\
+		C & B,E,C \\
 		D & B,E,F \\
 		E & B,C,D \\
 		F & A,B,D,G \\
 		G & A,F \\
  	\hline
- 	\label{tab:Nabo-liste}
+ 	\label{tab:Nabo-liste 4.5}
 	\end{tabular}
 \end{center}
-Tabellen ovenfor viser nabo-listen over en ikke orienteret simpel graf \ref{fig:4.5}. Venstre side af tabellen viser knuderne fra A til G og højre side af tabellen viser hvilke nabo-knuder de har.Foreksempelvis kan man se at knuden B har nabo-knuderne C,D,E,F. 
+\ref{tab:Nabo-liste 4.5} viser nabo-listen over en ikke orienteret pseudograf \ref{fig:4.5}. Venstre side af tabellen viser knuderne fra A til G og højre side af tabellen viser hvilke nabo-knuder de har. Foreksempelvis kan man se at knuden B har nabo-knuderne C,D,E,F, men man kan ikke se der er en ekstra kant mellem knude B og F, dog kan man se at knuden C har en kant med sig selv det vil sige den har en løkke.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node[point] at (1,2) (A) [label=above:\(A\)] {};
+    \node[point] at (3,2) (B) [label=above:\(B\)] {};
+    \node[point] at (4,1) (C) [label=right:\(C\)] {};
+    \node[point] at (2,0) (D) [label=below:\(D\)] {};
+    \node[point] at (3,0) (E) [label=below:\(E\)] {};
+    \node[point] at (1,1) (F) [label=left:\(F\)] {};
+    \node[point] at (0,2) (G) [label=below:\(G\)] {};
+
+    \footnotesize
+    \path [->] (A) edge [bend left] (G);
+    \path [->] (A) edge [bend right] (G); 
+    \path [->] (F) edge [bend left] (B);
+    \draw [<-](A) -- (F);
+    \path [<-](F) edge [bend right] (B);
+    \draw [->](B) -- (D);
+    \draw [<-](B) -- (E);
+    \draw [<-](B) -- (C);
+    \draw [->](C) -- (E);
+    \draw [->](C) to [out=315,in=45,looseness=50] (C);
+    \draw [<-](E) -- (D);
+    \draw [->](D) -- (F);
+    \draw [->](F) -- (G);
+  \end{tikzpicture}
+  \caption{orienteret psedograf\citep{dmat}.}
+  \label{fig:4.6}
+\end{figure}
+
+\begin{center}
+	\begin{tabular}{ |p{4cm}||p{3cm}|}
+	 	\hline
+ 		\multicolumn{2}{|c|}{Nabo-liste til figur 4.6} \\
+ 		\hline
+ 		Knuder & Nabo-knuder\\
+ 		\hline
+ 		A & G \\
+		B & D,F \\
+		C & B,E,C \\
+		D & E,F \\
+		E & B \\
+		F & A,B,G \\
+		G &  \\
+ 	\hline
+ 	\label{tab:Nabo-liste 4.6}
+	\end{tabular}
+\end{center}
+
+\ref{tab:Nabo-liste 4.6} viser knuder over nabo knuderne over den orienteret graf \ref{fig:4.6}. kigger man på knuderne B og F kan man se der er paralle kanter, da kanterne er orienteret i hver deres retning. Kigger man på knuderne A og G kan man ikke se der er paralle linjer mellem A og G, da begge kanter er orienteret fra A til G
