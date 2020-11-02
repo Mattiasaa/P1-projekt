@@ -7,15 +7,15 @@ En graf $G=(V,E)$ består af $V$, en mængde af knuder, hvor $V\neq0$, og en mæ
 Det fremgår af definitionen, at en graf ikke kan have nul knuder, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan dermed være uendeligt mange knuder. På samme måde gælder det for kanter, at der kan være mellem nul og uendeligt. Hvis mindst et af disse tilfælde gør sig gældende, kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
 Ydermere, ses det i definitionen, at hver kant forbinder én eller to knuder. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to knuder med højst én kant.
 
-\input{fig/tikz/simpelgraf}
+\input{fig/tikz/grafer/graftyper/simpelgraf}
 
 I kontrast til den simple graf finder vi multigrafen. For denne type graf skal der være flere kanter, der forbinder det samme sæt knuder. Der må stadig ikke optræde løkker.
 
-\input{fig/tikz/multigraf}
+\input{fig/tikz/grafer/graftyper/multigraf}
 
 I eksemplet ovenfor ses det, at to kanter forbinder et sæt knuder ($v_{0},v_{1}$). Hvis en graf, modsat de to allerede nævnte, indeholder mindst én løkke, kaldes det en pseudograf. Dog er alle ikke-orienterede grafer pseudografer, da det kun kræves, at de kan indeholde løkker og/eller flere kanter, der forbinder samme knuder. Vi ser i eksemplet herunder, at der er to kanter, der forbinder $v_{0}$ og $v_{1}$, og der er en løkke ved $v_{3}$.
 
-\input{fig/tikz/pseudograf}
+\input{fig/tikz/grafer/graftyper/pseudograf}
 
 
 \subsection{Orienterede grafer og ikke-orienterede grafer}
@@ -26,7 +26,7 @@ En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede gra
 En orienteret graf $G=(V,E)$ består af $V$, et sæt knuder, hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt knuder $(u,v)$, hvor startknuden $u$ er tilstødende til endeknuden $v$. 
 \end{defn}
 
-\input{fig/tikz/orienteretgraf}
+\input{fig/tikz/grafer/graftyper/orienteretgraf}
 
 %\ref{fig:orienteret}
 %\begin{figure}[H]

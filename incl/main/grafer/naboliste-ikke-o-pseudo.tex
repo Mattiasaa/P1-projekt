@@ -1,0 +1,47 @@
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
+    \node[point] at (3,2) (v_4) [label=above:\(v_4\)] {};
+    \node[point] at (4,1) (v_7) [label=right:\(v_7\)] {};
+    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
+    \node[point] at (3,0) (v_6) [label=below:\(v_6\)] {};
+    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
+    \node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
+
+    \footnotesize
+    \draw (v_2) -- (v_1);
+    \path (v_3) edge [bend left] (v_4);
+    \draw (v_2) -- (v_3);
+    \path (v_3) edge [bend right] (v_4);
+    \draw (v_4) -- (v_5);
+    \draw (v_4) -- (v_6);
+    \draw (v_4) -- (v_7);
+    \draw (v_7) -- (v_6);
+    \draw (v_7) to [out=315,in=45,looseness=50] (v_7);
+    \draw (v_6) -- (v_5);
+    \draw (v_5) -- (v_3);
+    \draw (v_3) -- (v_1);
+  \end{tikzpicture}
+  \caption{Ikke-orienteret pseudograf.}
+  \label{fig:ikke-orienteret-pseudo}
+\end{figure}
+
+\begin{center}
+	\begin{tabular}{ |p{4cm}||p{3cm}|}
+	 	\hline
+ 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:ikke-orienteret-pseudo}} \\
+ 		\hline
+ 		Knuder & Naboknuder\\
+ 		\hline
+ 		$v_1$ & $v_2$, $v_3$ \\
+ 		$v_2$ & $v_1$, $v_3$ \\
+ 		$v_3$ & $v_1$, $v_2$, $v_4$, $v_5$ \\
+ 		$v_4$ & $v_3$, $v_5$, $v_1$, $v_7$ \\
+ 		$v_5$ & $v_3$, $v_4$, $v_6$ \\
+ 		$v_6$ & $v_4$, $v_5$, $v_7$ \\
+ 		$v_7$ & $v_4$, $v_6$, $v_7$ \\
+ 	\hline
+ 	\label{tab:naboliste1} 	
+	\end{tabular}
+\end{center}

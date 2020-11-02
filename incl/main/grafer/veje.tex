@@ -10,30 +10,7 @@ Kigger vi derimod på veje med orienterede grafer, som er det vi beskæftiger os
 Lad $n \in \N _0$ og $G$ være en orienteret graf. En vej af længde $n$ fra $u$ til $v$ i $G$ er en sekvens af kanter $e_{1},e_{2},\cdots,e_{n}$ for $G$, sådan at $e_{1}$ er forbundet med $(x_{0},x_{1})$, $e_{2}$ er forbundet med $(x_{1},x_{2})$ og så videre frem til $e_{n}$, som er forbundet med $(x_{n-1},x_{n})$. Her er $x_{0}=u$ og $x_{n}=v$. Hvis alle knudesæt er forbundet med højst én kant per sæt, betegner vi denne  vej ved dets knudesekvens $x_{o},x_{1},\cdots,x_{n}$. En vej er simpel, hvis den ikke krydser den samme kant mere end én gang.
 \end{defn}
 
-\begin{figure}[H]
-\centering
-	\begin{tikzpicture}
-
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
-%% Vertices
-      	\node[enclosed, label={left: $v_0$}] (v0) at (0,2) {};
-      	\node[enclosed, label={below: $v_1$}] (v1) at (3,2.5) {};
-    		\node[enclosed, label={below: $v_2$}] (v2) at (4,1) {};
-  	    \node[enclosed, label={above: $v_3$}] (v3) at (2,4) {};
-     	\node[enclosed, label={right: $v_4$}] (v4) at (4,3) {};
-%Edges
-		\path [->, >=latex, green](v0) edge node[midway, sloped, above] {} (v1);
-		\path [->, >=latex](v0) edge node[midway, sloped, above] {} (v2);
-		\path [->, >=latex](v0) edge node[midway, above] {} (v3);
-		\path [->, >=latex, green](v1) edge node[near end, sloped, below] {} (v3);
-		\path [->, >=latex](v2) edge node[midway, below] {} (v4);
-		\path [->, >=latex, green](v3) edge node[near end, sloped, above] {} (v4);
-
-	\end{tikzpicture}
-	\caption{Eksempel på en orienteret simpel graf og en vej fra $v_{0}$ til $v_{4}$}
-	\label{fig.vaegtetopg}
-\end{figure}
-
+\input{fig/tikz/grafer/veje/eksempel}
 
 Antallet af veje mellem to knuder i grafen kan findes ved hjælp af nabomatricer, som vi diskuterede i forrige afsnit.
 \begin{thm}
@@ -57,30 +34,7 @@ En vej af længde $r + 1$ fra $v_{i}$ til $v_{k}$ er lavet ud fra en vej med læ
 
 \begin{exmp}
 Vi starter med at kigge på en graf og den tilhørende nabomatrice:
-\begin{figure}[H]
-\centering
-	\begin{tikzpicture}
-
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
-%% Vertices
-      	\node[enclosed, label={left: $v_0$}] (v0) at (1,2) {};
-      	\node[enclosed, label={above: $v_1$}] (v1) at (3,4) {};
-    	\node[enclosed, label={below: $v_2$}] (v2) at (1,0) {};
-  	    \node[enclosed, label={right: $v_3$}] (v3) at (5,2) {};
-     	\node[enclosed, label={below: $v_4$}] (v4) at (5,0) {};
-%Edges
-		\path (v0) edge node[midway, sloped, above] {} (v1);
-		\path (v0) edge node[midway, sloped, above] {} (v2);
-		\path (v0) edge node[midway, above] {} (v3);
-		\path (v1) edge node[near end, sloped, below] {} (v3);
-		\path (v2) edge node[midway, below] {} (v4);
-		\path (v3) edge node[near end, sloped, above] {} (v4);
-
-	\end{tikzpicture}
-	\caption{Eksempel på en ikke-orienteret simpel graf}
-	\label{fig.vaegtetopg}
-\end{figure}
-
+\input{fig/tikz/grafer/veje/eksempel-ikke-orienteret}
 
 \begin{equation}
 A=\begin{bmatrix}
@@ -97,75 +51,7 @@ Vi ønsker at finde ud af hvor mange veje med en længde på 4, der går fra $v_
 \textbf{$A^{r+1}$} er lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\cdots+ b_{in}a_{nj}$
 Her er $b_{ik}$ antallet af veje fra $v_{i}$ til ${v_k}$. I vores eksempel er $v_{i}=v_{0}$, ${v_k}=v_{2}$ og ${v_k}=v_{3}$ og \textbf{$A^{r+1}$}=\textbf{$A^{3+1}$}. 
  
-\begin{figure}[H]
-\centering
-	\begin{tikzpicture}
-
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
-%% Vertices
-      	\node[enclosed, label={above: $v_0$}] (v0) at (3,6) {};
-      	\node[enclosed, label={above: $v_1$}] (v1) at (0,5) {};
-    		\node[enclosed, label={below: $v_2$}] (v2) at (3,5) {};
-  	    \node[enclosed, label={above: $v_3$}] (v3) at (6,5) {};
-     	\node[enclosed, label={left: $v_0$}] (v4) at (-2,4) {};
-     	\node[enclosed, label={left: $v_3$}] (v5) at (0,4) {};
-     	\node[enclosed, label={left: $v_0$}] (v6) at (2,4) {};
-     	\node[enclosed, label={right: $v_4$}] (v7) at (4,4) {};
-     	\node[enclosed, label={right: $v_0$}] (v8) at (6,4) {};
-     	\node[enclosed, label={right: $v_1$}] (v9) at (7.75,4) {};
-     	\node[enclosed, label={right: $v_4$}] (v10) at (9.5,4) {};
-     	\node[enclosed, label={below: $v_1$}] (v11) at (-2.5,3) {};
-      	\node[enclosed, label={below: $v_2$}] (v12) at (-2,3) {};
-  	    \node[enclosed, label={below: $v_3$}] (v13) at (-1.5,3) {};
-  	    \node[enclosed, label={below: $v_0$}] (v14) at (-0.5,3) {};
-     	\node[enclosed, label={below: $v_1$}] (v15) at (0,3) {};
-     	\node[enclosed, label={below: $v_4$}] (v16) at (0.5,3) {};
-     	\node[enclosed, label={below: $v_1$}] (v17) at (1.5,3) {};
-      	\node[enclosed, label={below: $v_2$}] (v18) at (2,3) {};
-  	    \node[enclosed, label={below: $v_3$}] (v19) at (2.5,3) {};
-  	    \node[enclosed, label={below: $v_2$}] (v20) at (3.6,3) {};
-  	    \node[enclosed, label={below: $v_3$}] (v21) at (4.4,3) {};
-  	    \node[enclosed, label={below: $v_1$}] (v22) at (5.5,3) {};
-      	\node[enclosed, label={below: $v_2$}] (v23) at (6,3) {};
-  	    \node[enclosed, label={below: $v_3$}] (v24) at (6.5,3) {};
-  	    \node[enclosed, label={below: $v_0$}] (v25) at (7.5,3) {};
-     	\node[enclosed, label={below: $v_3$}] (v26) at (8.25,3) {};
-     	\node[enclosed, label={below: $v_2$}] (v27) at (9,3) {};
-     	\node[enclosed, label={below: $v_3$}] (v28) at (10,3) {};
-%Edges
-		\path (v0) edge node[midway, sloped, above] {} (v1);
-		\path (v0) edge node[midway, sloped, above] {} (v2);
-		\path (v0) edge node[midway, above] {} (v3);
-		\path (v1) edge node[near end, sloped, below] {} (v4);
-		\path (v1) edge node[midway, below] {} (v5);
-		\path (v2) edge node[near end, sloped, above] {} (v6);
-		\path (v2) edge node[near end, sloped, above] {} (v7);
-		\path (v3) edge node[near end, sloped, above] {} (v8);
-		\path (v3) edge node[near end, sloped, above] {} (v9);
-		\path (v3) edge node[near end, sloped, above] {} (v10);
-		\path (v4) edge node[near end, sloped, above] {} (v11);
-		\path (v4) edge node[near end, sloped, above] {} (v12);
-		\path (v4) edge node[near end, sloped, above] {} (v13);
-		\path (v5) edge node[near end, sloped, above] {} (v14);
-		\path (v5) edge node[near end, sloped, above] {} (v15);
-		\path (v5) edge node[near end, sloped, above] {} (v16);
-		\path (v6) edge node[near end, sloped, above] {} (v17);
-		\path (v6) edge node[near end, sloped, above] {} (v18);
-		\path (v6) edge node[near end, sloped, above] {} (v19);
-		\path (v7) edge node[near end, sloped, above] {} (v20);
-		\path (v7) edge node[near end, sloped, above] {} (v21);
-		\path (v8) edge node[near end, sloped, above] {} (v22);
-		\path (v8) edge node[near end, sloped, above] {} (v23);
-		\path (v8) edge node[near end, sloped, above] {} (v24);
-		\path (v9) edge node[near end, sloped, above] {} (v25);
-		\path (v9) edge node[near end, sloped, above] {} (v26);
-		\path (v10) edge node[near end, sloped, above] {} (v27);
-		\path (v10) edge node[near end, sloped, above] {} (v28);
-
-	\end{tikzpicture}
-	\caption{De mulige løsninger for veje med længde 3 fra $v_{0}$ til $v_{k}$}
-	\label{fig.vaegtetopg}
-\end{figure}
+\input{fig/tikz/grafer/veje/eksempel-trae}
 
 Antallet af veje fra $v_{0}$ til $v_{2}$ er 5, og antallet af veje fra $v_{0}$ til $v_{3}$ er 6. Vi kan derfor opstille
 \textbf{$A^{4}$}$=b_{1i} \cdot a_{1j}+b_{2i} \cdot a_{2j}=5 \cdot 1+6 \cdot 1=11$.
