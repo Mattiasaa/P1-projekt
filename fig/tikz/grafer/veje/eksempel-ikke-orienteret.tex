@@ -4,18 +4,18 @@
 
       \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
 %% Vertices
-      	\node[enclosed, label={left: $v_0$}] (v0) at (1,2) {};
-      	\node[enclosed, label={above: $v_1$}] (v1) at (3,4) {};
-    	\node[enclosed, label={below: $v_2$}] (v2) at (1,0) {};
-  	    \node[enclosed, label={right: $v_3$}] (v3) at (5,2) {};
-     	\node[enclosed, label={below: $v_4$}] (v4) at (5,0) {};
+      	\node[enclosed, label={left: $v_1$}] (v1) at (1,2) {};
+      	\node[enclosed, label={above: $v_2$}] (v2) at (3,4) {};
+    	\node[enclosed, label={below: $v_3$}] (v3) at (1,0) {};
+  	    \node[enclosed, label={right: $v_4$}] (v4) at (5,2) {};
+     	\node[enclosed, label={below: $v_5$}] (v5) at (5,0) {};
 %Edges
-		\path (v0) edge node[midway, sloped, above] {} (v1);
-		\path (v0) edge node[midway, sloped, above] {} (v2);
-		\path (v0) edge node[midway, above] {} (v3);
-		\path (v1) edge node[near end, sloped, below] {} (v3);
-		\path (v2) edge node[midway, below] {} (v4);
-		\path (v3) edge node[near end, sloped, above] {} (v4);
+		\path (v1) edge node[midway, sloped, above] {} (v2);
+		\path (v1) edge node[midway, sloped, above] {} (v3);
+		\path (v1) edge node[midway, above] {} (v4);
+		\path (v2) edge node[near end, sloped, below] {} (v4);
+		\path (v3) edge node[midway, below] {} (v5);
+		\path (v4) edge node[near end, sloped, above] {} (v5);
 
 	\end{tikzpicture}
 	\caption{Eksempel på en ikke-orienteret simpel graf}
