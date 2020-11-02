@@ -10,10 +10,10 @@
 %Edges
 		\path[->, > = latex] (v1) edge [bend right=20] node[midway, left] {$e_2$} (v2);
 		\path[->, > = latex] (v2) edge [bend right=20] node[midway, left] {$e_1$} (v1);
-		\path[->, > = latex] (v1) edge node[midway, above] {$e_3$} (v3);
-		\path[->, > = latex] (v1) edge node[midway, below] {$e_4$} (v4);
-		\path[->, > = latex] (v2) edge node[midway, right] {$e_5$} (v3);
-		\path[->, > = latex] (v4) edge [out=270,in=350,looseness=35] node[right] {$e_6$} (v4);
+		\path[->, > = latex, thick] (v1) edge node[midway, above] {$e_3$} (v3);
+		\path[->, > = latex, thick] (v1) edge node[midway, below] {$e_4$} (v4);
+		\path[->, > = latex, thick] (v2) edge node[midway, right] {$e_5$} (v3);
+		\path (v4) edge [out=270,in=350,looseness=35] node[right] {$e_6$} (v4);
 	\end{tikzpicture}
 	\caption{En orienteret graf}
 	\label{fig:orienteret}
