@@ -11,26 +11,8 @@ Det kan også skrives som \\
 	\end{Bmatrix}
 \end{equation}
 
+\input{fig/tikz/grafer/nabolister/matrice-graf}
 
-
-\begin{figure}[H]
-  \centering
-  \begin{tikzpicture}
-  	\node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
-    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
-    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
-    \node[point] at (2,2) (v_4) [label=above:\(v_4\)] {};
-    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
-    
-
-    \footnotesize
-    \draw (v_1) -- (v_2);
-    \draw (v_1) -- (v_3);
-    \draw (v_2) -- (v_3);
-    \draw (v_3) -- (v_4);
-    \draw (v_3) -- (v_5); 
-    \draw (v_4) -- (v_5);
-  \end{tikzpicture}
   \label{fig:simpelgraf}
 \end{figure}
 
