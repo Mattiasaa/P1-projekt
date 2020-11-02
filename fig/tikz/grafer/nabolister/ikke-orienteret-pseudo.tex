@@ -27,21 +27,22 @@
   \label{fig:ikke-orienteret-pseudo}
 \end{figure}
 
-\begin{center}
-	\begin{tabular}{ |p{4cm}||p{3cm}|}
-	 	\hline
- 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:orienteretmulti}} \\
+
+\begin{table}[h]
+\centering
+\label{tab:naboliste-ikke-orienteret}
+	\begin{tabular}{ |p{3cm}||p{3cm}|}
  		\hline
  		Knuder & Naboknuder\\
  		\hline
- 		$v_1$ & \\
-		$v_2$ & $v_1$ \\
-		$v_3$ & $v_1$, $v_2$, $v_4$ \\
-		$v_4$ & $v_3$, $v_5$, \\
-		$v_5$ & $v_3$, $v_6$ \\
-		$v_6$ & $v_4$ \\
+ 		$v_1$ & $v_2$, $v_3$\\
+		$v_2$ & $v_1$, $v_3$ \\
+		$v_3$ & $v_1$, $v_2$, $v_4$, $v_5$ \\
+		$v_4$ & $v_1$, $v_3$, $v_5$, $v_7$ \\
+		$v_5$ & $v_3$, $v_4$, $v_6$ \\
+		$v_6$ & $v_4$, $v_5$, $v_7$ \\
 		$v_7$ & $v_4$, $v_6$, $v_7$ \\
- 		\hline
-		\label{tab:naboliste2}
+ 		\hline 
 	\end{tabular}
-\end{center}
+	\caption{Naboliste til figur \ref{fig:ikke-orienteret-pseudo}}
+\end{table}

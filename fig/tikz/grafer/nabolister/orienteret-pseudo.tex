@@ -12,15 +12,15 @@
 
     \footnotesize
     	\path[->, > = latex, thick] (v_2) edge[bend right] node {} (v_1);
-    	\path[->, > = latex, thick] (v_1) edge[bend right] node {} (v_2);
-    	\path[->, > = latex, thick] (v_3) edge[bend right] node {} (v_4);
-    	\path[->, > = latex, thick] (v_2) edge node {} (v_3);
-    	\path[->, > = latex, thick] (v_4) edge[bend right] node {} (v_4);
+    	\path[->, > = latex, thick] (v_2) edge[bend left] node {} (v_1);
+    	\path[->, > = latex, thick] (v_3) edge[bend left] node {} (v_4);
+    	\path[->, > = latex, thick] (v_3) edge node {} (v_2);
+    	\path[->, > = latex, thick] (v_4) edge[bend left] node {} (v_3);
     	\path[->, > = latex, thick] (v_4) edge node {} (v_5);
-   		\path[->, > = latex, thick] (v_4) edge node {} (v_6);
-		\path[->, > = latex, thick] (v_4) edge node {} (v_7);
+   		\path[->, > = latex, thick] (v_6) edge node {} (v_4);
+		\path[->, > = latex, thick] (v_7) edge node {} (v_4);
 		\path[->, > = latex, thick] (v_7) edge node {} (v_6);
-		\path[->, > = latex, thick] (v_6) edge node {} (v_5);
+		\path[->, > = latex, thick] (v_5) edge node {} (v_6);
 		\path[->, > = latex, thick] (v_5) edge node {} (v_3);
 		\path[->, > = latex, thick] (v_3) edge node {} (v_1);
 		\path (v_7) edge [out=315,in=45,looseness=50] node {} (v_7);
@@ -29,13 +29,13 @@
 
 
   \end{tikzpicture}
-  \caption{Orienteret pseudograf.}
+  \caption{Orienteret multigraf.}
   \label{fig:orienteretmulti}
 \end{figure}
-\begin{center}
-	\begin{tabular}{ |p{4cm}||p{3cm}|}
-	 	\hline
- 		\multicolumn{2}{|c|}{Naboliste til figur \ref{fig:orienteretmulti}} \\
+
+\begin{table} [H]
+\centering
+	\begin{tabular}{ |p{3cm}||p{3cm}|}
  		\hline
  		Knuder & Naboknuder\\
  		\hline
@@ -47,6 +47,7 @@
 		$v_6$ & $v_4$ \\
 		$v_7$ & $v_4$, $v_6$, $v_7$ \\
  		\hline
-		\label{tab:naboliste2}
 	\end{tabular}
-\end{center}
+\label{tab:naboliste-orienteret}
+\caption{Naboliste til figur \ref{fig:orienteretmulti}}
+\end{table}
