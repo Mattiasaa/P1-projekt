@@ -1,14 +1,14 @@
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[every loop/.style={}]
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
-    \node[point] at (1,2) (v_2) [label=above:\(v_2\)] {};
-    \node[point] at (3,2) (v_4) [label=above:\(v_4\)] {};
-    \node[point] at (4,1) (v_7) [label=right:\(v_7\)] {};
-    \node[point] at (2,0) (v_5) [label=below:\(v_5\)] {};
-    \node[point] at (3,0) (v_6) [label=below:\(v_6\)] {};
-    \node[point] at (1,1) (v_3) [label=left:\(v_3\)] {};
-    \node[point] at (0,2) (v_1) [label=below:\(v_1\)] {};
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.10cm, fill=black}}
+    \node[enclosed] at (1,2) (v_2) [label=above:\(v_2\)] {};
+    \node[enclosed] at (3,2) (v_4) [label=above:\(v_4\)] {};
+    \node[enclosed] at (4,1) (v_7) [label=right:\(v_7\)] {};
+    \node[enclosed] at (2,0) (v_5) [label=below:\(v_5\)] {};
+    \node[enclosed] at (3,0) (v_6) [label=below:\(v_6\)] {};
+    \node[enclosed] at (1,1) (v_3) [label=left:\(v_3\)] {};
+    \node[enclosed] at (0,2) (v_1) [label=below:\(v_1\)] {};
 
     \footnotesize
     	\path[->, > = latex, thick] (v_2) edge[bend right] node {} (v_1);
