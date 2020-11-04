@@ -2,9 +2,9 @@
 En graf er, som tidligere nævnt, en struktur med knuder og kanter. Den er givet ved definitionen:
 \begin{defn}
 [Graf] 
-En graf, $G=(V,E)$, består af $V$, en mængde af knuder, hvor $V\neq0$, og en mængde af kanter; $E \subseteq \{\{u;v\}|u,v \in V\}$.
+En graf, $G=(V,E)$, består af $V$, en mængde af \emph{knuder}, hvor $V\neq\emptyset$, og en mængde af \emph{kanter}; $E \subseteq \{\{u,v\}|u,v \in V\}$.
 \end{defn}
-Det fremgår af definitionen, at en graf ikke kan have nul knuder, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan dermed være uendeligt mange knuder. På samme måde gælder det for kanter, at der kan være mellem nul og uendeligt. Hvis mindst et af disse tilfælde gør sig gældende, kaldes det en uendelig graf. Ellers kaldes det en endelig graf, og det er denne type, som vi beskæftiger os med i projektet.
+Det fremgår af definitionen, at en graf ikke kan have nul knuder, men en lignende afgrænsning i den anden ende eksisterer ikke. Der kan dermed være uendeligt mange knuder. På samme måde gælder det for kanter, at der kan være mellem nul og uendeligt. Hvis mindst et af disse tilfælde gør sig gældende, kaldes det en \emph{uendelig graf}. Ellers kaldes det en \emph{endelig graf}, og det er denne type, som vi beskæftiger os med i projektet.
 Ydermere, ses det i definitionen, at hver kant forbinder én eller to knuder. For en simpel graf gælder det, at ingen kanter forbinder et punkt med sig selv. Der må altså ikke være løkker. Derudover forbindes to knuder med højst én kant.
 
 \input{fig/tikz/grafer/graftyper/simpelgraf}
@@ -23,7 +23,7 @@ En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede gra
 
 \begin{defn}
 [Orienteret graf] 
-En orienteret graf, $G=(V,E)$, består af $V$, et sæt knuder, hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant forbinder et sæt knuder, $(u,v)$, hvor startknuden, $u$, er tilstødende til endeknuden, $v$. 
+En orienteret graf, $G=(V,E)$, består af $V$, et sæt knuder, hvor $V\neq0$, og et sæt orienterede kanter, $E$. Hver orienterede kant et sæt knuder, $(u,v)$, hvor startknuden, $u$, er incident med endeknuden, $v$. 
 \end{defn}
 
 \input{fig/tikz/grafer/graftyper/orienteretgraf}
@@ -37,9 +37,7 @@ En orienteret graf, $G=(V,E)$, består af $V$, et sæt knuder, hvor $V\neq0$, og
 %\end{figure}
 
 
-Der kan foruden disse to også være tale om mixede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der forbinder det samme sæt knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en orienteret multigraf.  
-
-Egenskaberne for de forskellige grafer kan ses herunder:
+Der kan foruden disse to også være tale om blandede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der forbinder det samme sæt knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en orienteret multigraf. Egenskaberne for de forskellige grafer kan ses herunder:
 
 \begin{center}
 \begin{tabular}{ |p{4cm}|p{3cm}|p{3cm}|p{2cm}|  }
@@ -48,12 +46,12 @@ Egenskaberne for de forskellige grafer kan ses herunder:
  \hline
  Type & Kanter & Flere kanter per knudepar tilladt & Løkker tilladt\\
  \hline
- Simpel graf   & Ikke-orienteret    & Nej &   Nej\\
- Multigraf &   Ikke-orienteret & Ja   & Nej\\
- Pseudograf & Ikke-orienteret & Ja &  Ja\\
- Simpel orienteret graf    & Orienteret & Nej &  Nej\\
- Orienteret multigraf &  Orienteret  & Ja & Ja\\
- Mixet graf & Ikke-orienteret og orienteret  & Ja   & Ja\\
+ Simpel graf   & Ikke-orienterede    & Nej &   Nej\\
+ Multigraf &   Ikke-orienterede & Ja   & Nej\\
+ Pseudograf & Ikke-orienterede & Ja &  Ja\\
+ Simpel orienteret graf    & Orienterede & Nej &  Nej\\
+ Orienteret multigraf &  Orienterede  & Ja & Ja\\
+ Blandet graf & Ikke-orienterede og orienterede  & Ja   & Ja\\
  \hline
 \end{tabular}
 \end{center}
