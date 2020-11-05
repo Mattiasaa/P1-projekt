@@ -16,7 +16,7 @@ Antallet af veje mellem to knuder i grafen kan findes ved hjælp af nabomatricer
 \begin{thm}
 [Antallet af veje mellem to knuder] 
 Lad G være en vilkårlig graf med nabomatricen
-\textbf{$A$} med grafens knuder i rækkefølgen $v_{1},v_{2},\cdots,v_{n}$. Antallet af forskellige veje med længde $r$ fra $v_{i}$ til $v_{j}$ vil da være lig den $(i,j)$'te indgang af \textbf{$A^{r}$}.
+\textbf{$A$} med grafens knuder i rækkefølgen $v_{1},v_{2},\dotsc,v_{n}$. Antallet af forskellige veje med længde $r$ fra $v_{i}$ til $v_{j}$ vil da være lig den $(i,j)$'te indgang af \textbf{$A^{r}$}.
 \end{thm}
 
 \begin{proof}
@@ -27,7 +27,7 @@ Vi antager, at den $(i,j)$'te indgang til
 \textbf{${A^r}$} er antallet af forskellige veje, som går fra $v_{i}$ til $v_{j}$ og som har længden $r$. Dette er hypotesen, vi ønsker at bekræfte.
 Vi ser på nabomatricen \textbf{$A^{r+1}$}. 
 \textbf{$A^{r+1}$} er det samme som 
-\textbf{$A^{r}$}$\cdot$\textbf{$A$}, og derfor er den $(i,j)$'te indgang af \textbf{$A^{r+1}$} lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\cdots+ b_{in}a_{nj}$. Her er $b_{ik}$  den $(i,k)$'te indgang til 
+\textbf{$A^{r}$}$\dotsc$\textbf{$A$}, og derfor er den $(i,j)$'te indgang af \textbf{$A^{r+1}$} lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsc+ b_{in}a_{nj}$. Her er $b_{ik}$  den $(i,k)$'te indgang til 
 \textbf{$A^{r}$}, som ifølge vores hypotese er antallet af veje fra $v_{i}$ til $v_{k}$ med længde $r$.
 En vej af længde $r + 1$ fra $v_{i}$ til $v_{k}$ er lavet ud fra en vej med længden $r$ fra begyndelsesknuden $v_{i}$ og hen til en mellemliggende knude $v_{k}$ samt den kant, der går fra $v_{k}$ til $v_{j}$. Vi ved fra kombinatorik, at antallet af muligheder er lig produktet af mulighederne ved første udfald og mulighederne ved andet udfald. Vi betegner antallet af veje med længden $r$ fra $v_{i}$ til $v_{k}$ med $b_{ik}$ og antallet af kanter fra $v_{k}$ til $v_{j}$ med $a_{kj}$ Finder vi produktet af dette for alle mellemliggende knuder, $v_{k}$, fås det ønskede resultat.
 \end{proof}
@@ -54,7 +54,7 @@ Her er $b_{ik}$ antallet af veje fra $v_{i}$ til ${v_k}$. I vores eksempel er $v
 \input{fig/tikz/grafer/veje/eksempel-trae}
 
 Antallet af veje fra $v_{1}$ til $v_{3}$ er 5, og antallet af veje fra $v_{1}$ til $v_{4}$ er 6. Vi kan derfor opstille
-\textbf{$A^{4}$}$=b_{i1} \cdot a_{1j}+b_{i2} \cdot a_{2j}=5 \cdot 1+6 \cdot 1=11$.
+\textbf{$A^{4}$}$=b_{i1} a_{1j}+b_{i2} a_{2j}=5 \cdot 1+6 \cdot 1=11$.
 Her er $b_{i1}$ antallet af veje fra $v_{1}$ til $v_{3}$, og $a_{1j}$ er antallet af kanter fra $v_{3}$ til  $v_{5}$. På samme måde optræder $b_{i2}$ og $a_{2j}$ for $v_{4}$. Der er altså 11 veje med længden 4 fra $v_{1}$ til $v_{5}$.
 
 \end{exmp}
