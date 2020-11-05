@@ -23,14 +23,16 @@ En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede gra
 
 \begin{defn}
 [Orienteret graf] 
-En orienteret graf, $G=(V,E)$, består af $V$, et par knuder, hvor $V = \emptyset$, og en mængde orienterede kanter, $E$. Hver orienterede kant forbinder et par knuder, $(u,v)$, hvor startknuden, $u$, er tilstødende til endeknuden, $v$. 
-\end{defn}
+
+En orienteret graf, $G=(V,E)$, består af $V$, en m�ngde knuder, hvor $V \neq \emptyset$, og en mængde orienterede kanter, $E$. Hver orienterede kant forbinder et par knuder, $(u,v)$, hvor startknuden, $u$, er tilstødende til endeknuden, $v$. 
+
 
 \input{fig/tikz/grafer/graftyper/orienteretgraf}
 
-Der kan foruden disse to også være tale om blandede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der forbinder det samme sæt knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en orienteret multigraf.  
+Der kan foruden disse to også være tale om blandede grafer, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der forbinder det samme par knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en orienteret multigraf.  
 
 Egenskaberne for de forskellige grafer kan ses herunder:
+
 
 \begin{center}
 \begin{tabular}{ |p{4cm}|p{3cm}|p{3cm}|p{2cm}|  }
@@ -44,7 +46,7 @@ Egenskaberne for de forskellige grafer kan ses herunder:
  Pseudograf & Ikke-orienterede & Ja &  Ja\\
  Simpel orienteret graf    & Orienterede & Nej &  Nej\\
  Orienteret multigraf &  Orienterede  & Ja & Ja\\
- blandet graf & Ikke-orienterede og orienterede  & Ja   & Ja\\
+ Blandet graf & Ikke-orienterede og orienterede  & Ja   & Ja\\
  \hline
 \end{tabular}
 \end{center}
