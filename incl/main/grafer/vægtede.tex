@@ -9,12 +9,12 @@ En vægtet graf, $G=(V,E,w)$, består af mængden af knuder, $V$, mængden af ka
 For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funktionen $w (e)$. Da $e$ er en kant incident med $\{u,v\}$ kan man  ligeledes skrive $w (u,v)$.
 \input{fig/tikz/grafer/veje/vægtede/eksempel}
 
-Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne længden fra en knude til en anden i grafen. Længden fra en knude til en anden kan defineres således:
+Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne distancen fra en knude til en anden i grafen. distancen fra en knude til en anden kan defineres således:
 
-\begin{defn}
-Lad $m\in \N $ og $G=(V,E,w)$ være en simpel graf og lad $e_{i,i+1}$ være en kant incident med $i$ og $i+1$. Lad en tilfældig vej, $P$, gå gennem knuderne således $P=(v_0,v_1...v_m)$, da kan længden beskrives således:
+\begin{defn}[Distance]
+Lad $m\in \N $, $G=(V,E,w)$ være en simpel graf og  $e_{i,i+1}$ være en kant, som er incident med $i$ og $i+1$. Lad en tilfældig vej, $P$, gå gennem knuderne således $P=(v_1,v_2,\dotsc,v_m)$, da kan distancen beskrives således:
 	\begin{equation*}
-	dist(P)=\sum_{i=1}^{m}w(e_{i,i+1})
+	\mathrm{dist}(P)=\sum_{i=1}^{m}w(e_{i,i+1})
 	\end{equation*}  
 \end{defn}
 
@@ -22,13 +22,13 @@ Man kan således bruge følgende definitioner af korteste og længste vej i en v
 
 
 \begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
-Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er længden af den korteste vej, fra en knude, $v_0$, til en anden knude, $v_m$, defineret som $\alpha(v_0,v_m)$.
+Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som $\alpha(v_1,v_m)$.
 \end{defn}
 
 På samme vis defineres længste vej:
 
 \begin{defn} [Længste vej i en vægtet graf]
-Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er længden af den længste vej, fra en knude, $v_0$, til en anden knude, $v_m$, defineret som $\beta(v_0,v_m)$.
+Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som $\beta(v_1,v_m)$.
 \end{defn}
 
 \begin{exmp}
@@ -42,7 +42,7 @@ Følgende veje ses:
 	P_3=&(v_1,v_3,v_5,v_6)\\
 	P_4=&(v_1,v_3,v_4,v_6)
 \end{align*}
-Man kan nu beregne længden af de fire veje, ved at tage summen af de kanter, vejen følger. Man får derved:
+Man kan nu beregne distancen af de fire veje, ved at tage summen af de kanter, vejen følger. Man får derved:
 \begin{align*}
 	P_1=&4+3+2=9\\
 	P_2=&4+6+1=11\\
