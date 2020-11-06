@@ -1,12 +1,11 @@
 \subsection{Nabomatricer}
 En anden mulighed for at repræsentere en graf er ved brug af nabomatricer. Nabomatricer er bedre, når grafen har mange kanter, da man her kan se hvor mange kanter et givent knudepar har.
-
-En nabomatrix kan beskrives som en $N=m \times m$ matrice, hvor $m$ er afhængig af knudemængden $V=\{v_1, v_2, \dotsc, v_m\}$. Hvis man har en simpel graf, $G=(V,E)$, vil matricen være en 0-1 matrix, da en simpel graf kan kun have en kant mellem to knuder. Når der er en kant mellem to  vilkårlig knuder, $a_{ij}=(v_i,v_j)$,  vil den få notationen 1, hvis der derimod ikke er en kant, får den notation 0.
+En nabomatrix kan beskrives som en $N=m \times m$-matrix, hvor $m$ er afhængig af knudemængden $V=\{v_1, v_2, \dotsc, v_m\}$. Hvis man har en simpel graf, $G=(V,E)$, vil matricen være en 0-1-matrix, da en simpel graf kun kan have en kant mellem to knuder. Når der er en kant mellem to  vilkårlig knuder, $a_{ij}=(v_i,v_j)$,  vil den få notationen 1, hvis der derimod ikke er en kant, får den notationen 0.
 Det kan også skrives som
 
 \[ a_{ij} = \left\{ \begin{array}{ll}
-         1 & (v_i, v_j)\\
-        0 & \mbox{ellers}.\end{array} \right. \]
+         1  hvis & (v_i, v_j)\\
+         \mbox{ellers} & 0.\end{array} \right. \]
 \input{fig/tikz/grafer/nabolister/matrice-graf}
 
 Nabomatricen nedenfor, viser en matrix over figur \ref{fig:stm}
@@ -21,7 +20,7 @@ Nabomatricen nedenfor, viser en matrix over figur \ref{fig:stm}
 	\end{bmatrix}
 \end{equation}
 
-En matrix over en graf med flere incidenter mellem to knuder vil se således ud. Matrixen nedenfor viser en matrix over figur \ref{fig:ikke-orienteret-pseudo} 
+En matrix over en graf med flere parallelle kanter mellem to knuder vil se ud således. Matricen nedenfor viser en matrix over figur \ref{fig:ikke-orienteret-pseudo}.
 
 \begin{equation}
 	\begin{bmatrix}
@@ -36,5 +35,5 @@ En matrix over en graf med flere incidenter mellem to knuder vil se således ud.
 	\end{bmatrix}
 \end{equation}
 
-Det kan ses, at der er 2 incidenter mellem knude $v_3$ og $v_4$, derudover kan det ses, at der er en løkke på knude $v_7$
+Det kan ses, at der er 2 kanter, der er incidente med knudeparret $v_3$ og $v_4$. Derudover kan det ses, at der er en løkke ved $v_7$.
 
