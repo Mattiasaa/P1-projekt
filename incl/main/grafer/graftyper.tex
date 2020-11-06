@@ -30,7 +30,7 @@ Vi ser i eksemplet herunder, at der er to parallelle kanter mellem $v_{1}$ og $v
 
 
 \subsection{Orienterede grafer og ikke-orienterede grafer}
-En anden typisk grafopdeling er opdelingen i \emph{orienterede} og \emph{ikke-orienterede} grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
+En anden typisk grafopdeling er opdelingen i \emph{orienterede grafer} og \emph{ikke-orienterede} grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
 
 \begin{defn} [Orienteret graf] 
 En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde orienterede kanter, $E$. Hver orienterede kant er incident med et ordnet knudepar, $(u,v)$, hvor kanten går fra startknuden, $u$, til endeknuden, $v$. 
@@ -38,7 +38,7 @@ En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \
 
 \input{fig/tikz/grafer/graftyper/orienteretgraf}
 
-Der kan foruden disse to også være tale om \emph{blandede grafer}, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der er incident med det samme par knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en orienteret multigraf.  
+Der kan foruden disse to også være tale om \emph{blandede grafer}, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der er incident med det samme par knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en \emph{orienteret multigraf}.  
 Egenskaberne for de forskellige grafer kan ses herunder:
 
 
