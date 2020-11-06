@@ -2,11 +2,10 @@
 En vægtet graf er en graf, hvori kanterne eller knuderne får tildelt en numerisk værdi. I dette projekt arbejdes der udelukkende med vægtede kanter, og vi vil derfor kun fokusere på dem i dette afsnit.
 En vægtet graf er defineret ved:
 \begin{defn}[Vægtede grafer]
-En vægtet graf, $G=(V,E,w)$, består af mængden af knuder, $V$, mængden af kanter, $E \subseteq \{\{u;v\}|u,v \in V\}$, og vægtfunktionen, $w: E \rightarrow \R$.
+En vægtet graf, $G=(V,E,w)$, består af en mængde knuder, $V$, en mængde kanter, $E$, og vægtfunktionen, $w: E \rightarrow \R$.
 \end{defn}
 
-
-For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funktionen $w (e)$. Da $e$ er en kant incident med $\{u,v\}$ kan man  ligeledes skrive $w (u,v)$.
+For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funktionen $w (e)$. Da $e$ er en kant incident med $\{u,v\}$ kan man ligeledes skrive $w (u,v)$. På samme måde som med uvægtede grafer, kan en vægtet graf også opdeles i de seks graftyper fundet i tabel \ref{tab:typer}.
 \input{fig/tikz/grafer/veje/vægtede/eksempel}
 
 Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne distancen fra en knude til en anden i grafen. distancen fra en knude til en anden kan defineres således:

@@ -1,30 +1,39 @@
 \section{Graftyper}
-Grafer kan opdeles i forskellige typer. Herunder simple grafer, multigrafer og pseudografer. Vi kigger først på en simpel graf, definitionen er givet ved:
+Grafer kan opdeles i forskellige typer. Herunder simple grafer, multigrafer og pseudografer. Vi kigger først på en simpel graf.
+
 \begin{defn}[Simpel graf] \label{defn:simpel}
- 
-En simpel graf, $G=(V,E)$, består af $V$, en mængde af knuder, hvor $V \neq \emptyset$, og en mængde af kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$.
+En \emph{simpel graf}, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\nexists \ e_i, e_j \in E : e_i = e_j$.
 \end{defn}
 
-Det ses i definition \ref{defn:simpel}, at en kant skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder. 
+Det ses i definition \ref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
 
 \input{fig/tikz/grafer/graftyper/simpelgraf}
 
-I kontrast til den simple graf finder vi multigrafen. For denne type graf skal der være flere kanter, der er incident med det samme knudepar. Der må stadig ikke optræde løkker.
+I kontrast til den simple graf finder vi multigrafen, der skal indeholde flere kanter, som er incidente med samme knudepar. Hvis to kanter er incidente med samme knudepar, kaldes de \emph{parallelle}.
+
+\begin{defn}[Multigraf] \label{defn:multi}
+En \emph{multigraf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter,
+$E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j \in E : e_i = e_j$.
+\end{defn}
 
 \input{fig/tikz/grafer/graftyper/multigraf}
 
-En pseudograf er en graf, der \emph{kan} indeholde løkker, men generelt set er alle grafer pseudografer. Man vil dog kun bruge betegnelsen, pseudograf, hvis den indeholder en løkke, da det ellers vil være mere præcist at kalde den en simpel eller multigraf. Vi ser i eksemplet herunder, at der er to kanter, der er incident med $v_{1}$ og $v_{2}$, og der er en løkke ved $v_{4}$.
+I forlængelse heraf har vi pseudografen, som ingen krav har, om mængden af kanter mellem to knudepar, derimod skal der eksistere mindst én løkke. 
+
+\begin{defn}[Pseudograf] \label{defn:pseudo}
+En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $e_i \in E$ opfylder $e_i = \{v,v\}$.
+\end{defn}
+
+Vi ser i eksemplet herunder, at der er to parallelle kanter mellem $v_{1}$ og $v_{2}$ og en løkke ved $v_{4}$.
 
 \input{fig/tikz/grafer/graftyper/pseudograf}
 
 
 \subsection{Orienterede grafer og ikke-orienterede grafer}
-En anden typisk grafopdeling er opdelingen i orienterede og ikke-orienterede grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
+En anden typisk grafopdeling er opdelingen i \emph{orienterede} og \emph{ikke-orienterede} grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
 
-\begin{defn}
-[Orienteret graf] 
-
-En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde orienterede kanter, $E$. Hver orienterede kant er incident med et par knuder, $(u,v)$, hvor kanten går fra startknuden, $u$, til endeknuden, $v$. 
+\begin{defn} [Orienteret graf] 
+En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde orienterede kanter, $E$. Hver orienterede kant er incident med et ordnet knudepar, $(u,v)$, hvor kanten går fra startknuden, $u$, til endeknuden, $v$. 
 \end{defn}
 
 \input{fig/tikz/grafer/graftyper/orienteretgraf}
@@ -33,7 +42,7 @@ Der kan foruden disse to også være tale om \emph{blandede grafer}, som er graf
 Egenskaberne for de forskellige grafer kan ses herunder:
 
 
-\begin{center}
+\begin{center} \label{tab:typer}
 \begin{tabular}{ |p{4cm}|p{3cm}|p{3cm}|p{2cm}|  }
  \hline
  \multicolumn{4}{|c|}{Grafer} \\
@@ -50,9 +59,10 @@ Egenskaberne for de forskellige grafer kan ses herunder:
 \end{tabular}
 \end{center}
 
-Fordi kanterne i grafer med orienterede kanter er ordnede par, kan definitionen af knudens grader være antallet af kanter, der har denne knude som startknude, eller antallet af kanter, der har denne knude som endeknude:
-\begin{defn}
-[Graden af en orienteret graf] 
-I en graf med orienterede kanter er ind-graden, betegnet ved $\mathrm{deg}^{-}(v)$, antallet af kanter med $v$ som deres endeknude. Ud-graden, betegnet ved $\mathrm{deg}^{+}(v)$, er antallet af kanter med $v$ som deres startknude.
-\end{defn}
-Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type, vi bruger til optimering af gaslageret. I vores tilfælde vil vi tildele vores orienterede kanter vægt, hvilket beskrives senere i projektet.
+%Fordi kanterne i grafer med orienterede kanter er ordnede par, kan definitionen af knudens grader være antallet af kanter, der har denne knude som startknude, eller antallet af kanter, der har denne knude som endeknude:
+%
+%\begin{defn} [Graden af en orienteret graf] 
+%I en graf med orienterede kanter er ind-graden, betegnet ved $\mathrm{deg}^{-}(v)$, antallet af kanter med $v$ som deres endeknude. Ud-graden, betegnet ved $\mathrm{deg}^{+}(v)$, er antallet af kanter med $v$ som deres startknude.
+%\end{defn}
+
+Vi vil i projektet beskæftige os med orienterede grafer, da det er denne type, vi bruger til optimering af gaslageret. 
