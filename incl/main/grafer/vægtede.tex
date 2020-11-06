@@ -11,9 +11,9 @@ For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funkti
 Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne distancen fra en knude til en anden i grafen. distancen fra en knude til en anden kan defineres således:
 
 \begin{defn}[Distance]
-Lad $m\in \N $, $G=(V,E,w)$ være en simpel graf og  $e_{i,i+1}$ være en kant, som er incident med $i$ og $i+1$. Lad en tilfældig vej, $P$, gå gennem knuderne således $P=(v_1,v_2,\dotsc,v_m)$, da kan distancen beskrives som
+Lad $m\in \N $, $G=(V,E,w)$ være en vilkårlig graf og  $e_{i}$ være en kant, som er incident med $v_i$ og $v_{i+1}$. Lad en tilfældig, simpel vej, $P$, gå igennem kanterne således $P=(e_{1},e_{2},\dotsc,e_{m})$, da kan distancen beskrives som
 	\begin{equation*}
-	\mathrm{dist}(P)=\sum_{i=1}^{m}w(e_{i,i+1}).
+	\mathrm{dist}(P)=\sum_{i=1}^{m}w(e_{i}).
 	\end{equation*}  
 \end{defn}
 
@@ -21,13 +21,19 @@ Man kan således bruge følgende definitioner af korteste og længste vej i en v
 
 
 \begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
-Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som $\alpha(v_1,v_m)$.
+Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+	\begin{equation*}
+		\alpha(v_1,v_m)=\arg \min_{p\in} \mathfrak{p}
+	\end{equation*}
 \end{defn}
 
 På samme vis defineres længste vej:
 
 \begin{defn} [Længste vej i en vægtet graf]
-Lad $G=(V,E,w)$ være en simpel og vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som $\beta(v_1,v_m)$.
+Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+	\begin{equation*}
+		\beta(v_1,v_m)
+	\end{equation*}
 \end{defn}
 
 \begin{exmp}
