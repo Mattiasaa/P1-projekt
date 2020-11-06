@@ -23,17 +23,21 @@ Man kan således bruge følgende definitioner af korteste og længste vej i en v
 \begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
 Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation*}
-		\alpha(v_1,v_m)=\arg \min_{p\in} \mathfrak{p}
+		\alpha(v_1,v_m)=\arg \min_{P \in PP}
+		\textrm{dist}(P),
 	\end{equation*}
+	hvor PP er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 På samme vis defineres længste vej:
 
 \begin{defn} [Længste vej i en vægtet graf]
-Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation*}
-		\beta(v_1,v_m)
+		\beta(v_1,v_m)=\arg \max_{P \in PP}
+		\textrm{dist}(P),
 	\end{equation*}
+	hvor PP er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 \begin{exmp}

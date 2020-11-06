@@ -3,18 +3,15 @@ I visse tilfælde kan en graf deles op for at optimere en algoritme til løsning
 To mulige grafopdelinger er delgrafer og $k$-delte grafer.
 
 \begin{defn}[Delgraf] \label{defn:delgraf} %subgraph
-En delgraf af grafen, $G= (V,E)$, er en graf, $D = (W,F)$, skabt af delmængderne af kanterne, $F \subseteq E$, og knuderne, $W \subseteq V$, hvori $f_n$ er incident med $w_{n-1}$ og $w_n \forall f_n$.
+En delgraf af grafen, $G= (V,E)$, er en graf, $D = (W,F)$, skabt af delmængderne af kanterne, $F \subseteq E$, og knuderne, $W \subseteq V$, hvori det gælder $F \subseteq (\{u,v\} | u,v \in W)$.
 \end{defn}
 
 En delgraf er induceret, hvis mængden af kanter, $F$, indeholder alle kanter fra $E$, hvis knuder indgår i $W$.
 Delgrafen kaldes udspændende hvis $W=V$. 
 
-\begin{defn}[K-delt] \label{defn:k-delt} %k-partite
-En graf, $G$, kaldes en $k$-delt graf, $G = (V, E)$, hvis følgende betingelser opfyldes: $V= V_i \bigcup V_j \bigcup \dotsc \bigcup V_k, V_i \bigcap V_j  = \emptyset \forall i,j$ og $i\neq j$ .
+\begin{defn}[\emph{k}-delt] \label{defn:k-delt} %k-partite
+En graf, $G = (V, E)$, kaldes en $k$-delt graf, hvis $V$ kan deles op i $k$ ikke-tomme delmængder, $V_1, V_2,\dotsc, V_k$, således at $V= V_1 \bigcup V_2 \bigcup \dotsc \bigcup V_k$. Foruden gælder det at $V_i \bigcap V_j  = \emptyset \forall i,j$, og $i\neq j$. Samtidigt kan to vilkårlige knuder, $v$ og $u$, kun være naboer, hvis de befinder sig i forskellige delmængder. 
 \end{defn}
-
-En $k$-delt graf består af $k$ disjunkte, ikke-tomme delmængder, $V_1, V_2, \ldots, V_k$, hvor det for to vilkårlige knuder, $u$ og $v$, gælder, at de kun er naboer, hvis de er i forskellige delmængder.
-
 
 En af fordelene ved at dele en graf op i forskellige delgrafer er, at man i korteste-vej, eller i bestemte tilfælde længste-vej, kan finde den optimale delstruktur, $D_{ij}$, hvis den optimale delgraf, $D$, er fundet. Hvis den optimale vej, $D$, går fra $v_1$ til $v_5$ igennem knuderne $(v_1, v_3, v_4, v_5)$, er den optimale vej til de mellemliggende knuder også fundet. Eksempelvis går den optimale vej, $D_{ij}$, fra $v_1$ til $v_4$ igennem $v_3$.
 
