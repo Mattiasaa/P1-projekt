@@ -20,16 +20,30 @@ Lad G være en vilkårlig graf med nabomatricen
 \end{thm}
 
 \begin{proof}
-Bevis: Lad G være en graf med nabomatricen 
+Lad G være en graf med nabomatricen 
 \textbf{$A$}, hvor vi antager, at knuderne i $G$ har rækkefølgen $v_{1},v_{2},\cdots,v_{n}$. Antallet af veje fra $v_{i}$ til $v_{j}$ af længde 1 er da den $(i,j)$'te indgang til 
 \textbf{$A$}. Dette skyldes, at det blot er antallet af kanter fra $v_{i}$ til $v_{j}$.
 Vi antager, at den $(i,j)$'te indgang til 
 \textbf{${A^r}$} er antallet af forskellige veje, som går fra $v_{i}$ til $v_{j}$ og som har længden $r$. Dette er hypotesen, vi ønsker at bekræfte.
 Vi ser på nabomatricen \textbf{$A^{r+1}$}. 
 \textbf{$A^{r+1}$} er det samme som 
-\textbf{$A^{r}$}$\dotsc$\textbf{$A$}, og derfor er den $(i,j)$'te indgang af \textbf{$A^{r+1}$} lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsc+ b_{in}a_{nj}$. Her er $b_{ik}$  den $(i,k)$'te indgang til 
-\textbf{$A^{r}$}, som ifølge vores hypotese er antallet af veje fra $v_{i}$ til $v_{k}$ med længde $r$.
-En vej af længde $r + 1$ fra $v_{i}$ til $v_{k}$ er lavet ud fra en vej med længden $r$ fra begyndelsesknuden $v_{i}$ og hen til en mellemliggende knude $v_{k}$ samt den kant, der går fra $v_{k}$ til $v_{j}$. Vi ved fra kombinatorik, at antallet af muligheder er lig produktet af mulighederne ved første udfald og mulighederne ved andet udfald. Vi betegner antallet af veje med længden $r$ fra $v_{i}$ til $v_{k}$ med $b_{ik}$ og antallet af kanter fra $v_{k}$ til $v_{j}$ med $a_{kj}$ Finder vi produktet af dette for alle mellemliggende knuder, $v_{k}$, fås det ønskede resultat.
+\textbf{$A^{r}$}$\cdot$\textbf{$A$}. Derfor må indgangen til \textbf{$A^{r+1}$} være produktet af indgangene til \textbf{$A^{r}$} og kanterne fra \textbf{$A^{r}$} til \textbf{$A^{r+1}$}. Vi siger, at $b_{ik}$ er den $(i,k)$'te indgang til 
+\textbf{$A^{r}$}, som ifølge vores hypotese er antallet af veje fra $v_{i}$ til $v_{k}$ med længde $r$. Vi siger også at $a_{k,j}$ er den $(k,j)$'te indgang til 
+\textbf{$A^{r+1}$}, som ifølge vores hypotese er antallet af veje fra $v_{k}$ til $v_{j}$ med længde $1$, hvilket vil sige kanterne mellem punkterne. Derved får vi den $(i,j)$'te indgang af \textbf{$A^{r+1}$} til at være: 
+
+\begin{equation*}
+A^{r+1}=b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsc+ b_{in}a_{nj}
+\end{equation*}
+
+Det ses altså, at en vej af længde $r + 1$ fra $v_{i}$ til $v_{j}$ er lavet ud fra en vej med længden $r$ fra begyndelsesknuden $v_{i}$ og hen til en mellemliggende knude $v_{k}$ samt den kant, der går fra $v_{k}$ til $v_{j}$. 
+Da dette er summen af produktet af alle veje med længden r fra $v_{i}$ til $v_{k}$ og alle kanter fra $v_{k}$ til $v_{j}$, som har længden 1, og dette findes for alle mulige $v_{k}$ kan ovenstående ligning også omskrives til: 
+
+\begin{equation*}
+A^{r+1}=\sum_{k=1}^{K} b_{ik}\cdot a_{kj}
+\end{equation*}
+
+For den første mulige $v_{k}$ har vi altså $b_{i1}$, som er antallet af veje fra $v_{i}$ til den første $v_{k}$, og $a_{1j}$ er vejen fra den første $v_{k}$ til $v_{j}$. Det ses, at produktet af disse to lægges sammen med produktet for de resterende $v_{k}$, så vi har antallet af alle mulige veje fra $v_{i}$ til $v_{j}$ gennem alle mulige $v_{k}$. Antallet af veje fra $v_{i}$ til $v_{j}$ med længde $r+1$ vil da være den (i,j)'te indgang til $A^{r+1}$. Derfor må det også gælde, at antallet af veje fra $v_{i}$ til $v_{j}$ med længde $r$ vil være den (i,j)'te indgang til $A^{r}$, hvilket var det, vi ville bevise.
+
 \end{proof}
 
 \begin{exmp}
