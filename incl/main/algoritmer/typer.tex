@@ -38,7 +38,7 @@ Modsat den lineære søgning kan den binære søgning kun bruges, når en liste 
     		\Else
     		\State $j:=m$
     		\EndIf
-    \If $x=a_{i}$
+    \If {$x=a_{i}$}
     \State \textbf{print} $lokation:=i$
     \Else
     \State \textbf{print} $lokation:=0$
@@ -58,8 +58,8 @@ Når vi arbejder med sorteringsalgoritmer, er det, fordi vi ønsker at sortere e
 
 \Procedure{bubble sortering($a_{1},a_{2},\dotsc,a_{n}$: Reelle tal hvor $n \geq 2$)}{}
 \EndProcedure
-\For $i:=1$ to $n-1$
-    	\For $j:=1$ to $n-i$
+\For {$i:=1$ \textbf{to} $n-1$}
+    	\For {$j:=1$ \textbf{to} $n-i$}
     		\If {$a_{j}>a_{j+1}$}
     			\State Ombyt $a_{j}$ og $a_{j+1}$ 	
 \EndIf
@@ -71,4 +71,26 @@ Når vi arbejder med sorteringsalgoritmer, er det, fordi vi ønsker at sortere e
 \end{algorithm}
 
 Indskudssortering er også simpel og heller ikke altid den mest effektive. For denne algoritme gælder det, at man starter med den anden værdi i listen. Denne sammenlignes med den første værdi, og disse to sorteres nu efter størrelse. Den tredje værdi i listen sammenlignes derefter med den første. Hvis den er større, sammenliges den med den anden værdi i listen og på den måde sorteres hele rækken så de til sidst står i rækkefølge.
+
+\begin{algorithm}
+\caption{Indskudssorteringsalgoritmen}
+\begin{algorithmic}[1]
+
+\Procedure{indskudssortering($a_{1},a_{2},\dotsc,a_{n}$: Reelle tal hvor $n \geq 2$)}{}
+\EndProcedure
+\For {$j:=2$ \textbf{to} $n$}
+	\State $i:=1$
+    	\While {$a_{j}>a_{i}$}
+    		\State $i:=i+1$
+    	\EndWhile
+    	\State $m:=a_{j}$
+    	\For {$k:=0$ \textbf{to} $j-i-1$}
+    		\State $a_{j-k}:=a_{j-k-1}$
+    	\EndFor
+    	\State $a_{i}:=m$
+\EndFor
+\State $a_{1},a_{2},\dotsc,a_{n}$ er i voksende rækkefølge. 
+
+\end{algorithmic}
+\end{algorithm}
 
