@@ -1,18 +1,74 @@
 \section{typer}
 \subsection{Søgealgoritmer}
-Søgealgoritmer er algoritmer, der løser søgeproblemer. Det vil sige problemer, hvor man vil finde et element, $x$, i en liste af elementer, $a1, a2, a3, ..., an$ eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$ hvis $x=a_{i}$. Det er altså indexet, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. den lineære søgning og den binære søgning. Ved den lineære søgning starter man med $a_1$ og ser om $x=a_{1}$. Hvis dette er tilfældet er $a_{1}$'s index svaret, men hvis $x!=a_{1}$, fortsætter man til $a_{2}$, så $a_{3}$, og sådan fortsætter man, til man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements index. Lad os tage et eksempel:
- 
-(Indsæt eksempel) 
+Søgealgoritmer er algoritmer, der løser søgeproblemer. Det vil sige problemer, hvor man vil finde et element, $x$, i en liste af elementer, $a1, a2, a3, ..., an$ eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$ hvis $x=a_{i}$. Det er altså indexet, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. den lineære søgning og den binære søgning. Ved den lineære søgning starter man med $a_1$ og ser om $x=a_{1}$. Hvis dette er tilfældet er $a_{1}$'s index svaret, men hvis $x!=a_{1}$, fortsætter man til $a_{2}$, så $a_{3}$, og sådan fortsætter man, til man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements index. Lad os tage et eksempel på en lineær søgealgoritme:
+
+\begin{algorithm}
+\caption{Den lineære søgealgoritme}
+\begin{algorithmic}[1]
+
+\Procedure{lineær søgning($x$: heltal, $a_{1},a_{2},\dotsc,a_{n}$: Heltal i listen)}{}
+    \State $i:=1$
+    \While{$i \leq n$ and $x \neq a_{i}$}
+        \State $i=i+1$
+    \If{$i<=n$} 
+    \State \textbf{print} $lokation:=i$
+    \Else
+    \State \textbf{print}$lokation:=0$
+    \EndIf
+    \EndWhile  \label{roy's loop}
+\EndProcedure
+
+\end{algorithmic}
+\end{algorithm}
+
 
 Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er inddelt efter størrelse. Det vil sige hvis listen er voksende, aftagende eller alfabetisk, $a_{1}<a_{2}<\dotsb<a_{n}$. Den binære søgningsalgoritme finder nu midten af listen $a_{m}$. For $m$ gælder det, at $m=\frac{n+1}{2}$. Vi ser nu hvilken side, det vi søger er på. Hvis midten $a_{m}<x$ , så tager vi halvdelen større end $a_{m}$ dvs: $a_{m+1}, a_{m+2},\dotsc,a_{n}$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $a_{1}, a_{2},\dotsc,a_{m}$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurderes, hvilken side man skal arbejde videre med. Dette fortsætter, indtil tallet er fundet. 
 
-(Indsæt eksempel) 
+\begin{algorithm}
+\caption{Den binære søgealgoritme}
+\begin{algorithmic}[1]
+
+\Procedure{binær søgning($x$: heltal, $a_{1},a_{2},\dotsc,a_{n}$: Voksende heltal i listen)}{}
+    \State $i:=1$ {i er venstre endepunkt i søgeintervallet}
+    \State $j:=n$ {j er højre endepunkt i søgeintervallet}
+    \While{$i<j$}
+        \State $m=\lfloor (i+j)/2 \rfloor$
+    		\If{$x>a_{m}$}
+    		\State $i:=m+1$
+    		\Else
+    		\State $j:=m$
+    		\EndIf
+    \If $x=a_{i}$
+    \State \textbf{print} $lokation:=i$
+    \Else
+    \State \textbf{print} $lokation:=0$
+    \EndIf
+    \EndWhile  \label{roy's loop}
+\EndProcedure
+
+\end{algorithmic}
+\end{algorithm}
 
 \subsection{Sorteringsalgoritmer}
 Når vi arbejder med sorteringsalgoritmer, er det, fordi vi ønsker at sortere en liste, således at den inddeles i voksende rækkefølge eller efter alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. To af algoritmerne er bubble-sortering og indskudssortering. Bubble sortering er en af de simpleste sorteringsalgoritmer, men ikke så effektiv. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis den første ikke er lavere end den anden.
 
-(Indsæt eksempel) 
+\begin{algorithm}
+\caption{Bubble sorteringsalgoritmen}
+\begin{algorithmic}[1]
+
+\Procedure{bubble sortering($a_{1},a_{2},\dotsc,a_{n}$: Reelle tal hvor $n \geq 2$)}{}
+\EndProcedure
+\For $i:=1$ to $n-1$
+    	\For $j:=1$ to $n-i$
+    		\If {$a_{j}>a_{j+1}$}
+    			\State Ombyt $a_{j}$ og $a_{j+1}$ 	
+\EndIf
+\EndFor
+\EndFor
+\State $a_{1},a_{2},\dotsc,a_{n}$ er i voksende rækkefølge. 
+
+\end{algorithmic}
+\end{algorithm}
 
 Indskudssortering er også simpel og heller ikke altid den mest effektive. For denne algoritme gælder det, at man starter med den anden værdi i listen. Denne sammenlignes med den første værdi, og disse to sorteres nu efter størrelse. Den tredje værdi i listen sammenlignes derefter med den første. Hvis den er større, sammenliges den med den anden værdi i listen og på den måde sorteres hele rækken så de til sidst står i rækkefølge.
 
-(Indsæt eksempel)
