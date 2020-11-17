@@ -1,0 +1,28 @@
+\begin{algorithm}
+\caption{Dijkstras algoritme}
+\begin{algorithmic}[1]
+
+\Procedure{dijkstra($G$: vægtet, forbundet, simpel graf med kun ikke-negative vægte)}{}
+    \State \{$G$ {har knuderne $a = v_{1}, v_{2}, \dotsc, v_{m} = z$ og vægtene til kanterne $w(v_{i}, v_{j})$, hvor $w(v_{i}, v_{j}) = \infty$ hvis {$(v_{i}, v_{j})$} ikke er en kant i G\}}
+	\For {$i := 2$ \textbf{to} $n$}
+		\State $L(v_{i}) := \infty$
+	\EndFor
+	\State $L(a) := 0$	
+	\State $S := \emptyset$
+	\State {\{distancen til hver knude initialiseres, så $a = 0$, og distancen til alle andre knuder er $\infty$, derudover er $S$ defineret som en tom mængde\}}
+    \While{$z \notin S$}
+        \State {$u :=$ en knude som ikke er i $S$ med $L(u)$ som minimum}
+        \State $S := S \cup \{u\}$
+        \For {alle $v \notin S$}
+        	\If {$L(u) + w(u,v) < L(v)$} {$L(v) := L(u) + w(u,v)$}
+        	\State \{dette tilføjer knuder til $S$ med minimal 			distance og opdaterer distancerne til
+        	\State knuderne, som ikke er i $S$\}
+        	\EndIf
+    	\EndFor
+    \EndWhile
+    \State {\textbf{return} $L(z)$ \{$L(z)$ er distancen af den korteste vej fra $a$ til $z$\}} 
+\EndProcedure
+
+\end{algorithmic}
+\label{alg:dijkstra}
+\end{algorithm}
