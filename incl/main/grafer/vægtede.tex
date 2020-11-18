@@ -11,9 +11,9 @@ For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funkti
 Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne \emph{distancen} fra en knude til en anden i grafen. Distancen fra en knude til en anden kan defineres således:
 
 \begin{defn}[Distance]
-Lad $m\in \N $, $G=(V,E,w)$ være en vilkårlig graf og  $e_{i}$ være en kant, som er incident med $v_i$ og $v_{i+1}$. Lad en tilfældig, simpel vej, $P$, gå igennem kanterne således $P=(e_{1},e_{2},\dotsc,e_{m})$, da kan distancen beskrives som
+Lad $m\in \N $, $G=(V,E,w)$ være en vilkårlig graf og  $e_{v_i,v_{i+1}}$ være en kant, som er incident med $v_i$ og $v_{i+1}$. Lad en tilfældig, simpel vej, $P$, gå igennem knuderne således $P=(v_{1},v_{2},\dotsc,v_{m})$, da kan distancen beskrives som
 	\begin{equation*}
-	\mathrm{dist}(P)=\sum_{i=1}^{m}w(e_{i}).
+	\mathrm{dist}(P)=\sum_{i=1}^{m}w(e_{v_i,v_{i+1}}).
 	\end{equation*}  
 \end{defn}
 
@@ -23,10 +23,10 @@ Man kan således bruge følgende definitioner af \emph{korteste vej} og \emph{l�
 \begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
 Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation*}
-		\alpha(v_1,v_m)=\arg \min_{P \in PP}
+		\alpha(v_1,v_m)=\arg \min_{P \in \euscr{P}}
 		\textrm{dist}(P),
 	\end{equation*}
-	hvor PP er mængden af alle veje fra $v_1$ til $v_m$.
+	hvor $\euscr{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 På samme vis defineres længste vej:
@@ -34,10 +34,10 @@ På samme vis defineres længste vej:
 \begin{defn} [Længste vej i en vægtet graf]
 	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation*}
-		\beta(v_1,v_m)=\arg \max_{P \in PP}
+		\beta(v_1,v_m)=\arg \max_{P \in \euscr{P}}
 		\textrm{dist}(P),
 	\end{equation*}
-	hvor PP er mængden af alle veje fra $v_1$ til $v_m$.
+	hvor $\euscr{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 \begin{exmp}
@@ -59,5 +59,5 @@ Man kan nu beregne distancen af de fire veje, ved at tage summen af de kanter, v
 	P_4=&5+1+2=8
 \end{align*}
 Det ses, at den korteste vej fra $v_1$ til $v_6$ er $P_4$. 
-Det er sådan, man kan finde korteste vej i en vægtet graf. Dog kan denne metode blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i kapitel \ref{kap.algo}.
+Det er sådan, man kan finde korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i kapitel \ref{kap.algo}.
 \end{exmp}
