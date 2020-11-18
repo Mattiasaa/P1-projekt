@@ -1,4 +1,4 @@
-\section{Dijkstras}
+\section{Dijkstras algoritme}
 I \ref{defn:min.vej} definerede vi distancen af den korteste vej i en vægtet graf. For at finde den korteste vej vil vi anvende \emph{Dijkstras algoritme}. Dijkstras algoritme kan bruges til at finde den korteste vej i en simpel, vægtet graf, hvori vægtene for alle kanter i grafen skal være ikke-negative. Algoritmen fungerer således, at den finder den korteste vej fra en startknude $v_{1}$ til en endeknude $v_{m}$ ved først at finde naboknuderne til $v_{1}$ og undersøge hvilken af disse, der har den mindste distance og altså er tættest på startknuden. Derefter tager den udgangspunkt i den naboknude, hvortil distancen er mindst og fortsætter af dennes vej, indtil vejen har en større distance end en alternativ vej.
 
 \begin{exmp}
