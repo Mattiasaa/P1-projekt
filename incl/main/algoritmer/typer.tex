@@ -1,9 +1,9 @@
 \section{Algoritmetyper}
-Der findes mange typer algoritmer, som løser mange forskellige problemer. Der er dog nogle kendetegn, som skal gøre sig gældende for alle algoritmer. Der skal være et input, og for hver inputværdi er der en outputværdi. Algoritmens trin skal være præcist defineret, så der ikke kan herske tvivl om, hvad der skal gøres i hvert trin. En algoritme skal producere den korrekte outputværdi til hvert input. En algoritme er begrænset. Den kan have mange trin, men altså ikke ubegrænset, hvilket vil sige at den vil stoppe på et tidspunkt. En algoritme skal være effektiv, så man præcist og indenfor et begrænset tidsrum kan løse trin, og sidst men ikke mindst skal en algortime være generel, så den kan løse alle problemer af den type og form.
+Der findes mange typer algoritmer, som løser mange forskellige problemer. Der er dog nogle kendetegn, som skal gøre sig gældende for alle algoritmer. Der skal være et input, og for hver inputværdi er der en outputværdi. Algoritmens trin skal være præcist defineret, så der ikke kan herske tvivl om, hvad der skal gøres i hvert trin. En algoritme skal producere den korrekte outputværdi til hvert input. En algoritme er begrænset. Den kan have mange trin, men altså ikke ubegrænset, hvilket vil sige, at den vil stoppe på et tidspunkt. En algoritme skal være effektiv, så man præcist og indenfor et begrænset tidsrum kan løse trin. Slutteligt skal en algortime være generel, så den er anvendelig på alle problemer af denne type og form.
 
 Selvom algoritmer alle har dette til fælles, er forskelligheden blandt dem stadig stor. Vi vil i det følgende se på forskellige typer af algoritmer.
 \subsection{Søgealgoritmer}
-Søgealgoritmer er algoritmer, der løser søgeproblemer. Det vil sige problemer, hvor man vil finde et element, $x$, i en liste af elementer, $a1, a2, a3, ..., an$ eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$ hvis $x=a_{i}$. Det er altså indekset, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. den lineære søgning og den binære søgning. Ved den lineære søgning starter man med $a_1$ og ser om $x=a_{1}$. Hvis dette er tilfældet er $a_{1}$'s indeks svaret, men hvis $x!=a_{1}$, fortsætter man til $a_{2}$, så $a_{3}$, og sådan fortsætter man, til man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements indeks. Lad os tage et eksempel på en lineær søgealgoritme:
+\emph{Søgealgoritmer} er algoritmer, der løser søgeproblemer. Det vil sige problemer, hvor man vil finde et element, $x$, i en liste af elementer, $a_{1}, a_{2}, \dotsc, a_{n}$, eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$ hvis $x=a_{i}$. Det er altså indekset, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. \emph{den lineære søgning} og \emph{den binære søgning}. Ved den lineære søgning starter man med $a_1$ og ser om $x=a_{1}$. Hvis dette er tilfældet, er $a_{1}$'s indeks svaret, men hvis $x \neq a_{1}$, fortsætter man til $a_{2}$, så $a_{3}$, og sådan fortsætter man, til man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements indeks. Lad os tage et eksempel på en lineær søgealgoritme:
 
 \begin{algorithm}[H]
 \caption{Den lineære søgealgoritme}
@@ -11,12 +11,12 @@ Søgealgoritmer er algoritmer, der løser søgeproblemer. Det vil sige problemer
 
 \Procedure{lineær søgning($x$: heltal, $a_{1},a_{2},\dotsc,a_{n}$: Heltal i listen)}{}
     \State $i:=1$
-    \While{$i \leq n$ and $x \neq a_{i}$}
-        \State $i=i+1$
-    \If{$i<=n$} 
+    \While{$i \leq n$ \textbf{and} $x \neq a_{i}$}
+        \State $i:=i+1$
+    \If{$i \leq n$} 
     \State \textbf{print} $lokation:=i$
     \Else
-    \State \textbf{print}$lokation:=0$
+    \State \textbf{print} $lokation:=0$
     \EndIf
     \EndWhile  \label{roy's loop}
 \EndProcedure
@@ -25,15 +25,15 @@ Søgealgoritmer er algoritmer, der løser søgeproblemer. Det vil sige problemer
 \end{algorithm}
 
 
-Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er inddelt efter størrelse. Det vil sige hvis listen er voksende, aftagende eller alfabetisk, $a_{1}<a_{2}<\dotsb<a_{n}$. Den binære søgningsalgoritme finder nu midten af listen $a_{m}$. For $m$ gælder det, at $m=\frac{n+1}{2}$. Vi ser nu hvilken side, det vi søger er på. Hvis midten $a_{m}<x$ , så tager vi halvdelen større end $a_{m}$ dvs: $a_{m+1}, a_{m+2},\dotsc,a_{n}$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $a_{1}, a_{2},\dotsc,a_{m}$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurderes, hvilken side man skal arbejde videre med. Dette fortsætter, indtil tallet er fundet. 
+Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er inddelt efter størrelse. Det vil sige, hvis listen er voksende, aftagende eller alfabetisk, $a_{1}<a_{2}<\dotsb<a_{n}$. Den binære søgealgoritme finder nu midten af listen $a_{m}$. For $m$ gælder det, at $m=\frac{n+1}{2}$. Vi ser nu, hvilken side det, vi søger, er på. Hvis midten $a_{m}<x$ , så tager vi halvdelen større end $a_{m}$ dvs: $a_{m+1}, a_{m+2},\dotsc,a_{n}$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $a_{1}, a_{2},\dotsc,a_{m}$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. 
 
 \begin{algorithm}[H]
 \caption{Den binære søgealgoritme}
 \begin{algorithmic}[1]
 
 \Procedure{binær søgning($x$: heltal, $a_{1},a_{2},\dotsc,a_{n}$: Voksende heltal i listen)}{}
-    \State $i:=1$ {i er venstre endepunkt i søgeintervallet}
-    \State $j:=n$ {j er højre endepunkt i søgeintervallet}
+    \State $i:=1$, {$i$ er venstre endepunkt i søgeintervallet}
+    \State $j:=n$, {$j$ er højre endepunkt i søgeintervallet}
     \While{$i<j$}
         \State $m=\lfloor (i+j)/2 \rfloor$
     		\If{$x>a_{m}$}
@@ -53,13 +53,13 @@ Modsat den lineære søgning kan den binære søgning kun bruges, når en liste 
 \end{algorithm}
 
 \subsection{Sorteringsalgoritmer}
-Når vi arbejder med sorteringsalgoritmer, er det, fordi vi ønsker at sortere en liste, således at den inddeles i voksende rækkefølge eller efter alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. To af algoritmerne er bubble-sortering og indskudssortering. Bubble sortering er en af de simpleste sorteringsalgoritmer, men ikke så effektiv. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis den første ikke er lavere end den anden.
+Når vi arbejder med \emph{sorteringsalgoritmer}, er det, fordi vi ønsker at sortere en liste, således at den inddeles i voksende rækkefølge eller efter alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. Eksempler på disse er \emph{bubblesortering} og \emph{indskudssortering}. Bubblesortering er en af de simpleste sorteringsalgoritmer, men den er ikke så effektiv. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis den første ikke er lavere end den anden.
 
 \begin{algorithm}[H]
-\caption{Bubble sorteringsalgoritmen}
+\caption{Bubblesorteringsalgoritmen}
 \begin{algorithmic}[1]
 
-\Procedure{bubble sortering($a_{1},a_{2},\dotsc,a_{n}$: Reelle tal hvor $n \geq 2$)}{}
+\Procedure{bubblesortering($a_{1},a_{2},\dotsc,a_{n}$: Reelle tal hvor $n \geq 2$)}{}
 \EndProcedure
 \For {$i:=1$ \textbf{to} $n-1$}
     	\For {$j:=1$ \textbf{to} $n-i$}
@@ -73,7 +73,7 @@ Når vi arbejder med sorteringsalgoritmer, er det, fordi vi ønsker at sortere e
 \end{algorithmic}
 \end{algorithm}
 
-Indskudssortering er også simpel og heller ikke altid den mest effektive. For denne algoritme gælder det, at man starter med den anden værdi i listen. Denne sammenlignes med den første værdi, og disse to sorteres nu efter størrelse. Den tredje værdi i listen sammenlignes derefter med den første. Hvis den er større, sammenliges den med den anden værdi i listen og på den måde sorteres hele rækken så de til sidst står i rækkefølge.
+Indskudssortering er på samme måde som bubblesortering simpel og til tider ineffektiv. For denne algoritme gælder det, at man starter med den anden værdi i listen, som sammenlignes med den første værdi. Disse to sorteres nu efter størrelse. Den tredje værdi i listen sammenlignes derefter med den første. Hvis den er større, sammenlignes den med den anden værdi i listen, og på den måde sorteres hele rækken, så de til sidst står i rækkefølge.
 
 \begin{algorithm}[H]
 \caption{Indskudssorteringsalgoritmen}
