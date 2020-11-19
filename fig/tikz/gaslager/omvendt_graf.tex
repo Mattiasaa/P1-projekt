@@ -1,0 +1,73 @@
+\begin{figure}[H]
+\centering
+	\begin{tikzpicture}
+
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+%% Vertices
+      	\node[enclosed, label={left: $q_{0}$}] (v1) at (0,2) {};
+      	\node[enclosed, label={below: $q_{min},   t$}] (v2) at (2,0) {};
+    		\node[enclosed, label={below: }] (v3) at (2,2) {};
+  	    \node[enclosed, label={above: $q_{max}$}] (v4) at (2,4) {};
+     	\node[enclosed, label={left: }] (v5) at (4,0) {};
+     	\node[enclosed, label={left: }] (v6) at (4,2) {};
+     	\node[enclosed, label={left: }] (v7) at (4,4) {};
+     	\node[enclosed, label={right: }] (v8) at (6,0) {};
+     	\node[enclosed, label={right: }] (v9) at (6,2) {};
+     	\node[enclosed, label={right: }] (v10) at (6,4) {};
+     	\node[enclosed, label={right: }] (v11) at (8,0) {};
+     	\node[enclosed, label={below: }] (v12) at (8,2) {};
+      	\node[enclosed, label={below: }] (v13) at (8,4) {};
+  	    \node[enclosed, label={below: }] (v14) at (10,0) {};
+  	    \node[enclosed, label={below: }] (v15) at (10,2) {};
+     	\node[enclosed, label={below: }] (v16) at (10,4) {};
+     	\node[enclosed, label={below: }] (v17) at (12,0) {};
+     	 \node[enclosed, label={below:}] (v18) at (12,2) {};
+     	\node[enclosed, label={below: }] (v19) at (12,4) {};
+     	\node[enclosed, label={right: $q_{slut}$ }] (v20) at (14,0) {};
+     	
+%Edges
+		\path (v1) edge node[midway, sloped, above, label={below: $-20$ }] {} (v2);
+		\path (v1) edge node[midway, sloped, below, label={above: $0$ }] {} (v3);
+		\path (v1) edge node[midway, sloped, below, label={above: $20$ }] {} (v4);
+		\path (v2) edge node[midway, sloped, above, label={below: $0$ }] {} (v5);
+		\path (v2) edge node[midway, above, label={above: $22$ }] {} (v6);
+		\path (v3) edge node[near end, sloped, below, label={above: $-22$ }] {} (v5);
+		\path (v3) edge node[midway, sloped, below, label={above: $0$ }] {} (v6);
+		\path (v3) edge node[midway, above, label={above: $22$ }] {} (v7);
+		\path (v4) edge node[near end, sloped, below, label={above: $-22$ }] {} (v6);
+		\path (v4) edge node[midway, sloped, below, label={above: $0$ }] {} (v7);
+		\path (v5) edge node[midway, sloped, above, label={below: $0$ }] {} (v8);
+		\path (v5) edge node[midway, above, label={above: $25$ }] {} (v9);
+		\path (v6) edge node[near end, sloped, below, label={above: $-25$ }] {} (v8);
+		\path (v6) edge node[midway, sloped, below, label={above: $0$ }] {} (v9);
+		\path (v6) edge node[midway, above, label={above: $25$ }] {} (v10);
+		\path (v7) edge node[near end, sloped, below, label={above: $-25$ }] {} (v9);
+		\path (v7) edge node[midway, sloped, below, label={above: $0$ }] {} (v10);
+		\path (v8) edge node[midway, sloped, above, label={below: $0$ }] {} (v11);
+		\path (v8) edge node[midway, above, label={above: $18$ }] {} (v12);
+		\path (v9) edge node[near end, sloped, below, label={above: $-18$ }] {} (v11);
+		\path (v9) edge node[midway, sloped, below, label={above: $0$ }] {} (v12);
+		\path (v9) edge node[midway, above, label={above: $18$ }] {} (v13);
+		\path (v10) edge node[near end, sloped, below, label={above: $-18$ }] {} (v12);
+		\path (v10) edge node[midway, sloped, below, label={above: $0$ }] {} (v13);
+		\path (v11) edge node[midway, sloped, above, label={below: $0$ }] {} (v14);
+		\path (v11) edge node[midway, above, label={above: $15$ }] {} (v15);
+		\path (v12) edge node[near end, sloped, below, label={above: $-15$ }] {} (v14);
+		\path (v12) edge node[midway, sloped, below, label={above: $0$ }] {} (v15);
+		\path (v12) edge node[midway, above, label={above: $15$ }] {} (v16);
+		\path (v13) edge node[near end, sloped, below, label={above: $-15$ }] {} (v15);
+		\path (v13) edge node[midway, sloped, below, label={above: $0$ }] {} (v16);
+		\path (v14) edge node[midway, sloped, above, label={below: $0$ }] {} (v17);
+		\path (v14) edge node[midway, above, label={above: $15$ }] {} (v18);
+		\path (v15) edge node[near end, sloped, below, label={above: $-15$ }] {} (v17);
+		\path (v15) edge node[midway, sloped, below, label={above: $0$ }] {} (v18);
+		\path (v15) edge node[midway, above, label={above: $15$ }] {} (v19);
+		\path (v16) edge node[near end, sloped, below, label={above: $-15$ }] {} (v18);
+		\path (v16) edge node[midway, sloped, below, label={above: $0$ }] {} (v19);
+		\path (v17) edge node[midway, sloped, above, label={below: $0$ }] {} (v20);
+		\path (v18) edge node[midway, sloped, above, label={below: $-15$ }] {} (v20);
+		\path (v19) edge node[midway, sloped, below, label={above: $-30$ }] {} (v20);
+	\end{tikzpicture}
+	\caption{Graf for forsimplet gaslager ganget med -1.}
+	\label{fig.gaslager_graf}
+\end{figure}
