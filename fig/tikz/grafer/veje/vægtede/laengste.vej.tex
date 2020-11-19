@@ -1,0 +1,21 @@
+\begin{figure}[H]
+\centering
+	\begin{tikzpicture}
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+%% Vertices
+	%ikke orienteret
+      	\node[enclosed, label={left, above: $v_1$}] (v1) at (0,2) {};
+     	\node[enclosed, label={left, below: $v_2$}] (v2) at (0,0) {};
+     	\node[enclosed, label={right, above: $v_3$}] (v3) at (2,2) {};
+     	\node[enclosed, label={right, below: $v_4$}] (v4) at (2,0) {};    	
+%Edges
+	%Ikke orientered
+		\path [thick] (v1) edge node[midway, left] {1} (v2);
+		\path [thick] (v1) edge node[midway, above] {1} (v3);
+		\path [thick] (v2) edge node[midway, below] {1} (v4);
+		\path [thick] (v3) edge node[midway, right] {1} (v4);
+
+\end{tikzpicture}
+	\caption{Simpel vægtet graf.}
+	\label{fig:laengste.vej}
+\end{figure}
