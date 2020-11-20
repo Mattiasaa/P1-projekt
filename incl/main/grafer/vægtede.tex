@@ -1,4 +1,4 @@
-\subsection{Vægtede grafer}
+\subsection{Vægtede grafer} \label{kap:vaegtede}
 En \emph{vægtet graf} er en graf, hvori kanterne eller knuderne får tildelt en numerisk værdi. I dette projekt arbejdes der udelukkende med vægtede kanter, og vi vil derfor kun fokusere på dem i dette afsnit.
 En vægtet graf er defineret ved:
 \begin{defn}[Vægtede grafer]
@@ -59,11 +59,11 @@ Man kan nu beregne distancen af de fire veje, ved at tage summen af de kanter, v
 	P_4=&5+1+2=8
 \end{align*}
 Det ses, at den korteste vej fra $v_1$ til $v_6$ er $P_4$. 
-Det er sådan, man kan finde korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i kapitel \ref{kap.algo}.
+Det er sådan, man kan finde korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i \autoref{kap.algo}.
 \end{exmp}
 
-I modsætning til korteste vej problemer, er længste vej problemer betydeligt sværere. Dette skyldes at den længste vej ikke nødvendigvis indeholder optimale substrukturer. Hvis man betragter grafen i eksempel \ref{fig.vaegtetopg} kan man se at den korteste vej fra $v_1$ til $v_6$ også indeholder den korteste vej fra $v_1$ til $v_4$. Vi har altså fundet den korteste vej fra $v_1$ til alle punkter i vejen.
-Vi betragter nu figur \ref{fig:laengste.vej}
+I modsætning til korteste vej-problemer er længste vej-problemer betydeligt sværere. Dette skyldes, at den længste vej ikke nødvendigvis indeholder optimale delstrukturer. Hvis man betragter grafen i \autoref{fig.vaegtetopg}, kan man se, at den korteste vej fra $v_1$ til $v_6$ også indeholder den korteste vej fra $v_1$ til $v_4$. Vi har altså fundet den korteste vej fra $v_1$ til alle knuder i vejen.
+Vi betragter nu \autoref{fig:laengste.vej}.
 \input{fig/tikz/grafer/veje/vægtede/laengste.vej}
-Vi kan se at den korteste vej fra $v_1$ til $v_4$ går gennem punktet $v_3$. Vi har dermed også fundet den korteste vej fra $v_1$ til $v_3$. Det vil sige vi har en optimal substruktur. Hvis vi nu ser på den længste vej fra $v_1$ til $v_4$ går den også igennem $v_3$. Men i modsætning til korteste vej er den længste vej fra $v_1$ til $v_3$ ikke fundet, da denne går gennem $v_2$ og $v_4$. Derfor er det meget svært at arbejde med længste vej problemer.
-Hvis man tilgengæld arbejder med en orienteret acyclisk graf har man ikke samme problem med at finde længste vej, dog er det stadig nemmere at finde korteste vej idet algoritmer til at finde denne er bedre optimeret.
+Vi kan se, at den korteste vej fra $v_1$ til $v_4$ går gennem knuden $v_3$. Vi har dermed også fundet den korteste vej fra $v_1$ til $v_3$. Det vil sige, at vi har en optimal delstruktur. Hvis vi nu ser på den længste vej fra $v_1$ til $v_4$, går den også igennem $v_3$. I modsætning til korteste vej er den længste vej fra $v_1$ til $v_3$ ikke fundet, da denne går gennem $v_2$ og $v_4$. Derfor er det meget svært at arbejde med længste vej-problemer.
+Hvis man til gengæld arbejder med en orienteret acyklisk graf, har man ikke samme problem med at finde længste vej. Dog er det stadig nemmere at finde korteste vej, idet algoritmer til at finde denne er bedre optimeret.
