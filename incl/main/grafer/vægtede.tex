@@ -61,3 +61,9 @@ Man kan nu beregne distancen af de fire veje, ved at tage summen af de kanter, v
 Det ses, at den korteste vej fra $v_1$ til $v_6$ er $P_4$. 
 Det er sådan, man kan finde korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i kapitel \ref{kap.algo}.
 \end{exmp}
+
+I modsætning til korteste vej problemer, er længste vej problemer betydeligt sværere. Dette skyldes at den længste vej ikke nødvendigvis indeholder optimale substrukturer. Hvis man betragter grafen i eksempel \ref{fig.vaegtetopg} kan man se at den korteste vej fra $v_1$ til $v_6$ også indeholder den korteste vej fra $v_1$ til $v_4$. Vi har altså fundet den korteste vej fra $v_1$ til alle punkter i vejen.
+Vi betragter nu figur \ref{fig:laengste.vej}
+\input{fig/tikz/grafer/veje/vægtede/laengste.vej}
+Vi kan se at den korteste vej fra $v_1$ til $v_4$ går gennem punktet $v_3$. Vi har dermed også fundet den korteste vej fra $v_1$ til $v_3$. Det vil sige vi har en optimal substruktur. Hvis vi nu ser på den længste vej fra $v_1$ til $v_4$ går den også igennem $v_3$. Men i modsætning til korteste vej er den længste vej fra $v_1$ til $v_3$ ikke fundet, da denne går gennem $v_2$ og $v_4$. Derfor er det meget svært at arbejde med længste vej problemer.
+Hvis man tilgengæld arbejder med en orienteret acyclisk graf har man ikke samme problem med at finde længste vej, dog er det stadig nemmere at finde korteste vej idet algoritmer til at finde denne er bedre optimeret.
