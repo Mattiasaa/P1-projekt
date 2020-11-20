@@ -1,5 +1,5 @@
 \section{Basisproblemet}
-Vi har indgået en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi har lejet dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved køb og salg af gassen. Vi har en forward-kurve på prisen, således at vi til hver en tid i lejekontrakten kan se hvad prisen for gas bliver. Der er øvre og nedre grænser for beholdningen i gaslaget, og ved lejekontraktens udløb vil ejeren købe den resterende gas til prisen på det tidspunkt. Vi opstillere en tabel \ref{table:1} med de forskellige variable, som vi skal bruge til at løse optimeringsproblemet:
+Vi har indgået en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi har lejet dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved køb og salg af gassen. Vi har en forward-kurve på prisen, således at vi til hver en tid i lejekontrakten kan se hvad prisen for gas bliver. Der er øvre og nedre grænser for beholdningen i gaslaget, og ved lejekontraktens udløb vil ejeren købe den resterende gas til prisen på det tidspunkt. Vi opstiller en tabel, Tabel \ref{table:1}, med de forskellige variable, som vi skal bruge til at løse optimeringsproblemet:
 
 \begin{table}[h!]
 \centering
@@ -21,46 +21,18 @@ Vi har indgået en kontrakt med ejeren af et gaslager, hvori der kan lagres natu
  [1ex] 
  \hline
 \end{tabular}
-\caption{Table to test captions and labels}
+\caption{Table over variable i optimeringsproblemet}
 \label{table:1}
 \end{table}
 
-I basisproblemet er $q_{min}$, $q_{max}$, $i_{max}$ og $u_{max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperiden. Hvis vi ønsker at maksimere nutidsværdien af profitten fås:
+I basisproblemet er $q_{min}$, $q_{max}$, $i_{max}$ og $u_{max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperiden. De andre variable er ikke statiske og kan dermed ændre sig i løbet af lejeperioden. Disse variable skulle bruges til at løse vores optimeringsproblem. Det vi i problemet ønsker at optimere er profitten. Dette gør vi med ligningen:
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \Bigg\} \
 \end{equation}
-Her ville bibetingelserne være:\\
+Denne ligning har nogle bibetingelser:\\
 1. $q_{min} \leq q_{t} \leq q_{max}$\\
 2. $\Delta q_{t} \in \{-u_{max},-u_{max}+1,\cdots,-1,0,1,\cdots,i_{max}-1,i_{max} \}$ \\
-for $t \in \{1,\cdots,T\}$ hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$.
+for $t \in \{1,\cdots,T\}$ hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$. \\
 
-\section{Grafen for basisproblemet}
-Vi kan med udgangspunkt i afsnittet om grafteori opstille en graf for vores basisproblem. Grafen er en simpel, orienteret, vægtet graf. Vi opstiller et simplificeret eksempel på grafen med følgende data:
-\begin{itemize}
-  \item $t \in \{1,2,3,4,5,6\}$
-  \item $q_{0}=1$
-  \item $q_{min}=0$
-  \item $q_{max}=2$
-  \item $i_{max}=1$
-  \item $u_{max}=1$
-  \item $p_{6}=(20,22,25,18,15,15)$
-\end{itemize}
+Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse for gasenheder. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
 
-\input{fig/tikz/gaslager/forsimplet_graf}
-
-Vi ganger med -1 for at gøre det til et korteste vej problem:
-
-\input{fig/tikz/gaslager/omvendt_graf}
-
-Vi lægger 30 til alle tal, da Dijkstras algoritme kun virker på ikke-negative tal:
-
-
-\input{fig/tikz/gaslager/omvendt_positiv_graf}
-
-Vi vil nu opstille en tabel over de mulige veje gennem grafen, på samme måde som i eksempel (Dijkstras - indsæt ref)
-
-\input{fig/tab/gaslager/tabel_graf}
-
-Vi har dermed tre veje gennem grafen der alle er lige korte:
-
-\input{fig/tikz/gaslager/korteste_veje_problem}
