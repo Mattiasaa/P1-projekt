@@ -7,13 +7,16 @@ En \emph{delgraf} af grafen, $G= (V,E)$, er en graf, $D = (W,F)$, skabt af delm�
 \end{defn}
 
 En delgraf er \emph{induceret}, hvis mængden af kanter, $F$, indeholder alle kanter fra $E$, hvis knuder indgår i $W$.
-Delgrafen kaldes \emph{udspændende} hvis $W=V$. 
+Delgrafen kaldes \emph{udspændende} hvis $W=V$. Dette er illustreret på \autoref{fig:delgraf.eks}
+
+\input{fig/tikz/grafer/delgrafer/delgraf}
 
 \begin{defn}[\emph{k}-delt] \label{defn:k-delt} %k-partite
 En graf, $G = (V, E)$, kaldes en \emph{$k$-delt graf}, hvis $V$ kan deles op i $k$ ikke-tomme delmængder, $V_1, V_2,\dotsc, V_k$, således at $V= V_1 \bigcup V_2 \bigcup \dotsc \bigcup V_k$. Foruden gælder det at $V_i \bigcap V_j  = \emptyset \forall i,j$, og $i\neq j$. Samtidigt kan to vilkårlige knuder, $v$ og $u$, kun være naboer, hvis de befinder sig i forskellige delmængder. 
 \end{defn}
 
-Fordelen ved at dele en graf op i forskellige delgrafer er, at man i korteste vej kan finde den optimale delstruktur, hvis den optimale delgraf er fundet. 
+
+En af fordelene ved at dele en graf op i forskellige delgrafer er, at man i korteste vej-problemer kan finde den optimale delstruktur, hvis den optimale delgraf er fundet. 
 
 Hvis man betragter \autoref{fig:laengste.vej}, kan man beskrive den korteste vej $P=(v_1,v_3,v_4)$ som en optimal delgraf. Denne delgraf har også en optimal delstruktur, da den korteste vej fra $v_1$ til $v_3$ indgår i vejen $P=(v_1,v_3,v_4)$.
 Hvis vi kigger på den længste vej fra $v_1$ til $v_4$, $P=(v_1,v_3,v_4)$, ser vi, at den ikke har en optimal delstruktur, da den længste vej fra $v_1$ til $v_3$ ikke indgår i den længste vej fra $v_1$ til $v_4$.

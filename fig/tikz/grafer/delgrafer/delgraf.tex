@@ -1,0 +1,51 @@
+\begin{figure}[H]
+\centering
+	\begin{tikzpicture}
+
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.12cm, fill=black}}
+% Vertices
+	%Hel graf
+      	\node[enclosed] (v1) at (0,2) {};
+      	\node[enclosed] (v2) at (1,3) {};
+    	\node[enclosed] (v3) at (1,1) {};
+  	    \node[enclosed] (v4) at (4,2) {};
+  	    \node[enclosed] (v5) at (2,2) {};
+	%Induceret graf
+		\node[enclosed] (v6) at (6,2) {};
+      	\node[enclosed] (v7) at (7,3) {};
+  	    \node[enclosed] (v8) at (7,1) {};
+  	    \node[enclosed] (v9) at (10,2) {};
+	%Udspændende graf
+		\node[enclosed] (v10) at (12,2) {};
+      	\node[enclosed] (v11) at (13,3) {};
+    	\node[enclosed] (v12) at (13,1) {};
+  	    \node[enclosed] (v13) at (16,2) {};
+  	    \node[enclosed] (v14) at (14,2) {};
+%Edges
+	%Hel graf
+		\path (v1) edge node {} (v2);
+		\path (v1) edge node {} (v3);
+		\path (v3) edge node {} (v4);
+		\path (v3) edge node {} (v5);
+		\path (v4) edge node {} (v5);
+		\path (v2) edge node {} (v4);
+		\path (v2) edge node {} (v5);
+		\path (v2) edge node {} (v3);
+	%Induceret graf
+		\path (v6) edge node {} (v7);
+		\path (v6) edge node {} (v8);
+		\path (v8) edge node {} (v9);
+		\path (v7) edge node {} (v9);
+		\path (v7) edge node {} (v8);
+	%Udspændende graf
+		\path (v10) edge node {} (v11);
+		\path (v11) edge node {} (v12);
+		\path (v12) edge node {} (v14);
+		\path (v14) edge node {} (v13);
+		\path (v11) edge node {} (v13);
+
+	\end{tikzpicture}
+	\caption{Simpel graf, $G$ (venstre). Induceret delgraf af $G$ (midten). Udspændende delgraf af $G$ (højre).}
+	\label{fig:delgraf.eks}
+\end{figure}
+
