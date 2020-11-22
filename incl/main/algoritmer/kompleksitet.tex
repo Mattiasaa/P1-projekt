@@ -12,9 +12,9 @@ Det værste tilfælde giver et godt overblik over hvor lang tid det kan tage. Ve
 De forskellige resultater i vores analyse af algoritmerne, kan deles op i kategorier, de mest gængse er: $\log n$, $\sqrt{n}$, $n$, $n^x$, $x^n$ og $n!$, men det kan også være en kombination af disse, som $n!n$, $n\log n$ eller lignende.
 For at beskrive disse algoritmer i fx værste tilfælde, vil man bruge operatorerne \emph{store-O}, \emph{store-Omega} og \emph{Theta}. Man vil her fokusere på \emph{asymptotiske $n$-værdier}, altså ved rigtigt store værdier for $n$, da man i nogle tilfælde vil have en algoritme der er langsommere end den øvre bindende funktion ved små $n$, men ved større, som fx over 10.000, er hurtigere.
 
-\subsection{store-$O$}
+\subsection{Store-$O$}
 \begin{defn}
-$f(n) = O(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \leq C g(n) \forall n \geq n_o$
+$f(n) = O(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \leq C g(n) \forall n \geq n_o$.
 \end{defn}
 
 Store-$O$ bliver brugt til at binde funktionen opadtil, begrænse den oppe fra. Man kan med garanti sige, at algoritmen tager store-$O$ tid eller mindre. 
@@ -22,45 +22,69 @@ Store-$O$ bliver brugt til at binde funktionen opadtil, begrænse den oppe fra. 
 \begin{align*}
 f(n)=& 13n+3 \\
 13n+3 \leq& 20n \forall \ n \geq 1 \\
-f(n) =& O(n)
+f(n) =& O(n).
 \end{align*}
 \end{exmp}
 Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig højere funktion $g(n)$, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
 
 \subsection{Store-$\Omega$}
 \begin{defn}
-$f(n) = \Omega(g(n))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \geq C g(n) \forall n \geq n_o$
+$f(n) = \Omega(g(n))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \geq C g(n) \forall n \geq n_o$.
 \end{defn}
 Store-Omega bruges, omvendt store-$O$, til at binde funktionen nedadtil, altså finde den nedre grænse for algoritmen, den vil mindst tage store-Omega tid i det givne tilfælde.
 \begin{exmp}
 \begin{align*}
 f(n)=& 13n+3 \\
 13n+3 \geq& n \forall \ n \geq 1 \\
-f(n) =& \Omega(n)
+f(n) =& \Omega(n).
 \end{align*}
 \end{exmp}
 
 På samme måde som ved store-$O$-notationen, vil man her kunne vælge en vilkårlig mindre funktion, $logn$, $1$ med flere, men da man vil begrænse den så meget som muligt, vælger man den største funktion $g(n)$ hvor uligheden stadig er sand.
-\subsection{Theta}
+\subsection{Store-$\Theta$}
 \begin{defn}
-$f(n) = \Theta(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$ så at $C_1g(n) \leq f(n) \leq C_2g(n) \forall n \geq n_o$
+$f(n) = \Theta(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$ så at $C_1g(n) \leq f(n) \leq C_2g(n) \forall n \geq n_o$.
 \end{defn}
 Når man har fundet den øvre og den nedre grænse, store-O og store-Omega, kan man finde Theta, den tætte bundne funktion,
 \begin{exmp}
 \begin{align*}
 f(n)=& 13n+3 \\
-n \leq 13n+3 \leq& 10n \forall \ n \geq 1 \\
-f(n) =& \Theta(n)
+\Omega(n) \leq& f(n) \leq O(n) \\
+n \leq& 13n+3 \leq 10n \forall \ n \geq 1 \\
+f(n) =& \Theta(n).
 \end{align*}
 \end{exmp}
+
+I følgende afsnit tager vi udgangspunkt i to sorteringer, og ser hvordan de sammenligner sig på Store-$O$ i bedste og værste tilfælde.
+
+\subsection{Kompleksitet af bubblesortering} \label{kap:kom_bubble}
+
+For at finde kompleksiteten af bubblesortering, bruger vi store-$O$-notationen fra tidligere. 
+Bubblesortering, som nævnt i \autoref{kap:sortering}, sammenligner to elementer fra listen, og flytter rundt på dem, hvis de står i forkert rækkefølge.
+Vi starter med værste tilfælde. Her ser vi på en liste, $P$, der er sorteret i omvendt rækkefølge. $P = (5,4,3,2,1)$.
+i første gennemgang sammenligner den 5 med 4, og bytter om, 5 med 3, bytter igen, 5 med 2, bytter, og til sidst 5 med 1, nu står 5 korrekt og $P = (4, 3, 2, 1, 5)$
+Efter næste gennemgang er $P = (3, 2, 1, 4, 5)$ og de sidste gennemgange medfører hhv. $(2, 1, 3, 4, 5)$ og $(1, 2, 3, 4, 5)$. Her ses altså, at der gennemføres 5 gennemgange, eller $n$ gange. 
+For hver gang den sammenligner, gør den det $n-1$ gange. 
+Derved er kompleksiteten $O(n\times n)$ eller $O(n^2)$.
+
+I bedste tilfælde er listen, $P$, lig $(1, 2, 3, 4, 5)$.
+Her ses altså at der kun gennemføres én gennemgang, og der stadig udføres $n-1$ sammenligninger i denne gennemgang.
+Som vi kender fra tidligere teori, tælles de mindre ordner ikke med, derved er kompleksiteten $O(1n)$, eller $O(n)$. 
+
+\subsection{Kompleksitet af indskudssortering} \label{kap:kom_indskud}
+En anden sorteringsalgoritme fra \autoref{kap:sortering} er indskudssorteringen. 
+Denne tager udgangspunkt i et enkelt input af gangen og sammenligner dette med resten af den sorterede liste.
+Hvis vi igen benytter det værste tilfælde, $P = (5,4,3,2,1)$, ser vi at den først tager femtallen, og sætter ind i listen, herefter sammenligner den næste element i $P$ med den sorterede liste, der kun indeholder 5, dermed er den sorterede liste $Q = (5,4)$ og $P=(3,2,1)$. 
+Herefter indsættes 3 i listen $Q$ og sammenlignes først med 5, og herefter 4, hvorefter det indsættes før de to, så listen er $Q = (3,4,5)$, på samme måde indsættes de sidste to input i listen $Q$ og dermed er den fuldført.
+Vi ser her at der, på samme måde som med bubblesortering, køres 5 gennemgange. Der er i første gennemgang 0 sammenlininger, derefter 1 sammenligning i anden gennemgang og $m-1$ sammenligninger i $n$'de gennemgang. Hermed er denne sortering også $O(n^2)$ i værste fald.
+
+I bedste fald, når $P= (1,2,3,4,5)$ har den en lineær kompleksitet, da den, i alle gennemgange, kun sammenlininger med det element der er længst til højre hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
+
+
+
 P \\
 NP \\
 NP-Complete \\
 NP-Hard. 
 
-Store-O
-O
-Store-Omega
 
-Theta
-store-Theta
