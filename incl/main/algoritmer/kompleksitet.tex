@@ -1,4 +1,4 @@
-\section{Kompleksitet}
+\section{Kompleksitet} \label{kap:kompleksitet}
 %side 250 ish
 %table 1 side 247 i pdf.
 
@@ -14,7 +14,7 @@ For at beskrive disse algoritmer i fx værste tilfælde, vil man bruge operatore
 
 \subsection{Store-$O$}
 \begin{defn}
-$f(n) = O(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \leq C g(n) \forall n \geq n_o$.
+$f(n)= O(g(n))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $|f(n)| \leq C |g(n)| \forall n \geq n_o$.
 \end{defn}
 
 Store-$O$ bliver brugt til at binde funktionen opadtil, begrænse den oppe fra. Man kan med garanti sige, at algoritmen tager store-$O$ tid eller mindre. 
@@ -29,7 +29,7 @@ Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig
 
 \subsection{Store-$\Omega$}
 \begin{defn}
-$f(n) = \Omega(g(n))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $f(n) \geq C g(n) \forall n \geq n_o$.
+$f(n) = \Omega(g(n))$ hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$ så at $|f(n)| \geq C |g(n)| \forall n \geq n_o$.
 \end{defn}
 Store-Omega bruges, omvendt store-$O$, til at binde funktionen nedadtil, altså finde den nedre grænse for algoritmen, den vil mindst tage store-Omega tid i det givne tilfælde.
 \begin{exmp}
@@ -43,7 +43,7 @@ f(n) =& \Omega(n).
 På samme måde som ved store-$O$-notationen, vil man her kunne vælge en vilkårlig mindre funktion, $logn$, $1$ med flere, men da man vil begrænse den så meget som muligt, vælger man den største funktion $g(n)$ hvor uligheden stadig er sand.
 \subsection{Store-$\Theta$}
 \begin{defn}
-$f(n) = \Theta(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$ så at $C_1g(n) \leq f(n) \leq C_2g(n) \forall n \geq n_o$.
+$f(n) = \Theta(g(x))$ hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$ så at $C_1|g(n)| \leq |f(n)| \leq C_2|g(n)| \forall n \geq n_o$.
 \end{defn}
 Når man har fundet den øvre og den nedre grænse, store-O og store-Omega, kan man finde Theta, den tætte bundne funktion,
 \begin{exmp}

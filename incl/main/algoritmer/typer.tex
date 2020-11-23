@@ -1,7 +1,7 @@
 \section{Algoritmetyper}
 Der findes mange typer algoritmer, som løser mange forskellige problemer. Vi vil i det følgende se på forskellige typer af algoritmer.
 \subsection{Søgealgoritmer}
-\emph{Søgealgoritmer} bruges til at løse problemer, hvor man vil finde et element, $x$, i en liste $(a_{1}, a_{2}, \dotsc, a_{n})$, eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$ hvis $x=a_{i}$. Det er altså indekset, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. \emph{den lineære søgning} og \emph{den binære søgning}. Ved den lineære søgning starter man med $a_1$ og ser om $x=a_{1}$. Hvis dette er tilfældet, er $a_{1}$'s indeks svaret, men hvis $x \neq a_{1}$, fortsætter man til $a_{2}$, så $a_{3}$, og sådan fortsætter man, til man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements indeks. \autoref{alg:lineaer} illustrerer et eksempel på en lineær søgealgoritme:
+\emph{Søgealgoritmer} bruges til at løse problemer, hvor man vil finde et element, $x$, i en liste $(a_{1}, a_{2}, \dotsc, a_{n})$, eller konkludere, at $x$ ikke er i listen. Her vil løsningen være $i$, hvis $x=a_{i}$. Det er altså indekset, der er løsningen. Søgealgoritmer kan igen opdeles i forskellige typer bl.a. \emph{den lineære søgning} og \emph{den binære søgning}. Ved den lineære søgning starter man med $a_1$ og ser, om $x=a_{1}$. Hvis dette er tilfældet, er $a_{1}$'s indeks svaret, men hvis $x \neq a_{1}$, fortsætter man til $a_{2}$ og så $a_{3}$. Sådan fortsætter man, indtil man finder et element i listen, der er lig $x$, og så vil løsningen være dette elements indeks. \autoref{alg:lineaer} illustrerer et eksempel på en lineær søgealgoritme:
 
 \begin{algorithm}[H] 
 \caption{Den lineære søgealgoritme}
@@ -24,7 +24,7 @@ Der findes mange typer algoritmer, som løser mange forskellige problemer. Vi vi
 \end{algorithm}
 
 
-Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er inddelt efter størrelse, det vil sige, hvis listen er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen $a_{m}$. For $m$ gælder det, at $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, så tager vi halvdelen større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. 
+Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er \emph{ordnet}. Det vil sige, hvis listen fx er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen, $a_{m}$. For $m$ gælder det, at $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, tager vi halvdelen af listen, der er større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. Den binære søgealgoritme er illustreret i \autoref{alg:binaer}.
 
 \begin{algorithm}[H]
 \caption{Den binære søgealgoritme}
@@ -49,10 +49,11 @@ Modsat den lineære søgning kan den binære søgning kun bruges, når en liste 
 \EndProcedure
 
 \end{algorithmic}
+\label{alg:binaer}
 \end{algorithm}
 
 \subsection{Sorteringsalgoritmer} \label{kap:sortering}
-Når vi arbejder med \emph{sorteringsalgoritmer}, er det, fordi vi ønsker at sortere en liste, således at den inddeles i voksende rækkefølge eller efter alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. Eksempler på disse er \emph{bubblesortering} og \emph{indskudssortering}. Bubblesortering er en af de simpleste sorteringsalgoritmer, men den er ikke så effektiv. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis den første ikke er lavere end den anden.
+Når vi arbejder med \emph{sorteringsalgoritmer}, er det, fordi vi ønsker at sortere en liste, således at den inddeles i fx voksende rækkefølge eller alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. Eksempler på disse er \emph{bubblesortering} og \emph{indskudssortering}. Bubblesortering er en af de simpleste sorteringsalgoritmer, men den er ikke så effektiv. Vi vil komme ind på algoritmers effektivitet i \autoref{kap:kompleksitet}. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis rækkefølgen ikke er korrekt.
 
 \begin{algorithm}[H]
 \caption{Bubblesorteringsalgoritmen}
