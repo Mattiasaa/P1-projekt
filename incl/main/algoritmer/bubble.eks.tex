@@ -1,0 +1,25 @@
+\begin{exmp}
+Vi ser på en liste, $(3,4,2,5,1)$, som vi vil arrangere således den er i rækkefølge med stigende værdi. Algoritmen gentages fire gange der listen har længden $n=5$ og algoritmen skal køre $n-1$ gange. Algoritmen illustres på \autoref{fig:bubble}
+
+\begin{figure}[H]
+\label{fig:bubble}
+
+	\begin{align*}
+	\text{Første gentagelse:} \qquad \qquad \qquad \quad \text{Anden 			gentagelse:} \qquad \qquad \qquad \quad \text{Tredje gentagelse:} 			\qquad \qquad \qquad \quad \\
+	(\textbf{3,4},2,5,1) \rightarrow (\textbf{3,4},2,5,1) \qquad \qquad 		(\textbf{3,2},4,1,5) \rightarrow (\textbf{2,3},4,1,5) \qquad \qquad 		(\textbf{2,3},1,4,5) \rightarrow (\textbf{2,3},1,4,5) \qquad \qquad 		\\
+	(3,\textbf{4,2},5,1) \rightarrow (3,\textbf{2,4},5,1) \qquad \qquad     	(2,\textbf{3,1},4,5) \rightarrow (2,\textbf{1,3},4,5) \qquad \qquad   	(2,\textbf{3,1},4,5) \rightarrow (2,\textbf{1,3},4,5) \qquad \qquad 		\\
+	(3,2,\textbf{4,5},1) \rightarrow (3,2,\textbf{4,5},1) \qquad \qquad 		(2,3,\textbf{1,4},5) \rightarrow (2,3,\textbf{1,4},5) \qquad \qquad  	\qquad \qquad \qquad \qquad \qquad \qquad \qquad \quad \ \ \\
+	(3,2,4,\textbf{5,1}) \rightarrow (3,2,4,\textbf{1,5}) \qquad \qquad 		\qquad \qquad \qquad \qquad \qquad \qquad \qquad \quad \ \  \qquad 			\qquad \qquad \qquad \qquad \qquad \qquad \quad \ \
+	\end{align*}
+
+
+\begin{flushleft}
+Fjerde gentagelse:
+\\
+$(\textbf{2,1},3,4,5) \rightarrow (\textbf{1,2},3,4,5)$
+\end{flushleft}
+
+\end{figure}
+Efter første gentagelse har algoitmen placeres det største tal bagerst i listen, efter anden gentagelse har algoritmen placeret det næst største tal på næst sidste plads i listen. Således fortsætter algoritmen indtil listen er i korrekt rækkefølge.
+
+\end{exmp}
