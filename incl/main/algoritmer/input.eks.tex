@@ -1,5 +1,5 @@
 \begin{exmp}
-Vi ser igen på en liste, $(3,4,2,5,1)$, som vi gerne vil sortere i rækkefølge således de står med stigende værdi. Vi bruger indskudssorteringsalgoritmen til dette. Den er illustreret herunder. Illustrationen viser, at alle tal med streg under står i korrekt rækkefølge, i forhold til de andre tal med streg under. Tallet markeret med fed er det næste tal som algoritmen skal placere i den korrekte liste.
+Vi ser igen på en liste, $(3,4,2,5,1)$, som vi gerne vil sortere i rækkefølge, således at de står med stigende værdi. Vi bruger indskudssorteringsalgoritmen til dette. Den er illustreret herunder. Illustrationen viser, at alle understregede tal står i korrekt rækkefølge. Tallet markeret med fed er det næste tal, som algoritmen skal placere i den korrekte liste.
 
 \begin{figure}[H]
 \label{fig:indskud}
@@ -11,7 +11,7 @@ Vi ser igen på en liste, $(3,4,2,5,1)$, som vi gerne vil sortere i rækkefølge
  	\end{flushleft}
 \end{figure}
 
-Vi kan se, at algoritmen starter med at sammenlige fire med tre. Den tjekker først om fire er mindre end tre, da det er større bevæger den sig videre i den korekte list. Den er nu i bunden af den liste, som algoritmen ved er korrekt, så derfor placeres fire i slutningen af den korrekte liste. Den tjekker nu det tredje tal i listen, og ser med det samme at det er mindre end det første tal i den korrekte liste, og derfor placer algoritmen to på den første plads i den korrekte liste. Dette gør den med alle tallene i listen, og den har til sidst placeret alle tallene i listen i korrekt rækkefølge.
+Vi kan se, at algoritmen starter med at sammenlige fire med tre. Den tjekker først om fire er mindre end tre. Da det er større og der ikke er flere tal i listen, placeres fire i slutningen af den korrekte liste. Den tjekker nu det tredje tal i listen og ser med det samme, at det er mindre end det første tal i den korrekte liste. Derfor placeres to på den første plads i den korrekte liste. Den sammenligner nu fem med alle tal i den korrekte liste, og placerer fem efter det største tal den er større end. Dette gør den med alle tallene i listen, og den har til sidst placeret alle tallene i listen i korrekt rækkefølge.
 
 
 \end{exmp}
