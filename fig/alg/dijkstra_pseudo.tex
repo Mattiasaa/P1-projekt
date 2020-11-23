@@ -2,7 +2,7 @@
 \caption{Dijkstras algoritme}
 \begin{algorithmic}[1]
 
-\Procedure{dijkstra($G$: vægtet, forbundet, simpel graf med kun ikke-negative vægte)}{}
+\Procedure{dijkstra($G$: vægtet, sammenhængende, simpel graf med kun ikke-negative vægte)}{}
     \State \{$G$ {har knuderne $a = v_{1}, v_{2}, \dotsc, v_{m} = z$ og vægtene til kanterne $w(v_{i}, v_{j})$, hvor $w(v_{i}, v_{j}) = \infty$ hvis {$(v_{i}, v_{j})$} ikke er en kant i G\}}
 	\For {$i := 2$ \textbf{to} $m$}
 		\State $L(v_{i}) := \infty$
