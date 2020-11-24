@@ -74,11 +74,10 @@ Som vi kender fra tidligere teori, tælles de mindre ordner ikke med, derved er 
 \subsection{Kompleksitet af indskudssortering} \label{kap:kom_indskud}
 En anden sorteringsalgoritme fra \autoref{kap:sortering} er indskudssorteringen. 
 Denne tager udgangspunkt i et enkelt input af gangen og sammenligner dette med resten af den sorterede liste.
-Hvis vi igen benytter det værste tilfælde, $P = (5,4,3,2,1)$, ser vi at den først tager femtallen, og sætter ind i listen, herefter sammenligner den næste element i $P$ med den sorterede liste, der kun indeholder 5, dermed er den sorterede liste $Q = (5,4)$ og $P=(3,2,1)$. 
-Herefter indsættes 3 i listen $Q$ og sammenlignes først med 5, og herefter 4, hvorefter det indsættes før de to, så listen er $Q = (3,4,5)$, på samme måde indsættes de sidste to input i listen $Q$ og dermed er den fuldført.
-Vi ser her at der, på samme måde som med bubblesortering, køres 5 gennemgange. Der er i første gennemgang 0 sammenlininger, derefter 1 sammenligning i anden gennemgang og $m-1$ sammenligninger i $n$'de gennemgang. Hermed er denne sortering også $O(n^2)$ i værste fald.
+Hvis vi igen benytter det værste tilfælde, $P = (1,2,3,4,5)$, ser vi at den først tager totallet, og sammenligner med ettallet. Den ser først at to er større end en, og siden der kun er et element i den korrekte liste vil den placere to til højre for et. Det næste element den så tjekker er tre, som den først sammenligner med et og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
+Vi ser her at der, på samme måde som med bubblesortering, køres 5 gennemgange. Der er i første gennemgang 0 sammenlininger, derefter 1 sammenligning i anden gennemgang og $n-1$ sammenligninger i $n$'de gennemgang. Hermed er denne sortering også $O(n^2)$ i værste fald.
 
-I bedste fald, når $P= (1,2,3,4,5)$ har den en lineær kompleksitet, da den, i alle gennemgange, kun sammenlininger med det element der er længst til højre hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
+I bedste fald, når $P= (5,4,3,2,1)$ har den en lineær kompleksitet, da den, i alle gennemgange, kun sammenlininger med det element der er længst til venstre hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
 
 
 
