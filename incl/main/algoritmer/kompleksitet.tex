@@ -73,14 +73,20 @@ Her ses altså, at der kun gennemføres én iteration, og der stadig udføres $n
 \subsection{Kompleksitet af indskudssortering} \label{kap:kom_indskud}
 En anden sorteringsalgoritme fra \autoref{kap:sortering} er indskudssorteringen. 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Denne tager udgangspunkt i et enkelt input af gangen og sammenligner dette med resten af den sorterede liste.
 Hvis vi igen benytter det værste tilfælde, $P = (1,2,3,4,5)$, ser vi at den først tager totallet, og sammenligner med ettallet. Den ser først at to er større end en, og siden der kun er et element i den korrekte liste vil den placere to til højre for et. Det næste element den så tjekker er tre, som den først sammenligner med et og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
 Vi ser her at der, på samme måde som med bubblesortering, køres 5 gennemgange. Der er i første gennemgang 0 sammenlininger, derefter 1 sammenligning i anden gennemgang og $n-1$ sammenligninger i $n$'de gennemgang. Hermed er denne sortering også $O(n^2)$ i værste fald.
 =======
+=======
+>>>>>>> master
 Denne tager udgangspunkt i et enkelt element ad gangen og sammenligner dette med resten af den sorterede liste,$Q$.
 Hvis vi igen benytter det værste tilfælde, $P = (1,2,3,4,5)$, ser vi, at den først tager ettallet og sætter ind i $Q$. Herefter sammenligner det næste element i $P$ med $Q$, der kun indeholder 1. Dermed er $Q=(1,2)$ og $P=(3,4,5)$. 
 Herefter indsættes 3 i $Q$ og sammenlignes først med 1, og herefter 2, hvorefter det indsættes efter de to, så $Q = (1,2,3)$. På samme måde indsættes de sidste to elementer i $Q$, og dermed er den fuldført.
 Vi ser her, at der på samme måde som med bubblesortering køres fem iterationer. Der er i første iteration nul sammenlininger, derefter en sammenligning i anden iteration og $n-1$ sammenligninger i $n$'de iteration. Hermed er denne sortering også $O(n^2)$ i værste fald.
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 
 I bedste fald, når $P= (5,4,3,2,1)$ har den en lineær kompleksitet, da den, i alle gennemgange, kun sammenlininger med det element der er længst til venstre hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
