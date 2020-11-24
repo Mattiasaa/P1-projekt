@@ -20,9 +20,11 @@ $f(n)= O(g(n))$, hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$, s�
 Store-$O$ bliver brugt til at binde funktionen opadtil, begrænse den oppefra. Man kan med garanti sige, at algoritmen tager store-$O$ tid eller mindre. 
 \begin{exmp}
 \begin{align}
+\begin{split}
 f(n)=& 13n+3 \\
 13n+3 \leq& 20n \forall \ n \geq 1 \\
 f(n) =& O(n).
+\end{split}
 \end{align}
 \end{exmp}
 Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig, højere funktion, $g(n)$, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
@@ -34,9 +36,11 @@ $f(n) = \Omega(g(n))$, hvis og kun hvis $\exists$ positive konstanter $C$ og $n_
 Store-$\Omega$ bruges, modsat store-$O$, til at binde funktionen nedadtil, altså finde den nedre grænse for algoritmen. Den vil mindst tage store-$\Omega$ tid i det givne tilfælde.
 \begin{exmp}
 \begin{align}
+\begin{split}
 f(n)=& 13n+3 \\
 13n+3 \geq& n \forall \ n \geq 1 \\
 f(n) =& \Omega(n).
+\end{split}
 \end{align}
 \end{exmp}
 
@@ -48,10 +52,12 @@ $f(n) = \Theta(g(x))$, hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$
 Når man har fundet den øvre og nedre grænse, store-O og store-$\Omega$, kan man finde den tætbundne funktion, $\Theta$.
 \begin{exmp}
 \begin{align}
+\begin{split}
 f(n)=& 13n+3 \\
 \Omega(n) \leq& f(n) \leq O(n) \\
 n \leq& 13n+3 \leq 10n \forall \ n \geq 1 \\
 f(n) =& \Theta(n).
+\end{split}
 \end{align}
 \end{exmp}
 
@@ -61,22 +67,22 @@ I følgende afsnit tager vi udgangspunkt i to sorteringer og ser, hvordan de sam
 
 For at finde kompleksiteten af bubblesortering bruger vi store-$O$-notationen fra tidligere. 
 Bubblesortering, som nævnt i \autoref{kap:sortering}, sammenligner to elementer fra listen og flytter rundt på dem, hvis de står i forkert rækkefølge.
-Vi starter med værste tilfælde. Her ser vi på en liste, $P$, der er sorteret i omvendt rækkefølge, $P = (5,4,3,2,1)$.
-I første iteration sammenligner den 5 med 4 og bytter om, 5 med 3, bytter igen, 5 med 2, bytter, og til sidst 5 med 1. Nu står 5 korrekt, og $P = (4, 3, 2, 1, 5)$.
-Efter næste iteration er $P = (3, 2, 1, 4, 5)$, og de sidste iteration medfører hhv. $(2, 1, 3, 4, 5)$ og $(1, 2, 3, 4, 5)$. Her ses altså, at der itereres 4 gange, eller $n-1$ gange. 
-For hver iteration, $k$, sammenligner den $n-k$ gange. 
+Vi starter med værste tilfælde. Her ser vi på en liste, $P$, der er sorteret i omvendt rækkefølge, $(5,4,3,2,1)$.
+I første iteration sammenligner den 5 med 4 og bytter om, 5 med 3, bytter igen, 5 med 2, bytter, og til sidst 5 med 1. Nu står 5 korrekt, og $(4, 3, 2, 1, 5)$.
+Efter næste iteration er $(3, 2, 1, 4, 5)$, og de sidste iteration medfører hhv. $(2, 1, 3, 4, 5)$ og $(1, 2, 3, 4, 5)$. Her ses altså, at der itereres 4 gange, eller $n-1$ gange. 
+For hver iteration, $i$, sammenligner den $n-i$ gange. 
 Som vi kender fra tidligere teori, tælles de mindre ordner ikke med, derved er kompleksiteten $O(n\times n)$ eller $O(n^2)$.
 
-I bedste tilfælde er listen, $P = (1, 2, 3, 4, 5)$.
-Her ses altså, at der kun gennemføres én iteration, og der stadig udføres $n-1$ sammenligninger i denne iteration. Derved er kompleksiteten $O(1n)$, eller $O(n)$. 
+I bedste tilfælde er listen $(1, 2, 3, 4, 5)$.
+I vores algoritme, stopper algoritmen først, når den har lavet $n-1$ iterationer, og stopper dermed ikke på trods af at listen kan være i korrekt rækkefølge tidligere. I bedste tilfælde, vil den derfor være lige så kompleks som vores værste tilfælde, altså $O(n^2)$. Det vil dog være relativt nemt at optimere algoritmen, så den stopper, hvis den ikke laver flere ombytninger i en given iteration. Denne optimering vil gøre algoritmen $O(n)$ i bedste fald, da den i dette tilfælde kun gennemfører én iteration, og der stadig udføres $n-1$ sammenligninger i denne iteration. 
 
 \subsection{Kompleksitet af indskudssortering} \label{kap:kom_indskud}
 En anden sorteringsalgoritme er indskudssorteringen fra \autoref{kap:sortering}. Denne tager udgangspunkt i et enkelt element ad gangen og sammenligner dette med resten af den korrekte liste.
 Hvis vi igen benytter det værste tilfælde, når listen er $(1,2,3,4,5)$, ser vi, at den først tager $2$-tallet og sammenligner med $1$-tallet. Den ser først, at to er større end en, og siden der kun er et element i den korrekte liste, vil den placere to til højre for et. Det næste element, den så tjekker, er tre, som den først sammenligner med et og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
-Vi ser her, at der på samme måde som med bubblesortering køres fem iterationer. Der er i første iteration nul sammenligninger, derefter en sammenligning i anden iteration og $n-1$ sammenligninger i $n$'te iteration. Hermed er denne sortering også $O(n^2)$ i værste fald.
+Vi ser her, at der på samme måde som med bubblesortering køres fire iterationer. Der er i første iteration en sammenligning, derefter to sammenligninger i anden iteration og $n$ sammenligninger i $n$'te iteration. Hermed er denne sortering også $O(n^2)$ i værste fald.
 
 
-I bedste fald, når listen er $(5,4,3,2,1)$, har den en lineær kompleksitet, da den, i alle iterationer, kun sammenlininger med det element, der er længst til venstre, hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
+I bedste fald, når listen er $(5,4,3,2,1)$, har den en lineær kompleksitet, da den i alle iterationer kun sammenligner med det element, der er længst til venstre, hvorefter det er indsat korrekt, dermed er kompleksiteten $O(n)$.
 
 
 

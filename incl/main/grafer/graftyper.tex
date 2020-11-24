@@ -5,7 +5,7 @@ Grafer kan opdeles i forskellige typer. Herunder simple grafer, multigrafer og p
 En \emph{simpel graf}, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\nexists \ e_i, e_j \in E : e_i = e_j$.
 \end{defn}
 
-Det ses i definition \ref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
+Det ses i Definition \autoref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
 
 \input{fig/tikz/grafer/graftyper/simpelgraf}
 
@@ -18,10 +18,10 @@ $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j 
 
 \input{fig/tikz/grafer/graftyper/multigraf}
 
-I forlængelse heraf har vi pseudografen, som ingen krav har, om mængden af kanter mellem to knudepar, derimod skal der eksistere mindst én løkke. 
+I forlængelse heraf har vi pseudografen, som ingen krav har om mængden af kanter mellem to knudepar, derimod skal der eksistere mindst én løkke. 
 
 \begin{defn}[Pseudograf] \label{defn:pseudo}
-En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $e_i \in E$ opfylder $e_i = \{v,v\}$.
+En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $\exists \ e_i \in E$,S som opfylder $e_i = \{v,v\}$.
 \end{defn}
 
 Vi ser i eksemplet herunder, at der er to parallelle kanter mellem $v_{1}$ og $v_{2}$ og en løkke ved $v_{4}$.
