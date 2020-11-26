@@ -29,17 +29,17 @@ L(v_m) = \alpha(v_1,v_m), \forall v_i \in S_k \textrm{ for vejen } P = (v_1, v_2
 Vi sætter nu $v_{n}$ til at være den knude, der tilføjes til $S$ ved $S_{k+1}$. Vi vil nu vise, at det ligesom ved alle tidligere knuder i $S$ også gælder for $v_{n}$ at $L(v_n)=\alpha(v_1,v_n)$. Dette kan bevises ved modstrid. Vi starter med at antage, at der findes en kortere vej fra $v_1$ til $v_n$ end $L(v_n)$. Vi kalder denne nye vej $P_1$. For denne må det gælde, at
 
 \begin{equation}
-dist(P_1)<L(v_n).
+\dist(P_1)<L(v_n).
 \end{equation}
 $P_1$ starter i $S_k$ og forlader på et tidspunkt denne mængde for at komme til $v_n$, som ikke er i $S_k$. Vi lader $\{v_x,v_y\}$ være den første kant på vejen $P_1$, der forlader $S_k$. $P_x$ betegnes som delen af vejen $P_1$, som går fra $v_1$ til $v_x$. Så ved vi, at
 
 \begin{equation}
-dist(P_x)+w(v_x,v_y) \leq dist(P_1).
+\dist(P_x)+w(v_x,v_y) \leq \dist(P_1).
 \end{equation}
-Eftersom $v_x$ er i $S_k$, ved vi som følge af induktionshypotesen, at den korteste vej fra $v_1$ til $v_x$ er $L(v_x)$. Dermed ved vi, at $L(v_x) \leq dist(P_x)$ og
+Eftersom $v_x$ er i $S_k$, ved vi som følge af induktionshypotesen, at den korteste vej fra $v_1$ til $v_x$ er $L(v_x)$. Dermed ved vi, at $L(v_x) \leq \dist(P_x)$ og
 
 \begin{equation}
-L(v_x) + w(v_x,v_y) \leq dist(P_1).
+L(v_x) + w(v_x,v_y) \leq \dist(P_1).
 \end{equation}
 $v_y$ er nabo til $v_x$, hvilket betyder, at
 

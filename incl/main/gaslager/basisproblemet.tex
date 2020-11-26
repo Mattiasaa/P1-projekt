@@ -12,26 +12,26 @@ Vi har indgået en kontrakt med ejeren af et gaslager, hvori der kan lagres natu
  $q_{t}$ & Gasenheder til tiden $t$  \\
  $\Delta q_{t}$ & Ændringen i gasenheder,    $q_{t}-q_{t-1}$ \\
  $q_{0}$ & Gasenheder i starten af lejeperioden  \\
- $q_{min}$ & Den nedre grænse for gasenheder \\ 
- $q_{max}$ & Den øvre grænse for gasenheder \\
- $u_{max}$ & Antal gasenheder der kan tages ud af lageret mellem to tidsskridt \\ 
- $i_{max}$ & Antal gasenheder der kan sættes ind på lageret mellem to tidsskridt \\ 
+ $q_{\min}$ & Den nedre grænse for gasenheder \\ 
+ $q_{\max}$ & Den øvre grænse for gasenheder \\
+ $u_{\max}$ & Antal gasenheder der kan tages ud af lageret mellem to tidsskridt \\ 
+ $i_{\max}$ & Antal gasenheder der kan sættes ind på lageret mellem to tidsskridt \\ 
  $p_{t}$ & En forward pris i Euro på en gasenhed  \\
  $r$ & En fast årlig diskonteringsrente  \\
  [1ex] 
  \hline
 \end{tabular}
-\caption{Table over variable i optimeringsproblemet}
+\caption{Tabel over variable i optimeringsproblemet}
 \label{table:1}
 \end{table}
 
-I basisproblemet er $q_{min}$, $q_{max}$, $i_{max}$ og $u_{max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperiden. De andre variable er ikke statiske og kan dermed ændre sig i løbet af lejeperioden. Disse variable skulle bruges til at løse vores optimeringsproblem. Det vi i problemet ønsker at optimere er profitten. Dette gør vi med ligningen:
+I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperiden. De andre variable er ikke statiske og kan dermed ændre sig i løbet af lejeperioden. Disse variable skulle bruges til at løse vores optimeringsproblem. Det vi i problemet ønsker at optimere er profitten. Dette gør vi med ligningen:
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \Bigg\} \
 \end{equation}
 Denne ligning har nogle bibetingelser:\\
-1. $q_{min} \leq q_{t} \leq q_{max}$\\
-2. $\Delta q_{t} \in \{-u_{max},-u_{max}+1,\cdots,-1,0,1,\cdots,i_{max}-1,i_{max} \}$ \\
+1. $q_{\min} \leq q_{t} \leq q_{\max}$\\
+2. $\Delta q_{t} \in \{-u_{\max},-u_{\max}+1,\cdots,-1,0,1,\cdots,i_{\max}-1,i_{\max} \}$ \\
 for $t \in \{1,\cdots,T\}$ hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$. \\
 
 Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse for gasenheder. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
