@@ -1,0 +1,21 @@
+\section{Det udvidede problem} \label{kap:udvidet_problem}
+
+I basisproblemet arbejder vi med mange statiske værdier. Vi siger, at $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ alle er statiske gennem hele lejeperioden, men en mere realistisk antagelse er, at disse er variable. Eksempelvis vil $q_{\min}$ typisk være højere end 0 om vinteren for at sikre, at man, i situationer hvor der pludselig ikke er mulighed for at anskaffe mere gas, stadig kan imødekomme den forøgede efterspørgsel på strøm. Derfor er en af udvidelserne til basisproblemet, at tilføje tidsafhængige begrænsninger, altså
+\begin{align}
+\begin{split}
+\textrm{1.}& \ \ q_{\min,t} \leq q_{t} \leq q_{\max,t} \\
+\textrm{2.}& \ \ \Delta q_{t} \in \{-u_{\max,t}, -u_{\max,t} + 1, \dotsc, -1, 0, 1, \dotsc, i_{\max,t} -1, i_{\max,t} \}
+\end{split}
+\end{align}
+for alle $t$. Dermed afhænger disse værdier nu af $t$, modsat basisproblemet hvor de var statiske hele året. 
+
+Den anden udvidelse til basisproblemet er, at det indgår i lejekontrakten, at vi efter de 12 måneder skal aflvere lageret med en aftalt mængde gas, $q_{\goal}$. Hvis vi ikke formår at opfylde dette krav, reduceres den pris, modparten køber den resterende mængde gas for med en straffaktor, og vi får dermed ikke den fulde pris for gassen. Med denne udvidelse er der altså to nye parametre,
+\begin{itemize}
+\item $\kappa$, en straffaktor for prisen ($0 < \kappa < 1$)
+\item $q_{\goal}$, den aftalte mængde gas lagret til tid T
+\end{itemize}
+og dermed er maksimeringsproblemet
+\begin{equation}
+\max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \left (1- \kappa \cdot \ind [q_{T} \neq q_{\goal}] \right )  \Bigg\}, 
+\end{equation}
+hvor $\ind [\cdot]$ er en indikatorfunktion. Den er altså lig med 1 når $q_{T} \neq q_{\goal}$, og 0 når det ikke er sandt. 

@@ -1,4 +1,6 @@
 \section{Basisproblemet som algoritme}
+For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver den største profit. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Vi deler algoritmen op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
+
 \begin{algorithm}[H] 
 \caption{Algoritmens data}
 \begin{algorithmic}[1]
@@ -20,3 +22,63 @@
 \end{algorithmic}
 \label{alg:basis}
 \end{algorithm}
+
+Værdierne er alle givet i basisproblemet.
+Dernæst vil vi finde de reelle værdier for forwardpriserne i forhold til nutidsværdien. Vi laver først en liste, som vi kalder interest, som udregner hvor meget mindre værd pengene er til tiden t med vores diskonteringsfaktor, $r$. Derefter kan vi bruge denne liste til at beregne de reelle værdier for forwardpriserne.
+
+\begin{lstlisting} [label=interest,caption=Reelle værdier for forwardpriserne]
+def interest():
+	interest_rate=[]
+	for i in t:
+		interest_i=np.e**(-r*i/T)
+		interest_rate.append(interest_i)
+	return interest rate
+	
+def get_interest_price():
+	interest_price=[]
+	for i in range (len(t)):
+		a=interest()[i]*p_t[i]
+		interest_price.append(a)
+	return interest_price
+
+\end{lstlisting}
+Her dannes først en tom liste over diskonteringsværdier. Derefter sættes en forløkke i gang som beregner disse for alle værdier for $t$. Herefter laver vi en ny funktion, som danner en tom liste med de reelle værdier for forwardpriserne. Her sættes også en forløkke igang, som tilføjer værdier til denne liste ved at bruge funktionen for diskonteringsværdierne, og for hver værdi, $i$, gange diskonteringsværdien med prisen til $t$. På denne måde har vi nu dannet en liste over de reelle værdier for hvert $t$. Disse priser vil vi senere bruge i vores specificerede Dijkstra-algoritme. Først vil vi dog opstille en nabomatrix over vores basisproblemgraf, så vi kan bruge disse knuder i vores algoritme. Vi danner nabomatrixen:
+
+\begin{lstlisting} [label=nabomatrix_kode,caption=Nabomatrix for vores problemgraf]
+N
+A
+B
+O
+M
+A
+T
+R
+I
+X
+\end{lstlisting}
+
+Nu kan vi så begynde at opstille den funktion, der ved hjælp af Dijkstras algoritme kan beregne den korteste vej:
+
+\begin{lstlisting} [label=dijkstra_kode_problem,caption=Dijkstras algoritme for vores problem]
+def dijkstras(q_t):
+	oevre_graense=q_t+i_max
+	if oevre_graense>q_max:
+		oevre_graense=q_max
+	nedre_graense=q_t-u_max
+	if nedre_graense<q_min
+		nedre_graense=q_min
+	path=[]	
+	if t==0:
+		for i in range (nedre_graense,oevre_graense+1):
+			infinity=99999
+			if graf[t+1][i]=-infinity:
+				graf[t+1][i]=interest_price[t]
+				path[t][i]=q_t-i
+	else:
+		for i in range (nedre_graense,oevre_graense+1):
+			if graf[t][q_t+interest_price[t]*(q_t-i)]>graf[t+1][i]
+				graf[t+1][i]=graf[t][q_t]+interest_price[t]*(q_t-1)
+				path[t][i]=q_t-i
+\end{lstlisting}
+
+Vi starter med at finde grænserne for hvor længe vores løkker senere i kildekoden skal gøre. Vi bestemmer først den øvre værdi ved at tage den nuværende mængde gasenheder til tiden $t$ og lægge det sammen med den øvre grænse for det antal gasenheder, der kan sættes ind på lageret mellem to tidsskridt. Hvis den beregnede øvre grænse bliver større end den reelle øvre grænse for lagerbeholdningen i gaslageret, $q_{max}$, sætter vi dog værdien for den øvre grænse til at være $q_{max}$. På samme måde finder vi den nedre grænse ved at tage den nuværende mængde gasenheder til tiden $t$ og trække det antal gasenheder, der højst må tages ud af lageret mellem to tidsskridt fra. Hvis den beregnede nedre grænse bliver mindre end den reelle nedre grænse for lagerbeholdningen i gaslageret, $q_{min}$, sætter vi dog værdien for den nedre grænse til at være $q_{min}$. Derefter ser vi, om $t=0$. Hvis dette er tilfældet laver vi en forløkke, der kører fra den nedre til den øvre grænse$+1$, og vi definerer uendeligt til at være 99999. Hvis punktet i grafen på plads $[t+1][i]$ er minus uendelig, altså at den endnu ikke optræder i vejen, sætter vi punktet på denne plads til at være den reelle pris på gas til den tid, og til vejen tilføres på plads [t][i] den mængde gasenheder der er til tiden $t$ minus i. Hvis $t$ derimod ikke er lig nul kører en anden forløkke med de samme grænser. Her sammenlignes indtjeningen for denne måned med den for forrige måned og opdateres hvis indtjeningen for denne måned er større. Derefter tilføjes mængden af gasenheder til tiden, $t$, minus en til listen path. På denne måde opdateres vejen for hver gennemkørsel i forløkken, altså for hver iteration.
