@@ -34,7 +34,7 @@ til at beregne de reelle værdier for forward priserne'''
 
 def interest():                         #Danner liste med diskonteringsværdier
     interest_rate = []
-    for i in range(T):
+    for i in range(1,T+1):
         interest_i = np.e**(-r * i /T) 
         interest_rate.append(interest_i)
     return interest_rate
@@ -47,7 +47,7 @@ def get_interest_price():               #Danner liste med reelle værdier
         interest_price.append(a)
     return interest_price
 
-
+print(get_interest_price())
 
 
 '''Vi vil nu generere en nabomatrix til grafen. Vi starter med at finde mængden
@@ -72,7 +72,7 @@ def make_matrix(q_t):
                     matrix[t][i+j] = interest_price[t]
     return matrix
 
-print(make_matrix(0))
+# print(make_matrix(0))
         
             
     
