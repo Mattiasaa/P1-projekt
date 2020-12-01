@@ -32,7 +32,7 @@ def interest():
 	for i in t:
 		interest_i=np.e**(-r*i/T)
 		interest_rate.append(interest_i)
-	return interest rate
+	return interest_rate
 	
 def get_interest_price():
 	interest_price=[]
@@ -63,14 +63,14 @@ def dijkstras(q_t):
 	if oevre_graense>q_max:
 		oevre_graense=q_max
 	nedre_graense=q_t-u_max
-	if nedre_graense<q_min
+	if nedre_graense<q_min:
 		nedre_graense=q_min
 	path=[]	
-	for t in range (T)
+	for t in range (T):
 		if t==0:
 			for i in range (nedre_graense,oevre_graense+1):
 				infinity=99999
-				if graf[t+1][i]=infinity:
+				if vertices[t+1][i]==infinity:
 					graf[t+1][i]=interest_price[t]
 					path[t][i]=q_t-i
 		else:
