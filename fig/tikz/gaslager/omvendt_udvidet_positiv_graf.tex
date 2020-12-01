@@ -1,0 +1,75 @@
+\begin{figure}[H]
+\centering
+	\begin{tikzpicture}
+
+       \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+%% Vertices
+      	\node[enclosed, label={left:  $q_{0}$}]     (v1) at  (0,2)  {};
+      	\node[enclosed, label={below: $v_{1,1}$}]   (v2) at  (2,0)  {};
+    		\node[enclosed, label={below: $v_{1,2}$}]   (v3) at  (2,2)  {};
+  	    \node[enclosed, label={above: $v_{1,3}$}]   (v4) at  (2,4)  {};
+     	\node[enclosed, label={below: $v_{2,2}$}]   (v5) at  (4,2)  {};
+     	\node[enclosed, label={below: $v_{2,3}$}]   (v6) at  (4,4)  {};
+     	\node[enclosed, label={above: $v_{2,4}$}]   (v7) at  (4,6)  {};
+     	\node[enclosed, label={below: $v_{3,2}$}]   (v8) at  (6,2)  {};
+     	\node[enclosed, label={below: $v_{3,3}$}]   (v9) at  (6,4)  {};
+     	\node[enclosed, label={above: $v_{3,4}$}]   (v10) at (6,6)  {};
+     	\node[enclosed, label={below: $v_{4,1}$}]   (v11) at (8,0)  {};
+     	\node[enclosed, label={below: $v_{4,2}$}]   (v12) at (8,2)  {};
+      	\node[enclosed, label={above: $v_{4,3}$}]   (v13) at (8,4)  {};
+  	    \node[enclosed, label={below: $v_{5,1}$}]   (v14) at (10,0) {};
+  	    \node[enclosed, label={below: $v_{5,2}$}]   (v15) at (10,2) {};
+     	\node[enclosed, label={above: $v_{5,3}$}]   (v16) at (10,4) {};
+     	\node[enclosed, label={below: $v_{6,1}$}]   (v17) at (12,0) {};
+     	\node[enclosed, label={below: $v_{6,2}$}]   (v18) at (12,2) {};
+     	\node[enclosed, label={above: $v_{6,3}$}]   (v19) at (12,4) {};
+     	\node[enclosed, label={right: $q_{\slut}$}] (v20) at (14,0) {};
+     	
+%Edges
+		\path[->,>=latex,thick] (v1) edge node[midway, sloped, above, label={below, black: $20$}] {} (v2);
+		\path[->,>=latex,thick] (v1) edge node[midway, sloped, below, label={above: $40$ }] {} (v3);
+		\path[->,>=latex,thick] (v1) edge node[midway, sloped, below, label={above, black: $60$ }] {} (v4);
+		\path[->,>=latex,thick] (v2) edge node[midway, sloped, above, label={below: $62$ }] {} (v5);
+		\path[->,>=latex,thick] (v2) edge node[midway, above, label={above: $84$ }] {} (v6);
+		\path[->,>=latex,thick] (v3) edge node[near end, sloped, below, label={above: $40$ }] {} (v5);
+		\path[->,>=latex,thick] (v3) edge node[midway, sloped, below, label={above: $62$ }] {} (v6);
+		\path[->,>=latex,thick] (v3) edge node[midway, above, label={above: $84$ }] {} (v7);
+		\path[->,>=latex,thick] (v4) edge node[near end, sloped, below, label={above, black: $18$ }] {} (v5);
+		\path[->,>=latex,thick] (v4) edge node[near end, sloped, below, label={above, black: $40$ }] {} (v6);		
+		\path[->,>=latex,thick] (v4) edge node[midway, sloped, below, label={above: $62$ }] {} (v7);
+		\path[->,>=latex,thick] (v5) edge node[midway, sloped, above, label={below: $40$ }] {} (v8);
+		\path[->,>=latex,thick] (v5) edge node[midway, above, label={above: $65$ }] {} (v9);
+		\path[->,>=latex,thick] (v6) edge node[near end, sloped, below, label={above,black: $15$ }] {} (v8);
+		\path[->,>=latex,thick] (v6) edge node[midway, sloped, below, label={above: $40$ }] {} (v9);
+		\path[->,>=latex,thick] (v6) edge node[midway, above, label={above: $65$ }] {} (v10);
+		\path[->,>=latex,thick] (v7) edge node[near end, sloped, below, label={above: $15$ }] {} (v9);
+		\path[->,>=latex,thick] (v7) edge node[midway, sloped, below, label={above: $40$ }] {} (v10);
+		\path[->,>=latex,thick] (v8) edge node[midway, sloped, above, label={below,black: $22$ }] {} (v11);
+		\path[->,>=latex,thick] (v8) edge node[midway, above, label={above: $40$ }] {} (v12);
+		\path[->,>=latex,thick] (v8) edge node[midway, above, label={above: $58$ }] {} (v13);
+		\path[->,>=latex,thick] (v9) edge node[near end, sloped, below, label={above: $4$ }] {} (v11);
+		\path[->,>=latex,thick] (v9) edge node[midway, sloped, below, label={above: $22$ }] {} (v12);
+		\path[->,>=latex,thick] (v9) edge node[midway, above, label={above: $40$ }] {} (v13);
+		\path[->,>=latex,thick] (v10) edge node[near end, sloped, below, label={above: $4$ }] {} (v12);
+		\path[->,>=latex,thick] (v10) edge node[midway, sloped, below, label={above: $22$ }] {} (v13);
+		\path[->,>=latex,thick] (v11) edge node[midway, sloped, above, label={below,black: $40$ }] {} (v14);
+		\path[->,>=latex,thick] (v11) edge node[midway, above, label={above,black: $55$ }] {} (v15);
+		\path[->,>=latex,thick] (v12) edge node[near end, sloped, below, label={above: $25$ }] {} (v14);
+		\path[->,>=latex,thick] (v12) edge node[midway, sloped, below, label={above: $40$ }] {} (v15);
+		\path[->,>=latex,thick] (v12) edge node[midway, above, label={above: $55$ }] {} (v16);
+		\path[->,>=latex,thick] (v13) edge node[near end, sloped, below, label={above: $25$ }] {} (v15);
+		\path[->,>=latex,thick] (v13) edge node[midway, sloped, below, label={above: $40$ }] {} (v16);
+		\path[->,>=latex,thick] (v14) edge node[midway, sloped, above, label={below,black: $40$ }] {} (v17);
+		\path[->,>=latex,thick] (v14) edge node[midway, above, label={above,black: $55$ }] {} (v18);
+		\path[->,>=latex,thick] (v15) edge node[near end, sloped, below, label={above: $25$ }] {} (v17);
+		\path[->,>=latex,thick] (v15) edge node[midway, sloped, below, label={above: $40$ }] {} (v18);
+		\path[->,>=latex,thick] (v15) edge node[midway, above, label={above,black: $55$ }] {} (v19);
+		\path[->,>=latex,thick] (v16) edge node[near end, sloped, below, label={above: $25$ }] {} (v18);
+		\path[->,>=latex,thick] (v16) edge node[midway, sloped, below, label={above: $40$ }] {} (v19);
+		\path[->,>=latex,thick] (v17) edge node[midway, sloped, above, label={below,black: $40$ }] {} (v20);
+		\path[->,>=latex,thick] (v18) edge node[midway, sloped, above, label={below,black: $35.5$ }] {} (v20);
+		\path[->,>=latex,thick] (v19) edge node[midway, sloped, below, label={above,black: $31$ }] {} (v20);
+	\end{tikzpicture}
+	\caption{Omvendt, positiv, udvidet graf.}
+	\label{fig.omvendt_udvidet}
+\end{figure}
