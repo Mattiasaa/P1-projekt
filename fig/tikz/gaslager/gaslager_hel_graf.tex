@@ -1028,5 +1028,7 @@
 		\path[gray,->,>=latex,thick] (v1110) edge node[near end, sloped, below] {} (v120);
 	\end{tikzpicture}
 	\caption{Graf for den længste vej igennem grafen.}
-	\label{fig.gaslager_graf}
+	\label{fig:gaslager_graf}
 \end{figure}
+
+Grafen i \autoref{fig:gaslager_graf} illustrerer den orienterede, ikke-cykliske graf, som repræsenterer vores basisproblem. Knuderne kan deles op i kolonner og rækker. Hver kolonne repræsenterer tiden, $t$, og hver række repræsenterer vores lagerbeholdning, $q$. Grafen starter i $q_0$, som er vores lagerbeholdning ved $t=0$, altså tidpunktet hvor gaslageret overtages. Ved dette tidspunkt er lagerbeholdninge 5, og har derfra samtlige kanter indenfor opgavens givne parametre, $u_{\max }$, $i_{\max }$, $q_{\min }$ og $q_{\min }$, indtil den sidste knude $q_{\slut}$. Grafen viser den længste vej igennem kanterne, hvor vægtene er lig prisen for køb og salg af enheder, repræsenteret af en stigende eller faldende kant.
