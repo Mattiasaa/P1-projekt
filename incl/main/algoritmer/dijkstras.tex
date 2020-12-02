@@ -2,54 +2,55 @@
 I \autoref{defn:min.vej} definerede vi distancen af den korteste vej i en vægtet graf. For at finde den korteste vej vil vi anvende \emph{Dijkstras algoritme}. Dijkstras algoritme kan bruges til at finde den korteste vej i en simpel, vægtet graf, hvori vægtene for alle kanter i grafen skal være ikke-negative. Algoritmen fungerer således, at den finder den korteste vej fra en startknude, $v_{1}$, til en endeknude, $v_{m}$, ved først at finde naboknuderne til $v_{1}$ og undersøge hvilken af disse, der har den mindste distanceværdi og altså er tættest på startknuden. Derefter tager den udgangspunkt i den naboknude, hvortil distanceværdien er mindst og fortsætter ad dennes vej, så længe denne vej har en mindre distanceværdi end en alternativ vej. Fremgangsmåden vil her illustreres ved hjælp af et eksempel, som tager udgangspunkt i \autoref{kap:grafteori}.
 
 \begin{exmp} \label{exmp.dijkstae}
-Betragt \autoref{fig.dijkstraexmp}:
+
+I \autoref{fig.dijkstraexmp} vil vi finde den korteste vej fra $v_{1}$ til $v_{6}$. Dijkstras algoritme vil gøre dette ved at finde den korteste vej fra startknuden, $v_{1}$, til hver knude, indtil den når endeknuden, $v_{6}$. Først vil den se, at startknuden har naboknuderne $v_{2}$ og $v_{3}$. Der er altså to veje fra startknuden, $P_1=(v_{1},v_{2})$  og $P_2=(v_{1},v_{3})$, hvor $\dist(P_1)=5$ og $\dist(P_2)=3$. Dermed er $v_{3}$ den knude, der er tættest på startknuden. Herefter er der igen to veje, $P_1$ og $P_3=(v_{1},v_{3},v_{5})$, hvor $\dist(P_3)=7$. $P_1$ vælges, da denne har den mindste distance, og $v_{2}$ er dermed knuden, som er næsttættest på startknuden. Nu er der tre forskellige veje, $P_3=(v_{1},v_{3}, v_{5})$, 
+$P_4=(v_{1},v_{2}, v_{4})$ og $P_5=(v_{1},v_{2}, v_{5})$, hvor $\dist(P_4)=9$ og $\dist(P_5)=9$. $P_3$ vælges, og det er nu noteret, at $\alpha(v_{1},v_5)=7$. Der er nu igen kun to mulige veje at vælge imellem, $P_4$ og $P_6=(v_{1},v_{3}, v_{5}, v_{6})$, hvor $\dist(P_6)=8$. $P_5$ er ikke længere en mulig vej, da vi allerede har fundet den korteste vej fra $v_{1}$ til $v_{5}$. $P_6$ har den mindste distance, og derfor vælger vi denne, og vi ved nu, at den korteste vej fra $v_{1}$ til $v_{6}$ er $P_6=(v_{1},v_{3}, v_{5}, v_{6})$, altså $\alpha(v_1,v_6)=8$.
 \input{fig/tikz/algoritmer/dijkstraexmp}
-I \autoref{fig.dijkstraexmp} vil vi finde den korteste vej fra $v_{1}$ til $v_{6}$. Dijkstras algoritme vil gøre dette ved at finde den korteste vej fra startknuden, $v_{1}$, til hver knude, indtil den når endeknuden, $v_{6}$. Først vil den se, at startknuden har naboknuderne $v_{2}$ og $v_{3}$. Der er altså to veje fra startknuden, $P=(v_{1},v_{2})$ med distancen 5 og $P=(v_{1},v_{3})$ med distancen 3. Dermed er $v_{3}$ den knude, der er tættest på startknuden. Herefter er der igen to veje, $P=(v_{1},v_{2})$ med distancen 5 og $P=(v_{1},v_{3},v_{5})$ med distancen 7. Den første af disse vælges, da denne har den mindste distance, og $v_{2}$ er dermed knuden, som er næsttættest på startknuden. Nu er der tre forskellige veje, $P=(v_{1},v_{2}, v_{4})$ med distancen 9, $P=(v_{1},v_{2}, v_{5})$ med distancen 9 og $P=(v_{1},v_{3}, v_{5})$ med distancen 7. Den tredje vælges, og det er nu noteret, at den korteste vej fra $v_{1}$ til $v_{5}$ har distancen 7. Der er nu igen kun to mulige veje at vælge imellem, $P=(v_{1},v_{2}, v_{4})$ med distancen 9 og $P=(v_{1},v_{3}, v_{5}, v_{6})$ med distancen 8. $P=(v_{1},v_{2}, v_{5})$ er ikke længere en mulig vej, da vi allerede har fundet den korteste vej fra $v_{1}$ til $v_{5}$. Den anden vej har den mindste distance, og derfor vælger vi denne, og vi ved nu, at den korteste vej fra $v_{1}$ til $v_{6}$ er $P=(v_{1},v_{3}, v_{5}, v_{6})$ og har distancen 8.
 \end{exmp}
 
 Ovenstående eksempel er simpelt og kan hurtigt løses ved fx brute force men i større og mere komplicerede grafer er Dijkstras algoritme meget mere effektiv. For at skabe yderligere overblik over hvordan Dijkstras algoritme fungerer, vil vi her gå i dybden med dennes mere teoretiske del.
 \input{fig/alg/dijkstra_pseudo}
-Det første, der sker, er, at startknuden noteres som $0$, og resten af knuderne noteres som $\infty$. Derudover oprettes en mængde, $S$, for hvilken det gælder, at $S = \emptyset$ når $k = 0$. Her betegnes den korteste vej som $\alpha_{k}(v_1,v_m)$, fra Definition\ref{defn:min.vej}, hvor $k$ er antallet af iterationer gennemført i algoritmen, altså antallet af gange $S$ opdateres. Distancen af den korteste vej algoritmen finder fra startknuden til en given knude, noterer vi her ved $L$. $L_{0}(v_1)=0$ betyder altså, at vi har nul iterationer og dermed kun kender startknuden med distancen $0$. . Ved første iteration undersøges startknudens naboknuder, og man bestemmer, som i eksemplet ovenfor, hvilken distance er mindst. Dermed er startknudens nærmeste knude fundet, og denne tilføjes nu til $S$. For hver iteration tilføjes et nyt element til mængden, og denne proces fortsætter, til algoritmen har fundet den korteste vej fra startknuden til endeknuden. Mængden, $S$, indeholder til sidst distancerne for den korteste vej fra startknuden til alle knuder i grafen. 
+Det første, der sker, er, at distancen til startknuden noteres som $0$, og til resten af knuderne som $\infty$. Derudover oprettes en mængde, $S$, for hvilken det gælder, at $S = \emptyset$ når $k = 0$, hvor $k$ er antallet af iterationer gennemført i algoritmen, altså antallet af gange $S$ opdateres. Distancen af den korteste vej algoritmen finder fra startknuden til en given knude, noterer vi her ved $L$. $L_{0}(v_1)=0$ betyder altså, at vi har nul iterationer og dermed kun kender startknuden med distancen $0$. . Ved første iteration undersøges startknudens naboknuder, og man bestemmer, som i eksemplet ovenfor, hvilken distance er mindst. Dermed er startknudens nærmeste knude fundet, og denne tilføjes nu til $S$. For hver iteration tilføjes et nyt element til mængden, og denne proces fortsætter, til algoritmen har fundet den korteste vej fra startknuden til endeknuden. Mængden, $S$, indeholder til sidst distancerne for den korteste vej fra startknuden til alle knuder i grafen. 
 
 Ved brug af ovenstående metode kan vi illustrere løsningen til korteste vej-problemet fra \autoref{fig.dijkstraexmp} i en tabel.
 
 \input{fig/tab/algo/dijkstraexmptab}
 
 \begin{thm}[Dijkstras algoritme] \label{thm:dijkstra}
-Dijkstras algoritme finder distancen af den korteste vej mellem to knuder, $v_1$ og $v_m$, i en vægtet, sammenhængende og simpel graf, sådan at $L(v_m)=\alpha(v_1,v_m)$. 
+Dijkstras algoritme finder distancen af den korteste vej mellem to knuder, $a$ og $z$, i en vægtet, sammenhængende og simpel graf, sådan at $L(z)=\alpha(a,z)$. 
 \end{thm}
 
 \begin{proof}
-Sætning \ref{thm:dijkstra} kan bevises ved induktion. Ved et induktionsbevis etablerer vi først et basisskridt, og dernæst opstiller vi en induktionshypotese. Basisskridtet består blot i, at vi undersøger distancen fra startknuden til startknuden, som selvfølgelig er 0, hvilket algoritmen også noterer. Vi har dermed $L(v_1)=0= \alpha(v_1,v_1)$, hvilket er sandt.
+Sætning \ref{thm:dijkstra} kan bevises ved induktion. Ved et induktionsbevis etablerer vi først et basisskridt, og dernæst opstiller vi en induktionshypotese. Basisskridtet består blot i, at vi undersøger distancen fra startknuden til startknuden, som selvfølgelig er 0, hvilket algoritmen også noterer. Vi har dermed $L(a)=0= \alpha(a,a)$, hvilket er sandt.
 Vi opstiller nu vores induktionshypotese, hvor vi antager, at Sætning \ref{thm:dijkstra} er sand for $k$ iterationer. Det gælder altså, at
 
 \begin{equation}
-L(v_m) = \alpha(v_1,v_m), \forall v_i \in S_k \textrm{ for vejen } P = (v_1, v_2, \dotsc, v_m).
-\end{equation}
-Vi sætter nu $v_{n}$ til at være den knude, der tilføjes til $S$ ved $S_{k+1}$. Vi vil nu vise, at det ligesom ved alle tidligere knuder i $S$ også gælder for $v_{n}$ at $L(v_n)=\alpha(v_1,v_n)$. Dette kan bevises ved modstrid. Vi starter med at antage, at der findes en kortere vej fra $v_1$ til $v_n$ end $L(v_n)$. Vi kalder denne nye vej $P_1$. For denne må det gælde, at
+L(u) = \alpha(a,u), \forall u \in S_k. 
+\end{equation} %usikker på denne
+Vi sætter nu $v$ til at være den knude, der tilføjes til $S$ ved $S_{k+1}$. Vi vil nu vise, at det ligesom ved alle tidligere knuder i $S$ også gælder for $v$ at $L(v)=\alpha(a,v)$. Dette kan bevises ved modstrid. Vi starter med at antage, at der findes en kortere vej fra $a$ til $v$ end $L(v)$. Vi kalder denne nye vej $P_1$. For denne må det gælde, at
 
 \begin{equation}
-\dist(P_1)<L(v_n).
-\end{equation}
-$P_1$ starter i $S_k$ og forlader på et tidspunkt denne mængde for at komme til $v_n$, som ikke er i $S_k$. Vi lader $\{v_x,v_y\}$ være den første kant på vejen $P_1$, der forlader $S_k$. $P_x$ betegnes som delen af vejen $P_1$, som går fra $v_1$ til $v_x$. Så ved vi, at
+\dist(P_1)<L(v).
+\end{equation} %Det er her det handler om, () eller {}
+$P_1$ starter i $S_k$ og forlader på et tidspunkt denne mængde for at komme til $v$, som ikke er i $S_k$. Vi lader $\{x,y\}$ være den første kant på vejen $P_1$, der forlader $S_k$. $P_x$ betegnes som delen af vejen $P_1$, som går fra $a$ til $x$. Så ved vi, at
 
 \begin{equation}
-\dist(P_x)+w(v_x,v_y) \leq \dist(P_1).
+\dist(P_x)+w(x,y) \leq \dist(P_1).
 \end{equation}
-Eftersom $v_x$ er i $S_k$, ved vi som følge af induktionshypotesen, at den korteste vej fra $v_1$ til $v_x$ er $L(v_x)$. Dermed ved vi, at $L(v_x) \leq \dist(P_x)$ og
+Eftersom $x$ er i $S_k$, ved vi som følge af induktionshypotesen, at den korteste vej fra $a$ til $x$ er $L(x)$. Dermed ved vi, at $L(x) \leq \dist(P_x)$ og
 
 \begin{equation}
-L(v_x) + w(v_x,v_y) \leq \dist(P_1).
+L(x) + w(x,y) \leq \dist(P_1).
 \end{equation}
-$v_y$ er nabo til $v_x$, hvilket betyder, at
+$y$ er nabo til $x$, hvilket betyder, at
 
 \begin{equation}
-L(v_y) \leq L(v_x) + w(v_x,v_y).
+L(y) \leq L(x) + w(x,y).
 \end{equation}
-Eftersom hverken $v_n$ eller $v_y$ er i $S_k$, og algoritmen oprindeligt valgte $v_n$ i den $(k+1)$'te iteration, må $v_n$ have den mindste distance af de to således, at
+Eftersom hverken $v$ eller $y$ er i $S_k$, og algoritmen oprindeligt valgte $v$ i den $(k+1)$'te iteration, må $v$ have den mindste distance af de to således, at
 
 \begin{equation}
-L(v_n) \leq L(v_y).
+L(v) \leq L(y).
 \end{equation}
-Dette resulterer dog i, at vi påstår, at $L(v_n) < L(v_n)$. Dette kan ikke lade sig gøre, og vi konkluderer derfor, at der ikke findes en tilfældig kortere vej, $P_1$. $L(v_n)=\alpha(v_1,v_n)$ må altså være sandt, og Dijkstras algoritme finder den korteste vej.
+Dette resulterer dog i, at vi påstår, at $L(v) < L(v)$. Dette kan ikke lade sig gøre, og vi konkluderer derfor, at der ikke findes en tilfældig kortere vej, $P_1$. $L(v)=\alpha(a,v)$ må altså være sandt, og Dijkstras algoritme finder den korteste vej.
 \end{proof}

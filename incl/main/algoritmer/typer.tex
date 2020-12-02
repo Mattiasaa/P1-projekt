@@ -11,12 +11,13 @@ Der findes mange typer algoritmer, som løser mange forskellige problemer. Vi vi
     \State $i:=1$
     \While{$i \leq n$ \textbf{and} $x \neq a_{i}$}
         \State $i:=i+1$
+    \EndWhile
     \If{$i \leq n$} 
-    \State \textbf{print} $lokation:=i$
+    \State \textbf{return} $lokation:=i$
     \Else
-    \State \textbf{print} $lokation:=0$
+    \State \textbf{return} $lokation:=0$
     \EndIf
-    \EndWhile  \label{roy's loop}
+  \label{roy's loop}
 \EndProcedure
 
 \end{algorithmic}
@@ -24,28 +25,29 @@ Der findes mange typer algoritmer, som løser mange forskellige problemer. Vi vi
 \end{algorithm}
 
 
-Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er \emph{ordnet}. Det vil sige, hvis listen fx er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen, $a_{m}$. For $m$ gælder det, at $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, tager vi halvdelen af listen, der er større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. Den binære søgealgoritme er illustreret i \autoref{alg:binaer}.
+Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er \emph{ordnet}. Det vil sige, hvis listen fx er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen, $a_{m}$, hvor $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. $\lfloor \rfloor$ er flooroperatoren der runder ned til første heltal. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, tager vi halvdelen af listen, der er større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. Den binære søgealgoritme er illustreret i \autoref{alg:binaer}.
 
 \begin{algorithm}[H]
 \caption{Den binære søgealgoritme}
 \begin{algorithmic}[1]
 
 \Procedure{binær søgning($x$: heltal, $a_{1},a_{2},\dotsc,a_{n}$: Voksende heltal i listen)}{}
-    \State $i:=1$, {$i$ er venstre endepunkt i søgeintervallet}
-    \State $j:=n$, {$j$ er højre endepunkt i søgeintervallet}
+    \State $i:=1$, \{$i$ er venstre endepunkt i søgeintervallet\}
+    \State $j:=n$, \{$j$ er højre endepunkt i søgeintervallet\}
     \While{$i<j$}
         \State $m=\lfloor (i+j)/2 \rfloor$
     		\If{$x>a_{m}$}
     		\State $i:=m+1$
     		\Else
     		\State $j:=m$
-    		\EndIf
+    		\EndIf    
+    \EndWhile
     \If {$x=a_{i}$}
-    \State \textbf{print} $lokation:=i$
+    	\State \textbf{return} $lokation:=i$
     \Else
-    \State \textbf{print} $lokation:=0$
+    	\State \textbf{return} $lokation:=0$
     \EndIf
-    \EndWhile  \label{roy's loop}
+  \label{roy's loop}
 \EndProcedure
 
 \end{algorithmic}

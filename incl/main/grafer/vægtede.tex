@@ -23,10 +23,10 @@ Man kan således bruge følgende definitioner af \emph{korteste vej} og \emph{l�
 \begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
 Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation}
-		\alpha(v_1,v_m)=\arg \min_{P \in \euscr{P}}
+		\alpha(v_1,v_m)=\arg \min_{P \in \pazocal{P}}
 		\textrm{dist}(P),
 	\end{equation}
-	hvor $\euscr{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
+	hvor $\pazocal{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 På samme vis defineres længste vej:
@@ -34,10 +34,10 @@ På samme vis defineres længste vej:
 \begin{defn} [Længste vej i en vægtet graf]
 	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation}
-		\beta(v_1,v_m)=\arg \max_{P \in \euscr{P}}
+		\beta(v_1,v_m)=\arg \max_{P \in \pazocal{P}}
 		\textrm{dist}(P),
 	\end{equation}
-	hvor $\euscr{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
+	hvor $\pazocal{P}$ er mængden af alle veje fra $v_1$ til $v_m$.
 \end{defn}
 
 \begin{exmp}
