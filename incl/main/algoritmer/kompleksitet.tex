@@ -10,7 +10,7 @@ Oftere ser man på enten værste tilfælde eller \emph{gennemsnitlige tilfælde}
 Det gennemsnitlige tilfælde vil give et rigtigt godt overblik over hvor god algoritmen er, dog er det meget svært at bestemme, hvad et gennemsnitligt input er, da det er svært at bestemme nogle parametre at vælge ud fra. 
 Det værste tilfælde giver et godt overblik over, hvor lang tid det kan tage. Ved man, at algoritmen er lineær i værste tilfælde, vil man kunne løse den i rimelig tid for alle størrelser, $n$.
 De forskellige resultater i vores analyse af algoritmerne kan deles op i kategorier, de mest gængse er: $\log n$, $\sqrt{n}$, $n$, $n^x$, $x^n$ og $n!$, men det kan også være en kombination af disse, som $n!n$, $n\log n$ eller lignende.
-For at beskrive disse algoritmer i fx værste tilfælde, vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{$\Theta$}. Man vil her fokusere på \emph{asymptotiske $n$-værdier}, altså gående mod $\infty$, da man i nogle tilfælde vil have en algoritme, der er langsommere end den \emph{øvre bindende funktion} ved små $n$, men ved større, som fx over 10.000, er hurtigere.
+For at beskrive disse algoritmer i fx værste tilfælde, vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. Man vil her fokusere på \emph{asymptotiske $n$-værdier}, altså gående mod $\infty$, da man i nogle tilfælde vil have en algoritme, der er langsommere end den \emph{øvre bindende funktion} ved små $n$, men ved større, som fx over 10.000, er hurtigere.
 
 \subsection{Store-$O$}
 \begin{defn}
@@ -49,7 +49,7 @@ På samme måde som ved store-$O$-notationen vil man her kunne vælge en vilkår
 \begin{defn}
 $f(n) = \Theta(g(x))$, hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$, så $C_1|g(n)| \leq |f(n)| \leq C_2|g(n)| \forall n \geq n_o$.
 \end{defn}
-Når man har fundet den øvre og nedre grænse, store-O og store-$\Omega$, kan man finde den tætbundne funktion, $\Theta$.
+Når man har fundet den øvre og nedre grænse, store-O og store-$\Omega$, kan man finde den tætbundne funktion, store-$\Theta$.
 \begin{exmp}
 \begin{align}
 \begin{split}

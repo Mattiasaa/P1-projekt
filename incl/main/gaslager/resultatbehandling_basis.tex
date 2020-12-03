@@ -1,0 +1,13 @@
+\section{Resultatbehandling af basisproblem}
+
+I dette afsnit vil vi kigge på resultatet af vores korteste vej-algoritme, og sætte det i kontekst af opgaven. Den længste vej, givet ved korteste vej hvor alle kanter er ganget $(-1)$, er illustreret på grafen i \autoref{fig:gaslager_graf} og uddybet i \autoref{tab:kob_salg_strategi}. I tabellen vises, at vores overskud er 252,73€ %i nutidseuro
+, og dermed er $\beta (q_0, q_{\slut}) = 252,73$. Som vist på grafen i \autoref{fig:gaslager_graf}, søger algoritmen mod toppen i måned 10 og 11, da den i 12. måned og slutningen af perioden kan sælge alle enheder til 24,05€ pr. stk. 
+
+\input{fig/tikz/gaslager/gaslager_hel_graf}
+
+Grafen i \autoref{fig:gaslager_graf} illustrerer den orienterede, ikke-cykliske graf, som repræsenterer vores basisproblem. Knuderne kan deles op i kolonner og rækker. Hver kolonne repræsenterer tiden, $t$, og hver række repræsenterer vores lagerbeholdning, $q$. Grafen har startknude $q_0$, som ligger i kolonnen der repræsenterer $t=0$, altså tidpunktet hvor gaslageret overtages og har derfra samtlige kanter indenfor opgavens givne parametre, $u_{\max }$, $i_{\max }$, $q_{\min }$ og $q_{\min }$, indtil slutknuden, $q_{\slut}$. Ved starttidspunktet er lagerbeholdningen 5. Grafen viser den længste vej igennem kanterne, hvor vægtene er lig prisen for køb og salg af enheder, repræsenteret af en hhv. stigende eller faldende kant.
+
+\input{fig/tab/gaslager/tabel_laengstevej_graf}
+
+\autoref{tab:kob_salg_strategi} viser vores strategi over hvornår vi planlægger at købe og sælge, for at optimere vores resultat. Strategien tager udgangspunkt i \autoref{fig:gaslager_graf} og det givne materiale. Priserne er sat op efter diskonteringsfaktoren.%dette skal introduceres. 
+Da de laveste priser forekommer i måned 5, 6 og 10, sørger algoritmen for, at kunne købe $i_{\max}$ enheder i denne periode. På samme måde er priserne højest i måned 2, 3, og 12/slut, så der sørges igen for at kunne sælge så mange som muligt. I tilfældet af 12/slut er dette, at der er 10 på lager i slutningen af måned 11, da vi kan sælge helt ud af lageret i løbet af disse 2 tidspunkter.
