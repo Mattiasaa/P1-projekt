@@ -17,6 +17,8 @@ import numpy as np
 #                                 #Maks koeb pr. tid
 # u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
 #                                 #Maks salg pr. tid
+# p_goal      = 0                 #Tilfældigt tal for programmet virker
+# alpha       = 1                 #Der er ingen straffaktor når alpha = 1
 
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
@@ -29,7 +31,9 @@ u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]
                                 #Maks salg pr. tid
 p_goal      = 5                 #Lagerbeholdnings aftale
 alpha       = 0.07              #Straffaktor
-                                
+
+
+                          
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
@@ -81,9 +85,6 @@ def graph_dict():
     for i in range (q_min[len(q_min)-1], q_max[len(q_min)-1]+1):
         addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][j], 0)
     return graph
-
-
-
 
 
 
