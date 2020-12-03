@@ -9,28 +9,28 @@ from collections import defaultdict
 import numpy as np
 
 #Basis problem
-q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
-                                #Maks beholdning i lager
-q_min       = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                 
-                                #Minimum beholdning i lager
-i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                 
-                                #Maks koeb pr. tid
-u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
-                                #Maks salg pr. tid
-p_goal      = 0                 #Tilfaeldigt tal for programmet virker
-alpha       = 1                 #Der er ingen straffaktor naar alpha = 1
-T           = 12                #Antal tidsperioder
-q_0         = 5                 #Start beholdning
-q_T         = 0                 #Slut beholdning
-p_0         = 0                 #Start kapital
-r           = 0.04              #Diskonteringsfaktor
-p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
-                                #Forward priser
-disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
-                                #Diskonteringsvaerdi
-p_disc      = [p[i]*disc[i] for i in range(T)]                      
-                                #Vaerdi efter diskonteringsfaktor
-infinity    = 9999              #Bruges som substitut for reelt uendelig
+# q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
+#                                 #Maks beholdning i lager
+# q_min       = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                 
+#                                 #Minimum beholdning i lager
+# i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                 
+#                                 #Maks koeb pr. tid
+# u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
+#                                 #Maks salg pr. tid
+# p_goal      = 0                 #Tilfaeldigt tal for programmet virker
+# alpha       = 1                 #Der er ingen straffaktor naar alpha = 1
+# T           = 12                #Antal tidsperioder
+# q_0         = 5                 #Start beholdning
+# q_T         = 0                 #Slut beholdning
+# p_0         = 0                 #Start kapital
+# r           = 0.04              #Diskonteringsfaktor
+# p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
+#                                 #Forward priser
+# disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+#                                 #Diskonteringsvaerdi
+# p_disc      = [p[i]*disc[i] for i in range(T)]                      
+#                                 #Vaerdi efter diskonteringsfaktor
+# infinity    = 9999              #Bruges som substitut for reelt uendelig
 
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
@@ -127,8 +127,8 @@ def optimization_of_gas_storage(graph , start , goal ):
     path . insert (0 , start )
     if shortest_distance[goal] != infinity:
         longest_distance = (shortest_distance [ goal ] - 13 * 250) * (-1)
-        print(f'The_highest_profit_is {round(longest_distance,2)} Euro') 
-        print(f'The_path_is_ + {str(path)}')
+        print(f'The highest profit is {round(longest_distance,2)} Euro') 
+        print(f'The path is {str(path)}')
 
     
 optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_slut')
