@@ -37,17 +37,18 @@ def addEdge(graph,u,v,e):
 
 def graph_dict():
     graph = defaultdict(list)
-    vertices = ['q00']
+    vertices = ['q0.0']
     for i in range(1,T+1):
         vertices.append(['q' + str(i) +'.'+ str(j) for j in range (q_max+1)])
     vertices.append('q_slut')
+    print(vertices)
     for i in range(T+1):
         if i == 0:
             for j in range(-u_max, i_max+1):
-                addEdge(graph, vertices[i][0], vertices[i+1][q_0 + j], round(j*p_disc[i],2))   
+                addEdge(graph, vertices[i], vertices[i+1][q_0 + j], round(j*p_disc[i],2))   
         elif i == 12:
             for k in range(q_min, q_max+1):
-                addEdge(graph, vertices[i][k], vertices[i+1][0],round(k*p_disc[i-1],2))
+                addEdge(graph, vertices[i][k], vertices[i+1],round(k*p_disc[i-1],2))
         else:
             for k in range(q_min, q_max+1):
                 current_units = k
