@@ -32,6 +32,7 @@ p_disc      = [p[i]*disc[i] for i in range(T)]
                                 #Vaerdi efter diskonteringsfaktor
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 
+
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
                                 #Maks beholdning i lager
@@ -91,8 +92,7 @@ def graph_dict():
                     max_units = q_max[i]
                 for j in range(min_units, max_units+1):
                     addEdge(graph, vertices[i][k], vertices[i+1][j],round((j-k)*p_disc[i]+250,2))
-    for i in range (q_min[len(q_min)-1], q_max[len(q_min)-1]+1):
-        addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][j], 0)
+    addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
     return graph
 
 
@@ -127,14 +127,14 @@ def optimization_of_gas_storage(graph , start , goal ):
     path . insert (0 , start )
     if shortest_distance[goal] != infinity:
         longest_distance = (shortest_distance [ goal ] - 13 * 250) * (-1)
-        print(f'The_highest_profit_is {round(longest_distance,2)} Euro') 
-        print(f'The_path_is_ + {str(path)}')
+        print(f'The highest profit is {round(longest_distance,2)} Euro') 
+        print(f'The path is {str(path)}')
 
     
 optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_slut')
 
 
-
+# print(graph_dict())
 
 
 

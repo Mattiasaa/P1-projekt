@@ -1,4 +1,4 @@
-\section{Det udvidede problem som algoritme}
+\subsection{Det udvidede problem som algoritme}
 Vi arbejder med den samme algoritme, som vi gjorde i basisproblemet, da denne var tilpasset eventuelle udvidelser og genereliseringer. Den eneste forskel er vores data:
 
 \lstinputlisting[
@@ -7,3 +7,12 @@ Vi arbejder med den samme algoritme, som vi gjorde i basisproblemet, da denne va
   label={code:data_udvidet},
   caption={Definering af data for det udvidede problem.}
 ]{code/dijkstras.py} 
+
+Det ses, at de tidligere statiske værdier, $q_{max}$, $q_{min}$, $i_{max}$ og $u_{max}$ nu ændrer sig alt efter, hvilken måned vi befinder os i. Dette ændrer også resultatet, og sættes dataen ind i algoritmen fås nu:
+
+\begin{lstlisting} [label=lst:udvidet_output,caption=Output for det udvidede problem.]
+
+The highest profit is 188.29 Euro
+The path is $['q0.5', 'q1.8', 'q2.4', 'q3.2', 'q4.4', 'q5.5', 'q6.6', 'q7.7', 'q8.8', 'q9.8', 'q10.10', 'q11.9', 'q12.5', 'q_slut']$,
+
+\end{lstlisting}
