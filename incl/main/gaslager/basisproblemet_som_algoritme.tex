@@ -2,26 +2,42 @@
 For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver den største profit. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Vi deler algoritmen op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
 
 \lstinputlisting[
-  firstline=11,
-  lastline=26,
-  label={code:data},
-  caption={Definering af data.}
-]{code/dijkstras_tex.py}
+  firstline=12,
+  lastline=33,
+  label={code:data_basis},
+  caption={Definering af data for basisproblemet.}
+]{code/dijkstras.py}
 
-Værdierne er alle givet i basisproblemet. Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en nabomatrix.
+Værdierne er alle givet i basisproblemet. Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en dictionary med alle nabolister. Først er vi dog nødt til at lave en funktion som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
-(Indsæt funktion for nabomatrix)
+\lstinputlisting[
+  firstline=60,
+  lastline=64,
+  label={code:add_edge},
+  caption={Tilføjer kanter.}
+]{code/dijkstras.py}
+
+(Forklaring af funktionen)
+
+Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
+
+\lstinputlisting[
+  firstline=67,
+  lastline=96,
+  label={code:graph_dict},
+  caption={Laver en dictionary med nabolister.}
+]{code/dijkstras.py}
 
 (Forklaring af funktionen)
 
 Nu kan vi så begynde at opstille den funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver den største profit:
 
 \lstinputlisting[
-  firstline=35,
-  lastline=64,
-  label={code:data},
-  caption={Dikstras algoritme for problemet.}
-]{code/den_rigtige_dijkstras.py}
+  firstline=100,
+  lastline=131,
+  label={code:dijkstras_optimering},
+  caption={Dikstras algoritme til løsning af problemet.}
+]{code/dijkstras.py}
 
 I funktionen defineres først to tomme ordbøger. I $shortest\_distance$ opbevares den korteste vej til alle punkterne i grafen. I $predecesor$ opbevares for hvert punkt i grafen, det forrige punkt i den korteste vej, altså det punkt man går igennem lige inden man når det nye punkt, hvis man følger den korteste vej. Herefter oprettes $unseen\_nodes$ som vi sætter lig med $graph$. Dette skyldes at vi endnu ikke kender distancen til nogen af punkterne, og derfor er alle $unseen$. Vi opretter også en tom liste, som vi kalder $path$. I denne liste tilføjes de punkter som indgår i den optimale vej.//
 Vi sætter nu den korteste vej til alle punkter i $unseen\_nodes$, hvilken lige nu er alle punkterne, lig med uendelig. Dette gøres fordi der i Dijkstras algoritme er uendeligt langt til de punkter, man ikke kender længden til endnu. Da vi starter i startpunktet kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
@@ -34,46 +50,4 @@ Vi sætter vores nuværende punkt til at være lig med vores mål.
 Derefter danner vi en ny while-løkke, som kører så længe at det nuværende punkt ikke er startpunktet. Startpunktet har nemlig ikke en predecessor, og kan dermed ikke beregnes således. I listen $path$ tilføjes nu det nuværende punkt, hvilket vi har sat til at være $goal$, på plads $[0]$. Vi kender dermed det sidste punkt i vejen. Derefter defineres $current\_node$ nu til at være punktet lige inden det tidligere $current\_node$ i den korteste vej derhen. Denne tilføjes nu til listen ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startpunktet.
 Hvis den korteste vej til $q\_goal$ ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så vil den længste vej være lig den korteste vej til $q\_goal$ gange med $-1$ for at få den omvendte graf og derefter lagt til $(100*(længden af vejen-1)+200)$. Dette gøres for at få positive kantvægte, da Dijkstras algoritme kun arbejder med ikke-negative kantvægte.
 Nu kan vi printe den største profit, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke punkter vi skal følge og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
-%
-%
-%
-%Her dannes først en tom liste over diskonteringsværdier. Derefter sættes en forløkke i gang som beregner disse for alle værdier for $t$. Herefter laver vi en ny funktion, som danner en tom liste med de reelle værdier for forwardpriserne. Her sættes også en forløkke igang, som tilføjer værdier til denne liste ved at bruge funktionen for diskonteringsværdierne, og for hver værdi, $i$, gange diskonteringsværdien med prisen til $t$. På denne måde har vi nu dannet en liste over de reelle værdier for hvert $t$. Disse priser vil vi senere bruge i vores specificerede Dijkstra-algoritme. Først vil vi dog opstille en nabomatrix over vores basisproblemgraf, så vi kan bruge disse knuder i vores algoritme. Vi danner nabomatrixen:
-%
-%\begin{lstlisting} [label=nabomatrix_kode,caption=Nabomatrix for vores problemgraf]
-%def graph_matrix()	
-%	infinity=99999
-%	for i in range(T)
-%		graph=[[infinity]*(q_max+1)]
-%		vertices= copy.deepcopy(graph)  #kopierer graph
-%		vertices.append ( [ 0 ] )
-%		vertices.reverse()
-%	return vertices
-%\end{lstlisting}
-%
-%
-%\begin{lstlisting} [label=dijkstra_kode_problem,caption=Dijkstras algoritme for vores problem]
-%def dijkstras(q_t):
-%	oevre_graense=q_t+i_max
-%	if oevre_graense>q_max:
-%		oevre_graense=q_max
-%	nedre_graense=q_t-u_max
-%	if nedre_graense<q_min
-%		nedre_graense=q_min
-%	path=[]	
-%	for t in range (T)
-%		if t==0:
-%			for i in range (nedre_graense,oevre_graense+1):
-%				infinity=99999
-%				if graf[t+1][i]=infinity:
-%					graf[t+1][i]=interest_price[t]
-%					path[t][i]=q_t-i
-%		else:
-%			for i in range (nedre_graense,oevre_graense+1):
-%				if graf[t][q_t+interest_price[t]*(q_t-i)]>graf[t+1][i]
-%					graf[t+1][i]=graf[t][q_t]+interest_price[t]*(q_t-1)
-%					path[t][i]=q_t-i
-%\end{lstlisting}
-%
-
-%Vi starter med at finde grænserne for hvor længe vores løkker senere i kildekoden skal køre. Vi bestemmer først den øvre værdi ved at tage den nuværende mængde gasenheder til tiden $t$ og lægge det sammen med den øvre grænse for det antal gasenheder, der kan sættes ind på lageret mellem to tidsskridt. Hvis den beregnede øvre grænse bliver større end den reelle øvre grænse for lagerbeholdningen i gaslageret, $q_{max}$, sætter vi dog værdien for den øvre grænse til at være $q_{max}$. På samme måde finder vi den nedre grænse ved at tage den nuværende mængde gasenheder til tiden $t$ og trække det antal gasenheder, der højst må tages ud af lageret mellem to tidsskridt fra. Hvis den beregnede nedre grænse bliver mindre end den reelle nedre grænse for lagerbeholdningen i gaslageret, $q_{min}$, sætter vi dog værdien for den nedre grænse til at være $q_{min}$. Derefter ser vi, om $t=0$. Hvis dette er tilfældet laver vi en forløkke, der kører fra den nedre til den øvre grænse$+1$, og vi definerer uendeligt til at være 99999. Hvis punktet i grafen på plads $[t+1][i]$ er minus uendelig, altså at den endnu ikke optræder i vejen, sætter vi punktet på denne plads til at være den reelle pris på gas til den tid, og til vejen tilføres på plads [t][i] den mængde gasenheder der er til tiden $t$ minus i. Hvis $t$ derimod ikke er lig nul kører en anden forløkke med de samme grænser. Her sammenlignes indtjeningen for denne måned med den for forrige måned og opdateres hvis indtjeningen for denne måned er større. Derefter tilføjes mængden af gasenheder til tiden, $t$, minus en til listen path. På denne måde opdateres vejen for hver gennemkørsel i forløkken, altså for hver iteration.
 

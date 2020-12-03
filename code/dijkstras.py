@@ -17,8 +17,8 @@ i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
                                 #Maks koeb pr. tid
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
                                 #Maks salg pr. tid
-p_goal      = 0                 #Tilfældigt tal for programmet virker
-alpha       = 1                 #Der er ingen straffaktor når alpha = 1
+p_goal      = 0                 #Tilfaeldigt tal for programmet virker
+alpha       = 1                 #Der er ingen straffaktor naar alpha = 1
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
@@ -29,7 +29,7 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]
 disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
-                                #Værdi efter diskonteringsfaktor
+                                #Vaerdi efter diskonteringsfaktor
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 
 #Udvidet problem
@@ -53,7 +53,7 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]
 disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
-                                #Værdi efter diskonteringsfaktor
+                                #Vaerdi efter diskonteringsfaktor
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 
 
