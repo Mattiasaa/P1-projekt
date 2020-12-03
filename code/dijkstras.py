@@ -1,86 +1,168 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Nov 26 11:30:15 2020
+Created on Wed Dec  2 12:03:31 2020
 
 @author: marcu
 """
 
+from collections import defaultdict
 import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
 
-'''Vi vil nu implementere Dijkstras algoritme i python, således vi kan bruge 
-den til at løse vores problem i dets rigtige størrelse.
-Vi vil først indsætte dataen i python og finde en måde hvorpå python kan generere
-vores data uden at vi manuelt skal skrive alle kantvægte ind.'''
+#Basis problem
+q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
+                                #Maks beholdning i lager
+q_min       = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                 
+                                #Minimum beholdning i lager
+i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                 
+                                #Maks koeb pr. tid
+u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
+                                #Maks salg pr. tid
+p_goal      = 0                 #Tilfældigt tal for programmet virker
+alpha       = 1                 #Der er ingen straffaktor når alpha = 1
+T           = 12                #Antal tidsperioder
+q_0         = 5                 #Start beholdning
+q_T         = 0                 #Slut beholdning
+p_0         = 0                 #Start kapital
+r           = 0.04              #Diskonteringsfaktor
+p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
+                                #Forward priser
+disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+                                #Diskonteringsvaerdi
+p_disc      = [p[i]*disc[i] for i in range(T)]                      
+                                #Værdi efter diskonteringsfaktor
+infinity    = 9999              #Bruges som substitut for reelt uendelig
 
-'''Indsætning af data'''
-q_0             = 5
-q_max           = 10
-q_min           = 0
-u_max           = 4
-i_max           = 4
-T               = 12
-t1               = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-p_t             = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
-r               = 0.04
+#Udvidet problem
+q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
+                                #Maks beholdning i lager
+q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
+                                #Minimum beholdning i lager
+i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
+                                #Maks koeb pr. tid
+u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
+                                #Maks salg pr. tid
+p_goal      = 5                 #Lagerbeholdnings aftale
+alpha       = 0.07              #Straffaktor                          
+T           = 12                #Antal tidsperioder
+q_0         = 5                 #Start beholdning
+q_T         = 0                 #Slut beholdning
+p_0         = 0                 #Start kapital
+r           = 0.04              #Diskonteringsfaktor
+p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
+                                #Forward priser
+disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+                                #Diskonteringsvaerdi
+p_disc      = [p[i]*disc[i] for i in range(T)]                      
+                                #Værdi efter diskonteringsfaktor
+infinity    = 9999              #Bruges som substitut for reelt uendelig
 
 
-'''Vi vil nu finde de reelle værdier for forwardpriserne i forhold til nutidsværdien.
-Vi laver først en liste med interest som udregner hvor meget mere værd penge er
-til tiden t med vores diskonteringsfaktor r. Derefter kan vi bruge denne liste 
-til at beregne de reelle værdier for forward priserne'''
+def addEdge(graph,u,v,e):
+    if u in graph:
+        graph[u].update( {v : e} )
+    else:
+        graph[u] = {v : e}
 
 
-def interest():                         #Danner liste med diskonteringsværdier
-    interest_rate = []
+def graph_dict():
+    graph = defaultdict(list)
+    vertices = ['q0.5']
     for i in range(1,T+1):
-        interest_i = np.e**(-r * i /T) 
-        interest_rate.append(interest_i)
-    return interest_rate
+        vertices.append(['q' + str(i) +'.'+ str(j) for j in range (q_max[i-1]+1)])
+    vertices.append('q_slut')
+    for i in range(T+1):
+        if i == 0:
+            for j in range(-u_max[i], i_max[i]+1):
+                addEdge(graph, vertices[i], vertices[i+1][q_0 + j], round(j*p_disc[i]+250,2))   
+        elif i == 12:
+            for k in range(q_min[i-1], q_max[i-1]+1):
+                if k == p_goal:
+                    addEdge(graph, vertices[i][k], vertices[i+1],round(-k*p_disc[i-1]+250,2))
+                else:
+                    addEdge(graph, vertices[i][k], vertices[i+1],round(-k*p_disc[i-1]+250,2)/alpha)
+        else:
+            for k in range(q_min[i-1], q_max[i-1]+1):
+                current_units = k
+                min_units = current_units - u_max[i]
+                if min_units < q_min[i]:
+                    min_units = q_min[i]
+                max_units = current_units + i_max[i]
+                if max_units > q_max[i]:
+                    max_units = q_max[i]
+                for j in range(min_units, max_units+1):
+                    addEdge(graph, vertices[i][k], vertices[i+1][j],round((j-k)*p_disc[i]+250,2))
+    for i in range (q_min[len(q_min)-1], q_max[len(q_min)-1]+1):
+        addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][j], 0)
+    return graph
 
 
-def get_interest_price():               #Danner liste med reelle værdier
-    interest_price = []
-    for i in range (T):
-        a = interest()[i]*p_t[i]
-        interest_price.append(a)
-    return interest_price
 
-print(get_interest_price())
+def optimization_of_gas_storage(graph , start , goal ): 
+    shortest_distance = {}
+    predecessor = {}
+    unseen_nodes = graph
+    path = []
+    for node in unseen_nodes :
+        shortest_distance[node] = infinity
+    shortest_distance [ start ] = 0
+    while unseen_nodes : 
+        min_distance_node = None
+        for node in unseen_nodes : 
+            if min_distance_node is None :
+                min_distance_node = node
+            elif shortest_distance [node] < shortest_distance[min_distance_node]: 
+                min_distance_node = node
+        for child_node, weight in graph [ min_distance_node ].items ( ): 
+            if graph.get(child_node) is None:
+                pass
+            else:
+                if weight + shortest_distance [min_distance_node] < shortest_distance[child_node]: 
+                    shortest_distance[child_node] = weight + shortest_distance [ min_distance_node ]
+                    predecessor [ child_node ] = min_distance_node
+        unseen_nodes.pop(min_distance_node)
+    current_node = goal
+    while current_node != start:
+        path. insert (0,current_node)
+        current_node = predecessor[current_node]
+    path . insert (0 , start )
+    if shortest_distance[goal] != infinity:
+        longest_distance = (shortest_distance [ goal ] - 13 * 250) * (-1)
+        print(f'The_highest_profit_is {round(longest_distance,2)} Euro') 
+        print(f'The_path_is_ + {str(path)}')
+
+    
+optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_slut')
 
 
-'''Vi vil nu generere en nabomatrix til grafen. Vi starter med at finde mængden
-af knuder. Da vi ved at der er 12 måneder om vores beholding kan være fra 0 til 11
-ved vi at der i grafen må være 12*11 knuder plus startknuden og slutknuden (når 
-vi sælger til lejer'''
 
-def make_matrix(q_t):
-    interest_price = get_interest_price()
-    amount_vertices = 12 * 11 + 2
-    matrix = np.zeros((amount_vertices, amount_vertices))
-    max_border = q_t + i_max
-    if max_border > q_max:
-        max_border = q_max
-    min_border = q_t - u_max
-    if min_border < q_min:
-        min_border = q_min
-    for t in range (T):
-        for i in range (amount_vertices-10):
-            if matrix[t][i] == 0:
-                for j in range(min_border, max_border):
-                    matrix[t][i+j] = interest_price[t]
-    return matrix
 
-# print(make_matrix(0))
-        
-            
-    
-    
-    
-    
-    
-    
-    
-    
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# print(graph_dict()['q'])
+
+
+# def generate_edges(graph):
+#     edges = []
+ 
+#     # for each node in graph
+#     for node in graph:
+         
+#         # for each neighbour node of a single node
+#         for neighbour in graph[node]:
+             
+#             # if edge exists then append
+#             edges.append((node, neighbour))
+#     return edges

@@ -1,3 +1,6 @@
 % incl/misc/abstract.tex : projektets abstract
 % ------------------------------------------------------------------------------
 % Et abstract er et kort resume af rapporten, som vises på titelbladet
+This study investigates how algorithms and graph teory can help optimze the profit of a gas storage in a given period of time by buying and selling gas units.
+Initialy, relevant theory of graph theory and algorithms will be explained. The study found Dijkstra's algorithm very useful for solving the problem. By multiplaying by minus one and adding, so that no edges are negative, one can use an implementation of Dijkstra's algorithm in Python to find the longest path through a graph, by finding the shortest path through the inverted, positive graph. This path will be the path that yields the greatest profit. Furtermore the most profitable paths can be shown in graphs illustrating the best trading strategy. The greatest profit in the basic problem is 252.72 euros and the greatest profit in our extended problem is 188.27 euros. 
+The extensions is seen to reduce the profit considerably, and  especially the fluctuating limits for inventory and sales per month are to blame for the low profit, as they affect profits over several months and not only in the last month, which the penalty factor does. 
