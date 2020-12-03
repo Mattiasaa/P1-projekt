@@ -505,7 +505,21 @@
 		\path[gray,->,>=latex,thick] (v118) edge node[midway, sloped, below] {} (v120);
 		\path[gray,->,>=latex,thick] (v119) edge node[midway, above] {} (v120);
 		\path[gray,->,>=latex,thick] (v1110) edge node[near end, sloped, below] {} (v120);
+		
+		\path[red,->,>=latex,ultra thick] (vstart) edge node[midway, above] {} (v08);
+		\path[red,->,>=latex,ultra thick] (v08) edge node[midway, sloped, below] {} (v14);
+		\path[red,->,>=latex,ultra thick] (v14) edge node[midway, sloped, below] {} (v22);
+		\path[red,->,>=latex,ultra thick] (v22) edge node[midway, above] {} (v34);
+		\path[red,->,>=latex,ultra thick] (v34) edge node[near end, sloped, below] {} (v45);
+		\path[red,->,>=latex,ultra thick] (v45) edge node[midway, sloped, above] {} (v56);
+		\path[red,->,>=latex,ultra thick] (v56) edge node[near end, sloped, below] {} (v67);
+		\path[red,->,>=latex,ultra thick] (v67) edge node[midway, sloped, above] {} (v78);
+		\path[red,->,>=latex,ultra thick] (v78) edge node[near end, sloped, below] {} (v88);
+		\path[red,->,>=latex,ultra thick] (v88) edge node[midway, sloped, above] {} (v910);
+		\path[red,->,>=latex,ultra thick] (v910) edge node[midway, sloped, above] {} (v109);
+		\path[red,->,>=latex,ultra thick] (v109) edge node[near end, sloped, below] {} (v115);
+		\path[red,->,>=latex,ultra thick] (v115) edge node[midway, sloped, above] {} (v120);
 	\end{tikzpicture}
 	\caption{Graf for den længste vej igennem grafen.}
-	\label{fig.gaslager_graf}
+	\label{fig:gaslager_graf_udvidet}
 \end{figure}
