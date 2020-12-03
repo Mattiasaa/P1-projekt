@@ -1,4 +1,4 @@
-\subsection{Basisproblemet som algoritme}
+\section{Basisproblemet som algoritme}
 For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver den største profit. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Vi deler vores kode op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
 
 \lstinputlisting[
@@ -13,24 +13,43 @@ Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier s
 Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en dictionary med alle nabolister. Først er vi dog nødt til at lave en funktion som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
-  firstline=60,
-  lastline=64,
+  firstline=61,
+  lastline=65,
   label={code:add_edge},
   caption={Tilføjer kanter.}
 ]{code/dijkstras.py}
 
-(Forklaring af funktionen)
+\autoref{code:add_edge} tjekker først om der er en dictionary, u, i en anden dictionary, graph. Hvis der er dette tilføjer den $v$ og kantvægten mellem $u$ og $v$ til dictionaryen for $u$. Hvis ikke u allerede er i graph, så laver den en ny dictionary til $u$ og indsætter $v$ og kantvægten mellem $u$ og $v$ i den nye dictionary.
 
 Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 
 \lstinputlisting[
-  firstline=67,
+  firstline=68,
   lastline=96,
   label={code:graph_dict},
   caption={Laver en dictionary med nabolister.}
 ]{code/dijkstras.py}
 
-(Forklaring af funktionen)
+I \autoref{code:graph_dict} definerer vi en funktion som bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary" som de andre dictionaries vil blive sat ind i.
+Den danner nu en flerdimensionelt liste med alle punkterne i grafen. Punkterne har navn på form "qx.y" hvor x beskriver hvilken tid vi er i og y beskriver beholdningen. Det vil sige "q3.4" betyder vi efter tre måneder har en beholdning på 4 enheder. Hver x-værdi har sin egen liste, det vil sige alle "q3.y" er i en liste for sig selv.
+
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde som ikke går igen, nemlig ved startpunktet og ved slutpunktet. Ved tiden $t=0$, hvor $t=i$ i denne løkke, er der nemlig kun et punkt der har kanter. Funktionen generer nu kanterne som "q0.5" har, og laver en dictionary for "q0.5" 
+"q0.5"'s dictionary ser ud således:
+
+\begin{lstlisting}
+
+'q0.5' : {'q1.1' : 170.27, 'q1.2' : 190.2, 'q1.3' : 210.13, 'q1.4' : 230.07, 'q1.5' : 250, 'q1.6': 269.93, 'q1.7' : 289.87, 'q1.8' : 309.8, 'q1.9' : 329.73}
+\caption{Dictionary for "q0.5"}
+\label{code:q05}
+\end{lstlisting}
+Denne dictionary viser $'q0.5'$s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da dijkstras ikke kan bruge negative vægte.
+
+I \autoref{code:graph_dict} ser vi, at når $i=12$ har vi også et specielt tilfælde. Dette er vores sidste værdi for t. I aftalen står der, at udlejeren køber alt gas som er tilbage når lejeperioden er ovre.   Mængden af gas vi kan sælge er altså ikke bundet af $u_max$ og $i_max$. I denne del af funktionen ser vi også indførslen af $'q_goal'$. Dette er en værdi som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle $'q12.y'$ til $'q_slut'$, og hvis $'q12.y'$ ikke er lig vores $'q_goal'$, vil deres kantvægt til $'q_slut'$ blive divideret med en straffaktor. I basis problemet har vi, at straffaktoren er 1 da vi ikke har nogle aftalt slutbeholdning.
+
+Vi kan nu kigge på alle andre tilfælde for i. funktionen kører en løkke for $k$ med værdier mellem $'q_min'$ til den specifikke tid, og $'q_max'$ i den specifikke tid. Dette betegner den som de nuværende enheder.
+Den finder nu de største ændinger når man har $k$ enheder. Den kører derefter en løkke for j med disse værdier, og tilføjer alle de mulige naboer til punktet i tiden $t=i$ og med beholdningen $k$. Denne del af funktionen danner såledesdictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
+
+Til allersidst tilføjer den en kant mellem $'q_slut'$ og $'q12.0'$ med vægt $0$, dette skyldes, at vores kode for dijkstras ikke kan finde længden til et punkt, som ikke har sin egen dictionary.
 
 Nu har vi en dictionary med alle punkternes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver den største profit:
 
