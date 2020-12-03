@@ -2,63 +2,55 @@
 %side 250 ish
 %table 1 side 247 i pdf.
 
-Der findes to former for kompleksitet, men vi vælger at fokusere på tidskompleksitet. Den anden form for kompleksitet er pladskompleksitet. 
-Der er tre former for tilfælde: bedste, værste og det gennemsnitlige. 
+Der findes to former for kompleksitet, men vi vælger at fokusere på \emph{tidskompleksitet}. Den anden form for kompleksitet er pladskompleksitet. 
+Tidskompleksitet fortæller noget om, hvordan udviklingen i tid af en given algoritme forløber når størrelsen på datasættet stiger. I tidskompleksitet vil man ofte kigge på tre forskellige former for tilfælde. Disse tilfælde er \emph{bedste tilfælde}, \emph{værste tilfælde} og det \emph{gennemsnitlige tilfælde}. 
+Bedste tilfælde beskriver algoritmen under optimale forhold, hvor datasættet er sat i den rækkefølge der gør, at algoritmen tager mindst mulig tid. I en lineær søgealgoritme vil dette være, at elementet der søges efter, er det første element i listen. 
+Værste tilfælde er en situation, hvori datasættet er ordnet i den værste rækkefølge, så der skal gennemføres det største mulige antal operationer for den givne algoritme. Hvis vi igen tager eksemplet med den lineære søgealgoritme, ville det være at elementet der søges efter ikke findes i listen over elementer.
+Det gennemsnitlige tilfælde ser på et gennemsnitligt datasæt, dette er dog meget svært at bestemme, da da det er svært at bestemme nogle parametre der gør, at man får et gennemsnitligt sæt.
+Det mest sigende er det gennemsnitlige tilfælde, men da det er svært at bruge, vil man nøjes med det værste tilfælde, da man så i alle tilfælde kan sige, at algoritmen har denne kompleksitet eller mindre. Ved man, at algoritmen er lineær i værste tilfælde, vil man kunne løse den i rimelig tid for alle størrelser og ordner af datasæt.
+For at beskrive disse algoritmer, vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. 
 
-\emph{Bedste tilfælde} beskriver algoritmen under optimale forhold, i en lineær søgealgoritme vil dette altså være, at elementet der søges efter, er det første element i listen. På samme måde er \emph{værste tilfælde} en situation, hvori elementet der søges efter ikke findes eller er på sidste plads i listen over elementer.
-Oftere ser man på enten værste tilfælde eller \emph{gennemsnitlige tilfælde}. 
-Det gennemsnitlige tilfælde vil give et rigtigt godt overblik over hvor god algoritmen er, dog er det meget svært at bestemme, hvad et gennemsnitligt input er, da det er svært at bestemme nogle parametre at vælge ud fra. 
-Det værste tilfælde giver et godt overblik over, hvor lang tid det kan tage. Ved man, at algoritmen er lineær i værste tilfælde, vil man kunne løse den i rimelig tid for alle størrelser, $n$.
-De forskellige resultater i vores analyse af algoritmerne kan deles op i kategorier, de mest gængse er: $\log n$, $\sqrt{n}$, $n$, $n^x$, $x^n$ og $n!$, men det kan også være en kombination af disse, som $n!n$, $n\log n$ eller lignende.
-For at beskrive disse algoritmer i fx værste tilfælde, vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. Man vil her fokusere på \emph{asymptotiske $n$-værdier}, altså gående mod $\infty$, da man i nogle tilfælde vil have en algoritme, der er langsommere end den \emph{øvre bindende funktion} ved små $n$, men ved større, som fx over 10.000, er hurtigere.
+%De forskellige resultater i vores analyse af algoritmerne kan deles op i kategorier, de mest gængse er: $\log n$, $\sqrt{n}$, $n$, $n^x$, $x^n$ og $n!$, men det kan også være en kombination af disse, som $n!n$, $n\log n$ eller lignende.
+%tabellen fra side 247 kunne være super lækker at inputte her.
 
 \subsection{Store-$O$}
+Store-$O$ bliver brugt til at begrænse funktionen opadtil. Man kan med garanti sige, at algoritmen vil vokse lig store-$O$/$g(n)$(ved ikke hvilken man vil bruge) eller mindre når datasættet stiger.
+
 \begin{defn}
-$f(n)= O(g(n))$, hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$, så $|f(n)| \leq C |g(n)| \forall n \geq n_o$.
+$f(n)$ siges at være $O(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \leq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
 
-Store-$O$ bliver brugt til at binde funktionen opadtil, begrænse den oppefra. Man kan med garanti sige, at algoritmen tager store-$O$ tid eller mindre. 
-\begin{exmp}
-\begin{align}
-\begin{split}
-f(n)=& 13n+3 \\
-13n+3 \leq& 20n \forall \ n \geq 1 \\
-f(n) =& O(n).
-\end{split}
-\end{align}
+
+\begin{exmp} \label{ex:store-O}
+Vi tager i dette eksempel udgangspunkt i funktionen $f(n)=13n+3$. 
+Her skal vi forsøge at finde vores $C$ og $g(n)$ så uligheden $|f(n)| \leq C|g(n)|$ gælder for alle $n$ over $n_0$. Hvis vi sætter $g(n) = n$ og $C=20$ står der $13n+3 \leq 20n$. Dette er ikke sandt ved $n=0$ da der vil stå $3 \leq 0$. For $n=1$ står der $13\cdot 1 + 3 \leq 20 \cdot 1$ hvilket må være sandt, altså er vores ulighed sand for $n \geq 1$.
+Når vi har fundet vores $C$, $g(n)$ og $n_0$, kan vi nu konkludere, at $|f(n) = O(g(n))$, hvilket i vores eksempel er $f(n) = O(n)$.
+Vi kan dermed sige, at kompleksiteten af $f(n)$ er lineær.
 \end{exmp}
 Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig, højere funktion, $g(n)$, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
 
 \subsection{Store-$\Omega$}
 \begin{defn}
-$f(n) = \Omega(g(n))$, hvis og kun hvis $\exists$ positive konstanter $C$ og $n_o$, så $|f(n)| \geq C |g(n)| \forall n \geq n_o$.
+$f(n)$ siges at være  $\Omega(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \geq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
-Store-$\Omega$ bruges, modsat store-$O$, til at binde funktionen nedadtil, altså finde den nedre grænse for algoritmen. Den vil mindst tage store-$\Omega$ tid i det givne tilfælde.
+Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen. Den vil mindst tage store-$\Omega$ tid i det givne tilfælde.
 \begin{exmp}
-\begin{align}
-\begin{split}
-f(n)=& 13n+3 \\
-13n+3 \geq& n \forall \ n \geq 1 \\
-f(n) =& \Omega(n).
-\end{split}
-\end{align}
+Hvis vi igen i dette eksempel tager udgangspunkt i funktionen fra Eksempel \ref{ex:store-O} $f(n)=13n+3$, skal vi nu forsøge at finde $C$ og $g(n)$ hvor det gælder at det er lavere end $f(n)$ for alle $n \geq n_0$. 
+Vi kan med fordel bruge den samme $g(n)$ som ovenfor, $g(n)=n$, så skal vi finde en $C$-værdi der gør uligheden sand. Hvis $C=1$ står der $13n+3 \geq 1n$. Dette må gøre sig gældende for alle $n \geq 0$. Derved har vi vores konstanter $C=1$ og $n_0 = 0$, og funktionen $g(n)=n$ og kan nu begrænse funktionen nedadtil med $g(n)$, $f(n)=\Omega(n)$.
 \end{exmp}
 
 På samme måde som ved store-$O$-notationen vil man her kunne vælge en vilkårlig mindre funktion, $\log n$, $1$ med flere, men da man vil begrænse den så meget som muligt, vælger man den største funktion, $g(n)$, hvor uligheden stadig er sand.
 \subsection{Store-$\Theta$}
-\begin{defn}
-$f(n) = \Theta(g(x))$, hvis og kun hvis $\exists$ positive konstanter $C_1, C_2$ og $n_o$, så $C_1|g(n)| \leq |f(n)| \leq C_2|g(n)| \forall n \geq n_o$.
+\begin{defn} \label{defn:store-Theta}
+$f(n)$ siges at være $\Theta(g(x))$, hvis og kun hvis der eksisterer positive konstanter $C_1, C_2$ og $n_o$, så $C_1|g(n)| \leq |f(n)| \leq C_2|g(n)|$ for alle $n \geq n_o$.
 \end{defn}
-Når man har fundet den øvre og nedre grænse, store-O og store-$\Omega$, kan man finde den tætbundne funktion, store-$\Theta$.
+Hvis $f(x)$ både er $O(g(n))$ og $\Omega(g(n))$, kan man jfr. Definition \ref{defn:store-Theta} sige at $f(x) = \Theta(g(n))$. 
+Der skal altså eksistere et $g(n)$ hvor man ved forskellige $C$-værdier kan begrænse $f(n)$ både opad- og nedadtil. 
 \begin{exmp}
-\begin{align}
-\begin{split}
-f(n)=& 13n+3 \\
-\Omega(n) \leq& f(n) \leq O(n) \\
-n \leq& 13n+3 \leq 10n \forall \ n \geq 1 \\
-f(n) =& \Theta(n).
-\end{split}
-\end{align}
+Hvis man tager udgangspunkt i de foregående eksempler for store-$O$ og store-$\Omega$ ser vi, at $g(n) = n$ i begge tilfælde, med to forskellige $C$ værdier. \\
+$f(n)=13n+3, g(n)=n, C_1=1, C_2=20$ \\
+Disse værdier kan indsættes i uligheden så vi får $1n \leq 13n+3 \leq 20n| \forall n \geq 1$ \\
+$f(n)= \Theta(n)$
 \end{exmp}
 
 I følgende afsnit tager vi udgangspunkt i to sorteringer og ser, hvordan de sammenligner sig på store-$O$ i bedste og værste tilfælde.
