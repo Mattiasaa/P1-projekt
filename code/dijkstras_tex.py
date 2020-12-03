@@ -71,3 +71,5 @@ def get_path():
     for t in range(T):
         path.append(pre_vertice[T-t][path[t+1]])
     path.reverse()
+
+get_path()
