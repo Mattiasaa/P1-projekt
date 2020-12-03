@@ -8,32 +8,32 @@ For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan fi
   caption={Definering af data.}
 ]{code/dijkstras_tex.py}
 
+Værdierne er alle givet i basisproblemet. Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en nabomatrix.
+
+(Indsæt funktion for nabomatrix)
+
+(Forklaring af funktionen)
+
+Nu kan vi så begynde at opstille den funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver den største profit:
 
 \lstinputlisting[
-  firstline=30,
-  lastline=37,
-  label={code:noget},
-  caption={Danner matrix til graf.}
-]{code/dijkstras_tex.py}
+  firstline=35,
+  lastline=64,
+  label={code:data},
+  caption={Dikstras algoritme for problemet.}
+]{code/den_rigtige_dijkstras.py}
 
-
-\lstinputlisting[
-  firstline=39,
-  lastline=63,
-  label={code:profit},
-  caption={Dudregning af profit}
-]{code/dijkstras_tex.py}
-
-
-\lstinputlisting[
-  firstline=66,
-  lastline=73,
-  label={code:vej},
-  caption={Finder vej}
-]{code/dijkstras_tex.py}
-
-%Værdierne er alle givet i basisproblemet.
-%Dernæst vil vi finde de reelle værdier for forwardpriserne i forhold til nutidsværdien. Vi laver først en liste, som vi kalder interest, som udregner hvor meget mindre værd pengene er til tiden t med vores diskonteringsfaktor, $r$. Derefter kan vi bruge denne liste til at beregne de reelle værdier for forwardpriserne.
+I funktionen defineres først to tomme ordbøger. I $shortest\_distance$ opbevares den korteste vej til alle punkterne i grafen. I $predecesor$ opbevares for hvert punkt i grafen, det forrige punkt i den korteste vej, altså det punkt man går igennem lige inden man når det nye punkt, hvis man følger den korteste vej. Herefter oprettes $unseen\_nodes$ som vi sætter lig med $graph$. Dette skyldes at vi endnu ikke kender distancen til nogen af punkterne, og derfor er alle $unseen$. Vi opretter også en tom liste, som vi kalder $path$. I denne liste tilføjes de punkter som indgår i den optimale vej.//
+Vi sætter nu den korteste vej til alle punkter i $unseen\_nodes$, hvilken lige nu er alle punkterne, lig med uendelig. Dette gøres fordi der i Dijkstras algoritme er uendeligt langt til de punkter, man ikke kender længden til endnu. Da vi starter i startpunktet kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
+Nu opstiller vi en while løkke og lader den køre så længe at der stadig er punkter i $unseen\_nodes$, altså indtil den korteste vej til alle punkter er fundet.
+Vi sætter den korteste distance til et punkt lig nul, og laver derefter en for-statement. Denne statement gælder for alle punkter i $unseen\_nodes$. Hvis der ikke er fundet en midlertidig korteste vej til et punkt bliver der oprettet en midlertidig korteste vej til et punkt, og dette punkt defineres som $min\_distance\_node$, som er punktet med kortest afstand til. Hvis der allerede er defineret et punkt, som det punkt med den korteste vej til, men der findes en vej til et andet punkt, som er endnu kortere opdateres $min\_distance\_node$ til at være dette punkt.
+Nu danner vi en ny forløkke som skal betragte de mulige veje fra vores punkt.
+Hvis vores punkt defineret som $min\_distance\_node$ lægges sammen med en kantvægt på en af de kanter der ledes fra punktet, og dette er mindre end den korteste vej til det punkt hvor kantet ledes hen, vores såkaldte $child\_node$, opdaterer vi den korteste vej til $child\_note$, da dette nu er den korteste vej. På samme måde opdaterer vi vores predecessor, da punktet $min\_distance\_node$ nu er det punkt der i den korteste vej kommer lige inden $child\_node$.\\
+Vi søger nu for at vores punkter i $unseen\_nodes$ forsvinder efter vi har arbejdet med dem ved at bruge pop funktionen. Når et punkt har været $min\_distance\_node$ forsvinder den altså fra $unseen\_nodes$, så vi sikrer os at løkken stopper på et tidspunkt. \\
+Vi sætter vores nuværende punkt til at være lig med vores mål.
+Derefter danner vi en ny while-løkke, som kører så længe at det nuværende punkt ikke er startpunktet. Startpunktet har nemlig ikke en predecessor, og kan dermed ikke beregnes således. I listen $path$ tilføjes nu det nuværende punkt, hvilket vi har sat til at være $goal$, på plads $[0]$. Vi kender dermed det sidste punkt i vejen. Derefter defineres $current\_node$ nu til at være punktet lige inden det tidligere $current\_node$ i den korteste vej derhen. Denne tilføjes nu til listen ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startpunktet.
+Hvis den korteste vej til $q\_goal$ ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så vil den længste vej være lig den korteste vej til $q\_goal$ gange med $-1$ for at få den omvendte graf og derefter lagt til $(100*(længden af vejen-1)+200)$. Dette gøres for at få positive kantvægte, da Dijkstras algoritme kun arbejder med ikke-negative kantvægte.
+Nu kan vi printe den største profit, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke punkter vi skal følge og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
 %
 %
 %
@@ -50,7 +50,6 @@ For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan fi
 %	return vertices
 %\end{lstlisting}
 %
-%Nu kan vi så begynde at opstille den funktion, der ved hjælp af Dijkstras algoritme kan beregne den korteste vej:
 %
 %\begin{lstlisting} [label=dijkstra_kode_problem,caption=Dijkstras algoritme for vores problem]
 %def dijkstras(q_t):

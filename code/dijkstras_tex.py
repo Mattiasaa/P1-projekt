@@ -17,11 +17,11 @@ q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
 p_0         = 0                 #Start kapital
 r           = 0.04              #Diskonteringsfaktor
-p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      #Forward priser
-p_disc      = [np.e**(-r*t/T) for t in range(1, T+1)]               #Diskonteringsvaerdi
+p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25] #Forward priser
+p_disc      = [np.e**(-r*t/T) for t in range(1, T+1)]     #Diskonteringsvaerdi
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 vertices    = [-infinity for i in range(q_min, q_max+1)]
-graph       = [p_0]             #?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!?!!?!?!?!?!?!?
+graph       = [p_0]             #Kapitalet
 path        = []                #Tom list hvor vores fortjenester bliver gemt
 pre_vertice = [q_0]             #Listen gemmer vores loebende beholdinger
 
