@@ -20,41 +20,41 @@ u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 p_goal      = 0                 #Tilfaeldigt tal for programmet virker
 kappa       = 1                 #Der er ingen straffaktor naar kappa = 1
 T           = 12                #Antal tidsperioder
-q_0         = 5                 #Start beholdning
-q_T         = 0                 #Slut beholdning
-p_0         = 0                 #Start kapital
+q_0         = 5                 #Startbeholdning
+q_T         = 0                 #Slutbeholdning
+p_0         = 0                 #Startkapital
 r           = 0.04              #Diskonteringsfaktor
 p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
-                                #Forward priser
+                                #Forward-priser
 disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 
-#Udvidet problem
-q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
-                                #Maks beholdning i lager
-q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
-                                #Minimum beholdning i lager
-i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
-                                #Maks koeb pr. tid
-u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
-                                #Maks salg pr. tid
-p_goal      = 5                 #Lagerbeholdnings aftale
-kappa       = 0.7               #Straffaktor                          
-T           = 12                #Antal tidsperioder
-q_0         = 5                 #Start beholdning
-q_T         = 0                 #Slut beholdning
-p_0         = 0                 #Start kapital
-r           = 0.04              #Diskonteringsfaktor
-p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
-                                #Forward priser
-disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
-                                #Diskonteringsvaerdi
-p_disc      = [p[i]*disc[i] for i in range(T)]                      
-                                #Vaerdi efter diskonteringsfaktor
-infinity    = 9999              #Bruges som substitut for reelt uendelig
+# #Udvidet problem
+# q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
+#                                 #Maks beholdning i lager
+# q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
+#                                 #Minimum beholdning i lager
+# i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
+#                                 #Maks koeb pr. tid
+# u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
+#                                 #Maks salg pr. tid
+# p_goal      = 5                 #Lagerbeholdnings aftale
+# kappa       = 0.7               #Straffaktor                          
+# T           = 12                #Antal tidsperioder
+# q_0         = 5                 #Startbeholdning
+# q_T         = 0                 #Slutbeholdning
+# p_0         = 0                 #Startkapital
+# r           = 0.04              #Diskonteringsfaktor
+# p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22 ,25]      
+#                                 #Forward-priser
+# disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+#                                 #Diskonteringsvaerdi
+# p_disc      = [p[i]*disc[i] for i in range(T)]                      
+#                                 #Vaerdi efter diskonteringsfaktor
+# infinity    = 9999              #Bruges som substitut for reelt uendelig
 
 
 def addEdge(graph,u,v,e):
@@ -133,35 +133,3 @@ def optimization_of_gas_storage(graph , start , end ):
 optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_end')
 
 
-# print(graph_dict())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print(graph_dict()['q'])
-
-
-# def generate_edges(graph):
-#     edges = []
- 
-#     # for each node in graph
-#     for node in graph:
-         
-#         # for each neighbour node of a single node
-#         for neighbour in graph[node]:
-             
-#             # if edge exists then append
-#             edges.append((node, neighbour))
-#     return edges

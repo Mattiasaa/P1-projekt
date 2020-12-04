@@ -31,25 +31,23 @@ Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 ]{code/dijkstras.py}
 
 I \autoref{code:graph_dict} definerer vi en funktion som bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary" som de andre dictionaries vil blive sat ind i.
-Den danner nu en flerdimensionelt liste med alle punkterne i grafen. Punkterne har navn på form $'\textrm{qx.y}'$ hvor x beskriver hvilken tid vi er i og y beskriver beholdningen. Det vil sige $'\textrm{q3.4}'$ betyder vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige alle $'\textrm{q3.y}'$ er i en liste for sig selv.
+Den danner nu en flerdimensionelt liste med alle punkterne i grafen. Punkterne har navn på form $'q\textrm{x.y}'$ hvor x beskriver hvilken tid vi er i og y beskriver beholdningen. Det vil sige $'q\textrm{q3.4}'$ betyder vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige alle $'q\textrm{3.y}'$ er i en liste for sig selv.
 
-Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde som ikke går igen, nemlig ved startpunktet og ved slutpunktet. Ved tiden $t=0$, hvor $t=i$, i denne løkke, er der nemlig kun et punkt der har kanter. Funktionen generer nu de kanterne som $'\textrm{q0.5}'$ har, og laver en dictionary for $'\textrm{q3.y}'$ 
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde som ikke går igen, nemlig ved startpunktet og ved slutpunktet. Ved tiden $t=0$, hvor $t=i$, i denne løkke, er der nemlig kun et punkt der har kanter. Funktionen generer nu de kanterne som $'q\textrm{0.5}'$ har, og laver en dictionary for $'q\textrm{3.y}'$ 
 Denne dictionary ser ud således:
 
-\begin{lstlisting}
+\begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0.5}$]
 
 'q0.5' : {'q1.1' : 170.27, 'q1.2' : 190.2, 'q1.3' : 210.13, 'q1.4' : 230.07, 'q1.5' : 250, 'q1.6': 269.93, 'q1.7' : 289.87, 'q1.8' : 309.8, 'q1.9' : 329.73}
-\caption{Dictionary for "q0.5"}
-\label{code:q05}
 \end{lstlisting}
-Denne dictionary viser $'\textrm{q3.y}'$s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da dijkstras ikke kan bruge negative vægte.
+Denne dictionary viser $'q\textrm{0.5}'$s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da dijkstras ikke kan bruge negative vægte.
 
-I \autoref{code:graph_dict} ser vi, at når $i=12$ har vi også et specielt tilfælde. Dette er vores sidste værdi for $\textrm{t}$. I aftalen står der, at udlejeren køber alt gas som er tilbage når lejeperioden er ovre.   Mængden af gas vi kan sælge er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$\textrm{q\_goal}$'. Dette er en værdi som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$\textrm{q12.y}$' til '$\textrm{q\_end}$', og hvis '$\textrm{q12.y}$' ikke er lig vores '$\textrm{q\_goal}$', vil deres kantvægt til '$\textrm{q\_end}$' blive divideret med en straffaktor. I basis problemet har vi, at straffaktoren er et da vi ikke har nogle aftalt slutbeholdning og '$\textrm{q\_goal}$'.
+I \autoref{code:graph_dict} ser vi, at når $i=12$ har vi også et specielt tilfælde. Dette er vores sidste værdi for $\textrm{t}$. I aftalen står der, at udlejeren køber alt gas som er tilbage når lejeperioden er ovre.   Mængden af gas vi kan sælge er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basis problemet har vi, at straffaktoren er $\kappa=1$ da vi ikke har nogle aftalt slutbeholdning og '$q\textrm{\_goal}$'.
 
-Vi kan nu kigge på alle andre tilfælde for i. funktionen kører en løkke for $k$ med værdier mellem '$\textrm{q\_min}$' til den specifikke tid, og '$\textrm{q\_max}$' i den specifikke tid. Dette betegner den som de nuværende enheder.
+Vi kan nu kigge på alle andre tilfælde for i. funktionen kører en løkke for $k$ med værdier mellem '$qq\textrm{\_min}$' til den specifikke tid, og '$q\textrm{\_max}$' i den specifikke tid. Dette betegner den som de nuværende enheder.
 Den finder nu de største ændinger når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier, og tilføjer alle de mulige naboer til knuden i tiden $t=i$ og med beholdningen $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
 
-Til allersidst tilføjer den en kant mellem '$\textrm{q\_end}$' og $'\textrm{q12.0}'$ med vægt $0$, dette skyldes, at vores kode for dijkstras ikke kan finde længden til et punkt, som ikke har sin egen dictionary.
+Til allersidst tilføjer den en kant mellem '$q\textrm{\_end}$' og $'\textrm{q12.0}'$ med vægt $0$, dette skyldes, at vores kode for dijkstras ikke kan finde længden til et punkt, som ikke har sin egen dictionary.
 
 Nu har vi en dictionary med alle punkternes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver den største profit:
 
@@ -72,4 +70,10 @@ Vi sætter vores nuværende punkt til at være lig med vores mål.
 Derefter danner vi en ny while-løkke, som kører så længe at det nuværende punkt ikke er startpunktet. Startpunktet har nemlig ikke en predecessor, og kan dermed ikke beregnes således. I listen $path$ tilføjes nu det nuværende punkt, hvilket vi har sat til at være $\textrm{end}$, på plads $[0]$. Vi kender dermed det sidste punkt i vejen. Derefter defineres $current\_node$ nu til at være punktet lige inden det tidligere $current\_node$ i den korteste vej derhen. Denne tilføjes nu til listen ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startpunktet.
 Hvis den korteste vej til $\textrm{q\_end}$ ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så kan vi beregne den længste vej ved at trække det fra, som vi har har lagt til i kantvægtene for at få ikke-negative vægte og derefter ved at gange med $-1$ for at gå fra den korteste til den længste vej. 
 Nu kan vi printe den største profit, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke punkter vi skal følge og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
+Outputtet for denne funktion er som følger:
+\begin{lstlisting} [label=lst:udvidet_output,caption=Output for det udvidede problem.]
 
+The highest profit is 252,72 Euro
+The path is ['q0.5', 'q1.8', 'q2.4', 'q3.0', 'q4.2', 'q5.6', 'q6.10', 'q7.6', 'q8.10', 'q9.6', 'q10.10', 'q11.10', 'q12.6', 'q_end'].
+
+\end{lstlisting}
