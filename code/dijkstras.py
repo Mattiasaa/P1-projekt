@@ -69,7 +69,7 @@ def graph_dict():
     vertices = ['q0.5']
     for i in range(1,T+1):
         vertices.append(['q' + str(i) +'.'+ str(j) for j in range (q_max[i-1]+1)])
-    vertices.append('q_slut')
+    vertices.append('q_end')
     for i in range(T+1):
         if i == 0:
             for j in range(-u_max[i], i_max[i]+1):
@@ -130,7 +130,7 @@ def optimization_of_gas_storage(graph , start , end ):
         print(f'The path is {str(path)}')
 
     
-optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_slut')
+optimization_of_gas_storage(graph_dict(), 'q0.5', 'q_end')
 
 
 # print(graph_dict())
