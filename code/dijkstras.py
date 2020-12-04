@@ -42,7 +42,7 @@ i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]
 u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
                                 #Maks salg pr. tid
 p_goal      = 5                 #Lagerbeholdnings aftale
-kappa       = 0.07              #Straffaktor                          
+kappa       = 0.7               #Straffaktor                          
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
@@ -96,7 +96,7 @@ def graph_dict():
 
 
 
-def optimization_of_gas_storage(graph , start , goal ): 
+def optimization_of_gas_storage(graph , start , end ): 
     shortest_distance = {}
     predecessor = {}
     unseen_nodes = graph
@@ -119,13 +119,13 @@ def optimization_of_gas_storage(graph , start , goal ):
                     shortest_distance[child_node] = weight + shortest_distance [ min_distance_node ]
                     predecessor [ child_node ] = min_distance_node
         unseen_nodes.pop(min_distance_node)
-    current_node = goal
+    current_node = end
     while current_node != start:
         path. insert (0,current_node)
         current_node = predecessor[current_node]
     path . insert (0 , start )
-    if shortest_distance[goal] != infinity:
-        longest_distance = (shortest_distance [ goal ] - 13 * 250) * (-1)
+    if shortest_distance[end] != infinity:
+        longest_distance = (shortest_distance [ end ] - 13 * 250) * (-1)
         print(f'The highest profit is {round(longest_distance,2)} Euro') 
         print(f'The path is {str(path)}')
 
