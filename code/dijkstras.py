@@ -18,7 +18,7 @@ i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
                                 #Maks salg pr. tid
 p_goal      = 0                 #Tilfaeldigt tal for programmet virker
-alpha       = 1                 #Der er ingen straffaktor naar alpha = 1
+kappa       = 1                 #Der er ingen straffaktor naar kappa = 1
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
@@ -32,7 +32,6 @@ p_disc      = [p[i]*disc[i] for i in range(T)]
                                 #Vaerdi efter diskonteringsfaktor
 infinity    = 9999              #Bruges som substitut for reelt uendelig
 
-
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
                                 #Maks beholdning i lager
@@ -43,7 +42,7 @@ i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]
 u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
                                 #Maks salg pr. tid
 p_goal      = 5                 #Lagerbeholdnings aftale
-alpha       = 0.07              #Straffaktor                          
+kappa       = 0.07              #Straffaktor                          
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Start beholdning
 q_T         = 0                 #Slut beholdning
@@ -80,7 +79,7 @@ def graph_dict():
                 if k == p_goal:
                     addEdge(graph, vertices[i][k], vertices[i+1],round(-k*p_disc[i-1]+250,2))
                 else:
-                    addEdge(graph, vertices[i][k], vertices[i+1],round(-k*p_disc[i-1]+250,2)/alpha)
+                    addEdge(graph, vertices[i][k], vertices[i+1],round(-k*p_disc[i-1]+250,2)/kappa)
         else:
             for k in range(q_min[i-1], q_max[i-1]+1):
                 current_units = k
