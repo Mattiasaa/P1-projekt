@@ -1,5 +1,5 @@
 \subsection{Grafen for basisproblemet} \label{kap:graf_basis}
-Vi kan med udgangspunkt i afsnittet om grafteori opstille en graf for vores basisproblem. Grafen er en simpel, orienteret, vægtet graf. Vi opstiller et simplificeret eksempel på grafen med følgende data:
+Vi kan med udgangspunkt i afsnittet om grafteori opstille en graf for vores basisproblem. Grafen er en simpel, orienteret, vægtet graf. Vi opstiller et simplificeret eksempel på grafen for at demonstrere, hvordan et problem af vores type kan løses med grafteori. I eksemplet arbejder vi med følgende data:
 \begin{itemize}
   \item $t \in \{1,2,3,4,5,6\}$
   \item $q_{0}=1$
@@ -10,11 +10,11 @@ Vi kan med udgangspunkt i afsnittet om grafteori opstille en graf for vores basi
   \item $p_{6}=(20,22,25,18,15,15)$
 \end{itemize}
 
-I vores eksempel tager vi kun udgangspunkt i 6 måneder, og at man kun kan købe og sælge 1 gasenhed pr måned. Derudover er lageret begrænset til mindst at have nul gasenheder og højst to gasenheder. Efter de seks måneder sælger vi det gas der muligvis er på lageret til ejeren af gaslageret. Vi opstiller følgende graf med de givne vægte:
+I vores eksempel tager vi kun udgangspunkt i 6 måneder, og at man kun kan købe og sælge 1 gasenhed pr. måned. Derudover er lageret begrænset til mindst at have nul gasenheder og højst at have to gasenheder. Efter de seks måneder sælger vi det gas, der muligvis er tilbage på lageret til ejeren. Vi opstiller følgende graf med de givne vægte:
 
 \input{fig/tikz/gaslager/forsimplet_graf}
 
-Hvis vi skal maksimere profitten for dette gaslager ønsker vi at finde den længste vej fra $q_{0}$ til $q_{\slut}$, da vi skal have så mange penge som muligt efter lejeperioden. For at løse problemet som et korteste vej-problem og ikke et længste vej-problem ganger vi med -1. Vi opstiller dermed den omvendte graf for problemet:
+Hvis vi skal maksimere profitten for dette gaslager, ønsker vi at finde den længste vej fra $q_{0}$ til $q_{\slut}$, da vi skal have så stor profit som muligt efter endt lejeperiode. For at løse problemet som et korteste vej-problem og ikke et længste vej-problem ganger vi med -1. Vi opstiller dermed den omvendte graf for problemet:
 
 \input{fig/tikz/gaslager/omvendt_graf}
 
@@ -28,7 +28,7 @@ Vi vil nu opstille en tabel over de mulige veje gennem grafen fra $q_0$ til $q_{
 \input{fig/tab/gaslager/tabel_graf} 
 
 
-Det ses, at $q_0$ har længden nul, da dette blot er startknuden. Fra $q_0$ går der tre veje til henholdsvis $v_{1,1}$, $v_{1,2}$ og $v_{1,3}$, med længderne 10, 30 og 50. Vejene til resten af knuderne i grafen er uendelig, da de endnu ikke indgår i mængden, $S$, og vi dermed ikke ved hvor langt, der er til disse knuder. Vi kigger nu på $v_{1,1}$, og ser hvilke muligheder for veje, som vi nu har. Vi har stadig $P=(q_{0},v_{1,2})=30$ og $P=(q_{0},v_{1,3})=50$, og de nye veje igennem $v_{1,1}$ giver nu mulighederne: $P=(q_{0},v_{1,1},v_{2,1})=40$ og $P=(q_{0},v_{1,1},v_{2,2})=62$. Går vi herefter videre med $v_{1,2}$, som nu er den korteste vej, får vi på samme måde vejene: $P=(q_{0},v_{1,3})=50$, $P=(q_{0},v_{1,2},v_{2,1})=38$, $P=(q_{0},v_{1,2},v_{2,2})=60$ og $P=(q_{0},v_{1,2},v_{2,3})=82$. Vi har nu to forskellige veje fra $q_{0}$ til $v_{2,1}$ og to veje fra $q_{0}$ til $v_{2,2}$. Vi ser at vejene gående igennem $v_{1,2}$ og til begge punkter er kortere end vejende gående igennem $v_{1,1}$. Derfor er det denne vej vi kører videre med, da vi ønsker at finde den korteste vej til hvert punkt for dermed at finde den korteste vej igennem grafen. På denne måde fortsætter vi igennem grafen. Det ses, at vi har tre forskellige veje til $q_slut$, som alle er 183 lang. Hvis vi tænker på den oprindelige graf, havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $q_{0}$ til $q_{\slut}$ skal vi blot tage vores resultat og trække de 30 fra igen 7 gange, altså en for hver måned samt vejen hen til $q_{\slut}$. Derefter ganger vi med -1.
+Det ses, at $q_0$ har længden nul, da dette blot er startknuden. Fra $q_0$ går der tre veje til henholdsvis $v_{1,1}$, $v_{1,2}$ og $v_{1,3}$, med længderne 10, 30 og 50. Vejene til resten af knuderne i grafen er uendelig, da de endnu ikke indgår i mængden, $S$, og vi dermed ikke ved hvor langt, der er til disse knuder. Vi kigger nu på $v_{1,1}$ og ser hvilke muligheder for veje, som vi nu har. Vi har stadig $P=(q_{0},v_{1,2})=30$ og $P=(q_{0},v_{1,3})=50$, og de nye veje igennem $v_{1,1}$ giver nu mulighederne $P=(q_{0},v_{1,1},v_{2,1})=40$ og $P=(q_{0},v_{1,1},v_{2,2})=62$. Går vi herefter videre med $v_{1,2}$, som nu er den korteste vej, får vi på samme måde vejene: $P=(q_{0},v_{1,3})=50$, $P=(q_{0},v_{1,2},v_{2,1})=38$, $P=(q_{0},v_{1,2},v_{2,2})=60$ og $P=(q_{0},v_{1,2},v_{2,3})=82$. Vi har nu to forskellige veje fra $q_{0}$ til $v_{2,1}$ og to veje fra $q_{0}$ til $v_{2,2}$. Vi ser, at vejene gående igennem $v_{1,2}$ og til begge punkter er kortere end vejende gående igennem $v_{1,1}$. Derfor er det denne vej, vi kører videre med, da vi ønsker at finde den korteste vej til hvert punkt for dermed at finde den korteste vej igennem grafen. På denne måde fortsætter vi igennem grafen. Det ses, at vi har tre forskellige veje til $q_slut$, som alle er 183 lang. Hvis vi tænker på den oprindelige graf, havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $q_{0}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 30 fra igen 7 gange, altså en for hver kant i vejen fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
 \begin{equation}
 (183-30 \cdot 7) (-1) = 27
 \end{equation}
