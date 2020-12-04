@@ -1,19 +1,19 @@
-\subsection{Grafen for det udvidede problem} \label{kap:grafen_for_udvidet}
+\subsection{Eksempel på problem med udvidelserne} \label{kap:grafen_for_udvidet}
 Vi kan nu på samme måde som med basisproblemet opstille et simplificeret eksempel på det udvidede problem for på den måde at illustrere, hvordan man finder den mest profitable vej igennem en graf af denne problemtype. Vi opstiller en simpel, orienteret, vægtet graf, hvor vi benytter følgende data:
 
 \begin{itemize}
   \item $t \in \{1,2,3,4,5,6\}$
   \item $q_{0}=1$
-  \item $q_{\min_liste}=[0,1,1,0,0,0]$
-  \item $q_{\max_liste}=[1,2,2,1,1,1]$
-  \item $i_{\max_liste}=[1,2,1,2,1,1]$
-  \item $u_{\max_liste}=[1,2,1,2,1,1]$
+  \item $q_{\min \_ \textrm{liste}}=[0,1,1,0,0,0]$
+  \item $q_{\max \_ \textrm{liste}}=[1,2,2,1,1,1]$
+  \item $i_{\max \_ \textrm{liste}}=[1,2,1,2,1,1]$
+  \item $u_{\max \_ \textrm{liste}}=[1,2,1,2,1,1]$
   \item $p_{t}=(20,22,25,18,15,15)$
-  \item $q_{goal}=0$
-  \item $\alpha=0.7$
+  \item $q_{\goal}=0$
+  \item $\kappa=0,7$
 \end{itemize}
 
-I eksemplet tager vi igen kun udgangspunkt i 6 måneder. Denne gang ændrer grænserne for antallet af gasenheder, der må sælges og købes, sig løbende i de forskellige måneder. På samme måde ændrer grænserne for lagerbeholdningen sig. Vi opstiller følgende graf med de givne vægte:
+I eksemplet tager vi igen kun udgangspunkt i seks måneder. Denne gang ændrer grænserne for antallet af gasenheder, der må sælges og købes, sig løbende i de forskellige måneder. På samme måde ændrer grænserne for lagerbeholdningen sig. Vi opstiller følgende graf med de givne vægte:
 
 \input{fig/tikz/gaslager/forsimplet_udvidet_graf}
 
@@ -26,16 +26,16 @@ Vi kan nu løse problemet som et korteste vej-problem ved igen at bruge Dijkstra
 
 \input{fig/tikz/gaslager/omvendt_udvidet_positiv_graf}
 
-Vi kan på samme måde som ved basisproblemet opstille en tabel over de mulige veje gennem grafen fra $q_0$ til $q_slut$:
+Vi kan på samme måde som ved basisproblemet opstille en tabel over de mulige veje gennem grafen fra $q_0$ til $q_{\slut}$:
 
 \input{fig/tab/gaslager/tabel_graf_udvidet} 
 
 
-Beregningerne foregår på samme vis som i \autoref{forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $q_{0}$ til $q_{\slut}$, som begge er 257 lang. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $q_{0}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
+Beregningerne foregår på samme vis som i \autoref{table:forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $q_{0}$ til $q_{\slut}$, som begge har distancen 257. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $q_{0}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for hver kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
 \begin{equation}
-(257-40 \cdot 7)(-1) = 23
+(257-40 \cdot 7)(-1) = 23.
 \end{equation}
-Vejene illustreres på \autoref{fig.gaslager_udvidet_vej}:
+Vejene illustreres på \autoref{fig:gaslager_udvidet}:
 
 \input{fig/tikz/gaslager/gaslager_udvidet_graf}
 
