@@ -1,5 +1,5 @@
 \section{Basisproblemet som algoritme}
-For at løse vores basisproblem ønsker vi at opstille en algoritme, som kan finde den vej igennem grafen, der giver den største profit. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Vi deler vores kode op i mindre dele for at give et bedre overblik og for bedre at kunne forklare, hvad der foregår i de forskellige dele. Vi starter med at opskrive de givne data. 
+For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver den største profit. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Vi deler vores kode op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
 
 \lstinputlisting[
   firstline=12,
@@ -10,7 +10,7 @@ For at løse vores basisproblem ønsker vi at opstille en algoritme, som kan fin
 
 Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier som lister, da de ikke er statiske i det udvidede problem, og vi ønskede at tilpasse funktionerne, så de kunne håndtere både basisproblemet og det udvidede problem uden at skulle ændres. 
 
-Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en dictionary med alle nabolister. Først er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
+Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en dictionary med alle nabolister. Først er vi dog nødt til at lave en funktion som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
   firstline=61,
@@ -19,7 +19,7 @@ Derefter vil vi opstille en repræsentation for grafen. Dette gør vi ved at lav
   caption={Tilføjer kanter.}
 ]{code/dijkstras.py}
 
-\autoref{code:add_edge} tjekker først, om der er en dictionary, u, i en anden dictionary, graph. Hvis der er dette, tilføjer den $v$ og kantvægten mellem $u$ og $v$ til dictionaryen for $u$. Hvis ikke $u$ allerede er i graph, laver den en ny dictionary til $u$ og indsætter $v$ og kantvægten mellem $u$ og $v$ i den nye dictionary.
+\autoref{code:add_edge} tjekker først om der er en dictionary, $u$, i en anden dictionary, $graph$. Hvis dette er tilfældet tilføjer den $v$ og kantvægten mellem $u$ og $v$ til  $u$' dictionary. Hvis $u$ ikke allerede er i $graph$, så laver den en ny dictionary til $u$ og indsætter $v$ og kantvægten mellem $u$ og $v$ i den nye dictionary.
 
 Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 
@@ -30,11 +30,11 @@ Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
   caption={Laver en dictionary med nabolister.}
 ]{code/dijkstras.py}
 
-I \autoref{code:graph_dict} definerer vi en funktion, som bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary", som de andre dictionaries vil blive sat ind i.
-Den danner nu en flerdimensionel liste med alle punkterne i grafen. Punkterne har navne på formen "qx.y", hvor x beskriver, hvilken tid vi er i, og y beskriver lagerbeholdningen. Det vil sige, at "q3.4" betyder, at vi efter tre måneder har en lagerbeholdning på 4 gasenheder. Hver x-værdi har sin egen liste, altså er alle "q3.y" i en liste for sig selv.
+I \autoref{code:graph_dict} definerer vi en funktion som bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary" som de andre dictionaries vil blive sat ind i.
+Den danner nu en flerdimensionelt liste med alle punkterne i grafen. Punkterne har navn på form $'\textrm{qx.y}'$ hvor x beskriver hvilken tid vi er i og y beskriver beholdningen. Det vil sige $'\textrm{q3.4}'$ betyder vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige alle $'\textrm{q3.y}'$ er i en liste for sig selv.
 
-Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startpunktet og ved slutpunktet. Ved tiden $t=0$, hvor $t=i$ i denne løkke, er der nemlig kun ét punkt, der har kanter. Funktionen generer nu kanterne som "q0.5" har og laver en dictionary for "q0.5". 
-"q0.5"'s dictionary ser ud således:
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde som ikke går igen, nemlig ved startpunktet og ved slutpunktet. Ved tiden $t=0$, hvor $t=i$, i denne løkke, er der nemlig kun et punkt der har kanter. Funktionen generer nu de kanterne som $'\textrm{q0.5}'$ har, og laver en dictionary for $'\textrm{q3.y}'$ 
+Denne dictionary ser ud således:
 
 \begin{lstlisting}
 
@@ -42,15 +42,14 @@ Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som 
 \caption{Dictionary for "q0.5"}
 \label{code:q05}
 \end{lstlisting}
-Denne dictionary viser $'q0.5'$s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da dijkstras algoritme ikke kan arbejde med negative vægte.
+Denne dictionary viser $'\textrm{q3.y}'$s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da dijkstras ikke kan bruge negative vægte.
 
-I \autoref{code:graph_dict} ser vi, at vi også har et specielt tilfælde, når $i=12$. Dette er vores sidste værdi for $t$. I aftalen står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas, vi kan sælge, er altså ikke bundet af $u_max$ og $i_max$. I denne del af funktionen ser vi også indførslen af $'q_goal'$. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner en kantværdi for alle $'q12.y'$ til $'q_slut'$, og hvis $'q12.y'$ ikke er lig vores $'q_goal'$, vil deres kantvægt til $'q_slut'$ blive divideret med en straffaktor. I basis problemet har vi, at straffaktoren er 1, da vi ikke har en aftalt slutbeholdning.
+I \autoref{code:graph_dict} ser vi, at når $i=12$ har vi også et specielt tilfælde. Dette er vores sidste værdi for $\textrm{t}$. I aftalen står der, at udlejeren køber alt gas som er tilbage når lejeperioden er ovre.   Mængden af gas vi kan sælge er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$\textrm{q\_goal}$'. Dette er en værdi som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$\textrm{q12.y}$' til '$\textrm{q\_slut}$', og hvis '$\textrm{q12.y}$' ikke er lig vores '$\textrm{q\_goal}$', vil deres kantvægt til '$\textrm{q\_slut}$' blive divideret med en straffaktor. I basis problemet har vi, at straffaktoren er et da vi ikke har nogle aftalt slutbeholdning og '$\textrm{q\_goal}$'.
 
+Vi kan nu kigge på alle andre tilfælde for i. funktionen kører en løkke for $k$ med værdier mellem '$\textrm{q\_min}$' til den specifikke tid, og '$\textrm{q\_max}$' i den specifikke tid. Dette betegner den som de nuværende enheder.
+Den finder nu de største ændinger når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier, og tilføjer alle de mulige naboer til knuden i tiden $t=i$ og med beholdningen $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
 
-Vi kan nu kigge på alle andre tilfælde for i. Funktionen kører en løkke for $k$ med værdier mellem $'q_min'$ til den specifikke tid, og $'q_max'$ til den specifikke tid. Dette betegner den som de nuværende enheder.
-Den finder nu de største ændinger, når man har $k$ enheder. Den kører derefter en løkke for j med disse værdier og tilføjer alle de mulige naboer til punktet i tiden $t=i$ og med beholdningen $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
-
-Til allersidst tilføjer den en kant mellem $'q_slut'$ og $'q12.0'$ med vægt på $0$. Dette skyldes, at vores kode for dijkstras ikke kan finde længden til et punkt, som ikke har sin egen dictionary.
+Til allersidst tilføjer den en kant mellem '$\textrm{q\_slut}$' og $'\textrm{q12.0}'$ med vægt $0$, dette skyldes, at vores kode for dijkstras ikke kan finde længden til et punkt, som ikke har sin egen dictionary.
 
 Nu har vi en dictionary med alle punkternes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver den største profit:
 
@@ -61,16 +60,16 @@ Nu har vi en dictionary med alle punkternes nabolister og alle kantvægtene. Der
   caption={Dikstras algoritme til løsning af problemet.}
 ]{code/dijkstras.py}
 
-I funktionen defineres først to tomme ordbøger. I $shortest\_distance$ opbevares den korteste vej til alle punkterne i grafen. I $predecesor$ opbevares for hvert punkt i grafen det forrige punkt i den korteste vej, altså det punkt man går igennem, lige inden man når det nye punkt, hvis man følger den korteste vej. Herefter oprettes $unseen\_nodes$, som vi sætter lig med $graph$. Dette skyldes, at vi endnu ikke kender distancen til nogen af punkterne, og derfor er alle "$unseen$". Vi opretter også en tom liste, som vi kalder $path$. I denne liste tilføjes de punkter, som indgår i den optimale vej.\\
-Vi sætter nu den korteste vej til alle punkter i $unseen\_nodes$, hvilket lige nu er alle punkterne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de punkter, man ikke kender distancen til endnu. Da vi starter i startpunktet, kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
-Nu opstiller vi en while løkke og lader den køre så længe, at der stadig er punkter i $unseen\_nodes$, altså indtil den korteste vej til alle punkter er fundet.
-Vi sætter den korteste distance til et punkt lig nul og laver derefter en for-statement. Denne statement gælder for alle punkter i $unseen\_nodes$. Hvis der ikke er fundet en midlertidig korteste vej til et punkt, bliver der oprettet en midlertidig korteste vej til dette punkt, og dette punkt defineres som $min\_distance\_node$, som er punktet med kortest afstand til fra $q_0$. Hvis der allerede er defineret et punkt som det punkt med den korteste vej til, men der findes en vej til et andet punkt, som er endnu kortere, opdateres $min\_distance\_node$ til at være dette punkt.
-Nu danner vi en ny forløkke, som skal betragte de mulige veje fra vores punkt.
-Først tjekker den om, der eksisterer en \emph{child\_node} til punktet. Altså om punktet fører hen til andre punkter. Hvis punktet ikke har nogle kanter, der leder hen til andre punkter, sker der intet, og for-løkken går videre til næste punkt.
-Hvis der derimod er minimum et $child\_node$ til vores punkt, $min\_distance\_node$, sammenligner den, om den korteste distance til $min\_distance\_node$ plus en kantvægt på en af de kanter, der ledes fra punktet, er mindre end den korteste vej til det punkt hvor kanten ledes hen, vores såkaldte $child\_node$. Hvis dette er tilfældet, opdaterer vi den korteste vej til $child\_note$, da dette nu er den korteste vej. På samme måde opdaterer vi vores predecessor, da punktet $min\_distance\_node$ nu er det punkt, der i den korteste vej kommer lige inden $child\_node$.\\
-Vi sørger nu for, at vores punkter i $unseen\_nodes$ forsvinder, efter vi har arbejdet med dem ved at bruge pop funktionen. Når et punkt har været $min\_distance\_node$ forsvinder den altså fra $unseen\_nodes$, så vi sikrer os, at løkken stopper på et tidspunkt. \\
+I funktionen defineres først to tomme ordbøger. I $shortest\_distance$ opbevares den korteste vej til alle punkterne i grafen. I $predecesor$ opbevares for hvert punkt i grafen, det forrige punkt i den korteste vej, altså det punkt man går igennem lige inden man når det nye punkt, hvis man følger den korteste vej. Herefter oprettes $unseen\_nodes$ som vi sætter lig med $graph$. Dette skyldes at vi endnu ikke kender distancen til nogen af punkterne, og derfor er alle $unseen$. Vi opretter også en tom liste, som vi kalder $path$. I denne liste tilføjes de punkter som indgår i den optimale vej.\\
+Vi sætter nu den korteste vej til alle punkter i $unseen\_nodes$, hvilken lige nu er alle punkterne, lig med uendelig. Dette gøres fordi der i Dijkstras algoritme er uendeligt langt til de punkter, man ikke kender længden til endnu. Da vi starter i startpunktet kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
+Nu opstiller vi en while løkke og lader den køre så længe at der stadig er punkter i $unseen\_nodes$, altså indtil den korteste vej til alle punkter er fundet.
+Vi sætter den korteste distance til et punkt lig nul, og laver derefter en for-statement. Denne statement gælder for alle punkter i $unseen\_nodes$. Hvis der ikke er fundet en midlertidig korteste vej til et punkt bliver der oprettet en midlertidig korteste vej til et punkt, og dette punkt defineres som $min\_distance\_node$, som er punktet med kortest afstand til. Hvis der allerede er defineret et punkt, som det punkt med den korteste vej til, men der findes en vej til et andet punkt, som er endnu kortere opdateres $min\_distance\_node$ til at være dette punkt.
+Nu danner vi en ny for-løkke som skal betragte de mulige veje fra vores punkt.
+Først tjekker den om, der eksisterer en \emph{child\_node} til punktet. Altså om punktet fører hen til andre punkter. Hvis $child\_node$ ikke har nogle kanter, sker der intet, og for-løkken går videre til næste punkt. Dette skyldes at algoritmen vil skrive fejl, hvis den forsøger at tilgå en knude som ikke har sin egen dictionary. Dette er dog kun relevant i det udvidede problem.
+Hvis en $child\_node$, til  $min\_distance\_node$, derimod har minimum en kant til en anden knude, sammenligner den, om den korteste distance til $min\_distance\_node$ plus en kantvægt på en af de kanter, der ledes fra punktet, er mindre end den korteste vej til det punkt hvor kanten ledes hen, vores såkaldte $child\_node$. Hvis dette er tilfældet opdaterer vi den korteste vej til $child\_note$, da dette nu er den korteste vej. På samme måde opdaterer vi vores predecessor, da punktet $min\_distance\_node$ nu er det punkt der i den korteste vej kommer lige inden $child\_node$.\\
+Vi søger nu for at vores punkter i $unseen\_nodes$ forsvinder efter vi har arbejdet med dem ved at bruge pop funktionen. Når et punkt har været $min\_distance\_node$ forsvinder den altså fra $unseen\_nodes$, så vi sikrer os at løkken stopper på et tidspunkt. \\
 Vi sætter vores nuværende punkt til at være lig med vores mål.
-Derefter danner vi en ny while-løkke, som kører så længe, at det nuværende punkt ikke er startpunktet. Startpunktet har nemlig ikke en predecessor og kan dermed ikke beregnes på samme måde. I listen $path$ tilføjes nu det nuværende punkt, hvilket vi har sat til at være $goal$, på plads $[0]$. Vi kender dermed det sidste punkt i vejen. Derefter defineres $current\_node$ nu til at være punktet lige inden det tidligere $current\_node$ i den korteste vej derhen. Denne tilføjes nu til listen ligeledes på plads $[0]$, og på den måde tilføjes hele den korteste vej i den rigtige rækkefølge. Til sidst indsættes startpunktet.
-Hvis den korteste vej til $q\_goal$ ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så kan vi beregne den længste vej ved at trække det fra, som vi har lagt til i kantvægtene for at få ikke-negative vægte, og derefter ved at gange med $-1$ for at gå fra den korteste til den længste vej. 
-Nu kan vi printe den største profit, da det må være den længste vej igennem grafen. Vi kan også printe vores vej for at se, hvilke punkter vi skal følge, og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
+Derefter danner vi en ny while-løkke, som kører så længe at det nuværende punkt ikke er startpunktet. Startpunktet har nemlig ikke en predecessor, og kan dermed ikke beregnes således. I listen $path$ tilføjes nu det nuværende punkt, hvilket vi har sat til at være $\textrm{end}$, på plads $[0]$. Vi kender dermed det sidste punkt i vejen. Derefter defineres $current\_node$ nu til at være punktet lige inden det tidligere $current\_node$ i den korteste vej derhen. Denne tilføjes nu til listen ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startpunktet.
+Hvis den korteste vej til $\textrm{q\_end}$ ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så kan vi beregne den længste vej ved at trække det fra, som vi har har lagt til i kantvægtene for at få ikke-negative vægte og derefter ved at gange med $-1$ for at gå fra den korteste til den længste vej. 
+Nu kan vi printe den største profit, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke punkter vi skal følge og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
 
