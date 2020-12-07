@@ -10,8 +10,9 @@ For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan fi
 
 Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier som lister, da de ikke er statiske i det udvidede problem, og vi har derfor tilpasset funktionerne, så de kan håndtere både basisproblemet og det udvidede problem uden at skulle ændres. 
 
-Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}!!!!!!!!!!!!!, %en ordbog, en associationsliste hvor nogle værdier, i vores tilfælde knuder, bruges til at.
- med alle nabolister. Først er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
+Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}, en ordbog. En ordbog er en associationsliste, som indeholder en samling af indekser, der kaldes nøgler og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
+værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi og kan hente denne. Det ses eksempelvis i \autoref{code:q05}, at nøglen q0.5 henter sin naboliste.
+Før vi kan opstille vores dictionary, er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
   firstline=60,
