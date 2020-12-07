@@ -1,5 +1,5 @@
 \section{Basisproblemet}
-Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi lejer dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved at købe og sælge gasenheder. Vi har en forward-kurve på prisen, således at vi til hver en tid i lejekontrakten kan se, hvad prisen for gas er til denne tid. Prisen varierer fra måned til måned. Der er øvre og nedre grænser for beholdningen i gaslageret, og ved lejekontraktens udløb vil ejeren købe den resterende gas tilbage til prisen på dette tidspunkt. Vi opstiller \autoref{table:1}, med de forskellige, givne værdier, som vi skal bruge til at løse optimeringsproblemet:
+Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi lejer dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved at købe og sælge gasenheder. Vi har en forward-kurve på prisen, en pris der på forhånd er aftalt med leverandørerne og køberne således, at vi til hver en tid i lejekontrakten kan se, hvad prisen for gas er til denne tid. Prisen varierer fra måned til måned. Der er øvre og nedre grænser for beholdningen i gaslageret, og ved lejekontraktens udløb vil ejeren købe den resterende gas tilbage til prisen på dette tidspunkt. Vi opstiller \autoref{table:1}, med de forskellige, givne værdier, som vi skal bruge til at løse optimeringsproblemet:
 
 \begin{table}[h!]
 \centering
@@ -25,7 +25,7 @@ Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas.
 \label{table:1}
 \end{table}
 
-I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperioden. De andre værdier er variable og er dermed ikke statiske igennem lejeperioden. Vi vil nu ud fra de givne værdier løse vores optimeringsproblem. Det vi i problemet ønsker at optimere, er resultatet. Problemet kan udtrykkes ved følgende sum:
+I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperioden. De andre værdier er variable og er dermed ikke statiske igennem lejeperioden. Vi vil nu ud fra de givne værdier løse vores optimeringsproblem. Det vi i problemet ønsker at optimere, er resultatet. Problemet kan udtrykkes ved følgende funktion:
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \Bigg\}.
 \end{equation}
@@ -35,3 +35,9 @@ Denne ligning har nogle bibetingelser:\\
 for $t \in \{1,\dotsc,T\}$, hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$.
 Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder, der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
 
+Look up, definition!
+or.. down, it is down.
+
+\begin{defn}
+write something here.
+\end{defn}
