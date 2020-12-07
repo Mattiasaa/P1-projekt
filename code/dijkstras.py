@@ -5,9 +5,9 @@ Created on Wed Dec  2 12:03:31 2020
 @author: marcu
 """
 
-from collections import defaultdict
-from math import exp
 
+
+from math import exp
 #Basis problem
 q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
                                 #Maks beholdning i lager
@@ -31,7 +31,7 @@ disc        = [exp(-r*t/T) for t in range(1, T+1)]
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
 max_edge    = max(p) * q_max[len(p)-1]
-                                #Den værdi vi lægger til alle kantvægte
+                                #Den vaerdi vi laegger til alle kantvaegte
 
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
@@ -56,7 +56,7 @@ disc        = [exp(-r*t/T) for t in range(1, T+1)]
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
 max_edge    = p[len(p)-1] * q_max[len(p)-1]
-                                #Den værdi vi lægger til alle kantvægte
+                                #Den vaerdi vi laegger til alle kantvaegte
 
 
 
@@ -68,7 +68,7 @@ def addEdge(graph,u,v,e):
 
 
 def graph_dict():
-    graph = defaultdict(list)
+    graph = {}
     vertices = ['q0.5']
     for i in range(1,T+1):
         vertices.append(['q' + str(i) +'.'+ str(j) for j in range (q_max[i-1]+1)])
