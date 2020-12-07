@@ -6,7 +6,7 @@ Created on Wed Dec  2 12:03:31 2020
 """
 
 from collections import defaultdict
-import numpy as np
+from math import exp
 
 #Basis problem
 q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
@@ -26,7 +26,7 @@ p_0         = 0                 #Startkapital
 r           = 0.04              #Diskonteringsfaktor
 p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
                                 #Forward-priser
-disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
@@ -51,7 +51,7 @@ p_0         = 0                 #Startkapital
 r           = 0.04              #Diskonteringsfaktor
 p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
                                 #Forward-priser
-disc        = [np.e**(-r*t/T) for t in range(1, T+1)]               
+disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [p[i]*disc[i] for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
