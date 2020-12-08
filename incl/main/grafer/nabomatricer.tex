@@ -14,29 +14,27 @@ Det kan også skrives som
 
 Nabomatricen nedenfor, viser en matrix over \autoref{fig:stm}.
 \begin{equation}
-	\begin{bmatrix}
+\kbordermatrix{
 		&v_1&v_2&v_3&v_4&v_5 \\
 		v_1&0&1&1&0&0 \\
 		v_2&1&0&1&0&0 \\
 		v_3&1&1&0&1&1 \\
 		v_4&0&0&1&0&1 \\
-		v_5&0&0&1&1&0 \\
-	\end{bmatrix}
+		v_5&0&0&1&1&0}
 \end{equation}
 
 En matrix over en graf med flere parallelle kanter mellem to knuder vil se ud således. Matricen nedenfor viser en matrix over \autoref{fig:ikke-orienteret-pseudo}.
 
 \begin{equation}
-	\begin{bmatrix}
-	&v_1&v_2&v_3&v_4&v_5&v_6&v_7& \\
+\kbordermatrix{
+	&v_1&v_2&v_3&v_4&v_5&v_6&v_7 \\
 	v_1&0&1&1&0&0&0&0 \\
 	v_2&1&0&1&0&0&0&0 \\
 	v_3&1&1&0&2&1&0&0 \\
 	v_4&0&0&2&0&1&1&1 \\
 	v_5&0&0&1&1&0&1&0 \\
 	v_6&0&0&0&1&1&0&1 \\
-	v_7&0&0&0&1&0&1&1 \\	
-	\end{bmatrix}
+	v_7&0&0&0&1&0&1&1}	
 \end{equation}
 
 Det kan ses, at der er 2 kanter, der er incidente med knudeparret $v_3$ og $v_4$. Derudover kan det ses, at der er en løkke ved $v_7$.
