@@ -2,8 +2,8 @@
 For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver det største resultat. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Koden i følgende afsnit er skrevet i Python 3. Vi deler vores kode op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
 
 \lstinputlisting[
-  firstline=12,
-  lastline=33,
+  firstline=10,
+  lastline=34,
   label={code:data_basis},
   caption={Definering af data for basisproblemet.}
 ]{code/dijkstras.py}
@@ -15,8 +15,8 @@ værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi 
 Før vi kan opstille vores dictionary, er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
-  firstline=60,
-  lastline=64,
+  firstline=63,
+  lastline=67,
   label={code:add_edge},
   caption={Tilføjer kanter.}
 ]{code/dijkstras.py}
@@ -26,8 +26,8 @@ Før vi kan opstille vores dictionary, er vi dog nødt til at lave en funktion, 
 Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 
 \lstinputlisting[
-  firstline=67,
-  lastline=95,
+  firstline=70,
+  lastline=97,
   label={code:graph_dict},
   caption={Laver en dictionary med nabolister.}
 ]{code/dijkstras.py}
@@ -54,7 +54,7 @@ Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$q12.0$' med væg
 Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver det største resultat:
 
 \lstinputlisting[
-  firstline=99,
+  firstline=101,
   lastline=130,
   label={code:dijkstras_optimering},
   caption={Dikstras algoritme til løsning af problemet.}
@@ -76,6 +76,14 @@ Derefter danner vi en ny while-løkke, som kører, så længe den nuværende knu
 Hvis den korteste vej til '$q\_$end' ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så kan vi beregne den længste vej ved at trække det fra, som vi har har lagt til i kantvægtene for at få ikke-negative vægte og derefter ved at gange med $-1$ for at gå fra den korteste til den længste vej. 
 Nu kan vi printe det største overskud, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke knuder vi skal følge, og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
 Outputtet for denne funktion er som følger:
+
+
+\lstinputlisting[
+  firstline=133,
+  lastline=136,
+  label={code:data_udvidet},
+  caption={Definering af data for det udvidede problem.}
+]{code/dijkstras.py} 
 
 \begin{lstlisting} [deletekeywords={is,not}, label=lst:udvidet_output,caption=Output for det basisproblemet.]
 

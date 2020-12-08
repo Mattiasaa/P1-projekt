@@ -3,12 +3,13 @@ Vi arbejder med den samme algoritme, som vi gjorde i basisproblemet, da denne va
 
 \lstinputlisting[
   firstline=36,
-  lastline=57,
+  lastline=59,
   label={code:data_udvidet},
   caption={Definering af data for det udvidede problem.}
 ]{code/dijkstras.py} 
 
 Det ses, at de tidligere statiske værdier, $q_{\max}$, $q_{\min}$, $i_{\max}$ og $u_{\max}$, nu ændrer sig alt efter hvilken måned, vi befinder os i. Dette ændrer også resultatet, og sættes dataen ind i algoritmen, får vi nu:
+
 
 \begin{lstlisting} [deletekeywords={is,not}, label=lst:udvidet_output,caption=Output for det udvidede problem.]
 
