@@ -7,14 +7,16 @@ Tidskompleksitet fortæller noget om, hvordan udviklingen i tid af en given algo
 Bedste tilfælde beskriver algoritmen under optimale forhold, hvor datasættet er sat i den rækkefølge der gør, at algoritmen tager mindst mulig tid. I en lineær søgealgoritme vil dette være, at elementet der søges efter, er det første element i listen. 
 Værste tilfælde er en situation, hvori datasættet er ordnet i den værste rækkefølge, så der skal gennemføres det største mulige antal operationer for den givne algoritme. Hvis vi igen tager eksemplet med den lineære søgealgoritme, ville det være at elementet der søges efter ikke findes i listen over elementer.
 Det gennemsnitlige tilfælde ser på et gennemsnitligt datasæt, dette er dog meget svært at bestemme, da da det er svært at bestemme nogle parametre der gør, at man får et gennemsnitligt sæt.
-Det mest sigende er det gennemsnitlige tilfælde, men da det er svært at bruge, vil man nøjes med det værste tilfælde, da man så i alle tilfælde kan sige, at algoritmen har denne kompleksitet eller mindre. Ved man, at algoritmen er lineær i værste tilfælde, vil man kunne løse den i rimelig tid for alle størrelser og ordner af datasæt.
+Det mest sigende er det gennemsnitlige tilfælde, men da det er svært at bruge, vil man ofte nøjes med det værste tilfælde, da man så i alle tilfælde kan sige, at algoritmen har denne kompleksitet eller mindre.
+
+
+
+\input{fig/tab/algo/tab_kompleksitet}
+
+\autoref{tab:kompleksitet} viser hvilken terminologi man vil bruge, når man snakker om de forskellige kompleksiteter. Altså får man i sin analyse kompleksiteten $\Theta(n)$, vil den kaldes for lineær, da tiden det vil tage for algoritmen at løse problemet stiger lineært med inputsstørrelsen.
 For at beskrive disse algoritmer, vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. 
-
-%De forskellige resultater i vores analyse af algoritmerne kan deles op i kategorier, de mest gængse er: $\log n$, $\sqrt{n}$, $n$, $n^x$, $x^n$ og $n!$, men det kan også være en kombination af disse, som $n!n$, $n\log n$ eller lignende.
-%tabellen fra side 247 kunne være super lækker at inputte her.
-
 \subsection{Store-$O$}
-Store-$O$ bliver brugt til at begrænse funktionen opadtil. Man kan med garanti sige, at algoritmen vil vokse lig store-$O$/$g(n)$(ved ikke hvilken man vil bruge) eller mindre når datasættet stiger.
+Store-$O$ bliver brugt til at begrænse funktionen opadtil. Man kan med garanti sige, at algoritmen vil vokse lig store-$Og(n))$ eller mindre, når størrelsen på datasættet stiger.
 
 \begin{defn}
 $f(n)$ siges at være $O(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \leq C |g(n)|$ for alle $n \geq n_o$.
@@ -23,9 +25,9 @@ $f(n)$ siges at være $O(g(n))$, hvis og kun hvis der eksisterer positive konsta
 
 \begin{exmp} \label{ex:store-O}
 Vi tager i dette eksempel udgangspunkt i funktionen $f(n)=13n+3$. 
-Her skal vi forsøge at finde vores $C$ og $g(n)$ så uligheden $|f(n)| \leq C|g(n)|$ gælder for alle $n$ over $n_0$. Hvis vi sætter $g(n) = n$ og $C=20$ står der $13n+3 \leq 20n$. Dette er ikke sandt ved $n=0$ da der vil stå $3 \leq 0$. For $n=1$ står der $13\cdot 1 + 3 \leq 20 \cdot 1$ hvilket må være sandt, altså er vores ulighed sand for $n \geq 1$.
-Når vi har fundet vores $C$, $g(n)$ og $n_0$, kan vi nu konkludere, at $|f(n) = O(g(n))$, hvilket i vores eksempel er $f(n) = O(n)$.
-Vi kan dermed sige, at kompleksiteten af $f(n)$ er lineær.
+Her skal vi forsøge at finde vores $C$ og $g(n)$ så uligheden $|f(n)| \leq C|g(n)|$ gælder for alle $n$ over $n_0$. Hvis vi sætter $g(n) = n$ og $C=20$ står der $13n+3 \leq 20n$. Dette er ikke sandt ved $n=0$ da der vil stå $3 \leq 0$. For $n=1$ står der $13\cdot 1 + 3 \leq 20 \cdot 1$, hvilket er sandt, og dermed er vores ulighed sand for $n \geq 1$.
+Når vi har fundet vores $C$, $g(n)$ og $n_0$, kan vi nu konkludere, at $f(n) = O(g(n))$, hvilket i vores eksempel er $f(n) = O(n)$.
+Vi kan dermed sige, at kompleksiteten af $f(n)$ er lineær eller bedre.
 \end{exmp}
 Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig, højere funktion, $g(n)$, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
 
@@ -33,7 +35,7 @@ Man vil også kunne sige, at $f(n)$ er mindre end $n!$ eller en anden vilkårlig
 \begin{defn}
 $f(n)$ siges at være  $\Omega(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \geq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
-Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen. Den vil mindst tage store-$\Omega$ tid i det givne tilfælde.
+Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen.
 \begin{exmp}
 Hvis vi igen i dette eksempel tager udgangspunkt i funktionen fra Eksempel \ref{ex:store-O} $f(n)=13n+3$, skal vi nu forsøge at finde $C$ og $g(n)$ hvor det gælder at det er lavere end $f(n)$ for alle $n \geq n_0$. 
 Vi kan med fordel bruge den samme $g(n)$ som ovenfor, $g(n)=n$, så skal vi finde en $C$-værdi der gør uligheden sand. Hvis $C=1$ står der $13n+3 \geq 1n$. Dette må gøre sig gældende for alle $n \geq 0$. Derved har vi vores konstanter $C=1$ og $n_0 = 0$, og funktionen $g(n)=n$ og kan nu begrænse funktionen nedadtil med $g(n)$, $f(n)=\Omega(n)$.
@@ -55,7 +57,7 @@ $f(n)= \Theta(n)$
 
 I følgende afsnit tager vi udgangspunkt i to sorteringer og ser, hvordan de sammenligner sig på store-$O$ i bedste og værste tilfælde.
 
-\subsection{Kompleksitet af bubblesortering} \label{kap:kom_bubble}
+\subsection{Kompleksitet af sorteringer} \label{kap:kompleksitet_sortering}
 
 For at finde kompleksiteten af bubblesortering bruger vi store-$O$-notationen fra tidligere. 
 Bubblesortering, som nævnt i \autoref{kap:sortering}, sammenligner to elementer fra listen og flytter rundt på dem, hvis de står i forkert rækkefølge.
@@ -68,7 +70,6 @@ Som vi kender fra tidligere teori, tælles de mindre ordner ikke med, derved er 
 I bedste tilfælde er listen $(1, 2, 3, 4, 5)$.
 I vores algoritme, stopper algoritmen først, når den har lavet $n-1$ iterationer, og stopper dermed ikke på trods af at listen kan være i korrekt rækkefølge tidligere. I bedste tilfælde, vil den derfor være lige så kompleks som vores værste tilfælde, altså $O(n^2)$. Det vil dog være relativt nemt at optimere algoritmen, så den stopper, hvis den ikke laver flere ombytninger i en given iteration. Denne optimering vil gøre algoritmen $O(n)$ i bedste fald, da den i dette tilfælde kun gennemfører én iteration, og der stadig udføres $n-1$ sammenligninger i denne iteration. 
 
-\subsection{Kompleksitet af indskudssortering} \label{kap:kom_indskud}
 En anden sorteringsalgoritme er indskudssorteringen fra \autoref{kap:sortering}. Denne tager udgangspunkt i et enkelt element ad gangen og sammenligner dette med resten af den korrekte liste.
 Hvis vi igen benytter det værste tilfælde, når listen er $(1,2,3,4,5)$, ser vi, at den først tager $2$-tallet og sammenligner med $1$-tallet. Den ser først, at to er større end en, og siden der kun er et element i den korrekte liste, vil den placere to til højre for et. Det næste element, den så tjekker, er tre, som den først sammenligner med et og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
 Vi ser her, at der på samme måde som med bubblesortering køres fire iterationer. Der er i første iteration en sammenligning, derefter to sammenligninger i anden iteration og $n$ sammenligninger i $n$'te iteration. Hermed er denne sortering også $O(n^2)$ i værste fald.
