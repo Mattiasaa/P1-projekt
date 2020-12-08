@@ -35,9 +35,31 @@ Denne ligning har nogle bibetingelser:\\
 for $t \in \{1,\dotsc,T\}$, hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$.
 Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder, der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
 
-Look up, definition!
-or.. down, it is down.
 
 \begin{defn}
-write something here.
+Grafen for problemet, $G_{problem}=(V,E,w)$, er en simpel, orienteret og vægtet graf. Grafen er (T+2)-delt fordelt på delmængderne $V_0,V_1, \cdots, V_{T+1}$.
+Hver knude i en delmængde $V_i$, for $i \in [0,1, \cdots, T]$, er kun naboer med knuder i delmængde $V_{i+1}$. 
+For mængden af kanter, $E$, gælder det, for $t_u \leq T-1$, at $\exists \ e=(u_{qt_u}, v_{qt_v})$, hvor $t_u \in [0,1, \cdots, T]$, hvis
+	\begin{itemize}
+	\item $u_{qt_u} \in V_i$ og $v_{qt_v} \in V_{i+1}$
+	\item $-u_{\max} \leq qt_v-qt_u \leq i_{\max}$
+	\item $q_{\min} \leq qt_u,qt_v \leq q_{\max}$
+	\end{itemize}
+og for $t_u = T$ gælder det, at $\exists \ e = (u_{q_T}, v_{q_{T+1}})$, hvis
+	\begin{itemize}
+	\item $u_{q_{T}} \in V_T$ og $v_{q_{T+1}} \in V_{T+1}$
+	\item $q_{\min} \leq q_{T} \leq q_{\max} $
+	\end{itemize}
+
+Vægten på kanterne er givet ved funktionen:
+\begin{equation}
+w(e)=
+	\begin{cases}
+	\Delta q_t \cdot p_t \cdot \textrm{e}^{-r \cdot \frac{t}{T}} \ \ \ \ \mbox{hvis } t_u \leq T-1 \\
+	q_T \cdot p_T \cdot \textrm{e}^{-r} \qquad \mbox{ hvis } t_u=T
+	\end{cases}
+\end{equation}
+
+
+
 \end{defn}
