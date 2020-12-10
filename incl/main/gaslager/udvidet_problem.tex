@@ -7,7 +7,7 @@ I basisproblemet arbejder vi med mange statiske værdier. Vi siger, at $q_{\min}
 \textrm{2.}& \ \ \Delta q_{t} \in \{-u_{\max,t}, -u_{\max,t} + 1, \dotsc, -1, 0, 1, \dotsc, i_{\max,t} -1, i_{\max,t} \}
 \end{split}
 \end{align}
-for alle $t$. Dermed afhænger disse værdier nu af $t$ modsat basisproblemet, hvor de var statiske hele året. 
+for $t \in \{1,2,\dotsc,T \}$. Dermed afhænger disse værdier nu af $t$ modsat basisproblemet, hvor de var statiske hele året. 
 
 Den anden udvidelse til basisproblemet er, at der i lejekontrakten indgår en straffaktor. Det vil sige, at vi efter de 12 måneder skal aflevere lageret med en aftalt mængde gas, $q_{\goal}$. Hvis vi ikke formår at opfylde dette krav, reduceres den pris, modparten køber den resterende mængde gas for med denne straffaktor, og vi får dermed ikke den fulde pris for gassen. Med denne udvidelse er der altså to nye parametre.
 \begin{itemize}
@@ -18,4 +18,4 @@ Dermed er maksimeringsproblemet med udvidelsen nu:
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \left (1- \kappa \cdot \ind [q_{T} \neq q_{\goal}] \right )  \Bigg\}, 
 \end{equation}
-hvor $\ind [\cdot]$ er en indikatorfunktion. Den er altså lig med 1, når $q_{T} \neq q_{\goal}$ og 0, når de er lig hinanden. Al data til det udvidede problem kan ses i \autoref{code:data_udvidet}.
+hvor $\ind [\cdot]$ er en indikatorfunktion og $t \in \{1,2,\dotsc,T \}$. Den er altså lig med 1, når $q_{T} \neq q_{\goal}$ og 0, når de er lig hinanden. Al data til det udvidede problem kan ses i \autoref{code:data_udvidet}.

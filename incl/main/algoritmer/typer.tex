@@ -25,7 +25,7 @@ Der findes mange typer algoritmer, som løser mange forskellige problemer. Vi vi
 \end{algorithm}
 
 
-Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er \emph{ordnet}. Det vil sige, hvis listen fx er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen, $a_{m}$, hvor $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. $\lfloor \rfloor$ er flooroperatoren der runder ned til første heltal. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, tager vi halvdelen af listen, der er større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. Den binære søgealgoritme er illustreret i \autoref{alg:binaer}.
+Modsat den lineære søgning kan den binære søgning kun bruges, når en liste er \emph{ordnet}. Det vil sige, hvis listen fx er voksende, aftagende eller alfabetisk, altså $(a_{1}<a_{2}<\dotsb<a_{n})$. Den binære søgealgoritme finder nu midten af listen, $a_{m}$, hvor $m=\left \lfloor \frac{n+1}{2} \right \rfloor$. $\lfloor \ \rfloor$ er flooroperatoren der runder ned til første heltal. Vi ser nu, hvilken side det, vi søger, er på. Hvis $a_{m}<x$, tager vi halvdelen af listen, der er større end $a_{m}$ dvs: $(a_{m+1}, a_{m+2},\dotsc,a_{n})$. Ellers tager vi halvdelen mindre end og lig $a_{m}$: $(a_{1}, a_{2},\dotsc,a_{m})$. Når vi har vurderet hvilken side af midten, den værdi, vi søger, er på, deles denne halvdel på midten, hvorefter man igen skal vurdere, hvilken side man skal arbejde videre med. Dette fortsættes, indtil tallet er fundet. Den binære søgealgoritme er illustreret i \autoref{alg:binaer}.
 
 \begin{algorithm}[H]
 \caption{Den binære søgealgoritme}
@@ -55,7 +55,7 @@ Modsat den lineære søgning kan den binære søgning kun bruges, når en liste 
 \end{algorithm}
 
 \subsection{Sorteringsalgoritmer} \label{kap:sortering}
-Når vi arbejder med \emph{sorteringsalgoritmer}, er det, fordi vi ønsker at sortere en liste, således at den inddeles i fx voksende rækkefølge eller alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. Eksempler på disse er \emph{bubblesortering} og \emph{indskudssortering}. Bubblesortering er en af de simpleste sorteringsalgoritmer, men den er ikke så effektiv. Vi vil komme ind på algoritmers effektivitet i \autoref{kap:kompleksitet}. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis rækkefølgen ikke er korrekt.
+Når vi arbejder med \emph{sorteringsalgoritmer}, er det, fordi vi ønsker at sortere en liste, således at den inddeles i fx voksende rækkefølge eller alfabetisk orden. Ligesom ved søgealgoritmerne er der flere forskellige sorteringsalgoritmer. Eksempler på disse er \emph{bubblesortering} og \emph{indskudssortering}. Bubblesortering er en af de simpleste sorteringsalgoritmer, men den er ikke så effektiv. Den sammenligner tilstødende værdier i en liste og bytter om på dem, hvis rækkefølgen ikke er korrekt. Vi vil komme ind på algoritmers effektivitet i \autoref{kap:kompleksitet}. .
 
 \begin{algorithm}[H]
 \caption{Bubblesorteringsalgoritmen}
