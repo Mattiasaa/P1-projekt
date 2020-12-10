@@ -20,8 +20,8 @@ Lad $n \in \N $, $G=(V,E,w)$ være en vilkårlig graf og $P$ en vilkårlig, simp
 Man kan således bruge følgende definitioner af \emph{korteste vej} og \emph{længste vej} i en vægtet graf:
 
 
-\begin{defn} [Korteste vej i vægtet graf]\label{defn:min.vej}
-Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+\begin{defn} [Korteste, simple vej i vægtet graf]\label{defn:min.vej}
+Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste, simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation}
 		\alpha(v_1,v_m)=\arg \min_{P \in \pazocal{P}}
 		\textrm{dist}(P),
@@ -31,8 +31,8 @@ Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den kortes
 
 På samme vis defineres længste vej:
 
-\begin{defn} [Længste vej i en vægtet graf]
-	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+\begin{defn} [Længste, simple vej i en vægtet graf]
+	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste, simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
 	\begin{equation}
 		\beta(v_1,v_m)=\arg \max_{P \in \pazocal{P}}
 		\textrm{dist}(P),
