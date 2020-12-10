@@ -5,8 +5,11 @@ Når man regner på grafer, som vi vil gøre senere i projektet, kan det være b
 I en ikke-orienteret graf er en knudes \emph{grader} det antal kanter, som knuden er incident med bortset fra løkker, som bidrager to gange til knudens grad. Knuden, $v$'s, grader skrives $\deg(v)$.
 \end{defn}
 
-Vi tager et eksempel:
+\begin{exmp} \label{ex:grader}
 
+Graderne på \autoref{fig:grader} er $\deg(v_{1})=3, \ \deg(v_{2})=3, \ \deg(v_{3})=4$ og $\deg(v_{4})=4$. En knudes grader afgøres altså af, hvor mange naboer knuden har, medmindre knuden har en løkke, da man her kun siger, at den er nabo med sig selv én gang, men det tæller dobbelt i antallet af grader.
 \input{fig/tikz/grafer/grader_eksempel}
 
-På figuren ses de forskellige knuder i en pseudograf og de kanter, der er incidente med hver knude. Graderne for de forskellige knuder ville her være: $\deg(v_{1})=3, \ \deg(v_{2})=3, \ \deg(v_{3})=4$ og $\deg(v_{4})=4$. En knudes grader afgøres altså af, hvor mange naboer knuden har, medmindre knuden har en løkke, da man her kun siger, at den er nabo med sig selv én gang, men det tæller dobbelt i antallet af grader.
+
+
+\end{exmp}
