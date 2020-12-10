@@ -10,7 +10,7 @@ For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan fi
 
 Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier som lister, da de ikke er statiske i det udvidede problem, og vi har derfor tilpasset funktionerne, så de kan håndtere både basisproblemet og det udvidede problem uden at skulle ændres. 
 
-Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}, en ordbog. En ordbog er en associationsliste, som indeholder en samling af indekser, der kaldes nøgler og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
+Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}, en ordbog. En ordbog er en associationsliste, som indeholder en samling af indekser, der kaldes \emph{nøgler} og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
 værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi og kan hente denne. Det ses eksempelvis i \autoref{code:q05}, at nøglen q0.5 henter sin naboliste.
 Før vi kan opstille vores dictionary, er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
@@ -35,7 +35,7 @@ Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 I \autoref{code:graph_dict} definerer vi en funktion, der bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary", som de andre dictionaries vil blive sat ind i.
 Den danner nu en flerdimensionel liste med alle knuderne i grafen. Knuderne har navn på form '$q\textrm{x.y}$', hvor x beskriver hvilken tid vi er i, og y beskriver beholdningen. Det vil sige, at '$q3.4$' betyder, at vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige, at alle '$q\textrm{3.y}$' er i en liste for sig selv.
 
-Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, hvor $t=i$, i denne løkke, er der nemlig kun en knude der har kanter. Funktionen genererer nu de kanter, som '$q\textrm{0.5}$' har, og laver en dictionary for '$q\textrm{3.y}$'. 
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, i denne løkke, er der nemlig kun en knude der har kanter. Funktionen genererer nu de kanter, som '$q\textrm{0.5}$' har, og laver en dictionary for '$q\textrm{3.y}$'. 
 Denne dictionary ser ud således:
 
 \begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0.5}$.]
@@ -44,10 +44,10 @@ Denne dictionary ser ud således:
 \end{lstlisting}
 Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge Dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
 
-I \autoref{code:graph_dict} ser vi, at når $i=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
+I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
 
 Vi kan nu kigge på alle andre tilfælde for $i$. Funktionen kører en løkke for $k$ med værdier mellem '$q\textrm{\_min}$' og '$q\textrm{\_max}$' til den specifikke tid. Dette betegner den som de nuværende enheder.
-Den finder nu de største ændringer, når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t=i$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
+Den finder nu de største ændringer, når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
 
 Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$q12.0$' med vægt $0$, dette skyldes, at vores kode for Dijkstras ikke kan finde længden til en knude, som ikke har sin egen dictionary.
 
