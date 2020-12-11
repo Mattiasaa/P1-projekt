@@ -1,0 +1,23 @@
+
+
+\begin{figure}[H]
+\centering
+	\begin{tikzpicture}[every loop/.style={}]
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+%% Vertices
+      	\node[enclosed, label={left: $v_1$}] (v1) at (0,0) {};
+      	\node[enclosed, label={above: $v_2$}] (v2) at (2,3) {};
+    	\node[enclosed, label={right: $v_3$}] (v3) at (4,1.5) {};
+  	    \node[enclosed, label={right: $v_4$}] (v4) at (4,0) {};
+%Edges
+		\path[->, > = latex, thick] (v2) edge [bend right=20] node[midway, left] {$e_4$} (v3);
+		\path[->, > = latex, thick] (v3) edge [bend right=20] node[midway, right] {$e_5$} (v2);
+		\path[->, > = latex, thick] (v1) edge node[midway, above] {$e_2$} (v3);
+		\path[->, > = latex, thick] (v1) edge node[midway, below] {$e_3$} (v4);
+		\path[->, > = latex, thick] (v1) edge node[midway, left] {$e_1$} (v2);
+		\path[->, > = latex, thick] (v3) edge node[midway, right] {$e_6$} (v4);
+		\path[->, > = latex, thick] (v4) edge [out=270,in=350,looseness=35] node[right] {$e_7$} (v4);
+	\end{tikzpicture}
+	\caption{En orienteret multigraf.}
+	\label{fig:grader_orienteret}
+\end{figure}

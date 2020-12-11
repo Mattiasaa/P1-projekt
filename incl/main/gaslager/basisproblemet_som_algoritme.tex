@@ -40,13 +40,13 @@ Denne dictionary ser ud således:
 
 \begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0.5}$.]
 
-'q0.5' : {'q1.1' : 170.27, 'q1.2' : 190.2, 'q1.3' : 210.13, 'q1.4' : 230.07, 'q1.5' : 250, 'q1.6': 269.93, 'q1.7' : 289.87, 'q1.8' : 309.8, 'q1.9' : 329.73}
+'q0.5' : {'q1.1' : 170.28, 'q1.2' : 190.21, 'q1.3' : 210.14, 'q1.4' : 230.07, 'q1.5' : 250.0, 'q1.6': 269.93, 'q1.7' : 289.86, 'q1.8' : 309.79, 'q1.9' : 329.72}
 \end{lstlisting}
-Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge Dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
+Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
 
 I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
 
-Vi kan nu kigge på alle andre tilfælde for $i$. Funktionen kører en løkke for $k$ med værdier mellem '$q\textrm{\_min}$' og '$q\textrm{\_max}$' til den specifikke tid. Dette betegner den som de nuværende enheder.
+Vi kan nu kigge på alle andre tilfælde for $t$. Funktionen kører en løkke for $k$ med værdier mellem '$q\textrm{\_min}$' og '$q\textrm{\_max}$' til den specifikke tid. Dette betegner den som de nuværende enheder.
 Den finder nu de største ændringer, når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
 
 Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$q12.0$' med vægt $0$, dette skyldes, at vores kode for Dijkstras ikke kan finde længden til en knude, som ikke har sin egen dictionary.
@@ -55,12 +55,12 @@ Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derf
 
 \lstinputlisting[
   firstline=101,
-  lastline=130,
+  lastline=130 ,
   label={code:dijkstras_optimering},
   caption={Dikstras algoritme til løsning af problemet.}
 ]{code/dijkstras.py}
 
-I funktionen defineres først to tomme dictionaries. I 'shortest\_distance' opbevares den korteste vej til alle knuderne i grafen. I 'predecessor' opbevares for hver knude i grafen, den forrige knude i den korteste vej, altså den knude man går igennem, lige inden man når den nye knude, hvis man følger den korteste vej. Herefter oprettes 'unseen$\_$nodes', som vi sætter lig med 'graph'. Dette skyldes, at vi endnu ikke kender distancen til nogen af knuderne, og derfor er alle 'unseen'. Vi opretter også en tom liste, som vi kalder 'path'. I denne liste tilføjes de knuder, som indgår i den optimale vej.
+I funktionen defineres først to tomme dictionaries. I 'shortest\_distance' opbevares den korteste vej til alle knuderne i grafen. I 'predecessor' opbevares, for hver knude i grafen, den forrige knude i den korteste vej, altså den knude man går igennem, lige inden man når den nye knude, hvis man følger den korteste vej. Herefter oprettes 'unseen$\_$nodes', som vi sætter lig med 'graph'. Dette skyldes, at vi endnu ikke kender distancen til nogen af knuderne, og derfor er alle 'unseen'. Vi opretter også en tom liste, som vi kalder 'path'. I denne liste tilføjes de knuder, som indgår i den optimale vej.
 
 Vi sætter nu den korteste vej til alle knuder i 'unseen$\_$nodes', hvilken lige nu er alle knuderne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de knuder, man ikke kender distancen til endnu. Da vi starter i startknuden, kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
 Nu opstiller vi en while-løkke og lader den køre, så længe der stadig er knuder i 'unseen$\_$nodes', altså indtil den korteste vej til alle knuder er fundet.
@@ -73,21 +73,21 @@ Vi sørger nu for, at vores knuder i 'unseen$\_$nodes' forsvinder, efter vi har 
 
 Vi sætter vores nuværende knude til at være lig med vores mål.
 Derefter danner vi en ny while-løkke, som kører, så længe den nuværende knude ikke er startknuden. Startknuden har nemlig ikke en 'predecessor' og kan dermed ikke beregnes således. I listen 'path' tilføjes nu den nuværende knude, som vi har sat til at være 'end', på plads $[0]$. Vi kender dermed den sidste knude i vejen. Derefter defineres 'current$\_$node' nu til at være knuden lige inden det tidligere 'current$\_$node' i den korteste vej derhen. Denne tilføjes nu til listen, ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startknuden.
-Hvis den korteste vej til '$q\_$end' ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så kan vi beregne den længste vej ved at trække det fra, som vi har har lagt til i kantvægtene for at få ikke-negative vægte og derefter ved at gange med $-1$ for at gå fra den korteste til den længste vej. 
-Nu kan vi printe det største overskud, da det må være den længste vej igennem grafen. Vi kan også printe vores vej, for at se hvilke knuder vi skal følge, og dermed hvor mange gasenheder vi skal købe og sælge de forskellige måneder.
-Outputtet for denne funktion er som følger:
-
+Hvis den korteste vej til '$q\_$end' ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så returnerer funktionen den korteste distance samt vejen dertil.
+I \autoref{code:profit}, omregner vi så dette ved at trække den værdi fra, som vi lagde til alle kantvægtene, samt gange med $-1$. Denne funktion printer nu den længste vej og den vej vi skal følge for at få denne. 
 
 \lstinputlisting[
   firstline=133,
-  lastline=136,
-  label={code:data_udvidet},
+  lastline=137,
+  label={code:profit},
   caption={Definering af data for det udvidede problem.}
 ]{code/dijkstras.py} 
 
-\begin{lstlisting} [deletekeywords={is,not}, label=lst:udvidet_output,caption=Output for det basisproblemet.]
+Når vi kører denne funktion, med basisproblemets data, får vi følgende output:
 
-The highest profit is 252,72 Euro
+\begin{lstlisting} [deletekeywords={is,not}, label={lst:basis_output},caption=Output for basisproblemet.]
+
+The highest profit is 252,73 Euro
 The path is ['q0.5', 'q1.8', 'q2.4', 'q3.0', 'q4.2', 'q5.6', 'q6.10', 'q7.6', 'q8.10', 'q9.6', 'q10.10', 'q11.10', 'q12.6', 'q_end'].
 
 \end{lstlisting}
