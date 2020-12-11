@@ -28,7 +28,7 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
                                 #Forward-priser
 disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
-p_disc      = [p[i]*disc[i] for i in range(T)]                      
+p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
 max_edge    = max(p) * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
@@ -53,11 +53,10 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
                                 #Forward-priser
 disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
-p_disc      = [p[i]*disc[i] for i in range(T)]                      
+p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
                                 #Vaerdi efter diskonteringsfaktor
 max_edge    = p[len(p)-1] * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
-
 
 
 def addEdge(graph,u,v,e):
@@ -75,13 +74,13 @@ def graph_dict():
     vertices.append('q_end')
     t = 0
     for j in range(-u_max[t], i_max[t]+1):
-        addEdge(graph, vertices[t], vertices[t+1][q_0 + j], round(j*p_disc[t]+max_edge,2))
+        addEdge(graph, vertices[t], vertices[t+1][q_0 + j], j*p_disc[t]+max_edge)
     t = 12
     for k in range(q_min[t-1], q_max[t-1]+1):
         if k == q_goal:
-            addEdge(graph, vertices[t][k], vertices[t+1],round(-k*p_disc[t-1]+max_edge,2))
+            addEdge(graph, vertices[t][k], vertices[t+1],-k*p_disc[t-1]+max_edge)
         else:
-            addEdge(graph, vertices[t][k], vertices[t+1],round(-k*p_disc[t-1]+max_edge,2)/kappa)
+            addEdge(graph, vertices[t][k], vertices[t+1],(-k*p_disc[t-1]+max_edge)/kappa)
     for t in range(1,T):
         for k in range(q_min[t-1], q_max[t-1]+1):
             current_units = k
@@ -92,7 +91,7 @@ def graph_dict():
             if max_units > q_max[t]:
                 max_units = q_max[t]
             for j in range(min_units, max_units+1):
-                addEdge(graph, vertices[t][k], vertices[t+1][j],round((j-k)*p_disc[t]+max_edge,2))
+                addEdge(graph, vertices[t][k], vertices[t+1][j],(j-k)*p_disc[t]+max_edge)
     addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
     return graph
 
@@ -126,12 +125,13 @@ def dijkstras(graph , start , end ):
         path. insert (0,current_node)
         current_node = predecessor[current_node]
     path . insert (0 , start )
-    longest_distance = round((shortest_distance [ end ] - (len(path)-1) * max_edge) * (-1), 2)
-    return longest_distance, path
+    if shortest_distance[end] != float('inf'):
+        return shortest_distance[end], path
 
 
 def get_profit(graph, start, end):
-    longest_distance, path = dijkstras(graph, start, end)
+    shortest_distance, path = dijkstras(graph, start, end)
+    longest_distance = round((shortest_distance - (len(path)-1) * max_edge) * (-1), 2)
     print(f'The highest profit is {round(longest_distance,2)} Euro') 
     print(f'The path is {str(path)}')
     
