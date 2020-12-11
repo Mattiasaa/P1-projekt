@@ -59,12 +59,12 @@ max_edge    = p[len(p)-1] * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
 
 
+
 def addEdge(graph,u,v,e):
     if u in graph:
         graph[u].update( {v : e} )
     else:
         graph[u] = {v : e}
-
 
 
 def graph_dict():
