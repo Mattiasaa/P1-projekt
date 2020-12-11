@@ -94,7 +94,7 @@ def graph_dict():
                 addEdge(graph, vertices[t][k], vertices[t+1][j],(j-k)*p_disc[t]+max_edge)
     addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
     return graph
-
+print(graph_dict()['q0.5'])
 
 
 def dijkstras(graph , start , end ): 
