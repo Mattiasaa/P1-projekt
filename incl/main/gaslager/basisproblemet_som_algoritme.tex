@@ -40,9 +40,9 @@ Denne dictionary ser ud således:
 
 \begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0.5}$.]
 
-'q0.5' : {'q1.1' : 170.27, 'q1.2' : 190.2, 'q1.3' : 210.13, 'q1.4' : 230.07, 'q1.5' : 250, 'q1.6': 269.93, 'q1.7' : 289.87, 'q1.8' : 309.8, 'q1.9' : 329.73}
+'q0.5' : {'q1.1' : 170.28, 'q1.2' : 190.21, 'q1.3' : 210.14, 'q1.4' : 230.07, 'q1.5' : 250.0, 'q1.6': 269.93, 'q1.7' : 289.86, 'q1.8' : 309.79, 'q1.9' : 329.72}
 \end{lstlisting}
-Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1 for at bruge Dijkstras algoritme. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
+Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
 
 I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
 
