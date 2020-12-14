@@ -1,13 +1,13 @@
 \subsection{Nabolister}
-En måde at repræsentere en graf på er ved at lave en \emph{naboliste}. Nabolister er tabeller, der giver en oversigt over hvilke knuder, der er naboer. Dog vil man ikke kunne se, hvis der er parallelle kanter. En naboliste er bygget op således, at knuden, man vil beskrive, er i venstre side af tabellen, og naboknuderne er skrevet i højre side. \\
+En måde at repræsentere en graf på er ved at lave en \emph{naboliste}. Nabolister er tabeller, der giver en oversigt over hvilke knuder, der er naboer, men man kan ikke se, hvor mange kanter der er incidente med det samme knudepar. Dermed viser nabolister ikke, om der er multiple kanter. En naboliste er bygget op således, at knuden, man vil beskrive, er i venstre side af tabellen, og naboknuderne er skrevet i højre side. \\
 
 \input{fig/tikz/grafer/nabolister/ikke-orienteret-pseudo}
 
 
-Ud fra \autoref{tab:naboliste-ikke-orienteret} ses, at knuden $v_4$ har naboknuderne $v_3$,$v_5$,$v_1$ og $v_7$ men man kan ikke se, at der er en ekstra kant mellem $v_4$ og $v_3$. Man kan dog se, at $v_7$ har en løkke, da den er nabo til sig selv.
+Ud fra \autoref{tab:naboliste-ikke-orienteret} ses, at knuden $v_4$ har naboknuderne $v_3$, $v_5$, $v_1$ og $v_7$, men man kan ikke se, at der er en ekstra kant mellem $v_4$ og $v_3$. Man kan dog se, at $v_7$ har en løkke, da den er nabo til sig selv.
 
 \input{fig/tikz/grafer/nabolister/orienteret-pseudo}
-\autoref{tab:nabolisteorienteret} viser en oversigt over grafen i \autoref{fig:orienteretmulti}'s naboknuder. Kigger man på $v_3$ og $v_4$ i tabellen, kan man se, at der er parallelle kanter, da kanterne er orienteret i hver deres retning. Kigger man på $v_1$ og $v_2$, kan man ikke se, at der er parallelle kanter mellem $v_1$ og $v_2$, da begge kanter er orienteret fra $v_2$ til $v_1$. Naboknuderne går også under fællesbetegnelsen nabolag. Et nabolag er defineret ved:
+\autoref{tab:nabolisteorienteret} viser en oversigt over grafen i \autoref{fig:orienteretmulti}'s naboknuder. Kigger man på $v_3$ og $v_4$ i tabellen, kan man se, at der er multiple kanter, da kanterne er orienteret i hver deres retning. Kigger man på $v_1$ og $v_2$, kan man ikke se, at der er multiple kanter mellem $v_1$ og $v_2$, da begge kanter er orienteret fra $v_2$ til $v_1$. Naboknuderne går også under fællesbetegnelsen nabolag. Et nabolag er defineret ved:
 
 \begin{defn}[Nabolag] \label{defn:nabolag}
 Knuden $v$'s \emph{nabolag}, $N(v)$, er en betegnelse for alle naboer til knuden, $v$, i grafen, $G=(V,E)$. Når $A \subseteq V$, er $N(A)$ betegnelsen for alle naboer til mindst én knude i $A$.

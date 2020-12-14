@@ -18,7 +18,7 @@ Hvis vi skal maksimere resultatet for dette gaslager, ønsker vi at finde den l�
 
 \input{fig/tikz/gaslager/omvendt_graf}
 
-Vi kan nu løse problemet som et korteste vej-problem. Dertil vil vi bruge Dijkstras algoritme. Dette kan dog ikke lade sig gøre, så længe der optræder negative tal i grafen. Derfor lægger vi en konstant til alle kantvægte i grafen, der medfører, at den mindste kantvægt er større end eller lig 0. I dette eksempel lægger vi 30 til. Vi får nu den omvendte graf med positive vægte:
+Vi kan nu løse problemet som et korteste vej-problem. Dertil vil vi bruge Dijkstras algoritme, men dette kan ikke lade sig gøre, så længe der optræder negative tal i grafen. Derfor lægger vi en konstant til alle kantvægte i grafen, der medfører, at den mindste kantvægt er større end eller lig 0. I dette eksempel lægger vi 30 til. Vi får nu den omvendte graf med positive vægte:
 
 
 \input{fig/tikz/gaslager/omvendt_positiv_graf}

@@ -12,7 +12,7 @@ Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier s
 
 Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}, en ordbog. En ordbog er en associationsliste, som indeholder en samling af indekser, der kaldes \emph{nøgler} og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
 værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi og kan hente denne. Det ses eksempelvis i \autoref{code:q05}, at nøglen q0.5 henter sin naboliste.
-Før vi kan opstille vores dictionary, er vi dog nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
+Før vi kan opstille vores dictionary, er vi nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
   firstline=63,
@@ -62,7 +62,7 @@ Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derf
 
 I funktionen defineres først to tomme dictionaries. I 'shortest\_distance' opbevares den korteste vej til alle knuderne i grafen. I 'predecessor' opbevares, for hver knude i grafen, den forrige knude i den korteste vej, altså den knude man går igennem, lige inden man når den nye knude, hvis man følger den korteste vej. Herefter oprettes 'unseen$\_$nodes', som vi sætter lig med 'graph'. Dette skyldes, at vi endnu ikke kender distancen til nogen af knuderne, og derfor er alle 'unseen'. Vi opretter også en tom liste, som vi kalder 'path'. I denne liste tilføjes de knuder, som indgår i den optimale vej.
 
-Vi sætter nu den korteste vej til alle knuder i 'unseen$\_$nodes', hvilken lige nu er alle knuderne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de knuder, man ikke kender distancen til endnu. Da vi starter i startknuden, kan vi dog sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
+Vi sætter nu den korteste vej til alle knuder i 'unseen$\_$nodes', hvilken lige nu er alle knuderne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de knuder, man ikke kender distancen til endnu. Da vi starter i startknuden, kan vi sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
 Nu opstiller vi en while-løkke og lader den køre, så længe der stadig er knuder i 'unseen$\_$nodes', altså indtil den korteste vej til alle knuder er fundet.
 Vi sætter den korteste distance til en knude lig nul, og laver derefter en for-løkke. Denne løkke gælder for alle knuder i 'unseen$\_$nodes'. Hvis der ikke er fundet en midlertidig korteste vej til nogen knude fra $q_0$, bliver en sådan vej oprettet til en vilkårlig knude. Denne knude defineres som 'min\_distance\_node'. Hvis der allerede er defineret en 'min\_distance\_node', men der findes en vej fra $q_0$ til en anden knude, som er endnu kortere, opdateres 'min$\_$distance$\_$node' til at være denne knude.
 Nu starter vi en ny for-løkke, som skal betragte de mulige veje fra vores knude.
@@ -80,7 +80,7 @@ I \autoref{code:profit}, omregner vi så dette ved at trække den værdi fra, so
   firstline=133,
   lastline=137,
   label={code:profit},
-  caption={Definering af data for det udvidede problem.}
+  caption={Omregning af Dijkstras output til ønsket resultat.}
 ]{code/dijkstras.py} 
 
 Når vi kører denne funktion, med basisproblemets data, får vi følgende output:
@@ -88,6 +88,6 @@ Når vi kører denne funktion, med basisproblemets data, får vi følgende outpu
 \begin{lstlisting} [deletekeywords={is,not}, label={lst:basis_output},caption=Output for basisproblemet.]
 
 The highest profit is 252,73 Euro
-The path is ['q0.5', 'q1.8', 'q2.4', 'q3.0', 'q4.2', 'q5.6', 'q6.10', 'q7.6', 'q8.10', 'q9.6', 'q10.10', 'q11.10', 'q12.6', 'q_end'].
+The path is ['q0.5', 'q1.8', 'q2.4', 'q3.0', 'q4.2', 'q5.6', 'q6.10', 'q7.6', 'q8.10', 'q9.6', 'q10.10', 'q11.10', 'q12.6', 'q_end']
 
 \end{lstlisting}

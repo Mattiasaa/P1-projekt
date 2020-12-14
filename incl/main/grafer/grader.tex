@@ -36,11 +36,11 @@ Som det fremgår af Definition \ref{def:graf}, er multimængden af kanter, $E \s
 I en orienteret graf tælles knudernes grader på anden vis. I en orienteret graf er en knude, $u$, incident med en anden knude $v$, hvis en orienteret kant har $u$ som sit startpunkt og $v$ som sit endepunkt. Derfor tælles antallet af grader i en orienteret graf i \emph{indadgående} grader og \emph{udadgående} grader. 
 For knuden $v$ betegner $\deg^{-}(v)$ antallet af de indadgående kanter, altså de kanter, der har $v$, som sit endepunkt. Modsat betegner $\deg^{+}(v)$ antallet af de udadgående kanter, altså de kanter, der har $v$, som sit startpunkt. Da hver kant skal have både et start og et endepunkt, må det gælde at:
 \begin{equation}
-|E|=\sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v)
+|E|=\sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v).
 \end{equation}
 
 \begin{exmp} \label{ex:grader_orienteret}
-Vi kan nu beregne antallet af indadgående og udadgående grader i \autoref{fig:grader_orienteret}
+Vi kan nu beregne antallet af indadgående og udadgående grader i \autoref{fig:grader_orienteret}.
 \input{fig/tikz/grafer/grader_orienteret_eksempel}
 Vi ser, at $\deg^{+}(v_{1})=3$, $\deg^{-}(v_{1})=0$, $\deg^{+}(v_{2})=1$, $\deg^{-}(v_{2})=2$, $\deg^{+}(v_{3})=2$, $\deg^{-}(v_{3})=2$, $\deg^{+}(v_{4})=1$ og $\deg^{-}(v_{4})=3$. Vi ser altså, at en løkke tæller som både en indadgående kant og en udadgående kant.
 \end{exmp}
