@@ -37,29 +37,25 @@ Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og de
 
 
 \begin{defn}
-Grafen for problemet, $G_{problem}=(V,E,w)$, er en simpel, orienteret og vægtet graf. Grafen er (T+2)-delt fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$.
-Hver knude i en delmængde $V_i$, for $i \in [0,1, \dotsc, T]$, er kun naboer med knuder i delmængde $V_{i+1}$. 
-For mængden af kanter, $E$, gælder det, for $t_u \leq T-1$, at $\exists \ e=(u_{qt_u}, v_{qt_v})$, hvis
+Givet problemparametrerne i \autoref{table:1} defineres kanterne i grafen for problemet, $G_{\textrm{problem}}=(V,E,w)$, som er en simpel, orienteret og vægtet graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$. Hvor $V_0$ og $V_{T+1}$ kun indeholder henholdsvis startknuden, $q_0$, og slutknuden, $q_{\slut}$. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
+For multimængden af kanter, $E$, gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
 	\begin{itemize}
-	\item $u_{qt_u} \in V_i$ og $v_{qt_v} \in V_{i+1}$
-	\item $-u_{\max} \leq qt_v-qt_u \leq i_{\max}$
-	\item $q_{\min} \leq qt_u,qt_v \leq q_{\max}$
+	\item $u \in V_t$ og $v \in V_{t+1}$
+	\item $-u_{\max} \leq q_{t+1}-q_t \leq i_{\max}$
+	\item $q_{\min} \leq q_t, q_{t+1} \leq q_{\max}$,
 	\end{itemize}
-og for $t_u = T$ gælder det, at $\exists \ e = (u_{q_T}, v_{q_{T+1}})$, hvis
+og hvis $t=T$ gælder det, at $\exists \ e=(u,q_{\slut})$, hvor $u=v_{T,q_T}$, hvis
 	\begin{itemize}
-	\item $u_{q_{T}} \in V_T$ og $v_{q_{T+1}} \in V_{T+1}$
+	\item $u \in V_T$
 	\item $q_{\min} \leq q_{T} \leq q_{\max}$
 	\end{itemize}
-hvor $t_u \in [0,1, \dotsc, T]$. \\
 Vægten på kanterne er givet ved funktionen:
 \begin{equation}
 w(e)=
 	\begin{cases}
-	\Delta q_t \cdot p_t \cdot \textrm{e}^{-r \cdot \frac{t}{T}} \ \ \ \ \mbox{hvis } t_u \leq T-1, \\
-	q_T \cdot p_T \cdot \textrm{e}^{-r} \qquad \mbox{ ellers.}
+	\Delta q_{t+1} \cdot p_{t+1} \cdot \textrm{e}^{-r \cdot \frac{t+1}{T}} &\text{hvis } t < T, \\
+	q_T \cdot p_T \cdot \textrm{e}^{-r} & \text{ellers.}
 	\end{cases}
 \end{equation}
-
-
 
 \end{defn}
