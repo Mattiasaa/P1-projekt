@@ -2,7 +2,7 @@
 Når man arbejder med grafer, kan det være brugbart at vide, hvor mange kanter der er incidente med en knude. Dertil bruger man følgende definition:
 
 \begin{defn}[Grader] \label{defn:grader}
-Lad $v \in V$ være en knude i den simple ikke-orienterede graf, $G = (V,E)$. Knudens antal \emph{grader}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
+Lad $v \in V$ være en knude i den simple, ikke-orienterede graf, $G = (V,E)$. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
 \begin{equation}
 \deg(v)=|\{u \in V: \{u,v\} \in E \}|,
 \end{equation}
@@ -18,7 +18,7 @@ Vi kan ud fra dette aflæse knudernes grader på \autoref{fig:grader}, $\deg(v_{
 \end{exmp}
 
 \begin{thm}
-Lad grafen, $G = (V,E)$, være en ikke-orienteret graf med E antal kanter. Knuden $v$ har $deg(v)$ antal grader, og det gør sig derfor gældende, at
+Lad grafen, $G = (V,E)$, være en ikke-orienteret graf med en multimængde kanter, E. Knuden $v$ har $deg(v)$ grader, og det gør sig derfor gældende, at
 \begin{equation}
 	\sum_{v \in V} { } \deg(v) = 2 \cdot |E|.
 \end{equation}
@@ -27,20 +27,46 @@ Dette gælder, så længe grafen ikke er uendelig.
 Hvis vi har en ikke-orienteret, endelig graf, kan man altså finde antallet af kanter i grafen ved at lægge summen af hver knudes grader sammen og dividere dette tal med to.
 
 \begin{proof}
-Som det fremgår af Definition \ref{def:graf}, er multimængden af kanter, $E \subseteq \{\{u,v\}|u,v \in V \}$. Hver kant i grafen er altså incident med to punkter, eller med det samme punkt to gange, hvis der er tale om en løkke. Hvis en kant er incident med en knude, bidrager denne kant til knudens grader, $\deg{v}$. Hver kant bidrager altså to gange til det samlede antal grader. Derfor vil hele grafens antal grader, $\sum_{v \in V} { } \deg(v)$, være dobbelt så stor, som antallet af kanter i denne graf, $|E|$. Derfor får vi at 
+Som det fremgår af Definition \ref{def:graf}, er multimængden af kanter, $E \subseteq \{\{u,v\}|u,v \in V \}$. Hver kant i grafen er altså incident med to knuder, eller med den samme knude to gange, hvis der er tale om en løkke. Hvis en kant er incident med en knude, bidrager denne kant til knudens grad, $\deg{v}$. Hver kant bidrager altså to gange til grafens grad. Derfor vil hele grafens grad, $\sum_{v \in V} { } \deg(v)$, være dobbelt så stor, som antallet af kanter i denne graf, $|E|$. Derfor får vi at 
 \begin{equation}
 2 \cdot |E|= \sum_{v \in V} { } \deg(v).
 \end{equation} 
 \end{proof}
 
-I en orienteret graf tælles knudernes grader på anden vis. I en orienteret graf er en knude, $u$, incident med en anden knude $v$, hvis en orienteret kant har $u$ som sit startpunkt og $v$ som sit endepunkt. Derfor tælles antallet af grader i en orienteret graf i \emph{indadgående} grader og \emph{udadgående} grader. 
-For knuden $v$ betegner $\deg^{-}(v)$ antallet af de indadgående kanter, altså de kanter, der har $v$, som sit endepunkt. Modsat betegner $\deg^{+}(v)$ antallet af de udadgående kanter, altså de kanter, der har $v$, som sit startpunkt. Da hver kant skal have både et start og et endepunkt, må det gælde at:
+I en orienteret graf tælles knudernes grader på anden vis. I en orienteret graf er kanterne orienterede, og har dermed en startknude og en endeknude. Derfor deles graderne i en orienteret graf op i den \emph{indadgående grad} og \emph{udadgående grad}. 
+
+\begin{defn}[Indadgående grad]
+Lad $v \in V$ være en knude i den simple, orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i $E$, som har $v$ som endeknude. Dermed gælder det, at
 \begin{equation}
-|E|=\sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v).
+\deg^-(v)=|\{u \in V\ : (u,v) \in E \}|.
 \end{equation}
+\end{defn}
+
+\begin{defn}[Udadgående grad]
+Lad $v \in V$ være en knude i den simple, orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i $E$, som har $v$ som startknude. Dermed gælder det, at
+\begin{equation}
+\deg^+(v)=|\{u \in V\ : (v,u) \in E \}|.
+\end{equation}
+\end{defn}
+
+\begin{defn}[Graden i en orienteret graf]
+Da hver kant skal have en start- og endeknude, må det gælde at 
+\begin{equation}
+|E|= \sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v),
+\end{equation}
+og da 
+\begin{equation}
+2 \cdot |E|= \sum_{v \in V} { } \deg(v),
+\end{equation} 
+vil graden i en orienteret graf(måske simpel), $G = (V,E)$, være 
+\begin{equation}
+\sum_{v \in V} { } \deg(v) = \sum_{v \in V} { } \deg^{-}(v) + \sum_{v \in V} { } \deg^{+}(v).
+\end{equation}
+\end{defn}
 
 \begin{exmp} \label{ex:grader_orienteret}
 Vi kan nu beregne antallet af indadgående og udadgående grader i \autoref{fig:grader_orienteret}.
 \input{fig/tikz/grafer/grader_orienteret_eksempel}
 Vi ser, at $\deg^{+}(v_{1})=3$, $\deg^{-}(v_{1})=0$, $\deg^{+}(v_{2})=1$, $\deg^{-}(v_{2})=2$, $\deg^{+}(v_{3})=2$, $\deg^{-}(v_{3})=2$, $\deg^{+}(v_{4})=1$ og $\deg^{-}(v_{4})=3$. Vi ser altså, at en løkke tæller som både en indadgående kant og en udadgående kant.
 \end{exmp}
+

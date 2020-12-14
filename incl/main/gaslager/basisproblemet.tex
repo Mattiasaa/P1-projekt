@@ -1,7 +1,7 @@
 \section{Basisproblemet}
 Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi lejer dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved at købe og sælge gasenheder. Vi har en forward-kurve på prisen, en pris der på forhånd er aftalt med leverandørerne og køberne således, at vi til hver en tid i lejekontrakten kan se, hvad prisen for gas er til denne tid. Prisen varierer fra måned til måned. Der er øvre og nedre grænser for beholdningen i gaslageret, og ved lejekontraktens udløb vil ejeren købe den resterende gas tilbage til prisen på dette tidspunkt. Vi opstiller \autoref{table:1}, med de forskellige, givne værdier, som vi skal bruge til at løse optimeringsproblemet:
 
-\begin{table}[h!]
+\begin{table}[H]
 \centering
 \begin{tabular}{|c | c|} 
  \hline
@@ -16,7 +16,7 @@ Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas.
  $q_{\max}$ & Den øvre grænse for gasenheder \\
  $u_{\max}$ & Antal gasenheder der kan tages ud af lageret mellem to tidsskridt \\ 
  $i_{\max}$ & Antal gasenheder der kan sættes ind på lageret mellem to tidsskridt \\ 
- $p_{t}$ & En forward-pris i Euro på en gasenhed  \\
+ $p_{t}$ & Prisen per gasenhed ved tiden, $t$, fra forward-kurven  \\
  $r$ & En fast årlig diskonteringsfaktor  \\
  [1ex]
  \hline
@@ -37,7 +37,7 @@ Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og de
 
 
 \begin{defn}
-Givet problemparametrerne i \autoref{table:1} defineres kanterne i grafen for problemet, $G_{\textrm{problem}}=(V,E,w)$, som er en simpel, orienteret og vægtet graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$. Hvor $V_0$ og $V_{T+1}$ kun indeholder henholdsvis startknuden, $q_0$, og slutknuden, $q_{\slut}$. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
+Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet, $G_{\textrm{problem}}=(V,E,w)$, som er en simpel, orienteret og vægtet graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder henholdsvis startknuden, $q_0$, og slutknuden, $q_{\slut}$. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
 For multimængden af kanter, $E$, gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
 	\begin{itemize}
 	\item $u \in V_t$ og $v \in V_{t+1}$
