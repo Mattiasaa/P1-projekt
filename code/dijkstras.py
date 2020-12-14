@@ -8,15 +8,15 @@ Created on Wed Dec  2 12:03:31 2020
 
 
 from math import exp
-#Basis problem
+#Basisproblem
 q_max       = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]                
-                                #Maks beholdning i lager
+                                #Maksimal beholdning i lager
 q_min       = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]                 
                                 #Minimum beholdning i lager
 i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                 
-                                #Maks koeb pr. tid
+                                #Maksimal koeb pr. tid
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
-                                #Maks salg pr. tid
+                                #Maksimal salg pr. tid
 q_goal      = 0                 #Tilfaeldigt tal
 kappa       = 1                 #Der er ingen straffaktor naar kappa = 1
 T           = 12                #Antal tidsperioder
@@ -29,19 +29,19 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
 disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
-                                #Vaerdi efter diskonteringsfaktor
+                                #Diskonterede vaerdier
 max_edge    = max(p) * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
 
 #Udvidet problem
 q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
-                                #Maks beholdning i lager
+                                #Maksimal beholdning i lager
 q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
                                 #Minimum beholdning i lager
 i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
-                                #Maks koeb pr. tid
+                                #Maksimal koeb pr. tid
 u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
-                                #Maks salg pr. tid
+                                #Maksimal salg pr. tid
 q_goal      = 5                 #Lagerbeholdnings aftale
 kappa       = 0.7               #Straffaktor                          
 T           = 12                #Antal tidsperioder
@@ -54,7 +54,7 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
 disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
-                                #Vaerdi efter diskonteringsfaktor
+                                #Diskonterede vaerdier
 max_edge    = p[len(p)-1] * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
 
