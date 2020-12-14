@@ -1,14 +1,15 @@
 \section{Grader} \label{sec:grader}
 Når man arbejder med grafer, kan det være brugbart at vide, hvor mange kanter der er incidente med en knude. Dertil bruger man følgende definition:
 
+%-----------------------------------------------
 \begin{defn}[Grader] \label{defn:grader}
-Lad $v \in V$ være en knude i den simple, ikke-orienterede graf, $G = (V,E)$. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
+Lad $v \in V$ være en knude i den simple eller multi- ikke-orienterede graf, $G = (V,E)$. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
 \begin{equation}
 \deg(v)=|\{u \in V: \{u,v\} \in E \}|,
 \end{equation}
 \end{defn}
 
-Hvis der ikke er tale om en simpel graf, men derimod en pseudograf, skal man være opmærsom på de multiple kanter og løkker, når man tæller antallet af knudens grader. Hvis der er multiple kanter, tælles alle disse med, og løkker tæller dobbelt, idet de både starter og slutter i knuden.
+Løkker tæller dobbelt, idet de både starter og slutter i knuden.
 
 \begin{exmp} \label{ex:grader}
 
@@ -36,14 +37,14 @@ Som det fremgår af Definition \ref{def:graf}, er multimængden af kanter, $E \s
 I en orienteret graf tælles knudernes grader på anden vis. I en orienteret graf er kanterne orienterede, og har dermed en startknude og en endeknude. Derfor deles graderne i en orienteret graf op i den \emph{indadgående grad} og \emph{udadgående grad}. 
 
 \begin{defn}[Indadgående grad]
-Lad $v \in V$ være en knude i den simple, orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i $E$, som har $v$ som endeknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i $E$, som har $v$ som endeknude. Dermed gælder det, at
 \begin{equation}
 \deg^-(v)=|\{u \in V\ : (u,v) \in E \}|.
 \end{equation}
 \end{defn}
 
 \begin{defn}[Udadgående grad]
-Lad $v \in V$ være en knude i den simple, orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i $E$, som har $v$ som startknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i $E$, som har $v$ som startknude. Dermed gælder det, at
 \begin{equation}
 \deg^+(v)=|\{u \in V\ : (v,u) \in E \}|.
 \end{equation}
@@ -58,7 +59,7 @@ og da
 \begin{equation}
 2 \cdot |E|= \sum_{v \in V} { } \deg(v),
 \end{equation} 
-vil graden i en orienteret graf(måske simpel), $G = (V,E)$, være 
+vil graden i en orienteret graf, $G = (V,E)$, være 
 \begin{equation}
 \sum_{v \in V} { } \deg(v) = \sum_{v \in V} { } \deg^{-}(v) + \sum_{v \in V} { } \deg^{+}(v).
 \end{equation}
