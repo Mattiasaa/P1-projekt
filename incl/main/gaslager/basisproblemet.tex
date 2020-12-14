@@ -29,7 +29,7 @@ I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. D
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \Bigg\}.
 \end{equation}
-Denne ligning har nogle bibetingelser:\\
+Denne ligning har følgende bibetingelser:\\
 1. $q_{\min} \leq q_{t} \leq q_{\max}$\\
 2. $\Delta q_{t} \in \{-u_{\max},-u_{\max}+1,\dotsc,-1,0,1,\dotsc,i_{\max}-1,i_{\max} \}$ \\
 for $t \in \{1,\dotsc,T\}$, hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$.
@@ -55,8 +55,8 @@ Vægten på kanterne er givet ved funktionen:
 \begin{equation}
 w(e)=
 	\begin{cases}
-	\Delta q_t \cdot p_t \cdot \textrm{e}^{-r \cdot \frac{t}{T}} \ \ \ \ \mbox{hvis } t_u \leq T-1 \\
-	q_T \cdot p_T \cdot \textrm{e}^{-r} \qquad \mbox{ ellers}
+	\Delta q_t \cdot p_t \cdot \textrm{e}^{-r \cdot \frac{t}{T}} \ \ \ \ \mbox{hvis } t_u \leq T-1, \\
+	q_T \cdot p_T \cdot \textrm{e}^{-r} \qquad \mbox{ ellers.}
 	\end{cases}
 \end{equation}
 
