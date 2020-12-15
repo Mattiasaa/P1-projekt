@@ -15,7 +15,7 @@ Det mest sigende er det gennemsnitlige tilfælde, men da det er svært at bruge,
 
 \autoref{tab:kompleksitet} viser, hvilken terminologi man vil bruge, når man snakker om de forskellige kompleksiteter. Får man i sin analyse kompleksiteten $\Theta(n)$, vil den kaldes lineær, da tiden, det vil tage for algoritmen at løse problemet, stiger lineært med inputstørrelsen.
 For at beskrive disse algoritmer vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. 
-\subsection{Store-$O$}
+\subsection{Store-$O$, store-$\Omega$ og store-$\Theta$}
 Store-$O$ bliver brugt til at begrænse funktionen opadtil. 
 
 \begin{defn}
@@ -32,18 +32,20 @@ Vi kan dermed sige, at kompleksiteten af $f(n)$ er lineær eller bedre.
 \end{exmp}
 Det vil også være korrekt at sige, at $g(n)$ er lig $n!$ eller en anden vilkårlig, hurtigere voksende funktion, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
 
-\subsection{Store-$\Omega$}
+Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen.
 \begin{defn}
 $f(n)$ siges at være  $\Omega(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \geq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
-Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen.
+
 \begin{exmp}
 Hvis vi igen i dette eksempel tager udgangspunkt i funktionen fra Eksempel \ref{ex:store-O}, $f(n)=13n+3$, skal vi nu forsøge at finde $C$ og $g(n)$, hvor det gælder, at det er lavere end $f(n)$ for alle $n \geq n_0$. 
 Vi kan med fordel bruge den samme $g(n)$ som ovenfor, $g(n)=n$. Så skal vi finde en $C$-værdi, der gør uligheden sand. Hvis $C=1$, står der $13n+3 \geq 1n$. Dette må gøre sig gældende for alle $n \geq 0$. Derved har vi vores konstanter $C=1$ og $n_0 = 0$, og funktionen $g(n)=n$, og vi kan nu begrænse funktionen nedadtil med $g(n)$, altså $f(n)=\Omega(n)$.
 \end{exmp}
 
 På samme måde som ved store-$O$-notationen vil man her kunne sætte $g(n)$ lig med en vilkårlig, langsommere voksende funktion fx $\log n$, $n \log n$ med flere, men da man vil begrænse den så meget som muligt, vælger man den største funktion, hvor uligheden stadig er sand.
-\subsection{Store-$\Theta$}
+
+
+Har man fundet både store-$O$ og store-$\Omega$, kan man i nogle tilfælde finde store-$\Theta$.
 \begin{defn} \label{defn:store-Theta}
 $f(n)$ siges at være $\Theta(g(x))$, hvis og kun hvis der eksisterer positive konstanter $C_1, C_2$ og $n_o$, så $C_1|g(n)| \leq |f(n)| \leq C_2|g(n)|$ for alle $n \geq n_o$.
 \end{defn}
@@ -58,7 +60,7 @@ $f(n)= \Theta(n)$.
 
 I følgende afsnit tager vi udgangspunkt i to sorteringsalgoritmer og ser på store-$O$ i bedste og værste tilfælde.
 
-\subsection{Kompleksitet af sorteringer} \label{kap:kompleksitet_sortering}
+\subsection{Kompleksitet af sorteringsalgoritmer} \label{kap:kompleksitet_sortering}
 
 For at finde kompleksiteten af bubblesortering bruger vi store-$O$-notationen fra tidligere. 
 Bubblesortering, som nævnt i \autoref{kap:sortering}, sammenligner to elementer fra listen og flytter rundt på dem, hvis de står i forkert rækkefølge.

@@ -5,11 +5,11 @@ Grafer kan opdeles i forskellige typer. Herunder simple grafer, multigrafer og p
 En \emph{simpel graf}, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\nexists \ e_i, e_j \in E : e_i = e_j$, hvor $\{u,v\}$ også er en multimængde.
 \end{defn}
 
-Det ses i Definition \autoref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
+Det ses i Definition \ref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
 
 \input{fig/tikz/grafer/graftyper/simpelgraf}
 
-I kontrast til den simple graf finder vi multigrafen, der skal indeholde flere kanter, som er incidente med samme knudepar. Hvis to kanter er incidente med samme knudepar, kaldes de \emph{multiple}.
+En anden graftype er multigrafen, som kendetegnes ved, at der skal eksistere flere kanter, som er incidente med det samme knudepar, hvilket kaldes \emph{multiple} kanter.
 
 \begin{defn}[Multigraf] \label{defn:multi}
 En \emph{multigraf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter,
@@ -18,30 +18,32 @@ $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j 
 
 \input{fig/tikz/grafer/graftyper/multigraf}
 
-I forlængelse heraf har vi pseudografen, som ingen krav har om mængden af kanter mellem to knudepar, derimod skal der eksistere mindst én løkke. 
+En pseudograf må gerne indholde multiple kanter, men modsat de nævnte graftyper skal den indeholde mindst én løkke. 
 
 \begin{defn}[Pseudograf] \label{defn:pseudo}
-En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $\exists \ e_i \in E$, som opfylder $e_i = \{v\}$, hvor $\{u,v\}$ også er en multimængde.
+En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $\{u,v\}$ også er en multimængde, og $\exists \ e_i \in E$, som opfylder $e_i = \{v\}$.
 \end{defn}
 
-Vi ser i eksemplet herunder, at der er to multiple kanter mellem $v_{1}$ og $v_{2}$ og en løkke ved $v_{4}$.
+Vi ser i eksemplet herunder, at der er multiple kanter mellem $v_{1}$ og $v_{2}$ og en løkke ved $v_{4}$.
 
 \input{fig/tikz/grafer/graftyper/pseudograf}
 
 
 \subsection{Orienterede grafer og ikke-orienterede grafer}
-En anden typisk grafopdeling er opdelingen i \emph{orienterede grafer} og \emph{ikke-orienterede} grafer. De grafer, vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette er ofte illustreret med pile. Den har dermed en startknude og en endeknude. Disse grafer er defineret ved:
+En anden typisk opdeling af grafer er i \emph{orienterede grafer} og \emph{ikke-orienterede grafer}. De grafer, som vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette illustrerer vi med pile. Den har dermed en \emph{startknude} og en endeknude. Disse grafer er defineret ved:
 
 \begin{defn} [Orienteret graf] 
 En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde orienterede kanter, $E \subseteq \{(u,v)|u,v \in V\}$, hvor $(u,v) \neq (v,u)$ og $(u,v)$ desuden er en multimængde. 
 \end{defn}
 
-Hver orienterede kant er incident med et ordnet knudepar, $(u,v)$, hvor $u$ er startknuden, $v$ er endeknuden. Altså er en kant $(u,v)$ ikke det samme som $(v,u)$.
+Hver orienterede kant er incident med et ordnet knudepar, $(u,v)$, hvor $u$ er startknuden, og $v$ er endeknuden. Altså er en kant $(u,v)$ ikke det samme som $(v,u)$.
+Derudover gælder det, at en løkke ikke er retningsbestemt, da det ikke er relevant for grafen, hvilken af enderne der er hhv. start- og endeknuden.
 
 \input{fig/tikz/grafer/graftyper/orienteretgraf}
 
-Der kan foruden disse to også være tale om \emph{blandede grafer}, som er grafer med både orienterede og ikke-orienterede kanter. Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og flere ensrettede kanter, der er incident med det samme par knuder, men hvis dette ikke er tilfældet, kaldes det en orienteret simpel graf. En orienteret simpel graf må også indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en \emph{orienteret multigraf}.  
-Egenskaberne for de forskellige grafer kan ses herunder:
+Orienterede grafer kan ligesom ikke-orienterede grafer indeholde løkker og multiple kanter. Er dette ikke tilfældet, kaldes det en orienteret, simpel graf. En orienteret, simpel graf må dog indeholde to modsatrettede kanter mellem det samme knudepar. Dermed kan en kant gå fra $v$ til $u$, selvom en anden kant går fra $u$ til $v$. Hvis der derimod optræder løkker eller flere ensrettede kanter mellem et eller flere knudepar, kaldes det en \emph{orienteret multigraf}. 
+Der kan foruden orienterede og ikke-orienterede grafer også være tale om \emph{blandede grafer}, som er grafer med både orienterede og ikke-orienterede kanter.  
+Egenskaberne for de forskellige graftyper kan ses herunder:
 
 
 \begin{center} \label{tab:typer}
@@ -49,17 +51,18 @@ Egenskaberne for de forskellige grafer kan ses herunder:
  \hline
  \multicolumn{4}{|c|}{Grafer} \\
  \hline
- Type & Kanter & Flere kanter per knudepar tilladt & Løkker tilladt\\
+ Type & Kanter & Multiple kanter tilladt & Løkker tilladt\\
  \hline
  Simpel graf   & Ikke-orienterede    & Nej &   Nej\\
  Multigraf &   Ikke-orienterede & Ja   & Nej\\
  Pseudograf & Ikke-orienterede & Ja &  Ja\\
- Simpel orienteret graf    & Orienterede & Nej &  Nej\\
+ Orienteret, simpel graf    & Orienterede & Ja* &  Nej\\
  Orienteret multigraf &  Orienterede  & Ja & Ja\\
  Blandet graf & Ikke-orienterede og orienterede  & Ja   & Ja\\
  \hline
 \end{tabular}
 \end{center}
+* Kun hvis de er modsatrettede
 
 %Fordi kanterne i grafer med orienterede kanter er ordnede par, kan definitionen af knudens grader være antallet af kanter, der har denne knude som startknude, eller antallet af kanter, der har denne knude som endeknude:
 %
