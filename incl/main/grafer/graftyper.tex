@@ -2,7 +2,7 @@
 Grafer kan opdeles i forskellige typer. Herunder simple grafer, multigrafer og pseudografer. Vi kigger først på en simpel graf.
 
 \begin{defn}[Simpel graf] \label{defn:simpel}
-En \emph{simpel graf}, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\nexists \ e_i, e_j \in E : e_i = e_j$, hvor $\{u,v\}$ også er en multimængde.
+En \emph{simpel graf}, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\nexists \ e_i, e_j \in E : e_i = e_j$.
 \end{defn}
 
 Det ses i Definition \ref{defn:simpel}, at en kant i en simpel graf skal være incident med to knuder, der kan altså ikke optræde løkker. Foruden dette ser vi også, at der kun kan forekomme én kant mellem to knuder.
@@ -12,8 +12,8 @@ Det ses i Definition \ref{defn:simpel}, at en kant i en simpel graf skal være i
 En anden graftype er multigrafen, som kendetegnes ved, at der skal eksistere flere kanter, som er incidente med det samme knudepar, hvilket kaldes \emph{multiple} kanter.
 
 \begin{defn}[Multigraf] \label{defn:multi}
-En \emph{multigraf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter,
-$E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j \in E : e_i = e_j$, hvor $\{u,v\}$ også er en multimængde.
+En \emph{multigraf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter,
+$E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j \in E : e_i = e_j$.
 \end{defn}
 
 \input{fig/tikz/grafer/graftyper/multigraf}
@@ -21,7 +21,7 @@ $E \subseteq \{\{u,v\}|u,v \in V, u \neq v\}$, som opfylder $\exists \ e_i, e_j 
 En pseudograf må gerne indholde multiple kanter, men modsat de nævnte graftyper skal den indeholde mindst én løkke. 
 
 \begin{defn}[Pseudograf] \label{defn:pseudo}
-En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $\{u,v\}$ også er en multimængde, og $\exists \ e_i \in E$, som opfylder $e_i = \{v\}$.
+En \emph{pseudograf}, $ G = (V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde kanter, $E \subseteq \{\{u,v\}|u,v \in V\}$, hvor $\exists \ e_i \in E$, som opfylder $e_i = \{v\}$.
 \end{defn}
 
 Vi ser i eksemplet herunder, at der er multiple kanter mellem $v_{1}$ og $v_{2}$ og en løkke ved $v_{4}$.
@@ -33,7 +33,7 @@ Vi ser i eksemplet herunder, at der er multiple kanter mellem $v_{1}$ og $v_{2}$
 En anden typisk opdeling af grafer er i \emph{orienterede grafer} og \emph{ikke-orienterede grafer}. De grafer, som vi har kigget på indtil videre, er ikke-orienterede grafer. For en orienteret graf gælder det, at grafens kanter er retningsbestemte. Dette illustrerer vi med pile. Den har dermed en \emph{startknude} og en endeknude. Disse grafer er defineret ved:
 
 \begin{defn} [Orienteret graf] 
-En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en multimængde orienterede kanter, $E \subseteq \{(u,v)|u,v \in V\}$, hvor $(u,v) \neq (v,u)$ og $(u,v)$ desuden er en multimængde. 
+En orienteret graf, $G=(V,E)$, består af $V$, en mængde knuder, hvor $V \neq \emptyset$, og en mængde orienterede kanter, $E \subseteq \{(u,v)|u,v \in V\}$, hvor $(u,v) \neq (v,u)$ og $(u,v)$. 
 \end{defn}
 
 Hver orienterede kant er incident med et ordnet knudepar, $(u,v)$, hvor $u$ er startknuden, og $v$ er endeknuden. Altså er en kant $(u,v)$ ikke det samme som $(v,u)$.

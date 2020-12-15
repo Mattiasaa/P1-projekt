@@ -1,10 +1,10 @@
 \chapter{Grafteori} \label{kap:grafteori}
 Følgende kapitel er skrevet med afsæt i \citep{dmat}.
 
-Grafer er diskrete strukturer, som bruges til at modellere relationer mellem forskellige objekter.  Graferne varierer alt efter deres type og funktion og har mange forskellige egenskaber. De mange forskellige egenskaber betyder, at problemer i næsten enhver tænkelig disciplin kan løses ved hjælp af grafmodeller. Vi vil eksempelvis i dette projekt benytte grafteori og princippet om den længste vej til at optimere et gaslager. Vi vil desuden også arbejde med multimængder, som er mængder, hvori et element kan forekomme flere gange. En graf er givet ved:
+Grafer er diskrete strukturer, som bruges til at modellere relationer mellem forskellige objekter.  Graferne varierer alt efter deres type og funktion og har mange forskellige egenskaber. De mange forskellige egenskaber betyder, at problemer i næsten enhver tænkelig disciplin kan løses ved hjælp af grafmodeller. Vi vil eksempelvis i dette projekt benytte grafteori og princippet om den længste vej til at optimere et gaslager. Vi vil desuden også arbejde med multimængder, som er mængder, hvori et element kan forekomme flere gange. Hver gang vi nævner mængder, vil det implicit forståes, at der er tale om multimængder. En graf er givet ved:
 
 \begin{defn}[Graf] \label{def:graf}
-En \emph{graf}, $G = (V,E)$, består af $V$, som er en mængde \emph{knuder}, hvor $V \neq \emptyset$, og en multimængde \emph{kanter}, $E \subseteq \{\{u,v\}|u,v \in V \}$, hvor $\{u,v\}$ også er en multimængde. 
+En \emph{graf}, $G = (V,E)$, består af $V$, som er en mængde \emph{knuder}, hvor $V \neq \emptyset$, og en mængde \emph{kanter}, $E \subseteq \{\{u,v\}|u,v \in V \}$.
 \end{defn}
 
 Vi siger, at en vilkårlig kant, $e = \{u,v\} \in E$, er \emph{incident} med knuderne $u$ og $v$, hvor $u, v \in V$, og vi siger desuden, at $u$ og $v$ er kantens \emph{endeknuder}. Her siger man også, at $u$ og $v$ er \emph{naboer}. 
