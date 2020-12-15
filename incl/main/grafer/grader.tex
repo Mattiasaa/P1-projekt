@@ -3,13 +3,13 @@ Når man arbejder med grafer, kan det være brugbart at vide, hvor mange kanter 
 
 %-----------------------------------------------
 \begin{defn}[Grader] \label{defn:grader}
-Lad $v \in V$ være en knude i den simple eller multi- ikke-orienterede graf, $G = (V,E)$. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
+Lad $v \in V$ være en knude i den ikke-orienterede graf, $G = (V,E)$. For $G$ skal det gælde, at den enten er simpel eller en multigraf. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i $E$, som er incidente med $v$. Dermed gælder det, at
 \begin{equation}
-\deg(v)=|\{u \in V: \{u,v\} \in E \}|,
+\deg(v)=|\{u \in V: \{u,v\} \in E \}|.
 \end{equation}
 \end{defn}
 
-Løkker tæller dobbelt, idet de både starter og slutter i knuden.
+Definition \ref{defn:grader} gælder ikke for pseudografer, da den kun vil tælle $\{v\}$ en enkelt gang, men en løkke tæller dobbelt, idet den både starter og slutter i knuden.
 
 \begin{exmp} \label{ex:grader}
 
@@ -20,7 +20,7 @@ Vi kan ud fra dette aflæse knudernes grader på \autoref{fig:grader}, $\deg(v_{
 
 \begin{thm}
 Lad grafen, $G = (V,E)$, være en ikke-orienteret graf med en multimængde kanter, E. Knuden $v$ har $deg(v)$ grader, og det gør sig derfor gældende, at
-\begin{equation}
+\begin{equation} \label{eq:degv=2e}
 	\sum_{v \in V} { } \deg(v) = 2 \cdot |E|.
 \end{equation}
 Dette gælder, så længe grafen ikke er uendelig.
@@ -37,33 +37,49 @@ Som det fremgår af Definition \ref{def:graf}, er multimængden af kanter, $E \s
 I en orienteret graf tælles knudernes grader på anden vis. I en orienteret graf er kanterne orienterede, og har dermed en startknude og en endeknude. Derfor deles graderne i en orienteret graf op i den \emph{indadgående grad} og \emph{udadgående grad}. 
 
 \begin{defn}[Indadgående grad]
-Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i $E$, som har $v$ som endeknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i multimængden $E$, som har $v$ som endeknude. Dermed gælder det, at
 \begin{equation}
-\deg^-(v)=|\{u \in V\ : (u,v) \in E \}|.
+\deg^-(v)=|\{u \in V\ : (u,v) \in E \}|,
 \end{equation}
+hvor $\deg^-(v)$ er antallet af kanter i multimængden.
 \end{defn}
 
 \begin{defn}[Udadgående grad]
-Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i $E$, som har $v$ som startknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i multimængden $E$, som har $v$ som startknude. Dermed gælder det, at
 \begin{equation}
-\deg^+(v)=|\{u \in V\ : (v,u) \in E \}|.
+\deg^+(v)=|\{u \in V\ : (v,u) \in E \}|,
 \end{equation}
+hvor $\deg^+(v)$ er antallet af kanter i multimængden.
 \end{defn}
 
 \begin{defn}[Graden i en orienteret graf]
-Da hver kant skal have en start- og endeknude, må det gælde at 
-\begin{equation}
-|E|= \sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v),
-\end{equation}
-og da 
-\begin{equation}
-2 \cdot |E|= \sum_{v \in V} { } \deg(v),
-\end{equation} 
-vil graden i en orienteret graf, $G = (V,E)$, være 
+I en orienteret graf, $G = (V,E)$, hvor $v \in V$, er den samlede grad defineret ved: 
 \begin{equation}
 \sum_{v \in V} { } \deg(v) = \sum_{v \in V} { } \deg^{-}(v) + \sum_{v \in V} { } \deg^{+}(v).
 \end{equation}
 \end{defn}
+
+Da hver kant skal have en start- og endeknude, må det gælde, at 
+\begin{equation}
+|E|= \sum_{v \in V} { } \deg^{-}(v) = \sum_{v \in V} { } \deg^{+}(v),
+\end{equation}
+og derfor må \autoref{eq:degv=2e} også gælde for orienterede grafer.
+
+%
+%
+%\texttt{%
+%
+%\begin{defn}[]
+%
+%og da 
+%
+%
+%
+%
+%
+%vil graden i en orienteret graf, $G = (V,E)$, være 
+%
+
 
 \begin{exmp} \label{ex:grader_orienteret}
 Vi kan nu beregne antallet af indadgående og udadgående grader i \autoref{fig:grader_orienteret}.
