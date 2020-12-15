@@ -19,13 +19,13 @@ De forskellige problemtyper ses illustreret herunder:
 \begin{figure}[H]
 \centering
 	\begin{tikzpicture}
-      \draw (0,2) circle (3cm);
-      \put(-15,20){{\footnotesize $NP$}};
+      \draw (0.6,2) circle (3cm);
+      \put(-15,20){{\footnotesize $\mathrm{NP}$}};
       \draw (4.5,2) circle (3cm);
-      \put(130,50){{\footnotesize NP-hard}};
+      \put(130,50){{\footnotesize $\mathrm{NP-hard}$}};
       \draw (-0.5,2.8) circle (1cm);
-      \put(-20,70){{\footnotesize P}};
-      \put(36,50){{\footnotesize NP-complete}};
+      \put(-20,70){{\footnotesize $\mathrm{P}$}};
+      \put(45,50){{\footnotesize $\mathrm{NP-complete}$}};
 	\end{tikzpicture}
 	\caption{P, NP, NP-hard og NP-complete.}
 	\label{fig.dijkstraexmp}
@@ -39,7 +39,7 @@ I Eksempel \ref{exmp.np} ses det, hvordan substrukturen i en ikke-orienteret, cy
 \begin{exmp} \label{exmp.np}
 På \autoref{fig:laengste.vej} ses det, at den korteste vej  fra $v_1$ til $v_4$ går igennem punktet $v_2$. Den korteste vej har optimal substruktur, hvilket ses ved, at den korteste vej fra $v_{1}$ til $v_{4}$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$, består af den korteste vej fra $v_{1}$ til $v_{2}$ og den korteste vej fra $v_{2}$ til $v_{4}$. 
 
-Vi ser nu på den længste vej fra $v_1$ til $v_4$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$ Hvis der havde været optimal substruktur, havde den længste vej, $P_{1,2,4}$, bestået af den længste vej fra $v_{1}$ til $v_{2}$ og den længste vej fra $v_{2}$ til $v_{4}$, men dette er ikke tilfældet. Den længste vej igennem grafen fra $v_{1}$ til $v_{2}$ er nemlig $P_{1,3,4,2}=(v_{1},v_{3},v_{4},v_{2})$, og den længste vej igennem grafen fra $v_{2}$ til $v_{4}$ er $P_{2,1,3,4}=(v_{2},v_{1},v_{3},v_{4})$. 
+Vi ser nu på den længste vej fra $v_1$ til $v_4$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$. Hvis der havde været optimal substruktur, havde den længste vej, $P_{1,2,4}$, bestået af den længste vej fra $v_{1}$ til $v_{2}$ og den længste vej fra $v_{2}$ til $v_{4}$, men dette er ikke tilfældet. Den længste vej igennem grafen fra $v_{1}$ til $v_{2}$ er nemlig $P_{1,3,4,2}=(v_{1},v_{3},v_{4},v_{2})$, og den længste vej igennem grafen fra $v_{2}$ til $v_{4}$ er $P_{2,1,3,4}=(v_{2},v_{1},v_{3},v_{4})$. 
 
 
 
