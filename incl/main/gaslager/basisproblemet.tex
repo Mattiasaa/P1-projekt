@@ -38,7 +38,7 @@ Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og de
 
 \begin{defn}
 Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet, $G_{\textrm{problem}}=(V,E,w)$, som er en simpel, orienteret og vægtet graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder henholdsvis startknuden, $q_0$, og slutknuden, $q_{\slut}$. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
-For multimængden af kanter, $E$, gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
+For mængden af kanter, $E$, gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
 	\begin{itemize}
 	\item $u \in V_t$ og $v \in V_{t+1}$
 	\item $-u_{\max} \leq q_{t+1}-q_t \leq i_{\max}$
