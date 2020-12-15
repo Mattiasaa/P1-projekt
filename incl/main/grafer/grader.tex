@@ -5,9 +5,8 @@ Når man arbejder med grafer, kan det være brugbart at vide, hvor mange kanter 
 \begin{defn}[Grader] \label{defn:grader}
 Lad $v \in V$ være en vilkårlig knude i den ikke-orienterede graf, $G = (V,E)$. For $G$ skal det gælde, at den enten er en simpel eller en multigraf. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i multimængden, $E$, som er incidente med $v$. Dermed gælder det, at
 \begin{equation}
-\deg(v)=|\{ \{u,v\} \ | \ \{u,v\}\in E \}|,
+\deg(v)=|\{ \{u,v\} \ | \ \{u,v\}\in E \}|.
 \end{equation}
-hvor $\{u,v\}$ er en multimængde.
 \end{defn}
 
 Definition \ref{defn:grader} gælder ikke for pseudografer, da den kun vil tælle en løkke, $\{v\}$, en enkelt gang. Dette er et problem, eftersom løkker tæller dobbelt, idet de både starter og slutter i knuden.
@@ -40,17 +39,15 @@ I en orienteret graf tælles knudernes grader på anden vis. Kanterne har en sta
 \begin{defn}[Indadgående grad]
 Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i multimængden $E$, der har $v$ som endeknude. Dermed gælder det, at
 \begin{equation}
-\deg^-(v)=|\{u \in V\ : (u,v) \in E \}|,
+\deg^-(v)=|\{(u,v) \ | \ (u,v) \in E \}|.
 \end{equation}
-hvor $\{u \in V\ : (u,v) \in E \}$ er en multimængde.
 \end{defn}
 
 \begin{defn}[Udadgående grad]
 Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i multimængden $E$, som har $v$ som startknude. Dermed gælder det, at
 \begin{equation}
-\deg^+(v)=|\{u \in V\ : (v,u) \in E \}|,
+\deg^+(v)=|\{(v,u) \ | \ (v,u) \in E \}|.
 \end{equation}
-hvor $\deg^+(v)$ er antallet af kanter i multimængden.
 \end{defn}
 
 \begin{defn}[Graden i en orienteret graf]
