@@ -5,7 +5,7 @@ Vi kan nu på samme måde som med basisproblemet opstille et simplificeret eksem
   \item $t \in \{1,2,3,4,5,6\}$
   \item $q_{0}=1$
   \item $q_{\min \_ \textrm{liste}}=[0,1,1,0,0,0]$
-  \item $q_{\max \_ \textrm{liste}}=[1,2,2,1,1,1]$
+  \item $q_{\max \_ \textrm{liste}}=[2,3,3,2,2,2]$
   \item $i_{\max \_ \textrm{liste}}=[1,2,1,2,1,1]$
   \item $u_{\max \_ \textrm{liste}}=[1,2,1,2,1,1]$
   \item $p_{t}=(20,22,25,18,15,15)$
@@ -17,7 +17,7 @@ I eksemplet tager vi igen kun udgangspunkt i seks måneder. Denne gang ændrer g
 
 \input{fig/tikz/gaslager/forsimplet_udvidet_graf}
 
-Vi ønsker igen at maksimere profitten og dermed finde den længste vej fra $q_{0}$ til $q_{\slut}$, da vi skal have så mange penge som muligt efter lejeperioden. For at løse problemet som et korteste vej-problem ganger vi igen med -1 og får derved den omvendte graf:
+Vi ønsker igen at maksimere profitten og dermed finde den længste vej fra $v_{0,1}$ til $q_{\slut}$, da vi skal have så mange penge som muligt efter lejeperioden. For at løse problemet som et korteste vej-problem ganger vi igen med -1 og får derved den omvendte graf:
 
 \input{fig/tikz/gaslager/omvendt_udvidet}
 
@@ -31,7 +31,7 @@ Vi kan på samme måde som ved basisproblemet opstille en tabel over de mulige v
 \input{fig/tab/gaslager/tabel_graf_udvidet} 
 
 
-Beregningerne foregår på samme vis som i \autoref{table:forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $q_{0}$ til $q_{\slut}$, som begge har distancen 257. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $q_{0}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for hver kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
+Beregningerne foregår på samme vis som i \autoref{table:forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $v_{0,1}$ til $q_{\slut}$, som begge har distancen 257. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $v_{0,1}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for hver kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
 \begin{equation}
 (257-40 \cdot 7)(-1) = 23.
 \end{equation}
