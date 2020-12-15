@@ -4,27 +4,27 @@
 
        \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.13cm, fill=black}}
 %% Vertices
-      	\node[enclosed, label={left:  $q_{0}$}]     (v1) at  (0,2)  {};
-      	\node[enclosed, label={below: $q_{1,0}$}]   (v2) at  (2,0)  {};
-    	\node[enclosed, label={below: $q_{1,1}$}]   (v3) at  (2,2)  {};
-  	    \node[enclosed, label={above: $q_{1,2}$}]   (v4) at  (2,4)  {};
-     	\node[enclosed, label={below: $q_{2,1}$}]   (v5) at  (4,2)  {};
-     	\node[enclosed, label={below: $q_{2,2}$}]   (v6) at  (4,4)  {};
-     	\node[enclosed, label={above: $q_{2,3}$}]   (v7) at  (4,6)  {};
-     	\node[enclosed, label={below: $q_{3,1}$}]   (v8) at  (6,2)  {};
-     	\node[enclosed, label={below: $q_{3,2}$}]   (v9) at  (6,4)  {};
-     	\node[enclosed, label={above: $q_{3,3}$}]   (v10) at (6,6)  {};
-     	\node[enclosed, label={below: $q_{4,0}$}]   (v11) at (8,0)  {};
-     	\node[enclosed, label={below: $q_{4,1}$}]   (v12) at (8,2)  {};
-      	\node[enclosed, label={above: $q_{4,2}$}]   (v13) at (8,4)  {};
-  	    \node[enclosed, label={below: $q_{5,0}$}]   (v14) at (10,0) {};
-  	    \node[enclosed, label={below: $q_{5,1}$}]   (v15) at (10,2) {};
-     	\node[enclosed, label={above: $q_{5,2}$}]   (v16) at (10,4) {};
-     	\node[enclosed, label={below: $q_{6,0}$}]   (v17) at (12,0) {};
-     	\node[enclosed, label={below: $q_{6,1}$}]   (v18) at (12,2) {};
-     	\node[enclosed, label={above: $q_{6,2}$}]   (v19) at (12,4) {};
+      	\node[enclosed, label={left:  $v_{0,1}$}]   (v1) at  (0,2)  {};
+      	\node[enclosed, label={below: $v_{1,0}$}]   (v2) at  (2,0)  {};
+    	\node[enclosed, label={below: $v_{1,1}$}]   (v3) at  (2,2)  {};
+  	    \node[enclosed, label={above: $v_{1,2}$}]   (v4) at  (2,4)  {};
+     	\node[enclosed, label={below: $v_{2,1}$}]   (v5) at  (4,2)  {};
+     	\node[enclosed, label={below: $v_{2,2}$}]   (v6) at  (4,4)  {};
+     	\node[enclosed, label={above: $v_{2,3}$}]   (v7) at  (4,6)  {};
+     	\node[enclosed, label={below: $v_{3,1}$}]   (v8) at  (6,2)  {};
+     	\node[enclosed, label={below: $v_{3,2}$}]   (v9) at  (6,4)  {};
+     	\node[enclosed, label={above: $v_{3,3}$}]   (v10) at (6,6)  {};
+     	\node[enclosed, label={below: $v_{4,0}$}]   (v11) at (8,0)  {};
+     	\node[enclosed, label={below: $v_{4,1}$}]   (v12) at (8,2)  {};
+      	\node[enclosed, label={above: $v_{4,2}$}]   (v13) at (8,4)  {};
+  	    \node[enclosed, label={below: $v_{5,0}$}]   (v14) at (10,0) {};
+  	    \node[enclosed, label={below: $v_{5,1}$}]   (v15) at (10,2) {};
+     	\node[enclosed, label={above: $v_{5,2}$}]   (v16) at (10,4) {};
+     	\node[enclosed, label={below: $v_{6,0}$}]   (v17) at (12,0) {};
+     	\node[enclosed, label={below: $v_{6,1}$}]   (v18) at (12,2) {};
+     	\node[enclosed, label={above: $v_{6,2}$}]   (v19) at (12,4) {};
      	\node[enclosed, label={right: $q_{\slut}$}] (v20) at (14,0) {};
-     	
+   
 %Edges
 		\path[->,>=latex,thick] (v1) edge node[midway, sloped, above, label={below, black: $20$}] {} (v2);
 		\path[->,>=latex,thick] (v1) edge node[midway, sloped, below, label={above: $0$ }] {} (v3);
