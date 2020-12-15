@@ -33,23 +33,23 @@ Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 ]{code/dijkstras.py}
 
 I \autoref{code:graph_dict} definerer vi en funktion, der bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en "default dictionary", som de andre dictionaries vil blive sat ind i.
-Den danner nu en flerdimensionel liste med alle knuderne i grafen. Knuderne har navn på form '$q\textrm{x.y}$', hvor x beskriver hvilken tid vi er i, og y beskriver beholdningen. Det vil sige, at '$q3.4$' betyder, at vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige, at alle '$q\textrm{3.y}$' er i en liste for sig selv.
+Den danner nu en flerdimensionel liste med alle knuderne i grafen. Knuderne har navn på form '$q\textrm{x,y}$', hvor x beskriver hvilken tid vi er i, og y beskriver beholdningen. Det vil sige, at '$q3,4$' betyder, at vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige, at alle '$q\textrm{3,y}$' er i en liste for sig selv.
 
-Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, i denne løkke, er der nemlig kun en knude der har kanter. Funktionen genererer nu de kanter, som '$q\textrm{0.5}$' har, og laver en dictionary for '$q\textrm{3.y}$'. 
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, i denne løkke, er der nemlig kun en knude der har kanter. Funktionen genererer nu de kanter, som '$q\textrm{0,5}$' har, og laver en dictionary for '$q\textrm{3,y}$'. 
 Denne dictionary ser ud således:
 
-\begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0.5}$.]
+\begin{lstlisting}[label=code:q05, caption=Dictionary for $q \textrm{0,5}$.]
 
-'q0.5' : {'q1.1' : 170.28, 'q1.2' : 190.21, 'q1.3' : 210.14, 'q1.4' : 230.07, 'q1.5' : 250.0, 'q1.6': 269.93, 'q1.7' : 289.86, 'q1.8' : 309.79, 'q1.9' : 329.72}
+'q0,5' : {'q1,1' : 170.28, 'q1,2' : 190.21, 'q1,3' : 210.14, 'q1,4' : 230.07, 'q1,5' : 250.0, 'q1,6': 269.93, 'q1,7' : 289.86, 'q1,8' : 309.79, 'q1,9' : 329.72}
 \end{lstlisting}
-Denne dictionary viser '$q0.5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
+Denne dictionary viser '$q0,5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
 
-I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12.y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12.y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
+I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$q\textrm{12,y}$' til '$q\textrm{\_end}$', og hvis '$q\textrm{12,y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
 
 Vi kan nu kigge på alle andre tilfælde for $t$. Funktionen kører en løkke for $k$ med værdier mellem '$q\textrm{\_min}$' og '$q\textrm{\_max}$' til den specifikke tid. Dette betegner den som de nuværende enheder.
 Den finder nu de største ændringer, når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
 
-Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$q12.0$' med vægt $0$, dette skyldes, at vores kode for Dijkstras ikke kan finde længden til en knude, som ikke har sin egen dictionary.
+Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$q12,0$' med vægt $0$, dette skyldes, at vores kode for Dijkstras ikke kan finde længden til en knude, som ikke har sin egen dictionary.
 
 Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver det største resultat:
 
@@ -88,6 +88,6 @@ Når vi kører denne funktion, med basisproblemets data, får vi følgende outpu
 \begin{lstlisting} [deletekeywords={is,not}, label={lst:basis_output},caption=Output for basisproblemet.]
 
 The highest profit is 252,73 Euro
-The path is ['q0.5', 'q1.8', 'q2.4', 'q3.0', 'q4.2', 'q5.6', 'q6.10', 'q7.6', 'q8.10', 'q9.6', 'q10.10', 'q11.10', 'q12.6', 'q_end']
+The path is ['q0,5', 'q1,8', 'q2,4', 'q3,0', 'q4,2', 'q5,6', 'q6,10', 'q7,6', 'q8,10', 'q9,6', 'q10,10', 'q11,10', 'q12,6', 'q_end']
 
 \end{lstlisting}

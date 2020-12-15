@@ -69,9 +69,9 @@ def addEdge(graph,u,v,e):
 
 def graph_dict():
     graph = {}
-    vertices = ['q0.5']
+    vertices = ['q0,5']
     for i in range(1,T+1):
-        vertices.append(['q' + str(i) +'.'+ str(j) for j in range (q_max[i-1]+1)])
+        vertices.append(['q' + str(i) +','+ str(j) for j in range (q_max[i-1]+1)])
     vertices.append('q_end')
     t = 0
     for j in range(-u_max[t], i_max[t]+1):
@@ -137,7 +137,7 @@ def get_profit(graph, start, end):
     print(f'The path is {str(path)}')
     
 
-get_profit(graph_dict(), 'q0.5', 'q_end')
+get_profit(graph_dict(), 'q0,5', 'q_end')
 
 
 
