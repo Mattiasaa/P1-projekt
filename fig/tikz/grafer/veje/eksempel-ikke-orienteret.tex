@@ -2,7 +2,7 @@
 \centering
 	\begin{tikzpicture}
 
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.13cm, fill=black}}
 %% Vertices
       	\node[enclosed, label={left: $v_1$}] (v1) at (1,2) {};
       	\node[enclosed, label={above: $v_2$}] (v2) at (3,4) {};
@@ -10,12 +10,12 @@
   	    \node[enclosed, label={right: $v_4$}] (v4) at (5,2) {};
      	\node[enclosed, label={below: $v_5$}] (v5) at (5,0) {};
 %Edges
-		\path (v1) edge node[midway, sloped, above] {} (v2);
-		\path (v1) edge node[midway, sloped, above] {} (v3);
-		\path (v1) edge node[midway, above] {} (v4);
-		\path (v2) edge node[near end, sloped, below] {} (v4);
-		\path (v3) edge node[midway, below] {} (v5);
-		\path (v4) edge node[near end, sloped, above] {} (v5);
+		\path[thick] (v1) edge node[midway, sloped, above] {} (v2);
+		\path[thick] (v1) edge node[midway, sloped, above] {} (v3);
+		\path[thick] (v1) edge node[midway, above] {} (v4);
+		\path[thick] (v2) edge node[near end, sloped, below] {} (v4);
+		\path[thick] (v3) edge node[midway, below] {} (v5);
+		\path[thick] (v4) edge node[near end, sloped, above] {} (v5);
 
 	\end{tikzpicture}
 	\caption{Eksempel på en ikke-orienteret simpel graf.}

@@ -2,7 +2,7 @@
 \centering
 	\begin{tikzpicture}
 
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.15cm, fill=black}}
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.13cm, fill=black}}
 %% Vertices
       	\node[enclosed, label={above: $v_1$}] (v1) at (3,6) {};
       	\node[enclosed, label={above: $v_2$}] (v2) at (0,5) {};
@@ -34,34 +34,34 @@
      	\node[enclosed, label={below: $v_3$}] (v28) at (9,3) {};
      	\node[enclosed, label={below: $v_4$}] (v29) at (9.75,3) {};
 %Edges
-		\path (v1) edge node[midway, sloped, above] {} (v2);
-		\path (v1) edge node[midway, sloped, above] {} (v3);
-		\path (v1) edge node[midway, above] {} (v4);
-		\path (v2) edge node[near end, sloped, below] {} (v5);
-		\path (v2) edge node[midway, below] {} (v6);
-		\path (v3) edge node[near end, sloped, above] {} (v7);
-		\path (v3) edge node[near end, sloped, above] {} (v8);
-		\path (v4) edge node[near end, sloped, above] {} (v9);
-		\path (v4) edge node[near end, sloped, above] {} (v10);
-		\path (v4) edge node[near end, sloped, above] {} (v11);
-		\path (v5) edge node[near end, sloped, above] {} (v12);
-		\path (v5) edge node[near end, sloped, above] {} (v13);
-		\path (v5) edge node[near end, sloped, above] {} (v14);
-		\path (v6) edge node[near end, sloped, above] {} (v15);
-		\path (v6) edge node[near end, sloped, above] {} (v16);
-		\path (v6) edge node[near end, sloped, above] {} (v17);
-		\path (v7) edge node[near end, sloped, above] {} (v18);
-		\path (v7) edge node[near end, sloped, above] {} (v19);
-		\path (v7) edge node[near end, sloped, above] {} (v20);
-		\path (v8) edge node[near end, sloped, above] {} (v21);
-		\path (v8) edge node[near end, sloped, above] {} (v22);
-		\path (v9) edge node[near end, sloped, above] {} (v23);
-		\path (v9) edge node[near end, sloped, above] {} (v24);
-		\path (v9) edge node[near end, sloped, above] {} (v25);
-		\path (v10) edge node[near end, sloped, above] {} (v26);
-		\path (v10) edge node[near end, sloped, above] {} (v27);
-		\path (v11) edge node[near end, sloped, above] {} (v28);
-		\path (v11) edge node[near end, sloped, above] {} (v29);
+		\path[thick] (v1) edge node[midway, sloped, above] {} (v2);
+		\path[thick] (v1) edge node[midway, sloped, above] {} (v3);
+		\path[thick] (v1) edge node[midway, above] {} (v4);
+		\path[thick] (v2) edge node[near end, sloped, below] {} (v5);
+		\path[thick] (v2) edge node[midway, below] {} (v6);
+		\path[thick] (v3) edge node[near end, sloped, above] {} (v7);
+		\path[thick] (v3) edge node[near end, sloped, above] {} (v8);
+		\path[thick] (v4) edge node[near end, sloped, above] {} (v9);
+		\path[thick] (v4) edge node[near end, sloped, above] {} (v10);
+		\path[thick] (v4) edge node[near end, sloped, above] {} (v11);
+		\path[thick] (v5) edge node[near end, sloped, above] {} (v12);
+		\path[thick] (v5) edge node[near end, sloped, above] {} (v13);
+		\path[thick] (v5) edge node[near end, sloped, above] {} (v14);
+		\path[thick] (v6) edge node[near end, sloped, above] {} (v15);
+		\path[thick] (v6) edge node[near end, sloped, above] {} (v16);
+		\path[thick] (v6) edge node[near end, sloped, above] {} (v17);
+		\path[thick] (v7) edge node[near end, sloped, above] {} (v18);
+		\path[thick] (v7) edge node[near end, sloped, above] {} (v19);
+		\path[thick] (v7) edge node[near end, sloped, above] {} (v20);
+		\path[thick] (v8) edge node[near end, sloped, above] {} (v21);
+		\path[thick] (v8) edge node[near end, sloped, above] {} (v22);
+		\path[thick] (v9) edge node[near end, sloped, above] {} (v23);
+		\path[thick] (v9) edge node[near end, sloped, above] {} (v24);
+		\path[thick] (v9) edge node[near end, sloped, above] {} (v25);
+		\path[thick] (v10) edge node[near end, sloped, above] {} (v26);
+		\path[thick] (v10) edge node[near end, sloped, above] {} (v27);
+		\path[thick] (v11) edge node[near end, sloped, above] {} (v28);
+		\path[thick] (v11) edge node[near end, sloped, above] {} (v29);
 
 	\end{tikzpicture}
 	\caption{De mulige løsninger for veje med længde 3 fra $v_{0}$ til $v_{k}$.}

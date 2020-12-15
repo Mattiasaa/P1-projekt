@@ -14,12 +14,12 @@
   	    \node[enclosed] (v6) at (3,3.5) {};
   	    \node[enclosed] (v7) at (3,2.5) {};    
 %Edges
-		\path (v1) edge[red, ultra thick] node[midway, below, black] {$12$} (v2);
-		\path (v1) edge node[midway, above] {$9$} (v3);
-		\path (v2) edge[red, ultra thick] node[midway, above, black] {$5$} (v5);
-		\path (v2) edge node[midway, below] {$2$} (v4);
-		\path (v3) edge node[midway, above] {$5$} (v6);
-		\path (v3) edge node[midway, below] {$99$} (v7);
+		\path[ultra thick] (v1) edge[red] node[midway, below, black] {$12$} (v2);
+		\path[thick] (v1) edge node[midway, above] {$9$} (v3);
+		\path[thick] (v2) edge[red, ultra thick] node[midway, above, black] {$5$} (v5);
+		\path[thick] (v2) edge node[midway, below] {$2$} (v4);
+		\path[thick] (v3) edge node[midway, above] {$5$} (v6);
+		\path (v3) edge[thick] node[midway, below] {$99$} (v7);
 
 
 	\end{tikzpicture}

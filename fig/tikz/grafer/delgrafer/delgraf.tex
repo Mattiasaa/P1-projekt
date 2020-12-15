@@ -2,7 +2,7 @@
 \centering
 	\begin{tikzpicture}
 
-      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.12cm, fill=black}}
+      \tikzset{enclosed/.style={draw, circle, inner sep=0pt, minimum size=.13cm, fill=black}}
 % Vertices
 	%Hel graf
       	\node[enclosed] (v1) at (0,2) {};
@@ -23,26 +23,26 @@
   	    \node[enclosed] (v14) at (12,2) {};
 %Edges
 	%Hel graf
-		\path (v1) edge node {} (v2);
-		\path (v1) edge node {} (v3);
-		\path (v3) edge node {} (v4);
-		\path (v3) edge node {} (v5);
-		\path (v4) edge node {} (v5);
-		\path (v2) edge node {} (v4);
-		\path (v2) edge node {} (v5);
-		\path (v2) edge node {} (v3);
+		\path[thick] (v1) edge node {} (v2);
+		\path[thick] (v1) edge node {} (v3);
+		\path[thick] (v3) edge node {} (v4);
+		\path[thick] (v3) edge node {} (v5);
+		\path[thick] (v4) edge node {} (v5);
+		\path[thick] (v2) edge node {} (v4);
+		\path[thick] (v2) edge node {} (v5);
+		\path[thick] (v2) edge node {} (v3);
 	%Induceret graf
-		\path (v6) edge node {} (v7);
-		\path (v6) edge node {} (v8);
-		\path (v8) edge node {} (v9);
-		\path (v7) edge node {} (v9);
-		\path (v7) edge node {} (v8);
+		\path[thick] (v6) edge node {} (v7);
+		\path[thick] (v6) edge node {} (v8);
+		\path[thick] (v8) edge node {} (v9);
+		\path[thick] (v7) edge node {} (v9);
+		\path[thick] (v7) edge node {} (v8);
 	%Udspændende graf
-		\path (v10) edge node {} (v11);
-		\path (v11) edge node {} (v12);
-		\path (v12) edge node {} (v14);
-		\path (v14) edge node {} (v13);
-		\path (v11) edge node {} (v13);
+		\path[thick] (v10) edge node {} (v11);
+		\path[thick] (v11) edge node {} (v12);
+		\path[thick] (v12) edge node {} (v14);
+		\path[thick] (v14) edge node {} (v13);
+		\path[thick] (v11) edge node {} (v13);
 
 	\end{tikzpicture}
 	\caption{Simpel graf, $G$ (venstre). Induceret delgraf af $G$ (midten). Udspændende delgraf af $G$ (højre).}
