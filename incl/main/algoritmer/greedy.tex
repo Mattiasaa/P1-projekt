@@ -1,14 +1,15 @@
 \subsection{Grådige algoritmer}
-Når man arbejder med optimeringsproblemer, som omhandler minimering eller maksimering, dette kunne fx være at finde den længste eller korteste vej i en graf, kan man ofte bruge \emph{grådige algoritmer}.
+Når man arbejder med optimeringsproblemer, som omhandler minimering eller maksimering, som fx kunne være at finde den længste eller korteste vej i en graf, kan man ofte bruge \emph{grådige algoritmer}.
 En grådig algoritme vælger altid det \emph{lokalt optimale} valg og antager, at dette medfører en \emph{global optimal} løsning, altså den bedst mulige løsning. Det lokalt optimale valg findes ved at vælge den umiddelbart bedste løsning for hvert muligt trin.
 I mange tilfælde vil dette lede til global optimering, men der kan også forekomme situationer, hvor algoritmen vil finde en suboptimal løsning. Ligegyldigt om algoritmen finder en optimal eller suboptimal løsning, kalder vi den en grådig algoritme. 
    
 \input{incl/main/algoritmer/greedy.graf}    
 
 \begin{exmp}
-Det danske møntsystem har seks forskellige mønter med værdier på $0.5,\ 1,\ 2,\ 5,\ 10$ og $20$ kroner. Systemet er optimeret således, at man kan lave byttepenge vha. en grådig algoritme. Man kan altid finde den optimale løsning ved at tage så mange af de mest værdifulde mønter først og derefter tage så mange som muligt af de næst mest værdifulde mønter. Man fortsætter denne proces, indtil man har den ønskede mængde byttepenge.
-\begin{algorithm} [H]
+Det danske møntsystem har seks forskellige mønter med værdier på $0.5,\ 1,\ 2,\ 5,\ 10$ og $20$ kroner. Systemet er optimeret således, at man kan lave byttepenge vha. en grådig algoritme. Man kan altid finde den optimale løsning ved først at tage så mange som muligt af de mest værdifulde mønter, og derefter tager man så mange som muligt af de næstmest værdifulde mønter. Man fortsætter denne proces, indtil man har den ønskede mængde byttepenge.
+\begin{algorithm} [H] 
 \caption{Grådig algoritme til byttepenge}
+\label{alg:byt}
 \begin{algorithmic}[1]
 
 \Procedure{Byttepenge($c_1,c_2,\dotsc,c_r$: værdien af mønter, hvor $c_1>c_2>\dotsb >c_r;n:$ et positivt heltal)}{}
@@ -23,8 +24,8 @@ Det danske møntsystem har seks forskellige mønter med værdier på $0.5,\ 1,\ 
 \State ($d_i$ er mængden af mønter med værdi $c_i$ for $i=1,2,\dotsc,r$)
 \end{algorithmic}
 \end{algorithm}
-Denne algoritme vil altid vælge den optimale løsning i dette specifikke problem, der kan dog være problemer, hvis mønternes værdi ændrer sig. 
-Vi forestiller os nu, at vi har et møntsystem med udelukkende tre mønter af værdi $25$, $10$ og $1$. Der opstilles her et problem, hvor vi vil have $30$ kroner i byttepenge. Denne algoritme vil nu få en løsning, som bruger én mønt af værdi $25$ og fem mønter af værdi $1$. Dette er en suboptimal løsning, da man kunne have brugt tre mønter af værdi $10$.
+Denne algoritme vil altid vælge den globalt optimale løsning i dette specifikke problem. Der kan dog være problemer, hvis mønternes værdi ændrer sig. 
+Vi forestiller os nu, at vi har et møntsystem udelukkende med tre mønter af værdi $25$, $10$ og $1$. Der opstilles her et problem, hvor vi vil have $30$ kroner i byttepenge. \autoref{alg:byt} vil nu få en løsning, som bruger én mønt af værdi $25$ og fem mønter af værdi $1$. Dette er en suboptimal løsning, da man kunne have brugt tre mønter af værdi $10$.
 Dette viser, at grådige algoritmer ikke altid finder den optimale løsning.
 \end{exmp}
 

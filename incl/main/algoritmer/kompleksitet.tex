@@ -2,18 +2,17 @@
 %side 250 ish
 %table 1 side 247 i pdf.
 
-Der findes to former for kompleksitet, \emph{tidskompleksitet} og pladskompleksitet, men vi vælger at fokusere på tidskompleksitet. 
-Tidskompleksitet fortæller noget om, hvordan udviklingen i tid af en given algoritme forløber, når størrelsen på datasættet stiger. I tidskompleksitet vil man ofte kigge på tre forskellige former for tilfælde. Disse tilfælde er \emph{bedste tilfælde}, \emph{værste tilfælde} og det \emph{gennemsnitlige tilfælde}. 
-Bedste tilfælde beskriver algoritmen under optimale forhold, hvor datasættet er sat i den rækkefølge, der gør, at algoritmen tager mindst mulig tid. I en lineær søgealgoritme vil dette være, at elementet, der søges efter, er det første element i listen. 
-Værste tilfælde er en situation, hvori datasættet er ordnet i den værste rækkefølge, så der skal gennemføres det største mulige antal operationer for den givne algoritme. Hvis vi igen tager eksemplet med den lineære søgealgoritme, ville det være, at elementet der søges efter, ikke findes i listen over elementer.
-Det gennemsnitlige tilfælde ser på et gennemsnitligt datasæt, dette er dog meget svært at bestemme, da det er svært at bestemme nogle parametre, der gør, at man får et gennemsnitligt sæt.
+Der findes to former for \emph{kompleksitet}, \emph{tidskompleksitet} og pladskompleksitet, men vi vælger at fokusere på tidskompleksitet. 
+Tidskompleksitet fortæller noget om, hvordan udviklingen i tid af en given algoritme forløber, når størrelsen på inputtet stiger. I tidskompleksitet vil man ofte kigge på tre forskellige former for tilfælde. Disse tilfælde er \emph{bedste tilfælde}, \emph{værste tilfælde} og det \emph{gennemsnitlige tilfælde}. 
+Bedste tilfælde beskriver algoritmen under optimale forhold, hvor inputtet er således, at algoritmen tager mindst mulig tid. I en lineær søgealgoritme vil dette være, at elementet, der søges efter, er det første element i listen. 
+Værste tilfælde er en situation, hvori inputtet er således, at der skal gennemføres det største mulige antal operationer for den givne algoritme. Hvis vi igen tager eksemplet med den lineære søgealgoritme, ville det være, at elementet der søges efter, ikke findes i listen over elementer.
+Det gennemsnitlige tilfælde ser på et gennemsnitligt input, dette er dog meget svært at bestemme, da det er svært at bestemme nogle parametre, der gør, at man får et gennemsnitligt input.
 Det mest sigende er det gennemsnitlige tilfælde, men da det er svært at bruge, vil man ofte nøjes med det værste tilfælde, da man så i alle tilfælde kan sige, at algoritmen har denne kompleksitet eller mindre.
-
 
 
 \input{fig/tab/algo/tab_kompleksitet}
 
-\autoref{tab:kompleksitet} viser, hvilken terminologi man vil bruge, når man snakker om de forskellige kompleksiteter. Får man i sin analyse kompleksiteten $\Theta(n)$, vil den kaldes lineær, da tiden, det vil tage for algoritmen at løse problemet, stiger lineært med inputstørrelsen.
+\autoref{tab:kompleksitet} viser, hvilken terminologi man vil bruge, når man snakker om de forskellige kompleksiteter. Får man i sin analyse kompleksiteten $\Theta(n)$, vil den kaldes lineær, da tiden, det vil tage for algoritmen at løse problemet, stiger lineært med inputstørrelsen. Denne notation vil vi komme ind på yderligere i følgende afsnit.
 For at beskrive disse algoritmer vil man bruge operatorerne \emph{store-O}, \emph{store-$\Omega$} og \emph{store-$\Theta$}. 
 \subsection{Store-$O$, store-$\Omega$ og store-$\Theta$}
 Store-$O$ bliver brugt til at begrænse funktionen opadtil. 
@@ -22,7 +21,7 @@ Store-$O$ bliver brugt til at begrænse funktionen opadtil.
 $f(n)$ siges at være $O(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \leq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
 
-Man kan med garanti sige, at tiden, algoritmen tager, vil vokse lig $g(n)$ eller mindre, når inputstørrelsen stiger, hvis $f(n)=O(g(n))$.
+Man kan sige, at tiden, algoritmen tager, vil vokse lig $g(n)$ eller mindre, når inputstørrelsen stiger, hvis $f(n)=O(g(n))$.
 
 \begin{exmp} \label{ex:store-O}
 Vi tager i dette eksempel udgangspunkt i funktionen $f(n)=13n+3$. 
