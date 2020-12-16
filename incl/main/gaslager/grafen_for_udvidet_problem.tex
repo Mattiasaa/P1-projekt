@@ -31,7 +31,7 @@ Vi kan på samme måde som ved basisproblemet opstille en tabel over de mulige v
 \input{fig/tab/gaslager/tabel_graf_udvidet} 
 
 
-Beregningerne foregår på samme vis som i \autoref{table:forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $v_{0,1}$ til $q_{\slut}$, som begge har distancen 257. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme punkter, og ønsker vi at finde distancen fra $v_{0,1}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for hver kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
+Beregningerne foregår på samme vis som i \autoref{table:forsimplet_graf}. Vi får dermed, at vi har to forskellige veje fra $v_{0,1}$ til $q_{\slut}$, som begge har distancen 257. I den oprindelige graf for det udvidede problem havde kanterne andre vægte, hvilket vi nu kan indsætte igen efter brugen af Dijkstras algoritme. Vejen er igennem de samme knuder, og ønsker vi at finde distancen fra $v_{0,1}$ til $q_{\slut}$, skal vi blot tage vores resultat og trække de 40, som vi lagde til, fra igen 7 gange, altså en for hver kant fra $q_{0}$ til $q_{\slut}$. Derefter ganger vi med -1.
 \begin{equation}
 (257-40 \cdot 7)(-1) = 23.
 \end{equation}
