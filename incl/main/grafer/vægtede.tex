@@ -1,11 +1,11 @@
 \subsection{Vægtede grafer} \label{kap:vaegtede}
-En \emph{vægtet graf} er en graf, hvori kanterne eller knuderne får tildelt en numerisk værdi. I dette projekt arbejdes der udelukkende med vægtede kanter, og vi vil derfor kun fokusere på dem i dette afsnit.
+En \emph{vægtet graf} er en graf, hvori kanterne eller knuderne får tildelt en numerisk værdi. 
 En vægtet graf er defineret ved:
 \begin{defn}[Vægtede grafer]
 En vægtet graf, $G=(V,E,w)$, består af en mængde knuder, $V$, en mængde kanter, $E$, og \emph{vægtfunktionen}, $w: E \rightarrow \R$.
 \end{defn}
 
-For en vægtet graf har alle kanter $e\in E$ en numerisk vægt, givet ved funktionen $w (e)$. Da $e$ er en kant incident med $\{u,v\}$ kan man ligeledes skrive $w (u,v)$. På samme måde som med uvægtede grafer, kan en vægtet graf også opdeles i de seks graftyper fundet i \autoref{tab:typer}.
+For en vægtet graf har alle kanter i $E$ en numerisk vægt, givet ved funktionen $w(e)$. Da $e$ er en kant incident med $u$ og $v$, kan man, i simple grafer, ligeledes skrive $w(u,v)$. På samme måde som med uvægtede grafer, kan en vægtet graf også opdeles i de seks graftyper fundet i \autoref{tab:typer}.
 \input{fig/tikz/grafer/veje/vægtede/eksempel}
 
 Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne \emph{distancen} fra en knude til en anden i grafen. Distancen fra en knude til en anden kan defineres således:
@@ -13,7 +13,7 @@ Da vægtede grafer har en numerisk vægt på hver kant, kan man således beregne
 \begin{defn}[Distance]
 Lad $n \in \N $, $G=(V,E,w)$ være en vilkårlig graf og $P$ en vilkårlig, simpel vej i grafen således $P=(v_{1},v_{2},\dotsc,v_{n})$. Lad $e_i = \{v_i,v_{i+1}\}$ for $i \in \{ 1, 2, \dotsc, n-1 \}$, da kan distancen beskrives som
 	\begin{equation}
-	\dist(P)=\sum_{i=1}^{n}w(e_i).
+	\dist(P)=\sum_{i=1}^{n-1}w(e_i).
 	\end{equation}  
 \end{defn}
 
@@ -21,27 +21,27 @@ Man kan således bruge følgende definitioner af \emph{korteste vej} og \emph{l�
 
 
 \begin{defn} [Korteste, simple vej i vægtet graf]\label{defn:min.vej}
-Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste, simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den korteste, simple vej, fra en knude, $v_1$, til en anden knude, $v_n$, defineret som
 	\begin{equation}
-		\alpha(v_1,v_m)=\arg \min_{P \in \pazocal{P}}
+		\alpha(v_1,v_n)=\arg \min_{P \in \pazocal{P}}
 		\textrm{dist}(P),
 	\end{equation}
-	hvor $\pazocal{P}$ er mængden af alle simple veje fra $v_1$ til $v_m$.
+	hvor $\pazocal{P}$ er mængden af alle simple veje fra $v_1$ til $v_n$.
 \end{defn}
 
 På samme vis defineres længste vej:
 
 \begin{defn} [Længste, simple vej i en vægtet graf]
-	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste, simple vej, fra en knude, $v_1$, til en anden knude, $v_m$, defineret som
+	Lad $G=(V,E,w)$ være en vilkårlig, vægtet graf. Da er distancen af den længste, simple vej, fra en knude, $v_1$, til en anden knude, $v_n$, defineret som
 	\begin{equation}
-		\beta(v_1,v_m)=\arg \max_{P \in \pazocal{P}}
+		\beta(v_1,v_n)=\arg \max_{P \in \pazocal{P}}
 		\textrm{dist}(P),
 	\end{equation}
-	hvor $\pazocal{P}$ er mængden af alle simple veje fra $v_1$ til $v_m$.
+	hvor $\pazocal{P}$ er mængden af alle simple veje fra $v_1$ til $v_n$.
 \end{defn}
 
 \begin{exmp}
-På \autoref{fig.vaegtetopg} ses en graf med vægtede kanter. Vi er interesserede i at finde den korteste vej fra $v_1$ til $v_6$. For at finde den korteste vej, kigger vi på alle de mulige veje fra $v_1$ til $v_6$.
+På \autoref{fig.vaegtetopg} ses en graf med vægtede kanter. Vi er interesserede i at finde den korteste vej fra $v_1$ til $v_6$. For at finde den korteste vej kigger vi på alle de mulige veje fra $v_1$ til $v_6$.
 \input{fig/tikz/grafer/veje/vægtede/opgave}
 Følgende veje ses:
 \begin{align}
@@ -62,7 +62,7 @@ Man kan nu beregne distancen af de fire veje, ved at tage summen af de kanter, v
 \end{split}
 \end{align}
 Det ses, at den korteste vej fra $v_1$ til $v_6$ er $P_4$. 
-Det er sådan, man kan finde korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i \autoref{kap.algo}.
+Sådan kan man finde den korteste vej i en vægtet graf. Denne metode kaldes \emph{brute force}. Brute force kigger på alle mulige veje, og vælger den bedste. Metoden kan blive meget tidskrævende ved mere komplekse grafer. I disse tilfælde vil man bruge alternative, bedre algoritmer til at løse problemet. Dette vil vi komme ind på senere i \autoref{kap.algo}.
 \end{exmp}
 
 

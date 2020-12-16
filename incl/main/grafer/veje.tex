@@ -35,7 +35,7 @@ Det ses altså, at en vej af længde $r + 1$ fra $v_{i}$ til $v_{j}$ er lavet ud
 Da dette er summen af produktet af alle veje med længden r fra $v_{i}$ til $v_{k}$ og alle kanter fra $v_{k}$ til $v_{j}$, som har længden 1, og dette findes for alle mulige $v_{k}$, kan ovenstående ligning også omskrives til: 
 
 \begin{equation}
-A^{r+1}=\sum_{k=1}^{K} b_{ik} a_{kj}.
+A^{r+1}=\sum_{k=1}^{n} b_{ik} a_{kj}.
 \end{equation}
 
 For den første mulige $v_{k}$ har vi altså $b_{i1}$, som er antallet af veje fra $v_{i}$ til den første $v_{k}$, og $a_{1j}$ er vejen fra den første $v_{k}$ til $v_{j}$. Det ses, at produktet af disse to lægges sammen med produktet for de resterende $v_{k}$, så vi har antallet af alle mulige veje fra $v_{i}$ til $v_{j}$ gennem alle mulige $v_{k}$. Antallet af veje fra $v_{i}$ til $v_{j}$ med længde $r+1$ vil da være den (i,j)'te indgang til $A^{r+1}$. Derfor må det også gælde, at antallet af veje fra $v_{i}$ til $v_{j}$ med længde $r$ vil være den (i,j)'te indgang til $A^{r}$, hvilket var det, vi ville bevise.

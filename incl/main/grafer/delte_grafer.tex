@@ -3,11 +3,11 @@ I visse tilfælde kan en graf deles op for at optimere en algoritme til løsning
 To mulige grafopdelinger er delgrafer og $k$-delte grafer.
 
 \begin{defn}[Delgraf] \label{defn:delgraf} %subgraph
-En \emph{delgraf} af grafen, $G= (V,E)$, er en graf, $D = (W,F)$, skabt af delmængderne af kanterne, $F \subseteq E$, og knuderne, $W \subseteq V$, hvori det gælder $F \subseteq (\{u,v\} | u,v \in W)$.
+En \emph{delgraf} af grafen, $G= (V,E)$, er en graf, $D = (W,F)$, skabt af delmængderne af kanterne, $F \subseteq E$, og knuderne, $W \subseteq V$, hvori det gælder, at $F \subseteq \{ \{u,v\} | u,v \in W \}$.
 \end{defn}
 
-En delgraf er \emph{induceret}, hvis mængden af kanter, $F$, indeholder alle kanter fra $E$, hvis knuder indgår i $W$.
-Delgrafen kaldes \emph{udspændende} hvis $W=V$. Dette er illustreret på \autoref{fig:delgraf.eks}
+En delgraf er \emph{induceret}, hvis mængden af kanter, $F$, indeholder alle kanter fra $E$, som er incidente med knudeparene i $W$.
+Delgrafen kaldes \emph{udspændende} hvis $W=V$. Disse er illustreret på \autoref{fig:delgraf.eks}
 
 \input{fig/tikz/grafer/delgrafer/delgraf}
 
@@ -20,10 +20,10 @@ Foruden gælder det at $V_i \bigcap V_j  = \emptyset \forall i,j=1, 2, \dotsc, k
 \end{defn}
 
 
-En af fordelene ved at dele en graf op i forskellige delgrafer er, at man i korteste vej-problemer kan finde den optimale delstruktur, hvis den optimale delgraf er fundet. 
+Korteste vej-problemer bygger på princippet om, at den optimale delgraf medfører, at \emph{delstrukturene} også er optimale. En delstruktur er en delgraf af delgrafen. Har man fundet den korteste vej fra en given startknude til en endeknude, har man fundet den korteste vej til alle mellemliggende knuder. Dette kan nemt indses, da en kortere vej til en given mellemliggende knude, vil indgå i den korteste vej til endeknuden.
 
-Hvis man betragter \autoref{fig:laengste.vej}, kan man beskrive den korteste vej $P=(v_1,v_3,v_4)$ som en optimal delgraf. Denne delgraf har også en optimal delstruktur, da den korteste vej fra $v_1$ til $v_3$ indgår i vejen $P=(v_1,v_3,v_4)$.
-Hvis vi kigger på den længste vej fra $v_1$ til $v_4$, $P=(v_1,v_3,v_4)$, ser vi, at den ikke har en optimal delstruktur, da den længste vej fra $v_1$ til $v_3$ ikke indgår i den længste vej fra $v_1$ til $v_4$.
+
+
 
 
 
