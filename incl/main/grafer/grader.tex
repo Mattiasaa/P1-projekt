@@ -3,7 +3,7 @@ Når man arbejder med grafer, kan det være brugbart at vide, hvor mange kanter 
 
 %-----------------------------------------------
 \begin{defn}[Grader] \label{defn:grader}
-Lad $v \in V$ være en vilkårlig knude i den ikke-orienterede graf, $G = (V,E)$. For $G$ skal det gælde, at den enten er en simpel eller en multigraf. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i mængden, $E$, som er incidente med $v$. Dermed gælder det, at
+Lad $v \in V$ være en vilkårlig knude i den ikke-orienterede graf, $G = (V,E)$. For $G$ skal det gælde, at den enten er simpel eller en multigraf. Knudens \emph{grad}, $\deg(v)$, er det antal kanter i mængden, $E$, som er incidente med $v$. Dermed gælder det, at
 \begin{equation}
 \deg(v)=|\{ \{u,v\} \ | \ \{u,v\}\in E \}|.
 \end{equation}
@@ -13,13 +13,15 @@ Definition \ref{defn:grader} gælder ikke for pseudografer, da den kun vil tæll
 
 \begin{exmp} \label{ex:grader}
 
-Vi kan ud fra Definition \ref{defn:grader} aflæse knudernes grader på \autoref{fig:grader}. Det ses i figuren, at $v_4$ har en løkke, som tæller dobbelt. Ved at tælle antallet af knudernes incidente kanter får vi: $\deg(v_{1})=3, \ \deg(v_{2})=3, \ \deg(v_{3})=4$ og $\deg(v_{4})=4$.
+Vi kan ud fra Definition \ref{defn:grader} aflæse knudernes grader på \autoref{fig:grader}. Ved at tælle antallet af knudernes incidente kanter får vi: $\deg(v_{1})=3, \ \deg(v_{2})=3, \ \deg(v_{3})=4$ og $\deg(v_{4})=2$.
 \input{fig/tikz/grafer/grader_eksempel}
 
 \end{exmp}
 
+Foruden kanternes grad, kan man også snakke om grafens samlede grad.
+
 \begin{thm}
-Hvis grafen, $G = (V,E)$, er en ikke-orienteret, endelig graf med en mængde kanter, $E$, og knuden, $v$, har graden $\deg(v)$, gør det sig gældende, at
+Hvis en graf, $G = (V,E)$, er en ikke-orienteret, endelig graf med en mængde kanter, $E$, og hvis en knude, $v$, har graden $\deg(v)$, gør det sig gældende, at
 \begin{equation} \label{eq:degv=2e}
 	\sum_{v \in V} { } \deg(v) = 2 \cdot |E|.
 \end{equation}
@@ -28,27 +30,29 @@ Hvis grafen, $G = (V,E)$, er en ikke-orienteret, endelig graf med en mængde kan
 Hvis vi har en ikke-orienteret, endelig graf, kan antallet af kanter i grafen findes ved at lægge summen af hver knudes grad sammen og dividere denne sum med to. Omvendt kan grafens samlede grad findes ved at gange antallet af kanter med to.
 
 \begin{proof}
-Som det fremgår af Definition \ref{def:graf}, er mængden af kanter, $E \subseteq \{\{u,v\}|u,v \in V \}$. Hver kant i grafen er altså incident med to knuder, eller med den samme knude to gange, hvis der er tale om en løkke. Hvis en kant er incident med en knude, $v$, bidrager denne kant til knudens grad, $\deg(v)$. Hver kant bidrager altså to gange til grafens grad. Hele grafens grad, $\sum_{v \in V} { } \deg(v)$, vil dermed være dobbelt så stor, som antallet af kanter i denne graf, $|E|$. 
+Som det fremgår af Definition \ref{def:graf}, er $E$ en delmængde af mængden, $\{\{u,v\}|u,v \in V \}$. Hver kant i grafen er altså incident med to knuder, eller med den samme knude to gange, hvis der er tale om en løkke. Hvis en kant er incident med en knude, $v$, bidrager denne kant til knudens grad. Hver kant bidrager altså to gange til grafens grad. Hele grafens grad, $\sum_{v \in V} { } \deg(v)$, vil dermed være dobbelt så stor som antallet af kanter i denne graf, $|E|$. 
 \begin{equation}
 \sum_{v \in V} { } \deg(v) = 2 \cdot |E|.
 \end{equation} 
 \end{proof}
 
-I en orienteret graf tælles knudernes grader på anden vis. Kanterne har en startknude og en endeknude, og derfor deles graderne i en orienteret graf op i den \emph{indadgående grad} og \emph{udadgående grad}. 
+I en orienteret graf tælles knudernes grader på anden vis. Kanterne har en startknude og en endeknude, og derfor deles graderne i en orienteret graf op i den \emph{indadgående grad} og den \emph{udadgående grad}. 
 
 \begin{defn}[Indadgående grad]
-Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i mængden $E$, der har $v$ som endeknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens indadgående grad, $\deg^-(v)$, er det antal kanter i $E$, der har $v$ som endeknude. Dermed gælder det, at
 \begin{equation}
 \deg^-(v)=|\{(u,v) \ | \ (u,v) \in E \}|.
 \end{equation}
 \end{defn}
 
 \begin{defn}[Udadgående grad]
-Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i mængden $E$, som har $v$ som startknude. Dermed gælder det, at
+Lad $v \in V$ være en knude i den orienterede graf, $G = (V,E)$. Knudens udadgående grad, $\deg^+(v)$, er det antal kanter i $E$, som har $v$ som startknude. Dermed gælder det, at
 \begin{equation}
 \deg^+(v)=|\{(v,u) \ | \ (v,u) \in E \}|.
 \end{equation}
 \end{defn}
+
+Vi kan bruge disse to definitioner til at finde graden i en orienteret graf. 
 
 \begin{defn}[Graden i en orienteret graf]
 I en orienteret graf, $G = (V,E)$, hvor $v \in V$, er den samlede grad defineret ved: 

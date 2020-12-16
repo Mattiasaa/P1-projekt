@@ -1,18 +1,18 @@
 \section{Veje}
-Vi har indtil videre snakket om kanter, og hvordan de enkeltvis er incidente med knudepar. I dette afsnit vil vi udvide det til at snakke om \emph{veje}, som er følger af disse kanter, og dermed er de også grafer i sig selv. Vi definerer veje ved:
-\begin{defn}
-[Veje] 
-Lad $n \in \N _0$  og $G$ være en graf. En vej, $P$, af længde $n$, fra $a$ til $z$, i $G$ er en følge af $n$ kanter,  $ P= (e_{1},e_{2},\dotsc,e_{n})$, for hvilken der eksisterer en følge, $a=v_{1},v_{2},\dotsc,v_{n-1}$,$v_{n}=z$, af knuder sådan at $e_{i}$, for $i \in \{1,2,\dotsc,n \}$, har endeknuderne $v_{i-1}$ og $v_{i}$. Når grafen er simpel, betegnes vejen ved grafens knudefølge, $(v_{1},v_{2},\dotsc,v_{n})$. Hvis den ikke er simpel, beskrives vejen ved kanterne, $(e_{1},e_{2},\dotsc,e_{n})$. 
+Vi har indtil videre snakket om kanter, og hvordan de enkeltvis er incidente med knudepar. I dette afsnit vil vi udvide det til at snakke om \emph{veje}, som er følger af disse kanter, og dermed er de også grafer i sig selv. 
+
+\begin{defn} [Veje] 
+Lad $n \in \N _0$  og $G=(V,E)$ være en vilkårlig graf. En vej, $P$, af længde $n$, fra $a$ til $z$, i $G$ er en følge af $n$ kanter,  $ P= (e_{1},e_{2},\dotsc,e_{n})$, for hvilken der eksisterer en følge, $a=v_{1},v_{2},\dotsc,v_{n-1}$,$v_{n}=z$, af knuder sådan at $e_{i}$, for $i \in \{1,2,\dotsc,n-1 \}$, har endeknuderne $v_{i}$ og $v_{i+1}$. Når grafen er simpel, betegnes vejen ved grafens knudefølge, $(v_{1},v_{2},\dotsc,v_{n})$. Hvis den ikke er simpel, beskrives vejen ved kanterne, $(e_{1},e_{2},\dotsc,e_{n})$. 
 \end{defn}
-Vi kalder det en \emph{simpel vej}, hvis den kun passerer den samme kant én gang. Orienterede veje består af orienterede kanter, mens ikke-orienterede veje består af ikke-orienterede kanter.
+Vi kalder det en \emph{simpel vej}, hvis den kun passerer den samme kant én gang.
 
 \input{fig/tikz/grafer/veje/eksempel}
 
-Antallet af veje mellem to knuder i grafen kan findes ved hjælp af nabomatricer, som vi diskuterede i forrige afsnit.
+Antallet af veje mellem to knuder i grafen kan findes ved hjælp af nabomatricer.
 \begin{thm}
 [Antallet af veje mellem to knuder] 
 Lad G være en vilkårlig graf med nabomatricen
-\textbf{$A$} med grafens knuder i rækkefølgen $v_{1},v_{2},\dotsc,v_{n}$. Antallet af forskellige veje med længde $r$ fra $v_{i}$ til $v_{j}$ vil da være lig den $(i,j)$'te indgang af \textbf{$A^{r}$}.
+\textbf{$A$}, hvor knuderne er i rækkefølgen $v_{1},v_{2},\dotsc,v_{n}$. Da vil antallet af forskellige veje med længde $r$ fra $v_{i}$ til $v_{j}$ være lig den $(i,j)$'te indgang af \textbf{$A^{r}$}.
 \end{thm}
 
 \begin{proof}
@@ -20,11 +20,11 @@ Lad G være en graf med nabomatricen
 \textbf{$A$}, hvor vi antager, at knuderne i $G$ har rækkefølgen $v_{1},v_{2},\dotsc,v_{n}$. Antallet af veje fra $v_{i}$ til $v_{j}$ af længde 1 er da den $(i,j)$'te indgang til 
 \textbf{$A$}. Dette skyldes, at det blot er antallet af kanter fra $v_{i}$ til $v_{j}$.
 Vi antager, at den $(i,j)$'te indgang til 
-\textbf{${A^r}$} er antallet af forskellige veje, som går fra $v_{i}$ til $v_{j}$ og som har længden $r$. Dette er hypotesen, vi ønsker at bekræfte.
+\textbf{${A^r}$} er antallet af forskellige veje, som går fra $v_{i}$ til $v_{j}$, og som har længden $r$. Dette er hypotesen, vi ønsker at bekræfte.
 Vi ser på nabomatricen \textbf{$A^{r+1}$}. 
 \textbf{$A^{r+1}$} er det samme som 
 \textbf{$A^{r}$}$\cdot$\textbf{$A$}. Derfor må indgangen til \textbf{$A^{r+1}$} være produktet af indgangene til \textbf{$A^{r}$} og kanterne fra \textbf{$A^{r}$} til \textbf{$A^{r+1}$}. Vi siger, at $b_{ik}$ er den $(i,k)$'te indgang til 
-\textbf{$A^{r}$}, som ifølge vores hypotese er antallet af veje fra $v_{i}$ til $v_{k}$ med længde $r$. Vi siger også at $a_{k,j}$ er den $(k,j)$'te indgang til 
+\textbf{$A^{r}$}, som ifølge vores hypotese er antallet af veje fra $v_{i}$ til $v_{k}$ med længde $r$. Vi siger også at $a_{kj}$ er den $(k,j)$'te indgang til 
 \textbf{$A^{r+1}$}, som ifølge vores hypotese er antallet af veje fra $v_{k}$ til $v_{j}$ med længde $1$, hvilket vil sige kanterne mellem punkterne. Derved får vi den $(i,j)$'te indgang af \textbf{$A^{r+1}$} til at være: 
 
 \begin{equation}
@@ -32,7 +32,7 @@ A^{r+1}=b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsc+ b_{in}a_{nj}.
 \end{equation}
 
 Det ses altså, at en vej af længde $r + 1$ fra $v_{i}$ til $v_{j}$ er lavet ud fra en vej med længden $r$ fra begyndelsesknuden $v_{i}$ og hen til en mellemliggende knude $v_{k}$ samt den kant, der går fra $v_{k}$ til $v_{j}$. 
-Da dette er summen af produktet af alle veje med længden r fra $v_{i}$ til $v_{k}$ og alle kanter fra $v_{k}$ til $v_{j}$, som har længden 1, og dette findes for alle mulige $v_{k}$ kan ovenstående ligning også omskrives til: 
+Da dette er summen af produktet af alle veje med længden r fra $v_{i}$ til $v_{k}$ og alle kanter fra $v_{k}$ til $v_{j}$, som har længden 1, og dette findes for alle mulige $v_{k}$, kan ovenstående ligning også omskrives til: 
 
 \begin{equation}
 A^{r+1}=\sum_{k=1}^{K} b_{ik} a_{kj}.
@@ -57,8 +57,8 @@ A=\begin{bmatrix}
 \end{equation}
 
 
-Vi ønsker at finde ud af hvor mange veje med en længde på 4, der går fra $v_1$ til $v_5$. Det ses i nabomatricen, at $v_1$ har 3 naboer, nemlig $v_2$, $v_3$ og $v_4$. Fortsætter vi, kan vi se, at $v_2$ har $v_1$ og $v_4$ som naboer, $v_3$ har $v_1$ og $v_5$, og $v_4$ har $v_1$, $v_2$ og $v_5$ som naboer. Fortsætter vi, så vi finder alle tænkelige veje med længder på 3, får vi, at der er 18 forskellige veje, der alle starter i $v_1$ og har en længde på 3. Vi skal nu finde de veje, der ved at tilføje en kant, ender i $v_5$. Vi kan se, at $v_5$ har $v_3$ og $v_4$ som naboer. Vi finder derfor de veje, der starter i $v_1$ og slutter i $v_3$, med længden 3, og derefter dem, der slutter i $v_4$, med længden 3. På denne måde udnytter vi, hvad vi skrev i beviset, nemlig at
-\textbf{$A^{r+1}$} er lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsb+ b_{in}a_{nj}$
+Vi ønsker at finde ud af hvor mange veje med en længde på 4, der går fra $v_1$ til $v_5$. Det ses i nabomatricen, at $v_1$ har 3 naboer, nemlig $v_2$, $v_3$ og $v_4$. Fortsætter vi, kan vi se, at $v_2$ har $v_1$ og $v_4$ som naboer, $v_3$ har $v_1$ og $v_5$, og $v_4$ har $v_1$, $v_2$ og $v_5$ som naboer. Fortsætter vi, så vi finder alle tænkelige veje med længder på 3, får vi, at der er 18 forskellige veje, der alle starter i $v_1$ og har en længde på 3. Vi skal nu finde de veje, der ved at tilføje en kant ender i $v_5$. Vi kan se, at $v_5$ har $v_3$ og $v_4$ som naboer. Vi finder derfor de veje, der starter i $v_1$ og slutter i $v_3$, med længden 3, og derefter dem, der slutter i $v_4$, med længden 3. På denne måde udnytter vi, hvad vi skrev i beviset, nemlig at
+\textbf{$A^{r+1}$} er lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsb+ b_{in}a_{nj}$.
 Her er $b_{ik}$ antallet af veje fra $v_{i}$ til ${v_k}$. I vores eksempel er $v_{i}=v_{1}$, ${v_{k1}}=v_{3}$, ${v_{k2}}=v_{4}$, $v_{j}=v_{5}$ og \textbf{$A^{r+1}$}=\textbf{$A^{3+1}$}. 
  
 \input{fig/tikz/grafer/veje/eksempel-trae}
