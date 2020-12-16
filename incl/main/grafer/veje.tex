@@ -46,16 +46,20 @@ For den første mulige $v_{k}$ har vi altså $b_{i1}$, som er antallet af veje f
 Vi starter med at kigge på en graf og den tilhørende nabomatrix:
 \input{fig/tikz/grafer/veje/eksempel-ikke-orienteret}
 
-\begin{equation}
-A=\begin{bmatrix}
-    0&1&1&1&0\\
-    1&0&0&1&0\\
-    1&0&0&0&1\\
-    1&1&0&0&1\\
-    0&0&1&1&0\\
-\end{bmatrix}
-\end{equation}
 
+\begin{equation}
+A=
+\begin{blockarray}{rccccc}
+	&v_1&v_2&v_3&v_4&v_5 \\
+\begin{block}{r[ccccc]}
+	v_1&0&1&1&1&0 \\
+	v_2&1&0&0&1&0 \\
+	v_3&1&0&0&0&1 \\
+	v_4&1&1&0&0&1 \\
+	v_5&0&0&1&1&0 \\
+\end{block}
+\end{blockarray}	
+\end{equation}
 
 Vi ønsker at finde ud af hvor mange veje med en længde på 4, der går fra $v_1$ til $v_5$. Det ses i nabomatricen, at $v_1$ har 3 naboer, nemlig $v_2$, $v_3$ og $v_4$. Fortsætter vi, kan vi se, at $v_2$ har $v_1$ og $v_4$ som naboer, $v_3$ har $v_1$ og $v_5$, og $v_4$ har $v_1$, $v_2$ og $v_5$ som naboer. Fortsætter vi, så vi finder alle tænkelige veje med længder på 3, får vi, at der er 18 forskellige veje, der alle starter i $v_1$ og har en længde på 3. Vi skal nu finde de veje, der ved at tilføje en kant ender i $v_5$. Vi kan se, at $v_5$ har $v_3$ og $v_4$ som naboer. Vi finder derfor de veje, der starter i $v_1$ og slutter i $v_3$, med længden 3, og derefter dem, der slutter i $v_4$, med længden 3. På denne måde udnytter vi, hvad vi skrev i beviset, nemlig at
 \textbf{$A^{r+1}$} er lig med $b_{i1}a_{1j} + b_{i2}a_{2j} +\dotsb+ b_{in}a_{nj}$.
