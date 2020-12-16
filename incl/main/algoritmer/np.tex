@@ -1,17 +1,16 @@
 \section{NP-problemer} \label{kap:np}
 Problemer kan alt efter deres tidskompleksitet inddeles i forskellige kategorier. Hvis et problem kan løses i polynomisk tid af en \emph{deterministisk} algoritme, kaldes problemet \emph{P}, som står for polynomial time.
 At en algoritme er deterministisk, betyder, at man kender alle trin i algorimen, og at den ikke indeholder nogle tilfældige hændelser. Vi så i \autoref{kap:kompleksitet} nogle eksempler på algoritmer med polynomisk kompleksitet. Vi ved fx, at den lineære søgning, den binære søgning, bubblesortering og indskudssortering er deterministiske algoritmer, som løser problemer i polynomisk tid og dermed løser P problemer. 
-Et problem løst med en \emph{ikke-deterministisk} algoritme, i polynomisk tid, kaldes \emph{NP}, hvilket står for Non-deterministic Polynomial time. En ikke-deterministisk algoritme indeholder, i modsætning til den deterministiske, tilfældige hændelser, som kan have kendte sandsynligheder. Her kender vi ikke alle trin, algoritmen skal gennemføre. 
+Et problem løst med en \emph{ikke-deterministisk} algoritme, i polynomisk tid, kaldes \emph{NP}, hvilket står for Non-deterministic Polynomial time. En ikke-deterministisk algoritme indeholder, i modsætning til den deterministiske, tilfældige hændelser, som kan have kendte sandsynligheder. Her kender vi ikke alle trin, algoritmen skal gennemføre. TIl gengæld skal en løsning fra en ikke-deterministisk algoritme kunne verificeres indenfor polynomisk tid. 
 
 Et NP problem kan med tiden blive et P problem, hvis vi finder en deterministisk algoritme, der kan løse dette i polynomisk tid. P er desuden en delmængde af NP, da P problemer også kan løses af en ikke-deterministisk algoritme i polynomisk tid, men P adskiller sig ved at være de problemer i NP, som også kan løses af en deterministisk algoritme. 
 Der er stor debat om hvorvidt, alle problemer i NP kan løses med en deterministisk algoritme. Problemer, vi troede var NP for nogle år siden, kan nu løses med en deterministisk algoritme, men det er endnu uklart, om dette er gældende for alle NP problemer.
 
 
-%------------------------------------------ rettet opad herfra.
-Problemer kan derudover være \emph{NP-complete} og \emph{NP-hard}. Et problem er NP-complete, hvis alle NP problemer kan reduceres til dette problem, og hvis problemet selv er et NP problem. Løsningen skal altså kunne verificeres i polynomisk tid, da dette gælder for NP problemer. Hvis man har et NP-complete problem B, som kan reduceres til et problem A i polynomisk tid, hvor A også kan løses i polynomisk tid af en ikke-deterministisk algoritme, vil A desuden også være et NP-complete problem. Der findes mange NP-complete problemer, men det er endnu ikke lykkedes at løse nogen af dem med en deterministisk algoritme i polynomisk tid.
+Problemer kan derudover være \emph{NP-complete} og \emph{NP-hard}. Et problem er NP-complete, hvis alle NP problemer kan reduceres til dette problem, og hvis problemet selv er et NP problem. Løsningen skal altså kunne verificeres i polynomisk tid. Hvis man har et NP-complete problem B, som kan reduceres til et problem A i polynomisk tid, hvor A også kan løses i polynomisk tid af en ikke-deterministisk algoritme, vil A desuden også være et NP-complete problem. Der findes mange NP-complete problemer, men det er endnu ikke lykkedes at løse nogen af dem med en deterministisk algoritme i polynomisk tid.
 
-Et problem er NP-hard, hvis alle NP problemer kan reduceres til dette problem, og hvis løsningen ikke kan verificeres i polynomisk tid. Det er altså meget vanskeligt at vise, om et problem er NP-hard. Et NP-hard problem er mindst lige så svært som det sværeste problem i NP. Dette skyldes, at alle NP problemer skal kunne reduceres til et vilkårligt NP-hard problem.
-De forskellige problemtyper ses illustreret herunder:
+Et problem er NP-hard, hvis alle NP problemer kan reduceres til dette problem, og hvis løsningen ikke kan verificeres i polynomisk tid. Det er altså meget vanskeligt at vise, om et problem er NP-hard. NP-hard og NP-complete problemer er mindst lige så svære som det sværeste problem i NP. Dette skyldes, at alle NP problemer skal kunne reduceres til et vilkårligt NP-hard og NP-complete problem.
+De forskellige problemtyper er illustreret herunder:
 
 
 
@@ -33,11 +32,11 @@ De forskellige problemtyper ses illustreret herunder:
 
 Hvis vi kigger på Dijkstras algoritme i \autoref{kap:dijkstras}, ser vi, at denne algoritme løser problemer af typen P. Problemerne løses af en deterministisk algoritme i polynomisk tid, da grafen i et korteste vej-problem har optimal substruktur.
 
-Dijkstras algoritme løser korteste vej-problemer, men ønsker vi at finde den længste vej igennem en orienteret ikke-cyklisk graf, er dette også et P problem. Havde grafen fx været ikke-orienteret og cyklisk, havde det været et NP-complete problem, men beviset udelades. Vigtigt at notere er blot, at disse ikke kan løses af en deterministisk algoritme, da grafen i disse længste vej-problemer ikke har optimal substruktur.
-I Eksempel \ref{exmp.np} ses det, hvordan substrukturen i en ikke-orienteret, cyklisk graf er, for henholdsvis korteste og længste vej-problemer.
+Dijkstras algoritme løser korteste vej-problemer, men ønsker vi at finde den længste vej igennem en orienteret ikke-cyklisk graf, er dette også et P problem. Havde grafen fx været ikke-orienteret og cyklisk, havde det været et NP-complete problem, men beviset for dette udelades. Vigtigt at notere er blot, at disse ikke kan løses af en deterministisk algoritme, da grafen i disse længste vej-problemer ikke har optimal substruktur.
+I Eksempel \ref{exmp.np} ses det, hvordan substrukturen i en ikke-orienteret, cyklisk graf er for henholdsvis korteste og længste vej-problemer.
 
 \begin{exmp} \label{exmp.np}
-På \autoref{fig:laengste.vej} ses det, at den korteste vej  fra $v_1$ til $v_4$ går igennem punktet $v_2$. Den korteste vej har optimal substruktur, hvilket ses ved, at den korteste vej fra $v_{1}$ til $v_{4}$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$, består af den korteste vej fra $v_{1}$ til $v_{2}$ og den korteste vej fra $v_{2}$ til $v_{4}$. 
+På \autoref{fig:laengste.vej} ses det, at den korteste vej  fra $v_1$ til $v_4$ går igennem knuden, $v_2$. Den korteste vej har optimal substruktur, hvilket ses ved, at den korteste vej fra $v_{1}$ til $v_{4}$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$, består af den korteste vej fra $v_{1}$ til $v_{2}$ og den korteste vej fra $v_{2}$ til $v_{4}$. 
 
 Vi ser nu på den længste vej fra $v_1$ til $v_4$, $P_{1,2,4}=(v_{1},v_{2},v_{4})$. Hvis der havde været optimal substruktur, havde den længste vej, $P_{1,2,4}$, bestået af den længste vej fra $v_{1}$ til $v_{2}$ og den længste vej fra $v_{2}$ til $v_{4}$, men dette er ikke tilfældet. Den længste vej igennem grafen fra $v_{1}$ til $v_{2}$ er nemlig $P_{1,3,4,2}=(v_{1},v_{3},v_{4},v_{2})$, og den længste vej igennem grafen fra $v_{2}$ til $v_{4}$ er $P_{2,1,3,4}=(v_{2},v_{1},v_{3},v_{4})$. 
 
