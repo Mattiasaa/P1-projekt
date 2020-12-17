@@ -2,7 +2,7 @@
 """
 Created on Wed Dec  2 12:03:31 2020
 
-@author: marcu
+@author: marcus
 """
 
 
