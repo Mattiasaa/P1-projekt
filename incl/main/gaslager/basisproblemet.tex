@@ -1,5 +1,5 @@
 \section{Basisproblemet}
-Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi lejer dette gaslager for et år, og vi skal nu forsøge at maksimere profitten ved at købe og sælge gasenheder. Vi har en forward-kurve på prisen, en pris der på forhånd er aftalt med leverandørerne og køberne således, at vi til hver en tid i lejekontrakten kan se, hvad prisen for gas er til denne tid. Prisen varierer fra måned til måned. Der er øvre og nedre grænser for beholdningen i gaslageret, og ved lejekontraktens udløb vil ejeren købe den resterende gas tilbage til prisen på dette tidspunkt. Vi opstiller \autoref{table:1}, med de forskellige, givne værdier, som vi skal bruge til at løse optimeringsproblemet:
+Vi vil indgå en lejekontrakt med ejeren af et gaslager, hvori der kan lagres naturgas. Vi vil leje dette gaslager i et år, og vi vil nu forsøge at maksimere profitten ved at købe og sælge gasenheder. Vi har en forward-kurve på prisen. En forward-kurve er en række priser, der på forhånd er aftalt med leverandørerne og køberne således, at vi til hver en tid i lejekontrakten kan se, hvad prisen for gas er til denne tid. Prisen varierer fra måned til måned. Der er desuden øvre og nedre grænser for beholdningen i gaslageret samt øvre grænser for køb og salg af gas. Ved lejekontraktens udløb vil ejeren købe den resterende gas til prisen på dette tidspunkt. Vi opstiller \autoref{table:1} med de forskellige, givne værdier, som vi skal bruge til at løse optimeringsproblemet:
 
 \begin{table}[H]
 \centering
@@ -14,10 +14,10 @@ Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas.
  $q_{0}$ & Gasenheder i starten af lejeperioden  \\
  $q_{\min}$ & Den nedre grænse for gasenheder \\ 
  $q_{\max}$ & Den øvre grænse for gasenheder \\
- $u_{\max}$ & Antal gasenheder der kan tages ud af lageret mellem to tidsskridt \\ 
- $i_{\max}$ & Antal gasenheder der kan sættes ind på lageret mellem to tidsskridt \\ 
- $p_{t}$ & Prisen per gasenhed ved tiden, $t$, fra forward-kurven  \\
- $r$ & En fast årlig diskonteringsfaktor  \\
+ $u_{\max}$ & Antal gasenheder der maksimalt kan tages ud af lageret mellem to tidsskridt \\ 
+ $i_{\max}$ & Antal gasenheder der maksimalt kan sættes ind på lageret mellem to tidsskridt \\ 
+ $p_{t}$ & Prisen per gasenhed ved tiden, $t$, fra forward-kurven, i euro  \\
+ $r$ & En fast diskonteringsfaktor  \\
  [1ex]
  \hline
 \end{tabular}
@@ -25,29 +25,29 @@ Vi indgår en kontrakt med ejeren af et gaslager, hvori der kan lagres naturgas.
 \label{table:1}
 \end{table}
 
-I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperioden. De andre værdier er variable og er dermed ikke statiske igennem lejeperioden. Vi vil nu ud fra de givne værdier løse vores optimeringsproblem. Det vi i problemet ønsker at optimere, er resultatet. Problemet kan udtrykkes ved følgende funktion:
+I basisproblemet er $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ statiske. Det vil sige, at de ikke ændrer sig i hele lejeperioden. De andre værdier er variable og er dermed ikke statiske igennem lejeperioden. Det, vi i problemet ønsker at optimere, er resultatet. Problemet kan udtrykkes ved følgende funktion:
 \begin{equation}
 \max_{\Delta p_{t}} \Bigg\{ -\sum_{t=1}^{T} \mathrm{e}^{-r\frac{t}{T}} \Delta q_{t} p_{t}+ \mathrm{e}^{-r}q_{T}p_{T} \Bigg\}.
 \end{equation}
-Denne ligning har følgende bibetingelser:\\
+Denne funktion har bibetingelserne:\\
 1. $q_{\min} \leq q_{t} \leq q_{\max}$\\
 2. $\Delta q_{t} \in \{-u_{\max},-u_{\max}+1,\dotsc,-1,0,1,\dotsc,i_{\max}-1,i_{\max} \}$ \\
 for $t \in \{1,\dotsc,T\}$, hvor gasmængden lagret til tiden, $t$, er $q_{t}=q_{0}+\sum_{s=1}^{t} \Delta q_{s}$.
-Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder, der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
+Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og den øvre grænse. Ændringen i gasenheder skal ligge mellem minus det antal gasenheder, der må tages ud af gaslaget, altså det vi højst må sælge, og det antal gasenheder, der højst må sættes ind på gaslageret, altså det antal vi højst må købe.
+Knuderne i grafen er skrevet på formen, $v_{t,q_t}$.
 
-
-\begin{defn}
-Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet, $G_{\textrm{problem}}=(V,E,w)$, som er en simpel, orienteret og vægtet graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder henholdsvis startknuden, $q_0$, og slutknuden, $q_{\slut}$. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
-For mængden af kanter, $E$, gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
+\begin{defn} [Problemgraf] \label{defn:graf_problem}
+Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet. Grafen, $G_{\textrm{problem}}=(V,E,w)$, er en orienteret, vægtet og simpel graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder hhv. startknuden, $v_{0,q_0}$, og slutknuden, $q_{\slut}$. Startknuden har $t=0$, da det er inden lejekontraktens begyndelse. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
+For $E$ gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
 	\begin{itemize}
 	\item $u \in V_t$ og $v \in V_{t+1}$
-	\item $-u_{\max} \leq q_{t+1}-q_t \leq i_{\max}$
+	\item $-u_{\max} \leq \Delta q_{t+1} \leq i_{\max}$
 	\item $q_{\min} \leq q_t, q_{t+1} \leq q_{\max}$,
 	\end{itemize}
-og hvis $t=T$ gælder det, at $\exists \ e=(u,q_{\slut})$, hvor $u=v_{T,q_T}$, hvis
+og hvis $t=T$, gælder det, at $\exists \ e=(u,q_{\slut})$, hvor $u=v_{T,q_T}$, hvis
 	\begin{itemize}
 	\item $u \in V_T$
-	\item $q_{\min} \leq q_{T} \leq q_{\max}$
+	\item $q_{\min} \leq q_{T} \leq q_{\max}$.
 	\end{itemize}
 Vægten på kanterne er givet ved funktionen:
 \begin{equation}
