@@ -25,23 +25,24 @@ Man kan sige, at tiden, algoritmen tager, vil vokse lig $g(n)$ eller mindre, nå
 
 \begin{exmp} \label{ex:store-O}
 Vi tager i dette eksempel udgangspunkt i funktionen $f(n)=13n+3$. 
-Her skal vi forsøge at finde vores $C$ og $g(n)$, så uligheden $|f(n)| \leq C|g(n)|$ gælder for alle $n$ over $n_0$. Hvis vi sætter $g(n) = n$ og $C=20$, står der $13n+3 \leq 20n$. Dette er ikke sandt ved $n=0$, da der vil stå $3 \leq 0$. For $n=1$ står der $13\cdot 1 + 3 \leq 20 \cdot 1$, hvilket er sandt, og dermed er vores ulighed sand for $n \geq 1$.
+Her skal vi forsøge at finde vores $C$ og $g(n)$, så uligheden $|f(n)| \leq C|g(n)|$ gælder for alle $n$ større end eller lig $n_0$. Hvis vi sætter $g(n) = n$ og $C=20$, står der $13n+3 \leq 20n$. Dette er ikke sandt ved $n=0$, da der vil stå $3 \leq 0$. For $n=1$ står der $13\cdot 1 + 3 \leq 20 \cdot 1$, hvilket er sandt, og dermed er vores ulighed sand for $n \geq 1$.
 Når vi har fundet vores $C$, $g(n)$ og $n_0$, kan vi nu konkludere, at $f(n) = O(g(n))$, hvilket i vores eksempel er $f(n) = O(n)$.
 Vi kan dermed sige, at kompleksiteten af $f(n)$ er lineær eller bedre.
 \end{exmp}
-Det vil også være korrekt at sige, at $g(n)$ er lig $n!$ eller en anden vilkårlig, hurtigere voksende funktion, men da man altid vil vælge den mest begrænsende funktion, vil $n$ være det mest præcise. 
+Det vil også være korrekt at sige, at $g(n) =n!$ eller en anden vilkårlig, hurtigere voksende funktion, men da man altid vil vælge den mest begrænsende funktion, vil $g(n)=n$ være det mest præcise. 
 
 Store-$\Omega$ bruges, modsat store-$O$, til at begrænse funktionen nedadtil, altså finde den nedre grænse for algoritmen.
 \begin{defn}
 $f(n)$ siges at være  $\Omega(g(n))$, hvis og kun hvis der eksisterer positive konstanter $C$ og $n_o$, så $|f(n)| \geq C |g(n)|$ for alle $n \geq n_o$.
 \end{defn}
 
-\begin{exmp}
+\begin{exmp} \label{ex:store-omega}
 Hvis vi igen i dette eksempel tager udgangspunkt i funktionen fra Eksempel \ref{ex:store-O}, $f(n)=13n+3$, skal vi nu forsøge at finde $C$ og $g(n)$, hvor det gælder, at det er lavere end $f(n)$ for alle $n \geq n_0$. 
 Vi kan med fordel bruge den samme $g(n)$ som ovenfor, $g(n)=n$. Så skal vi finde en $C$-værdi, der gør uligheden sand. Hvis $C=1$, står der $13n+3 \geq 1n$. Dette må gøre sig gældende for alle $n \geq 0$. Derved har vi vores konstanter $C=1$ og $n_0 = 0$, og funktionen $g(n)=n$, og vi kan nu begrænse funktionen nedadtil med $g(n)$, altså $f(n)=\Omega(n)$.
 \end{exmp}
 
 På samme måde som ved store-$O$-notationen vil man her kunne sætte $g(n)$ lig med en vilkårlig, langsommere voksende funktion fx $\log n$, $n \log n$ med flere, men da man vil begrænse den så meget som muligt, vælger man den største funktion, hvor uligheden stadig er sand.
+Man kunne også her sætte $C$ og $n_0$ til en anden vilkårlig værdi, så længe uligheden er sand. I Eksempel \ref{ex:store-omega} kunne vi have valgt en $C$-værdi mellem 1 og 13. 
 
 
 Har man fundet både store-$O$ og store-$\Omega$, kan man i nogle tilfælde finde store-$\Theta$.
@@ -53,7 +54,7 @@ Der skal altså eksistere et $g(n)$, hvor man ved forskellige $C$-værdier kan b
 \begin{exmp}
 Hvis man tager udgangspunkt i de foregående eksempler for store-$O$ og store-$\Omega$, ser vi, at $g(n) = n$ i begge tilfælde med to forskellige $C$ værdier. \\
 $f(n)=13n+3, \ g(n)=n, \ C_1=1, \ C_2=20$. \\
-Disse værdier kan indsættes i uligheden, så vi får $1n \leq 13n+3 \leq 20n| \forall n \geq 1$. \\
+Disse værdier kan indsættes i uligheden, så vi får $1n \leq 13n+3 \leq 20n$ for alle $n \geq 1$. \\
 $f(n)= \Theta(n)$.
 \end{exmp}
 
@@ -63,18 +64,17 @@ I følgende afsnit tager vi udgangspunkt i to sorteringsalgoritmer og ser på st
 
 For at finde kompleksiteten af bubblesortering bruger vi store-$O$-notationen fra tidligere. 
 Bubblesortering, som nævnt i \autoref{kap:sortering}, sammenligner to elementer fra listen og flytter rundt på dem, hvis de står i forkert rækkefølge.
-Vi starter med værste tilfælde. Her ser vi på en liste, $P$, der er sorteret i omvendt rækkefølge, $(5,4,3,2,1)$.
-I første iteration sammenligner den 5 med 4 og bytter om, 5 med 3, bytter igen, 5 med 2, bytter, og til sidst 5 med 1. Nu står 5 korrekt, og $(4, 3, 2, 1, 5)$.
-Efter næste iteration er $(3, 2, 1, 4, 5)$, og de sidste iteration medfører hhv. $(2, 1, 3, 4, 5)$ og $(1, 2, 3, 4, 5)$. Her ses altså, at der itereres 4 gange, eller $n-1$ gange. 
+Vi starter med værste tilfælde. Her ser vi på en liste, $P$, der er sorteret i omvendt rækkefølge, $P=(5,4,3,2,1)$.
+I første iteration sammenligner den 5 med 4 og bytter om, 5 med 3, bytter igen, 5 med 2, bytter, og til sidst 5 med 1. Nu står 5 korrekt, og $P=(4, 3, 2, 1, 5)$.
+Efter næste iteration er $P=(3, 2, 1, 4, 5)$, og de sidste iterationer medfører hhv. $P=(2, 1, 3, 4, 5)$ og $P=(1, 2, 3, 4, 5)$. Her ses altså, at der itereres 4 gange, eller $n-1$ gange. 
 For hver iteration, $i$, sammenligner den $n-i$ gange. 
 Som vi kender fra tidligere teori, tælles de mindre ordner ikke med, derved er kompleksiteten $O(n\times n)$ eller $O(n^2)$.
 
 I bedste tilfælde er listen $(1, 2, 3, 4, 5)$.
-I vores algoritme, stopper algoritmen først, når den har lavet $n-1$ iterationer, og stopper dermed ikke på trods af at listen kan være i korrekt rækkefølge tidligere. I bedste tilfælde, vil den derfor være lige så kompleks som vores værste tilfælde, altså $O(n^2)$. Det vil dog være relativt nemt at optimere algoritmen, så den stopper, hvis den ikke laver flere ombytninger i en given iteration. Denne optimering vil gøre algoritmen $O(n)$ i bedste fald, da den i dette tilfælde kun gennemfører én iteration, og der stadig udføres $n-1$ sammenligninger i denne iteration. 
-\\
+Vores algoritme stopper først, når den har lavet $n-1$ iterationer og stopper dermed ikke på trods af, at listen kan være i korrekt rækkefølge tidligere. I bedste tilfælde vil den derfor være lige så kompleks som vores værste tilfælde, altså $O(n^2)$. Det vil dog være relativt nemt at optimere algoritmen, så den stopper, hvis den ikke laver flere ombytninger i en given iteration. Denne optimering vil gøre algoritmen $O(n)$ i bedste fald, da den i dette tilfælde kun gennemfører én iteration, og der stadig udføres $n-1$ sammenligninger i denne iteration. 
 
 En anden sorteringsalgoritme er indskudssorteringen fra \autoref{kap:sortering}. Denne tager udgangspunkt i et enkelt element ad gangen og sammenligner dette med resten af den korrekte liste.
-Hvis vi igen benytter det værste tilfælde, når listen er $(1,2,3,4,5)$, ser vi, at den først tager $2$-tallet og sammenligner med $1$-tallet. Den ser først, at to er større end en, og siden der kun er et element i den korrekte liste, vil den placere to til højre for et. Det næste element, den så tjekker, er tre, som den først sammenligner med et og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
+Kigger man på listen i det værste tilfælde, vil denne være $P=(1,2,3,4,5)$, og vi ser, at algoritmen først tager to og sammenligner med en. Den ser først, at to er større end en, og siden der kun er et element i den korrekte liste, vil den placere to til højre for en. Det næste element, den så tjekker, er tre, som den først sammenligner med en og derefter to for så til sidst at placere det længst til højre. På denne måde indsættes de sidste to elementer i forhold til den korrekte liste.
 Vi ser her, at der på samme måde som med bubblesortering køres fire iterationer. Der er i første iteration en sammenligning, derefter to sammenligninger i anden iteration og $n$ sammenligninger i $n$'te iteration. Hermed er denne sortering også $O(n^2)$ i værste fald.
 
 
