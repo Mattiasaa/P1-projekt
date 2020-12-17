@@ -37,7 +37,7 @@ Det vil altså sige, at antallet af gasenheder skal ligge mellem den nedre og de
 Knuderne i grafen er skrevet på formen, $v_{t,q_t}$.
 
 \begin{defn} [Problemgraf] \label{defn:graf_problem}
-Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet. Grafen, $G_{\textrm{problem}}=(V,E,w)$, er en orienteret, vægtet og simpel graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder hhv. startknuden, $v_{0,q_0}$, og slutknuden, $q_{\slut}$. Startknuden har $t=0$, da det er inden lejekontraktens begyndelse. Hver knude i en delmængde $V_t$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
+Givet problemparametrene i \autoref{table:1} defineres kanterne i grafen for problemet. Grafen, $G_{\textrm{problem}}=(V,E,w)$, er en orienteret, vægtet og simpel graf. Grafen er $(T+2)$-delt, fordelt på delmængderne $V_0,V_1, \dotsc, V_{T+1}$, hvor $V_0$ og $V_{T+1}$ kun indeholder hhv. startknuden, $v_{0,q_0}$, og slutknuden, $q_{\slut}$. Startknuden har $t=0$, da det er inden lejekontraktens begyndelse. Hver knude i en delmængde $V_{t}$ kan kun være nabo til en knude i delmængde $V_{t+1}$, hvor $t \in \{0,1, \dotsc,T\}$.
 For $E$ gælder det, når $t<T$, at $\exists \ e = (u,v)$, hvor $u=v_{t,q_t}$ og $v=v_{t+1, q_{t+1}}$, hvis
 	\begin{itemize}
 	\item $u \in V_t$ og $v \in V_{t+1}$
