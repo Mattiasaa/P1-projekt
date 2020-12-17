@@ -17,13 +17,11 @@ i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
                                 #Maksimal koeb pr. tid
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
                                 #Maksimal salg pr. tid
-q_goal      = 0                 #Tilfaeldigt tal. har kunbetydning 
+q_goal      = 0                 #Tilfaeldigt tal. har kun betydning 
                                 # naar kappa !=0
 kappa       = 0                 #Der er ingen straffaktor naar kappa = 0
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Startbeholdning
-q_T         = 0                 #Slutbeholdning
-p_0         = 0                 #Startkapital
 r           = 0.04              #Diskonteringsfaktor
 p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
                                 #Forward-priser
@@ -34,30 +32,31 @@ p_disc      = [round(p[i]*disc[i],2) for i in range(T)]
 max_edge    = max(p) * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
 
-# #Udvidet problem
-# q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
-#                                 #Maksimal beholdning i lager
-# q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
-#                                 #Minimum beholdning i lager
-# i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
-#                                 #Maksimal koeb pr. tid
-# u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
-#                                 #Maksimal salg pr. tid
-# q_goal      = 5                 #Lagerbeholdnings aftale
-# kappa       = 0.7               #Straffaktor                          
-# T           = 12                #Antal tidsperioder
-# q_0         = 5                 #Startbeholdning
-# q_T         = 0                 #Slutbeholdning
-# p_0         = 0                 #Startkapital
-# r           = 0.04              #Diskonteringsfaktor
-# p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
-#                                 #Forward-priser
-# disc        = [exp(-r*t/T) for t in range(1, T+1)]               
-#                                 #Diskonteringsvaerdi
-# p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
-#                                 #Diskonterede priser
-# max_edge    = p[len(p)-1] * q_max[len(p)-1]
-#                                 #Den vaerdi vi laegger til alle kantvaegte
+
+
+#Udvidet problem
+q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
+                                #Maksimal beholdning i lager
+q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
+                                #Minimum beholdning i lager
+i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
+                                #Maksimal koeb pr. tid
+u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
+                                #Maksimal salg pr. tid
+q_goal      = 5                 #Lagerbeholdnings aftale
+kappa       = 0.7               #Straffaktor                          
+T           = 12                #Antal tidsperioder
+q_0         = 5                 #Startbeholdning
+r           = 0.04              #Diskonteringsfaktor
+p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
+                                #Forward-priser
+disc        = [exp(-r*t/T) for t in range(1, T+1)]               
+                                #Diskonteringsvaerdi
+p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
+                                #Diskonterede priser
+max_edge    = p[len(p)-1] * q_max[len(p)-1]
+                                #Den vaerdi vi laegger til alle kantvaegte
+
 
 
 
@@ -97,7 +96,7 @@ def graph_dict():
     add_edge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
     return graph
 
-# print(graph_dict()['v0,5'])
+
 
 def dijkstras(graph , start , end ): 
     shortest_distance = {}
@@ -134,7 +133,7 @@ def dijkstras(graph , start , end ):
 def get_profit(graph, start, end):
     shortest_distance, path = dijkstras(graph, start, end)
     longest_distance = round((shortest_distance - (len(path)-1) * max_edge) * (-1), 2)
-    print(f'The highest profit is {round(longest_distance,2)} Euro') 
+    print(f'The highest profit is {round(longest_distance,2)} euro') 
     print(f'The path is {str(path)}')
     
 
