@@ -1,20 +1,24 @@
 \chapter{Indledning}
+\section{Problemanalyse}
 Klimakrisen har efterhånden været en del af den offentlige og politiske debat længe. For virksomheder kan det være svært at balancere mellem at være effektiv og klimavenlig. Dette kan være en svær balance at finde, da klimavenlige alternativer ikke altid er den løsning, der giver mest profit. Derfor er det ikke altid, at det mest klimavenlige alternativ er specielt holdbart for virksomheder, men kan der findes et kompromis? 
 \\
 
 Hvis vi kigger på naturgas, indeholder det store mængder af metan, hvilket betyder en stor mængde af brint, og knap så meget CO2 udslip. (https://www.experimentarium.dk/klima/naturgas/) Der udledes 40$\%$ mindre $CO_{2}$, sammenlignet med kul, ved den samme mængde energi. Selvom naturgas er et fossilt brændstof, er det altså mere miljøvenligt end kul og olie, men for at få virksomheder til at benytte sig af denne form for energi, modsat kul og olie, er det vigtigt at gøre det profitabelt for dem. Dette kan gøres ved at optimere deres processer.
-
 Procesoptimering kan gøres på et utal af måder, blandt andet ved at implementere en algoritme, der kan udregne, hvornår det er bedst at købe og sælge gassen, og hvor meget der skal købes eller sælges ad gangen. 
 \\
 
 I dette projekt vil vi arbejde med en sådan algoritme og bruge den til at optimere et gaslager, som vi vil leje for et år. Vi skal i denne periode forsøge at maksimere resultatet ved at købe og sælge gasenheder til forskellige tider med forudbestemte priser. Vi tager udgangspunkt i basisproblemet, men sørger for at algoritmen er optimeret således, at den er generel nok til at løse eventuelle udvidelser uden store ændringer.
 
-\section{Problemanalyse}
-I denne rapport ønsker vi at optimere et gaslager ved at få det størst mulige resultat for det år vi vil leje det. Med problemet blev der også givet visse begrænsninger for gaslageret, herunder en nedre og en øvre grænse for, hvor meget gas lageret kan indeholde, samt en nedre og en øvre grænse for hvor meget gas der må købes og sælges hver måned. Der er dermed tale om et optimeringsproblem. Dette problem kan beskrives matematisk ved hjælp af grafteori. Derfor vil der i dette projekt blive redegjort for centrale aspekter inden for grafteori såsom
-graftyper, repræsentation af grafer, veje og delte grafer. Med denne teori vil vi være i stand til at opstille en graf for vores problem. Vi vil dermed kunne tælle os frem til hvilken vej der giver den største profit, men da dette er en langsommelig proces, ønsker vi at opstille en algoritme, der kan udføre dette arbejde. \\ Derfor vil vi også beskrive centrale elementer indenfor algoritmer. Vi vil først komme ind på nogle forskellige algoritmetyper. Herefter vil vi gennemgå Dijkstras algoritme, som bruges til at finde den korteste vej i en graf. Til sidst vil vi komme ind på kompleksitet, som giver et indblik i effektiviteten af algoritmer.
-
-\section{Problemformulering}
+\subsection{Problemformulering}
 Dette leder os frem til følgende problemformulering:
 \textit{Hvordan kan vi optimere profitten for et gaslager ved brug af grafteori og algoritmer, og kan vi generalisere problemet til også at omfatte andre virksomheder ved at udvide problemet?}
+
+\section{Introduktion}
+I denne rapport ønsker vi at optimere et gaslager ved at få det størst mulige resultat for det år vi vil leje det. Med problemet blev der også givet visse begrænsninger for gaslageret, herunder en nedre og en øvre grænse for, hvor meget gas lageret kan indeholde, samt en nedre og en øvre grænse for hvor meget gas der må købes og sælges hver måned. Der er dermed tale om et optimeringsproblem. 
+
+Problemet kan beskrives matematisk ved hjælp af grafteori. Derfor vil der i dette projekt blive redegjort for centrale aspekter inden for grafteori såsom graftyper, repræsentation af grafer, veje og delte grafer. Med denne teori vil vi være i stand til at opstille en graf for vores problem. Vi vil dermed kunne finde den vej der giver den største profit. 
+Dette kan dog være en langsommelig proces, derfor ønsker vi at opstille en algoritme, der kan udføre dette arbejde. Derfor vil vi også beskrive centrale elementer indenfor algoritmer. Vi vil først komme ind på nogle forskellige algoritmetyper. Herefter vil vi gennemgå Dijkstras algoritme, som bruges til at finde den korteste vej i en graf. Til sidst vil vi komme ind på kompleksitet, som giver et indblik i effektiviteten af algoritmer.
+
+
 
 

@@ -17,8 +17,8 @@ i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
                                 #Maksimal koeb pr. tid
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
                                 #Maksimal salg pr. tid
-q_goal      = 0                 #Tilfaeldigt tal
-kappa       = 1                 #Der er ingen straffaktor naar kappa = 1
+q_goal      = 0                 #Tilfaeldigt tal. har kunbetydning naar kappa !=0
+kappa       = 0                 #Der er ingen straffaktor naar kappa = 0
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Startbeholdning
 q_T         = 0                 #Slutbeholdning
@@ -81,7 +81,7 @@ def graph_dict():
         if k == q_goal:
             addEdge(graph, vertices[t][k], vertices[t+1],-k*p_disc[t-1]+max_edge)
         else:
-            addEdge(graph, vertices[t][k], vertices[t+1],(-k*p_disc[t-1]+max_edge)/kappa)
+            addEdge(graph, vertices[t][k], vertices[t+1],(-k*p_disc[t-1]*(1-kappa)+max_edge))
     for t in range(1,T):
         for k in range(q_min[t-1], q_max[t-1]+1):
             current_units = k
