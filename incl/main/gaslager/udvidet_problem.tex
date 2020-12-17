@@ -1,6 +1,6 @@
 \section{Det udvidede problem} \label{kap:udvidet_problem}
 
-I basisproblemet arbejder vi med mange statiske værdier. Vi siger, at $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ alle er statiske igennem hele lejeperioden, men en mere realistisk antagelse er, at disse er variable. Eksempelvis vil $q_{\min}$ typisk være højere end nul om vinteren for at sikre, at man i situationer, hvor der pludselig ikke er mulighed for at anskaffe mere gas, stadig kan imødekomme den forøgede efterspørgsel på strøm. Derfor udvider vi nu basisproblemet ved at tilføje tidsafhængige begrænsninger, altså\\
+I basisproblemet arbejder vi med mange statiske værdier. Vi siger, at $q_{\min}$, $q_{\max}$, $i_{\max}$ og $u_{\max}$ alle er statiske igennem hele lejeperioden, men en mere realistisk antagelse er, at disse er varierende. Eksempelvis vil $q_{\min}$ typisk være højere end nul om vinteren for at sikre, at man i situationer, hvor der pludselig ikke er mulighed for at anskaffe mere gas, stadig kan imødekomme den forøgede efterspørgsel på strøm. Derfor udvider vi nu basisproblemet ved at tilføje tidsafhængige begrænsninger, altså\\
 1. $q_{\min,t} \leq q_{t} \leq q_{\max,t}$ \\
 2. $\Delta q_{t} \in \{-u_{\max,t}, -u_{\max,t} + 1, \dotsc, -1, 0, 1, \dotsc, i_{\max,t} -1, i_{\max,t} \}$ \\
 for $t \in \{1,2,\dotsc,T \}$. Dermed afhænger disse værdier nu af $t$ modsat basisproblemet, hvor de var statiske hele året. 
