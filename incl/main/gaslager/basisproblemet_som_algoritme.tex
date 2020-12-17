@@ -1,5 +1,5 @@
 \subsection{Basisproblemet som algoritme}
-For at løse vores basisproblem opstiller vi en algoritme, som kan finde den vej gennem grafen, der giver det største resultat. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Koden i følgende afsnit er skrevet i Python 3. Vi deler vores kode op i mindre dele for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
+For at løse vores basisproblem, ønsker vi at opstille en algoritme, som kan finde den vej gennem grafen, der giver det største resultat. Vores algoritme vil tage udgangspunkt i \autoref{alg:dijkstra}. Koden i følgende afsnit er skrevet i Python 3. Vi deler vores kode op i mindre dele, for at give et bedre overblik og for bedre at kunne forklare de enkelte dele. Vi starter med at opskrive de givne data. 
 
 \lstinputlisting[
   firstline=10,
@@ -8,10 +8,11 @@ For at løse vores basisproblem opstiller vi en algoritme, som kan finde den vej
   caption={Definering af data for basisproblemet.}
 ]{code/dijkstras.py}
 
-Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier som lister, da de ikke er statiske i det udvidede problem. Vi har derfor tilpasset funktionerne, så de kan håndtere både basisproblemet og det udvidede problem uden at skulle ændres. 
+Værdierne er alle givet i basisproblemet. Vi har skrevet de statiske værdier som lister, da de ikke er statiske i det udvidede problem, og vi har derfor tilpasset funktionerne, så de kan håndtere både basisproblemet og det udvidede problem uden at skulle ændres. 
 
-Vi opstiller nu en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}. En dictionary er en associationsliste, som indeholder en samling af indekser, der kaldes \emph{nøgler}, og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
-værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi, i dette tilfælde nabolisten, og kan hente denne. Før vi kan opstille vores dictionary, er vi nødt til at lave en funktion, 'add\_edge', som kan tilføje kanterne, da vi skal bruge denne i funktionen, 'graph\_dict':
+Derefter opstiller vi en repræsentation for grafen. Dette gør vi ved at lave en funktion, der danner en \emph{dictionary}, en ordbog. En ordbog er en associationsliste, som indeholder en samling af indekser, der kaldes \emph{nøgler} og en samling af dertilhørende værdier. I dette tilfælde er nøglerne vores knuder, og
+værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi og kan hente denne. Det ses eksempelvis i \autoref{code:q05}, at nøglen $v0,5$ henter sin naboliste.
+Før vi kan opstille vores dictionary, er vi nødt til at lave en funktion, som kan tilføje kanterne, da vi skal bruge denne i funktionen:
 
 \lstinputlisting[
   firstline=63,
@@ -20,7 +21,7 @@ værdierne er knudernes nabolister. Hver nøgle er knyttet til en enkelt værdi,
   caption={Tilføjer kanter.}
 ]{code/dijkstras.py}
 
-\autoref{code:add_edge} tjekker først, om der er en dictionary, 'u', i en anden dictionary, 'graph'. Hvis dette er tilfældet, tilføjer den $v$ og kantvægten mellem $u$ og $v$ til  $u$'s dictionary. Hvis 'u' ikke allerede er i 'graph', laver den en ny dictionary til $u$ og indsætter $v$ og kantvægten mellem $u$ og $v$ i den nye dictionary.
+\autoref{code:add_edge} tjekker først om der er en dictionary, $u$, i en anden dictionary, 'graph'. Hvis dette er tilfældet, tilføjer den $v$ og kantvægten mellem $u$ og $v$ til  $u$'s dictionary. Hvis $u$ ikke allerede er i 'graph', laver den en ny dictionary til $u$ og indsætter $v$ og kantvægten mellem $u$ og $v$ i den nye dictionary.
 
 Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 
@@ -32,22 +33,23 @@ Nu kan vi lave en funktion, der opstiller vores dictionary med nabolister:
 ]{code/dijkstras.py}
 
 I \autoref{code:graph_dict} definerer vi en funktion, der bygger en dictionary, som er fyldt med andre dictionaries. Funktionen danner først en dictionary, som de andre dictionaries vil blive sat ind i.
-Den danner nu en todimensionel liste med alle knuderne i grafen. Knuderne har navn på form '$vx,y$', hvor $x$ beskriver, hvilket tidskridt vi er i, og $y$ beskriver beholdningen til dette tidsskridt. Det vil sige, at '$v3,4$' betyder, at vi efter tre måneder har en beholdning på fire enheder. Hver $x$-værdi har sin egen liste, det vil sige, at alle '$v3,y$' er i en liste for sig selv.
+Den danner nu en flerdimensionel liste med alle knuderne i grafen. Knuderne har navn på form '$v\textrm{x,y}$', hvor x beskriver hvilken tid vi er i, og y beskriver beholdningen. Det vil sige, at '$v3,4$' betyder, at vi efter tre måneder har en beholdning på fire enheder. Hver x-værdi har sin egen liste, det vil sige, at alle '$v\textrm{3,y}$' er i en liste for sig selv.
 
-Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, er der nemlig kun én knude, der har kanter. Funktionen genererer nu de kanter, som '$v0,5$' har, og laver en dictionary for '$v0,5$'. 
+Nu skal vi tilføje alle kanterne i grafen. Der er to specifikke tilfælde, som ikke går igen, nemlig ved startknuden og ved endeknuden. Ved tiden, $t=0$, i denne løkke, er der nemlig kun en knude der har kanter. Funktionen genererer nu de kanter, som '$v\textrm{0,5}$' har, og laver en dictionary for '$v\textrm{3,y}$'. 
 Denne dictionary ser ud således:
 
 \begin{lstlisting}[label=code:q05, caption=Dictionary for $v \textrm{0,5}$.]
 
 'v0,5' : {'v1,1' : 170.28, 'v1,2' : 190.21, 'v1,3' : 210.14, 'v1,4' : 230.07, 'v1,5' : 250.0, 'v1,6': 269.93, 'v1,7' : 289.86, 'v1,8' : 309.79, 'v1,9' : 329.72}
 \end{lstlisting}
-Denne dictionary viser '$v0,5$'s naboer og vægten på kanterne mellem dem og $v0,5$. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras generelt ikke fungerer med negative vægte. 
+Denne dictionary viser '$v0,5$'s naboer og vægten på kanterne mellem dem. Alle kantvægtene er ganget med -1, da vi så kan bruge Dijkstras algoritme til at finde den korteste vej i den omvendte graf. Derudover er der lagt 250 til alle kantvægte, så ingen af kanterne har negativ vægt, da Dijkstras ikke kan bruge negative vægte. 
 
-I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt det gas, som er tilbage, når lejeperioden er ovre. Mængden af gas, vi kan sælge, er altså ikke bundet af 'u\_max' og '$\textrm{i\_max}$'. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner en kantværdi for alle kanterne mellem '$v\textrm{12,y}$' og '$q\textrm{\_end}$'. Hvis '$v\textrm{12,y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive ganget med vores straffaktor trukket fra en. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig nul, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
+I \autoref{code:graph_dict} ser vi, at når $t=12$, har vi også et specielt tilfælde. Dette er vores sidste værdi for $t$. I lejekontrakten står der, at udlejeren køber alt gas, som er tilbage, når lejeperioden er ovre. Mængden af gas vi kan sælge, er altså ikke bundet af $\textrm{u\_max}$ og $\textrm{i\_max}$. I denne del af funktionen ser vi også indførslen af '$q\textrm{\_goal}$'. Dette er en værdi, som kun har betydning i udvidelsen af problemet. Den beregner  en kantværdi for alle '$v\textrm{12,y}$' til '$q\textrm{\_end}$', og hvis '$v\textrm{12,y}$' ikke er lig vores '$q\textrm{\_goal}$', vil deres kantvægt til '$q\textrm{\_end}$' blive divideret med en straffaktor. I basisproblemet har vi, at straffaktoren, $\kappa$, er lig 1, da vi ikke har en aftalt slutbeholdning, '$q\textrm{\_goal}$'.
 
 Vi kan nu kigge på alle andre tilfælde for $t$. Funktionen kører en løkke for $k$ med værdier mellem '$q\textrm{\_min}$' og '$q\textrm{\_max}$' til den specifikke tid. Dette betegner den som de nuværende enheder.
-Den finder nu de største tilladte ændringer, når man har $k$ enheder. Den kører derefter en løkke for 'j' med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
-Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$v12,0$' med vægt $0$. Dette skyldes, at vores kode ikke kan finde længden til en knude, som ikke har sin egen dictionary.
+Den finder nu de største ændringer, når man har $k$ enheder. Den kører derefter en løkke for $\textrm{j}$ med disse værdier og tilføjer alle de mulige naboer til knuden i tiden, $t$, og med beholdningen, $k$. Denne del af funktionen danner således dictionaries til alle de resterende knuder i grafen på samme form som \autoref{code:q05}.
+
+Til sidst tilføjer den en kant mellem '$q\textrm{\_end}$' og '$v12,0$' med vægt $0$, dette skyldes, at vores kode for Dijkstras ikke kan finde længden til en knude, som ikke har sin egen dictionary.
 
 Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derfor kan vi nu opstille en funktion, der ved hjælp af Dijkstras algoritme kan beregne den vej, der giver det største resultat:
 
@@ -55,23 +57,24 @@ Nu har vi en dictionary med alle knudernes nabolister og alle kantvægtene. Derf
   firstline=101,
   lastline=130 ,
   label={code:dijkstras_optimering},
-  caption={Dijkstras algoritme til løsning af problemet.}
+  caption={Dikstras algoritme til løsning af problemet.}
 ]{code/dijkstras.py}
 
-I funktionen defineres først to tomme dictionaries. I 'shortest\_distance' opbevares den korteste vej til alle knuderne i grafen. I 'predecessor' opbevares, for hver knude i grafen, den forrige knude i den korteste vej. Det vil sige, den knude man går igennem, lige inden man når den nye knude, hvis man følger den korteste vej. Herefter oprettes 'unseen$\_$nodes', som vi sætter lig med 'graph'. Dette skyldes, at vi endnu ikke kender distancen til nogen af knuderne, og derfor er alle 'unseen'. Vi opretter også en tom liste, som vi kalder 'path'. I denne liste tilføjes de knuder, som indgår i den optimale vej.
-Vi sætter nu den korteste vej til alle knuder i 'unseen$\_$nodes', hvilket lige nu er alle knuderne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de knuder, man ikke kender distancen til endnu. Da vi starter i startknuden, kan vi sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
+I funktionen defineres først to tomme dictionaries. I 'shortest\_distance' opbevares den korteste vej til alle knuderne i grafen. I 'predecessor' opbevares, for hver knude i grafen, den forrige knude i den korteste vej, altså den knude man går igennem, lige inden man når den nye knude, hvis man følger den korteste vej. Herefter oprettes 'unseen$\_$nodes', som vi sætter lig med 'graph'. Dette skyldes, at vi endnu ikke kender distancen til nogen af knuderne, og derfor er alle 'unseen'. Vi opretter også en tom liste, som vi kalder 'path'. I denne liste tilføjes de knuder, som indgår i den optimale vej.
+
+Vi sætter nu den korteste vej til alle knuder i 'unseen$\_$nodes', hvilken lige nu er alle knuderne, lig med uendelig. Dette gøres, fordi der i Dijkstras algoritme er uendeligt langt til de knuder, man ikke kender distancen til endnu. Da vi starter i startknuden, kan vi sætte den korteste vej hertil lig med nul, da vi allerede befinder os her.
 Nu opstiller vi en while-løkke og lader den køre, så længe der stadig er knuder i 'unseen$\_$nodes', altså indtil den korteste vej til alle knuder er fundet.
-Vi sætter den korteste distance til en knude lig nul og laver derefter en for-løkke. Denne løkke gælder for alle knuder i 'unseen$\_$nodes'. Hvis der ikke er fundet en midlertidig korteste vej til nogen knude fra startknuden, bliver en sådan vej oprettet til en vilkårlig knude. Denne knude defineres som 'min\_distance\_node'. Hvis der allerede er defineret en 'min\_distance\_node', men der findes en vej fra startknuden til en anden knude, som er endnu kortere, opdateres 'min$\_$distance$\_$node' til at være denne knude.
+Vi sætter den korteste distance til en knude lig nul, og laver derefter en for-løkke. Denne løkke gælder for alle knuder i 'unseen$\_$nodes'. Hvis der ikke er fundet en midlertidig korteste vej til nogen knude fra startknuden, bliver en sådan vej oprettet til en vilkårlig knude. Denne knude defineres som 'min\_distance\_node'. Hvis der allerede er defineret en 'min\_distance\_node', men der findes en vej fra startknuden til en anden knude, som er endnu kortere, opdateres 'min$\_$distance$\_$node' til at være denne knude.
 Nu starter vi en ny for-løkke, som skal betragte de mulige veje fra vores knude.
-Først tjekker den, om der eksisterer en 'child$\_$node' til knuden, altså om knuden fører hen til andre knuder. Hvis 'child$\_$node' ikke har nogen kanter, sker der intet, og for-løkken går videre til næste knude. Dette skyldes, at algoritmen vil melde fejl, hvis den forsøger at tilgå en knude, som ikke har sin egen dictionary. Dette er dog kun relevant i det udvidede problem.
-Hvis en 'child$\_$node' til 'min$\_$distance$\_$node' derimod har minimum en kant til en anden knude, sammenligner den, om den korteste distance til 'min$\_$distance$\_$node' plus en kantvægt på en af de kanter, der ledes fra knude, er mindre end den korteste vej til den knude, hvor kanten ledes hen, vores såkaldte 'child$\_$node'. Hvis dette er tilfældet, opdaterer vi den korteste vej til 'child$\_$note', da denne nu er den korteste vej. På samme måde opdaterer vi vores predecessor, da knuden 'min$\_$distance$\_$node' nu er den knude, der i den korteste vej kommer lige inden 'child$\_$node'.
+Først tjekker den, om der eksisterer en 'child$\_$node' til knuden, altså om knuden fører hen til andre knuder. Hvis 'child$\_$node' ikke har nogen kanter, sker der intet, og for-løkken går videre til næste knude. Dette skyldes, at algoritmen vil skrive fejl, hvis den forsøger at tilgå en knude, som ikke har sin egen dictionary. Dette er dog kun relevant i det udvidede problem.
+Hvis en 'child$\_$node' til  'min$\_$distance$\_$node' derimod har minimum én kant til en anden knude, sammenligner den, om den korteste distance til 'min$\_$distance$\_$node' plus en kantvægt på en af de kanter, der ledes fra knuden, er mindre end den korteste vej til den knude, hvor kanten ledes hen, vores såkaldte 'child$\_$node'. Hvis dette er tilfældet, opdaterer vi den korteste vej til 'child$\_$note', da denne vej nu er den korteste. På samme måde opdaterer vi vores predecessor, da knuden 'min$\_$distance$\_$node' nu er den knude, der i den korteste vej kommer lige inden 'child$\_$node'.
 
-Vi sørger nu for, at vores knuder i 'unseen$\_$nodes' forsvinder, efter vi har arbejdet med dem ved at bruge pop-funktionen. Når en knude har været 'min$\_$distance$\_$node', forsvinder den altså fra 'unseen$\_$nodes', så vi sikrer os, at løkken stopper på et tidspunkt. 
+Vi sørger nu for, at de knuder, vi har arbejdet med, forsvinder fra 'unseen$\_$nodes' ved at bruge pop-funktionen. Når en knude har været 'min$\_$distance$\_$node', forsvinder den altså fra 'unseen$\_$nodes', så vi sikrer os, at løkken stopper på et tidspunkt. 
 
-Vi sætter vores nuværende knude til at være lig med vores 'end'.
+Vi sætter vores nuværende knude til at være lig vores mål.
 Derefter danner vi en ny while-løkke, som kører, så længe den nuværende knude ikke er startknuden. Startknuden har nemlig ikke en 'predecessor' og kan dermed ikke beregnes således. I listen 'path' tilføjes nu den nuværende knude, som vi har sat til at være 'end', på plads $[0]$. Vi kender dermed den sidste knude i vejen. Derefter defineres 'current$\_$node' nu til at være knuden lige inden det tidligere 'current$\_$node' i den korteste vej derhen. Denne tilføjes nu til listen, ligeledes på plads $[0]$, og på den måde tilføjes hele vejen i den rigtige rækkefølge. Til sidst indsættes startknuden.
-Hvis den korteste vej til '$q\_$end' ikke er uendelig, dvs. hvis vi har fundet den mindste distance hertil, så returnerer funktionen den korteste distance samt vejen dertil.
-I \autoref{code:profit}, omregner vi så dette ved at trække den værdi fra, som vi lagde til alle kantvægtene, samt gange med $-1$. Denne funktion printer nu det største resultat og den vej vi skal følge for at få dette. 
+Hvis den korteste vej til '$q\_$end' ikke er uendelig, dvs. hvis vi har fundet den korteste distance hertil, så returnerer funktionen den korteste distance samt vejen dertil.
+I \autoref{code:profit} omregner vi vores resulat ved at trække den konstant fra, som vi lagde til alle kantvægtene, samt gange med $-1$. Denne funktion printer nu den længste vej og den vej, vi skal følge for at få denne. 
 
 \lstinputlisting[
   firstline=133,
