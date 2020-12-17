@@ -1,16 +1,8 @@
-% incl/misc/abstract.tex : projektets abstract
-% ------------------------------------------------------------------------------
-% Et abstract er et kort resume af rapporten, som vises på titelbladet
-%This study investigates how algorithms and graph teory can help optimize the profit of a gas storage in a given period of time by buying and selling gas units.
-%Initially, relevant theory of graph theory and algorithms will be explained. The study found Dijkstra's algorithm very useful for solving the problem. By multiplying by minus one and adding a constant, so that no edges are negative, one can use an implementation of Dijkstra's algorithm in Python 3 to find the longest path through a graph, by finding the shortest path through the inverted, positive graph. This path will be the path that yields the greatest profit. Furthermore, the most profitable path can be shown in graphs illustrating the best trading strategy. The greatest profit in the basic problem is 252.72€ and the greatest profit in our extended problem is 188.27€. 
-%The extensions reduce the profit considerably, and especially the fluctuating limits for inventory and sales per month are to blame for the low profit, as they affect profits over several months and not only in the last month, which the penalty factor does. 
-
+% incl/misc/abstract.tex : projektets abstract 
 
 This study investigates how algorithms and graph theory can help with the optimization of profit from a gas storage, over the course of a given period of time, by buying and selling gas units. 
 
-In order to give clarification of the calculations and methods used in this study, the essential and relevant graph theory, and theory of algorithms will therefore be explained:  
-During this study it was found that Dijkstra's algorithm was very useful for solving the mathematical problem of optimization in graphs. This study implements Dijkstra's algorithm in Python 3 in order to find the longest path through a graph. This can be done by finding the shortest path through the inverted positive graph. This path will be the path that yields the greatest profit. 
+In order to give clarification of the calculations and methods used in this study, the essential and relevant graph theory, and theory of algorithms will therefore be explained.
+During this study it was found that Dijkstra's algorithm was very useful for solving shortest path problems in graphs. This study implements Dijkstra's algorithm in Python 3 in order to find the longest path through a graph. This can be done by finding the shortest path through the inverted non-negative graph. This path will be the path that yields the greatest profit. In addition, this path is the one that will give us the most optimal trading strategy.
 
-In addition, the path that yields the largest profit can be displayed by a graph. This illustrated path is the one that will give us the most optimal trading strategy.
-
-The largest profit in the original problem is 252.73€, and the largest profit in our extended problem is 188.27€. From this it can be concluded that the extensions that have been made significantly reduce the profit. This is mainly due to the fluctuating limits of inventory, and the limits of buying and selling per month, as they affect the profit over the course of several months, which comparted to the penalty factor only affects the month before.
+The greatest profit in the original problem is 252.73€, and in the extended problem, it is 188.27€. From this, it can be concluded that the extensions that have been made, significantly reduce the profit. This is mainly due to the fluctuating limits of inventory, and the limits of buying and selling per month, as they affect the profit over the course of several months, compared to the penalty factor which only affects the last two months.
