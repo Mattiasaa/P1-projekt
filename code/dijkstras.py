@@ -17,7 +17,8 @@ i_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
                                 #Maksimal koeb pr. tid
 u_max       = [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]                    
                                 #Maksimal salg pr. tid
-q_goal      = 0                 #Tilfaeldigt tal. har kunbetydning naar kappa !=0
+q_goal      = 0                 #Tilfaeldigt tal. har kunbetydning 
+                                # naar kappa !=0
 kappa       = 0                 #Der er ingen straffaktor naar kappa = 0
 T           = 12                #Antal tidsperioder
 q_0         = 5                 #Startbeholdning
@@ -29,38 +30,38 @@ p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]
 disc        = [exp(-r*t/T) for t in range(1, T+1)]               
                                 #Diskonteringsvaerdi
 p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
-                                #Diskonterede vaerdier
+                                #Diskonterede priser
 max_edge    = max(p) * q_max[len(p)-1]
                                 #Den vaerdi vi laegger til alle kantvaegte
 
-#Udvidet problem
-q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
-                                #Maksimal beholdning i lager
-q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
-                                #Minimum beholdning i lager
-i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
-                                #Maksimal koeb pr. tid
-u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
-                                #Maksimal salg pr. tid
-q_goal      = 5                 #Lagerbeholdnings aftale
-kappa       = 0.7               #Straffaktor                          
-T           = 12                #Antal tidsperioder
-q_0         = 5                 #Startbeholdning
-q_T         = 0                 #Slutbeholdning
-p_0         = 0                 #Startkapital
-r           = 0.04              #Diskonteringsfaktor
-p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
-                                #Forward-priser
-disc        = [exp(-r*t/T) for t in range(1, T+1)]               
-                                #Diskonteringsvaerdi
-p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
-                                #Diskonterede vaerdier
-max_edge    = p[len(p)-1] * q_max[len(p)-1]
-                                #Den vaerdi vi laegger til alle kantvaegte
+# #Udvidet problem
+# q_max       = [10, 10, 10, 10, 8, 8, 8, 8, 10, 10, 10, 10]                
+#                                 #Maksimal beholdning i lager
+# q_min       = [0, 0, 0, 4, 4, 6, 6, 4, 4, 0, 0, 0]                 
+#                                 #Minimum beholdning i lager
+# i_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                 
+#                                 #Maksimal koeb pr. tid
+# u_max       = [4, 4, 2, 2, 1, 1, 1, 1, 2, 2, 4, 4]                    
+#                                 #Maksimal salg pr. tid
+# q_goal      = 5                 #Lagerbeholdnings aftale
+# kappa       = 0.7               #Straffaktor                          
+# T           = 12                #Antal tidsperioder
+# q_0         = 5                 #Startbeholdning
+# q_T         = 0                 #Slutbeholdning
+# p_0         = 0                 #Startkapital
+# r           = 0.04              #Diskonteringsfaktor
+# p           = [20, 22, 25, 18, 15, 15, 20, 19, 21, 12, 22, 25]      
+#                                 #Forward-priser
+# disc        = [exp(-r*t/T) for t in range(1, T+1)]               
+#                                 #Diskonteringsvaerdi
+# p_disc      = [round(p[i]*disc[i],2) for i in range(T)]                      
+#                                 #Diskonterede priser
+# max_edge    = p[len(p)-1] * q_max[len(p)-1]
+#                                 #Den vaerdi vi laegger til alle kantvaegte
 
 
 
-def addEdge(graph,u,v,e):
+def add_edge(graph,u,v,e):
     if u in graph:
         graph[u].update( {v : e} )
     else:
@@ -74,14 +75,14 @@ def graph_dict():
         vertices.append(['v' + str(i) +','+ str(j) for j in range (q_max[i-1]+1)])
     vertices.append('q_end')
     t = 0
-    for j in range(-u_max[t], i_max[t]+1):
-        addEdge(graph, vertices[t], vertices[t+1][q_0 + j], j*p_disc[t]+max_edge)
+    for j in range(q_0-u_max[t], q_0+i_max[t]+1):
+        add_edge(graph, vertices[t], vertices[t+1][j], (q_0-j)*p_disc[t]*(-1)+max_edge)
     t = 12
     for k in range(q_min[t-1], q_max[t-1]+1):
         if k == q_goal:
-            addEdge(graph, vertices[t][k], vertices[t+1],-k*p_disc[t-1]+max_edge)
+            add_edge(graph, vertices[t][k], vertices[t+1],k*p_disc[t-1]*(-1)+max_edge)
         else:
-            addEdge(graph, vertices[t][k], vertices[t+1],(-k*p_disc[t-1]*(1-kappa)+max_edge))
+            add_edge(graph, vertices[t][k], vertices[t+1],(k*p_disc[t-1]*(-1)*(1-kappa)+max_edge))
     for t in range(1,T):
         for k in range(q_min[t-1], q_max[t-1]+1):
             current_units = k
@@ -92,11 +93,11 @@ def graph_dict():
             if max_units > q_max[t]:
                 max_units = q_max[t]
             for j in range(min_units, max_units+1):
-                addEdge(graph, vertices[t][k], vertices[t+1][j],(j-k)*p_disc[t]+max_edge)
-    addEdge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
+                add_edge(graph, vertices[t][k], vertices[t+1][j],(k-j)*p_disc[t]*(-1)+max_edge)
+    add_edge(graph, vertices[len(vertices)-1], vertices[len(vertices)-2][0], 0)
     return graph
 
-
+# print(graph_dict()['v0,5'])
 
 def dijkstras(graph , start , end ): 
     shortest_distance = {}
@@ -138,6 +139,7 @@ def get_profit(graph, start, end):
     
 
 get_profit(graph_dict(), 'v0,5', 'q_end')
+
 
 
 
