@@ -20,6 +20,8 @@ Ved brug af ovenstående metode kan vi illustrere løsningen til korteste vej-pr
 Dijkstras algoritme finder distancen af den korteste vej mellem to knuder, $a$ og $z$, i en simpel, vægtet graf, sådan at $L(z)=\alpha(a,z)$, hvis alle kantvægtene er ikke-negative og der eksisterer en sådan vej. 
 \end{thm}
 
+Følgende bevis tager udgangspunkt i \citep{dmat} og \citep{pdf:dijkProof}.
+
 \begin{proof}
 Sætning \ref{thm:dijkstra} kan bevises ved induktion. Ved et induktionsbevis etablerer vi først et basisskridt, og dernæst opstiller vi en induktionshypotese. Basisskridtet består blot i, at vi undersøger distancen fra startknuden til startknuden, som selvfølgelig er 0, hvilket algoritmen også noterer. Vi har dermed $L(a)=0= \alpha(a,a)$, hvilket er sandt.
 Vi opstiller nu vores induktionshypotese, hvor vi antager, at Sætning \ref{thm:dijkstra} er sand for $k$ iterationer. Det gælder altså, at
